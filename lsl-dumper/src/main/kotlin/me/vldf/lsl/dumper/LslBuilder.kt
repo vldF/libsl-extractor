@@ -51,7 +51,19 @@ class LslBuilder(
     }
 
     private fun simpleType(type: SimpleType) {
-        appendLineWithSemicolon("${type.fullName} (${type.realType})")
+        appendLineWithSemicolon("${type.fullName} (${type.realType.string})")
+    }
+
+    // todo
+    private val Type.string: String
+    get() = buildString {
+        append(this@string.fullName)
+        if (this@string.generic != null) {
+            append(this@string.generic)
+        }
+        if (this@string.isPointer) {
+            append("*")
+        }
     }
 
     private fun automata(automata: List<Automaton>) {
