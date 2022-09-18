@@ -38,6 +38,9 @@ class LslBuilder(
     }
 
     private fun semanticTypes(types: List<Type>) {
+        if (types.isEmpty())
+            return
+
         appendLine("types {")
         indent {
             for (type in types) {
