@@ -7,17 +7,16 @@ plugins {
 group = "me.vldf"
 version = "1.0-SNAPSHOT"
 
-val kfgVersion = "0.3.3"
-
 repositories {
-    mavenCentral()
-    maven("https://maven.vorpal-research.scienc")
     maven("https://jitpack.io")
+    maven("https://maven.vorpal-research.science")
+    mavenCentral()
 }
 
 dependencies {
-    implementation("org.vorpal.research:kfg:$kfgVersion")
     implementation("com.github.vldf:libsl:4b2a5d40c8")
+    implementation(project.project("lsl-class-reader"))
+    implementation(project.project("lsl-dumper"))
     testImplementation(kotlin("test"))
 }
 
