@@ -38,12 +38,16 @@ class LslBuilder(
     }
 
     private fun semanticTypes(types: List<Type>) {
-        for (type in types) {
-            when (type) {
-                is SimpleType -> simpleType(type)
-                else -> {}
+        appendLine("types {")
+        indent {
+            for (type in types) {
+                when (type) {
+                    is SimpleType -> simpleType(type)
+                    else -> {}
+                }
             }
         }
+        appendLine("}")
     }
 
     private fun simpleType(type: SimpleType) {
