@@ -4,6 +4,7 @@ import org.jetbrains.research.libsl.asg.*
 import org.vorpal.research.kfg.ClassManager
 import org.vorpal.research.kfg.KfgConfigBuilder
 import org.vorpal.research.kfg.container.DirectoryContainer
+import org.vorpal.research.kfg.ir.ConcreteClass
 import org.vorpal.research.kfg.type.ClassType
 import java.io.File
 
@@ -56,15 +57,39 @@ class JvmClassReader {
     private fun getSemanticTypes(): List<Type> {
         val result = mutableListOf<Type>()
         for (type in classManager.concreteClasses) {
-            val realType = RealType(type.fullName.split("/"), isPointer = false, generic = null, lslContext)
-            val semanticType = SimpleType(type.name, realType, isPointer = false, lslContext)
-            lslContext.storeResolvedType(realType)
-            lslContext.storeResolvedType(semanticType)
+            val semanticType = when {
+                type.isEnum -> getEnumType(type)
+                else -> getSimpleType(type)
+            }
 
             result.add(semanticType)
         }
 
         return result
+    }
+
+    private fun getEnumType(klass: ConcreteClass): EnumType {
+        val enumFields = klass.fields.filter { field -> field.isEnum }
+        val entries = mutableListOf<Pair<String, IntegerLiteral>>()
+
+        for ((index, field) in enumFields.withIndex()) {
+            entries.add(field.name to IntegerLiteral(index))
+        }
+
+        val enumType = EnumType(klass.fullName.canonicName, entries, lslContext)
+        lslContext.storeResolvedType(enumType)
+
+        return enumType
+    }
+
+    private fun getSimpleType(klass: ConcreteClass): SimpleType {
+        val realType = RealType(klass.fullName.split("/"), isPointer = false, generic = null, lslContext)
+        val simpleType = SimpleType(klass.name, realType, isPointer = false, lslContext)
+
+        lslContext.storeResolvedType(realType)
+        lslContext.storeResolvedType(simpleType)
+
+        return simpleType
     }
 
     private fun getAutomata(): List<Automaton> {
