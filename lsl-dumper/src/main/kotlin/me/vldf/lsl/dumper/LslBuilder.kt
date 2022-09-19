@@ -38,16 +38,20 @@ class LslBuilder(
     }
 
     private fun semanticTypes(types: List<Type>) {
+        val simpleTypesList = types.filterIsInstance<SimpleType>()
+        val enumTypesList = types.filterIsInstance<EnumType>()
+        simpleTypes(simpleTypesList)
+        enumTypes(enumTypesList)
+    }
+
+    private fun simpleTypes(types: List<SimpleType>) {
         if (types.isEmpty())
             return
 
         appendLine("types {")
         indent {
             for (type in types) {
-                when (type) {
-                    is SimpleType -> simpleType(type)
-                    else -> {}
-                }
+                simpleType(type)
             }
         }
         appendLine("}")
@@ -55,6 +59,24 @@ class LslBuilder(
 
     private fun simpleType(type: SimpleType) {
         appendLineWithSemicolon("${type.fullName} (${type.realType.string})")
+    }
+
+    private fun enumTypes(types: List<EnumType>) {
+        for (type in types) {
+            enumType(type)
+        }
+    }
+
+    private fun enumType(type: EnumType) {
+        appendLine("enum ${type.fullName} {")
+
+        indent {
+            for (entry in type.entries) {
+                appendLineWithSemicolon("${entry.first} = ${entry.second.value}")
+            }
+        }
+
+        appendLine("}")
     }
 
     // todo
