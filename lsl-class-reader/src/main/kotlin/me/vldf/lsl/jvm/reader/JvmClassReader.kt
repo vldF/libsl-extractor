@@ -1,14 +1,20 @@
 package me.vldf.lsl.jvm.reader
 
 import org.jetbrains.research.libsl.asg.*
+import org.jetbrains.research.libsl.asg.Annotation
+import org.jetbrains.research.libsl.asg.Function
 import org.vorpal.research.kfg.ClassManager
 import org.vorpal.research.kfg.KfgConfigBuilder
+import org.vorpal.research.kfg.Package
 import org.vorpal.research.kfg.container.DirectoryContainer
+import org.vorpal.research.kfg.container.JarContainer
 import org.vorpal.research.kfg.ir.ConcreteClass
+import org.vorpal.research.kfg.ir.Method
 import org.vorpal.research.kfg.type.ClassType
 import java.io.File
 
 class JvmClassReader {
+    private val kexRuntimeDependency = File("./rt-deps/kex-rt-0.0.1.jar")
     private val classManagerConfig = KfgConfigBuilder()
         .failOnError(true)
         .build()
@@ -19,6 +25,9 @@ class JvmClassReader {
     fun read(directory: File): Library {
         if (directory.isFile)
             throw IllegalArgumentException("is not a directory: $directory")
+
+        val rtDepsContainer = JarContainer(kexRuntimeDependency.absolutePath, Package.defaultPackage)
+        // classManager.initialize(rtDepsContainer)
 
         val container = DirectoryContainer(directory)
         classManager.initialize(container)
@@ -123,34 +132,7 @@ class JvmClassReader {
                 ConstructorArgument("arg$index", argType)
             }
 
-            val localFunctions = klass.methods.map { method ->
-                val methodArgs = method.argTypes.mapIndexedNotNull { index, argType ->
-                    val argumentSemanticType = lslContext.resolveSimpleType(argType.name.canonicName)
-                    if (argumentSemanticType == null) {
-                        println("unresolved type ${argType.name}")
-
-                        null
-                    } else {
-                        FunctionArgument("arg$index", argumentSemanticType, index, annotation = null)
-                    }
-                }
-
-                val returnType = lslContext.resolveSimpleType(method.returnType.name.canonicName)
-                if (returnType == null) {
-                    println("unresolved type ${method.returnType.name}")
-                }
-
-                Function(
-                    name = method.name,
-                    automatonName = klass.name,
-                    args = methodArgs,
-                    returnType = returnType,
-                    contracts = listOf(),
-                    statements = listOf(),
-                    context = lslContext,
-                    hasBody = false
-                )
-            }
+            val localFunctions = klass.methods.map { method -> getLocalFunction(method)}
 
             val automaton = Automaton(
                 name = klass.name,
@@ -166,6 +148,39 @@ class JvmClassReader {
         }
 
         return result
+    }
+
+    private fun getLocalFunction(method: Method): Function {
+        val methodArgs = method.argTypes.mapIndexedNotNull { index, argType ->
+            val argumentSemanticType = lslContext.resolveSimpleType(argType.name.canonicName)
+            if (argumentSemanticType == null) {
+                println("unresolved type ${argType.name}")
+
+                null
+            } else {
+                val parameterAnnotation = method.parametersAnnotations.getOrNull(index)?.firstOrNull()
+                val annotation = parameterAnnotation?.let { annotation ->
+                    Annotation(annotation.fullName, listOf())
+                }
+                FunctionArgument("arg$index", argumentSemanticType, index, annotation = annotation)
+            }
+        }
+
+        val returnType = lslContext.resolveSimpleType(method.returnType.name.canonicName)
+        if (returnType == null) {
+            println("unresolved type ${method.returnType.name}")
+        }
+
+        return Function(
+            name = method.name,
+            automatonName = method.klass.name,
+            args = methodArgs,
+            returnType = returnType,
+            contracts = listOf(),
+            statements = listOf(),
+            context = lslContext,
+            hasBody = false
+        )
     }
 
     // todo

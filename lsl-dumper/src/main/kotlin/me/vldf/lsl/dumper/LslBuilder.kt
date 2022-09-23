@@ -153,7 +153,7 @@ class LslBuilder(
                 if (function.args.isEmpty()) {
                     function.name
                 } else {
-                    val argsTypesList = function.args.joinToString(prefix = "(", separator = ",", postfix = ")") { type ->
+                    val argsTypesList = function.args.joinToString(prefix = "(", separator = ", ", postfix = ")") { type ->
                         type.fullName
                     }
                     "${function.name}($argsTypesList)"
@@ -188,7 +188,7 @@ class LslBuilder(
     private fun automatonFunction(function: org.jetbrains.research.libsl.asg.Function) {
         appendWithSpace("fun ${function.name}")
 
-        val args = function.args.joinToString(prefix = "(", separator = ",", postfix = ")") { arg ->
+        val args = function.args.joinToString(prefix = "(", separator = ", ", postfix = ")") { arg ->
             val optionalAnnoWithSpace = if (arg.annotation != null) {
                 "@${arg.annotation!!.name}$SPACE"
             } else {

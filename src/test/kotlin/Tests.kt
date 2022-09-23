@@ -10,4 +10,9 @@ class Tests {
     fun enums() {
         TestPlatform.runForDir("enums")
     }
+
+    @Test
+    fun argAnnotations() {
+        TestPlatform.runForDir("argAnnotations")
+    }
 }

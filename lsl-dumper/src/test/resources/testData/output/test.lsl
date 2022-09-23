@@ -1,4 +1,4 @@
-libsl 1.0.0;
+libsl "1.0.0";
 library simple;
 
 automaton A : Int {
