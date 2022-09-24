@@ -14,7 +14,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.vldf:libsl:4b2a5d40c8")
+    implementation("com.github.vldf:libsl:a0130ea5f4")
     implementation(project.project("lsl-class-reader"))
     implementation(project.project("lsl-dumper"))
     testImplementation(kotlin("test"))

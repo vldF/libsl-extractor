@@ -1,5 +1,7 @@
 package me.vldf.lsl.jvm.reader
 
+import me.vldf.lsl.extractor.platform.AnalysisStage
+import me.vldf.lsl.extractor.platform.LslHolder
 import org.jetbrains.research.libsl.asg.*
 import org.jetbrains.research.libsl.asg.Annotation
 import org.jetbrains.research.libsl.asg.Function
@@ -7,63 +9,44 @@ import org.vorpal.research.kfg.ClassManager
 import org.vorpal.research.kfg.KfgConfigBuilder
 import org.vorpal.research.kfg.Package
 import org.vorpal.research.kfg.container.DirectoryContainer
-import org.vorpal.research.kfg.container.JarContainer
 import org.vorpal.research.kfg.ir.ConcreteClass
 import org.vorpal.research.kfg.ir.Method
 import org.vorpal.research.kfg.type.ClassType
 import java.io.File
 
-class JvmClassReader {
-    private val kexRuntimeDependency = File("./rt-deps/kex-rt-0.0.1.jar")
+class JvmClassReader : AnalysisStage {
     private val classManagerConfig = KfgConfigBuilder()
         .failOnError(true)
         .build()
 
-    private val classManager = ClassManager(classManagerConfig)
-    private val lslContext = LslContext()
+    private var classManager = ClassManager(classManagerConfig)
+    private lateinit var lslContext: LslContext
+    private lateinit var lslHolder: LslHolder
 
-    fun read(directory: File): Library {
-        if (directory.isFile)
-            throw IllegalArgumentException("is not a directory: $directory")
+    override val name: String = this::class.simpleName!!
 
-        val rtDepsContainer = JarContainer(kexRuntimeDependency.absolutePath, Package.defaultPackage)
-        // classManager.initialize(rtDepsContainer)
-
-        val container = DirectoryContainer(directory)
-        classManager.initialize(container)
-
-        return  buildLibraryRepresentation()
+    override fun run(lslHolder: LslHolder) {
+        val directoryContainer = DirectoryContainer(lslHolder.pipelineConfig.libraryPath, Package.defaultPackage)
+        classManager.initialize(directoryContainer)
+        this.lslHolder = lslHolder
+        this.lslContext = lslHolder.lslContext
+        readToLibrary()
     }
 
-    private fun buildLibraryRepresentation(): Library {
-        val library =  Library(
-            metadata = getMetaData(),
-            imports = listOf(),
-            semanticTypes = getSemanticTypes(),
-            includes = listOf(),
-            automata = getAutomata(),
-            extensionFunctions = mapOf(),
-            globalVariables = mapOf()
-        )
+    private fun readToLibrary() {
+        val library = lslHolder.library
+
+        with (library) {
+            semanticTypes.addAll(getSemanticTypes())
+            automata.addAll(getAutomata())
+        }
 
         for (automaton in library.automata) {
             automaton.parent.node = library
         }
-
-        return library
     }
 
-    private fun getMetaData(): MetaNode {
-        return MetaNode(
-            "unknown_library",
-            language = null,
-            url = null,
-            lslVersion = Triple(1u, 0u, 0u),
-            libraryVersion = null
-        )
-    }
-
-    private fun getSemanticTypes(): List<Type> {
+    private fun getSemanticTypes(): MutableList<Type> {
         val result = mutableListOf<Type>()
         for (type in classManager.concreteClasses) {
             val semanticType = when {
@@ -101,7 +84,7 @@ class JvmClassReader {
         return simpleType
     }
 
-    private fun getAutomata(): List<Automaton> {
+    private fun getAutomata(): MutableList<Automaton> {
         val result = mutableListOf<Automaton>()
         for (klass in classManager.concreteClasses) {
             val automatonType = lslContext.resolveSimpleType(klass.fullName.canonicName)
@@ -130,18 +113,15 @@ class JvmClassReader {
 
             val constructorVariables = constructorArgs.mapIndexed { index, argType ->
                 ConstructorArgument("arg$index", argType)
-            }
+            }.toMutableList()
 
-            val localFunctions = klass.methods.map { method -> getLocalFunction(method)}
+            val localFunctions = klass.methods.map { method -> getLocalFunction(method)}.toMutableList()
 
             val automaton = Automaton(
                 name = klass.name,
                 type = automatonType,
-                states = listOf(),
-                shifts = listOf(),
-                internalVariables = listOf(),
-                localFunctions = localFunctions,
-                constructorVariables = constructorVariables
+                constructorVariables = constructorVariables,
+                localFunctions = localFunctions
             )
 
             result.add(automaton)
@@ -160,11 +140,11 @@ class JvmClassReader {
             } else {
                 val parameterAnnotation = method.parametersAnnotations.getOrNull(index)?.firstOrNull()
                 val annotation = parameterAnnotation?.let { annotation ->
-                    Annotation(annotation.fullName, listOf())
+                    Annotation(annotation.fullName, mutableListOf())
                 }
                 FunctionArgument("arg$index", argumentSemanticType, index, annotation = annotation)
             }
-        }
+        }.toMutableList()
 
         val returnType = lslContext.resolveSimpleType(method.returnType.name.canonicName)
         if (returnType == null) {
@@ -176,10 +156,7 @@ class JvmClassReader {
             automatonName = method.klass.name,
             args = methodArgs,
             returnType = returnType,
-            contracts = listOf(),
-            statements = listOf(),
-            context = lslContext,
-            hasBody = false
+            context = lslContext
         )
     }
 

@@ -16,7 +16,8 @@ repositories {
 
 dependencies {
     implementation("org.vorpal.research:kfg:$kfgVersion")
-    implementation("com.github.vldf:libsl:4b2a5d40c8")
+    implementation("com.github.vldf:libsl:a0130ea5f4")
+    implementation(project(":platform-external"))
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
 }

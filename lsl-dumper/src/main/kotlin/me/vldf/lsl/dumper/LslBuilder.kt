@@ -18,7 +18,7 @@ class LslBuilder(
     ) {
         // libsl "$libslVersion";
         // library $libraryName version "$libraryVersion" language "$language" url "libraryUrl"
-        appendLineWithSemicolon("libsl \"${meta.stringVersion!!}\"")
+        appendLineWithSemicolon("libsl \"${meta.stringVersion}\"")
 
         append("library ${meta.name}")
 
