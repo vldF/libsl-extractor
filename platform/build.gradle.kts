@@ -2,6 +2,8 @@ plugins {
     id("kotlin")
 }
 
+val libslVersion: String by project.parent!!
+
 group = "me.vldf"
 version = "1.0-SNAPSHOT"
 
@@ -13,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.vldf:libsl:5c362a8097")
+    implementation("com.github.vldf:libsl:$libslVersion")
     implementation(project(":platform-models"))
     implementation(project(":lsl-class-reader"))
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")

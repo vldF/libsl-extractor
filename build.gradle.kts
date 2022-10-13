@@ -7,6 +7,8 @@ plugins {
 group = "me.vldf"
 version = "1.0-SNAPSHOT"
 
+val libslVersion: String by project
+
 repositories {
     mavenLocal()
     mavenCentral()
@@ -15,7 +17,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.vldf:libsl:5c362a8097")
+    implementation("com.github.vldf:libsl:$libslVersion")
     implementation(project.project("lsl-class-reader"))
     implementation(project.project("platform-models"))
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
