@@ -96,7 +96,7 @@ class JvmClassReader : AnalysisStage {
             val primaryConstructor = klass.constructors.firstOrNull()
             val constructorArgs = mutableListOf<Type>()
 
-            for (argType in primaryConstructor?.argTypes ?: arrayOf()) {
+            for (argType in primaryConstructor?.argTypes ?: listOf()) {
                 val argSemanticType = if (argType is ClassType) {
                     lslContext.resolveSimpleType(argType.klass.fullName.canonicName)
                 } else {
