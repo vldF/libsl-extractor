@@ -1,13 +1,11 @@
 package me.vldf.lsl.extractor.platform
 
-import me.vldf.lsl.dumper.LslBuilder
 
 class AnalysisPipeline(private val config: PipelineConfig) {
     init {
         config.workDir.mkdirs()
     }
     private val lslHolder = LslHolder.getLslHolder(config)
-    private val dumper = LslBuilder()
 
     private var currentStageIndex: Int = 0
     private val currentStage: AnalysisStage
@@ -30,7 +28,7 @@ class AnalysisPipeline(private val config: PipelineConfig) {
     }
 
     private fun dumpCurrentStateTo(fileName: String) {
-        val dump = dumper.buildFor(lslHolder.library)
+        val dump = lslHolder.library.dumpToString()
         config.workDir.resolve("$currentStageIndex $fileName.lsl").writeText(dump)
     }
 }

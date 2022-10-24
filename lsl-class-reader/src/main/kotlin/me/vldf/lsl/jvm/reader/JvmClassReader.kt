@@ -30,6 +30,7 @@ class JvmClassReader : AnalysisStage {
         classManager.initialize(directoryContainer)
         this.lslHolder = lslHolder
         this.lslContext = lslHolder.lslContext
+        this.lslHolder.kfgClassManager = classManager
         readToLibrary()
     }
 

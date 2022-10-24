@@ -15,4 +15,9 @@ class Tests {
     fun argAnnotations() {
         TestPlatform.runForDir("argAnnotations")
     }
+
+    @Test
+    fun controlflow() {
+        TestPlatform.runForDir("controlflow")
+    }
 }

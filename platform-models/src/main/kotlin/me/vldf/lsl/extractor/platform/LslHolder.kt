@@ -3,12 +3,14 @@ package me.vldf.lsl.extractor.platform
 import org.jetbrains.research.libsl.asg.Library
 import org.jetbrains.research.libsl.asg.LslContext
 import org.jetbrains.research.libsl.asg.MetaNode
+import org.vorpal.research.kfg.ClassManager
 
 class LslHolder(
     val library: Library,
     val lslContext: LslContext,
     val pipelineConfig: PipelineConfig,
 ) {
+    lateinit var kfgClassManager: ClassManager
     companion object {
         private val lslVersion = Triple(1u, 0u, 0u)
 
