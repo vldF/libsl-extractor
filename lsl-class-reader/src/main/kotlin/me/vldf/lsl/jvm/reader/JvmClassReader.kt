@@ -12,7 +12,6 @@ import org.vorpal.research.kfg.container.DirectoryContainer
 import org.vorpal.research.kfg.ir.ConcreteClass
 import org.vorpal.research.kfg.ir.Method
 import org.vorpal.research.kfg.type.ClassType
-import java.io.File
 
 class JvmClassReader : AnalysisStage {
     private val classManagerConfig = KfgConfigBuilder()
@@ -41,10 +40,6 @@ class JvmClassReader : AnalysisStage {
             semanticTypes.addAll(getSemanticTypes())
             automata.addAll(getAutomata())
         }
-
-        for (automaton in library.automata) {
-            automaton.parent.node = library
-        }
     }
 
     private fun getSemanticTypes(): MutableList<Type> {
@@ -52,7 +47,10 @@ class JvmClassReader : AnalysisStage {
         for (type in classManager.concreteClasses) {
             val semanticType = when {
                 type.isEnum -> getEnumType(type)
-                else -> getSimpleType(type)
+                else -> {
+                    resolveRealType(type)
+                    getStructuredType(type)
+                }
             }
 
             result.add(semanticType)
@@ -63,10 +61,10 @@ class JvmClassReader : AnalysisStage {
 
     private fun getEnumType(klass: ConcreteClass): EnumType {
         val enumFields = klass.fields.filter { field -> field.isEnum }
-        val entries = mutableListOf<Pair<String, IntegerLiteral>>()
+        val entries = mutableMapOf<String, IntegerLiteral>()
 
         for ((index, field) in enumFields.withIndex()) {
-            entries.add(field.name to IntegerLiteral(index))
+            entries[field.name] = IntegerLiteral(index)
         }
 
         val enumType = EnumType(klass.fullName.canonicName, entries, lslContext)
@@ -75,20 +73,38 @@ class JvmClassReader : AnalysisStage {
         return enumType
     }
 
-    private fun getSimpleType(klass: ConcreteClass): SimpleType {
+    private fun resolveRealType(klass: ConcreteClass) {
         val realType = RealType(klass.fullName.split("/"), isPointer = false, generic = null, lslContext)
-        val simpleType = SimpleType(klass.name, realType, isPointer = false, lslContext)
-
         lslContext.storeResolvedType(realType)
-        lslContext.storeResolvedType(simpleType)
+    }
 
-        return simpleType
+    private fun getStructuredType(klass: ConcreteClass): StructuredType {
+        val realType = lslContext.resolveType(klass.fullName.canonicName) as? RealType ?: error("not a real type: ${klass.fullName}")
+        val type = StructuredType(
+            name = klass.fullName.canonicName,
+            type = realType,
+            generic = null,
+            context = lslContext,
+            entries = mapOf()
+        )
+        lslContext.storeResolvedType(type)
+        type.entries = getStructuredTypeEntries(klass)
+
+        return type
+    }
+
+    private fun getStructuredTypeEntries(klass: ConcreteClass): Map<String, Type> {
+        return buildMap {
+            for (field in klass.fields) {
+                put(field.name, (lslContext.resolveType(field.type.name.canonicName) ?: continue))
+            }
+        }
     }
 
     private fun getAutomata(): MutableList<Automaton> {
         val result = mutableListOf<Automaton>()
         for (klass in classManager.concreteClasses) {
-            val automatonType = lslContext.resolveSimpleType(klass.fullName.canonicName)
+            val automatonType = lslContext.resolveType(klass.fullName.canonicName)
             if (automatonType == null) {
                 println("error while parsing class $klass: can't find klass $klass")
                 continue
@@ -99,7 +115,7 @@ class JvmClassReader : AnalysisStage {
 
             for (argType in primaryConstructor?.argTypes ?: listOf()) {
                 val argSemanticType = if (argType is ClassType) {
-                    lslContext.resolveSimpleType(argType.klass.fullName.canonicName)
+                    lslContext.resolveType(argType.klass.fullName.canonicName)
                 } else {
                     null
                 }
@@ -126,6 +142,7 @@ class JvmClassReader : AnalysisStage {
             )
 
             result.add(automaton)
+            lslContext.storeResolvedAutomaton(automaton)
         }
 
         return result
@@ -133,7 +150,7 @@ class JvmClassReader : AnalysisStage {
 
     private fun getLocalFunction(method: Method): Function {
         val methodArgs = method.argTypes.mapIndexedNotNull { index, argType ->
-            val argumentSemanticType = lslContext.resolveSimpleType(argType.name.canonicName)
+            val argumentSemanticType = lslContext.resolveType(argType.name.canonicName)
             if (argumentSemanticType == null) {
                 println("unresolved type ${argType.name}")
 
@@ -147,18 +164,21 @@ class JvmClassReader : AnalysisStage {
             }
         }.toMutableList()
 
-        val returnType = lslContext.resolveSimpleType(method.returnType.name.canonicName)
+        val returnType = lslContext.resolveType(method.returnType.name.canonicName)
         if (returnType == null) {
             println("unresolved type ${method.returnType.name}")
         }
 
-        return Function(
+        val function = Function(
             name = method.name,
             automatonName = method.klass.name,
             args = methodArgs,
             returnType = returnType,
             context = lslContext
         )
+        lslContext.storeResolvedFunction(function)
+
+        return function
     }
 
     // todo

@@ -1,8 +1,6 @@
 package me.vldf.lsl.extractor.platform
 
-import org.jetbrains.research.libsl.asg.Library
-import org.jetbrains.research.libsl.asg.LslContext
-import org.jetbrains.research.libsl.asg.MetaNode
+import org.jetbrains.research.libsl.asg.*
 import org.vorpal.research.kfg.ClassManager
 
 class LslHolder(
@@ -16,6 +14,9 @@ class LslHolder(
 
         fun getLslHolder(config: PipelineConfig): LslHolder {
             val lslContext = LslContext()
+            lslContext.init()
+            initJavaTypesForLslContext(lslContext)
+
             val libraryMeta = MetaNode(
                 name = config.libraryName,
                 libraryVersion = config.libraryVersion,
@@ -27,6 +28,28 @@ class LslHolder(
             val library = Library(libraryMeta)
 
             return LslHolder(library, lslContext, config)
+        }
+
+        // todo
+        private fun initJavaTypesForLslContext(context: LslContext) {
+            context.storeResolvedType(
+                TypeAlias("int", context.resolveType("int32") as PrimitiveType, context)
+            )
+            context.storeResolvedType(
+                TypeAlias("long", context.resolveType("int64") as PrimitiveType, context)
+            )
+            context.storeResolvedType(
+                TypeAlias("boolean", context.resolveType("bool") as PrimitiveType, context)
+            )
+            context.storeResolvedType(
+                TypeAlias("String", context.resolveType("string") as PrimitiveType, context)
+            )
+            context.storeResolvedType(
+                TypeAlias("char", context.resolveType("char") as PrimitiveType, context)
+            )
+            context.storeResolvedType(
+                TypeAlias("void", context.resolveType("void") as PrimitiveType, context)
+            )
         }
     }
 }
