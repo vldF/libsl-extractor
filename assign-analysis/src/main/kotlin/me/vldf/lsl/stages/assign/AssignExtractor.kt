@@ -41,7 +41,7 @@ class AssignExtractor : AnalysisStage {
 
     private fun saveAssigns(library: Library, lslContext: LslContext) {
         for ((method, infos) in analysisContext.assigns) {
-            val function = lslContext.resolveFunction(method.name, method.klass.fullName)
+            val function = lslContext.resolveFunction(method.name, method.klass.fullName.canonicName)
             if (function == null) {
                 println("missing function: ${method.klass.fullName}.${method.name}")
                 continue
@@ -58,8 +58,7 @@ class AssignExtractor : AnalysisStage {
     private fun createAssignsContract(assignInfo: AssignInfo, function: Function): Contract {
         return when(assignInfo){
             is ArgumentAssignInfo -> {
-                val expression = function.args.getOrNull(assignInfo.argumentIndex)
-                    ?: error("function ${function.name} has not enough arguments")
+                val expression = assignInfo.qualifiedAccess
 
                 Contract(name = null, expression, ContractKind.ASSIGNS)
             }
@@ -169,7 +168,7 @@ class AssignExtractor : AnalysisStage {
         val semanticType = when (baseValue) {
             is Argument -> {
                 val method = baseValue.method
-                val automaton = lslContext.resolveAutomaton(method.klass.name)
+                val automaton = lslContext.resolveAutomaton(method.klass.fullName.canonicName)
                 automaton ?: return null
                 val function = automaton.functions.firstOrNull { f -> f.name == method.name && f.args.size == method.argTypes.size } // todo
                 function ?: return null
@@ -211,4 +210,8 @@ class AssignExtractor : AnalysisStage {
 
         return QualifiedAccessUtils.resolvePeriodSeparatedChain(semanticType, chain, throwExceptions = false)
     }
+
+    // todo
+    private val String.canonicName: String
+        get() = this.replace("/", ".")
 }

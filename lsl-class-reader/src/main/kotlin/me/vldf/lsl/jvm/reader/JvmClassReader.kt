@@ -134,7 +134,7 @@ class JvmClassReader : AnalysisStage {
             val localFunctions = klass.methods.map { method -> getLocalFunction(method)}.toMutableList()
 
             val automaton = Automaton(
-                name = klass.name,
+                name = klass.fullName.canonicName,
                 type = automatonType,
                 constructorVariables = constructorVariables,
                 localFunctions = localFunctions
@@ -170,7 +170,7 @@ class JvmClassReader : AnalysisStage {
 
         val function = Function(
             name = method.name,
-            automatonName = method.klass.name,
+            automatonName = method.klass.fullName.canonicName,
             args = methodArgs,
             returnType = returnType,
             context = lslContext

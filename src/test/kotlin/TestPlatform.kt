@@ -30,9 +30,9 @@ object TestPlatform {
 
         if (resultFile.isFile) {
             val expectedContent = resultFile.readText()
-            Assertions.assertEquals(expectedContent, actualContent)
+            Assertions.assertEquals(textCleaner(expectedContent), textCleaner(actualContent))
         } else {
-            testLslCorrectness(actualContent, analysisPipeline)
+            testLslCorrectness(actualContent)
             resultFile.writeText(actualContent)
         }
     }
@@ -41,11 +41,22 @@ object TestPlatform {
      * This function parses the description via lsl parser and dumps the lsl IR to text again. Then, asserts equals of
      * [lslDescription] and dumped text
      */
-    private fun testLslCorrectness(lslDescription: String, analysisPipeline: AnalysisPipeline) {
+    private fun testLslCorrectness(lslDescription: String) {
         val context = createLslContext()
         val libSL = LibSL("", context)
         val library = libSL.loadFromString(lslDescription)
         val dumpLsl = library.dumpToString()
-        Assertions.assertEquals(lslDescription, dumpLsl)
+        Assertions.assertEquals(textCleaner(lslDescription), textCleaner(dumpLsl))
+    }
+
+    /**
+     * removes all space-only lines in text
+     */
+    private fun textCleaner(text: String): String {
+        return text
+            .lines()
+            .joinToString(separator = "\n") { line ->
+                line.ifBlank { "" }
+            }
     }
 }
