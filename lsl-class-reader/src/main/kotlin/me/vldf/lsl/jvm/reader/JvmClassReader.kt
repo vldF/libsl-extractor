@@ -155,9 +155,10 @@ class JvmClassReader : AnalysisStage {
 
                 null
             } else {
-                val parameterAnnotation = method.parametersAnnotations.getOrNull(index)?.firstOrNull()
+                val parameterAnnotation = method.parameters.getOrNull(index)?.annotations?.firstOrNull()
                 val annotation = parameterAnnotation?.let { annotation ->
-                    Annotation(annotation.fullName, mutableListOf())
+                    val annotationName = (annotation.type as ClassType).klass.fullName.canonicName
+                    Annotation(annotationName, mutableListOf())
                 }
                 FunctionArgument("arg$index", argumentSemanticType, index, annotation = annotation)
             }
