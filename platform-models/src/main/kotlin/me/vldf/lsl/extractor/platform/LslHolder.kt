@@ -13,9 +13,7 @@ class LslHolder(
         private val lslVersion = Triple(1u, 0u, 0u)
 
         fun getLslHolder(config: PipelineConfig): LslHolder {
-            val lslContext = LslContext()
-            lslContext.init()
-            initJavaTypesForLslContext(lslContext)
+            val lslContext = createLslContext()
 
             val libraryMeta = MetaNode(
                 name = config.libraryName,
@@ -26,6 +24,7 @@ class LslHolder(
             )
 
             val library = Library(libraryMeta)
+            library.semanticTypes.addAll(lslContext.typeStorage.map { (_, type) -> type })
 
             return LslHolder(library, lslContext, config)
         }
@@ -44,12 +43,13 @@ class LslHolder(
             context.storeResolvedType(
                 TypeAlias("String", context.resolveType("string") as PrimitiveType, context)
             )
-            context.storeResolvedType(
-                TypeAlias("char", context.resolveType("char") as PrimitiveType, context)
-            )
-            context.storeResolvedType(
-                TypeAlias("void", context.resolveType("void") as PrimitiveType, context)
-            )
+        }
+
+        fun createLslContext(): LslContext {
+            return LslContext().apply {
+                this.init()
+                initJavaTypesForLslContext(this)
+            }
         }
     }
 }

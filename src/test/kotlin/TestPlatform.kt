@@ -1,5 +1,5 @@
 import me.vldf.lsl.extractor.platform.AnalysisPipeline
-import me.vldf.lsl.extractor.platform.LslHolder
+import me.vldf.lsl.extractor.platform.LslHolder.Companion.createLslContext
 import me.vldf.lsl.extractor.platform.PipelineConfig
 import me.vldf.lsl.jvm.reader.JvmClassReader
 import me.vldf.lsl.stages.assign.AssignExtractor
@@ -22,17 +22,17 @@ object TestPlatform {
             this.libraryPath = testDataClassesDir.resolve(testCase).absolutePath
             this.stages.addAll(listOf(JvmClassReader(), AssignExtractor()))
         }
-        val lslHolder = LslHolder.getLslHolder(config)
-        AnalysisPipeline(config).run()
+        val analysisPipeline = AnalysisPipeline(config)
+        analysisPipeline.run()
 
-        val actualContent = lslHolder.library.dumpToString()
+        val actualContent = analysisPipeline.getLslHolder().library.dumpToString()
         val resultFile = resultDir.resolve("$testCase.lsl")
 
         if (resultFile.isFile) {
             val expectedContent = resultFile.readText()
             Assertions.assertEquals(expectedContent, actualContent)
         } else {
-            testLslCorrectness(actualContent)
+            testLslCorrectness(actualContent, analysisPipeline)
             resultFile.writeText(actualContent)
         }
     }
@@ -41,10 +41,11 @@ object TestPlatform {
      * This function parses the description via lsl parser and dumps the lsl IR to text again. Then, asserts equals of
      * [lslDescription] and dumped text
      */
-    private fun testLslCorrectness(lslDescription: String) {
-        val library = LibSL("").loadFromString(lslDescription)
+    private fun testLslCorrectness(lslDescription: String, analysisPipeline: AnalysisPipeline) {
+        val context = createLslContext()
+        val libSL = LibSL("", context)
+        val library = libSL.loadFromString(lslDescription)
         val dumpLsl = library.dumpToString()
-
         Assertions.assertEquals(lslDescription, dumpLsl)
     }
 }

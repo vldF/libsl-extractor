@@ -1,11 +1,16 @@
 package me.vldf.lsl.extractor.platform
 
+import org.jetbrains.annotations.TestOnly
+
 
 class AnalysisPipeline(private val config: PipelineConfig) {
     init {
         config.workDir.mkdirs()
     }
     private val lslHolder = LslHolder.getLslHolder(config)
+
+    @TestOnly
+    fun getLslHolder() = lslHolder
 
     private var currentStageIndex: Int = 0
     private val currentStage: AnalysisStage

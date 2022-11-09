@@ -83,7 +83,6 @@ class JvmClassReader : AnalysisStage {
         val type = StructuredType(
             name = klass.fullName.canonicName,
             type = realType,
-            generic = null,
             context = lslContext,
             entries = mapOf()
         )
