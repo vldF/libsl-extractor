@@ -19,7 +19,7 @@ repositories {
 dependencies {
     implementation("com.github.vldf:libsl:$libslVersion")
     implementation(project(":lsl-class-reader"))
-    implementation(project(":platform-models"))
+    implementation(project(":common"))
     implementation(project(":assign-analysis"))
     implementation(project(":platform"))
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")

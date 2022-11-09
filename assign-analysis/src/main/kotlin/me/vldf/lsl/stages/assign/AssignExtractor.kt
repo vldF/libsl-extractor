@@ -2,6 +2,7 @@ package me.vldf.lsl.stages.assign
 
 import me.vldf.lsl.extractor.platform.AnalysisStage
 import me.vldf.lsl.extractor.platform.LslHolder
+import me.vldf.lsl.extractor.platform.platformLogger
 import me.vldf.lsl.stages.assign.graph.InterproceduralGraphBuilder
 import me.vldf.lsl.stages.assign.graph.NameMapper
 import org.jetbrains.research.libsl.asg.*
@@ -23,6 +24,8 @@ class AssignExtractor : AnalysisStage {
     private lateinit var lslContext: LslContext
     private lateinit var cm: ClassManager
 
+    private val logger by platformLogger()
+
     override fun run(lslHolder: LslHolder) {
         cm = lslHolder.kfgClassManager
         lslContext = lslHolder.lslContext
@@ -43,7 +46,7 @@ class AssignExtractor : AnalysisStage {
         for ((method, infos) in analysisContext.assigns) {
             val function = lslContext.resolveFunction(method.name, method.klass.fullName.canonicName)
             if (function == null) {
-                println("missing function: ${method.klass.fullName}.${method.name}")
+                logger.severe("missing function: ${method.klass.fullName}.${method.name}")
                 continue
             }
 
@@ -90,13 +93,13 @@ class AssignExtractor : AnalysisStage {
 
                     val chainOfValues = obj.toQualifiedAccessChain.plusElement(instruction)
                     if (chainOfValues.isEmpty()) {
-                        println("can't process $instruction")
+                        logger.severe("can't process $instruction")
                         continue
                     }
 
                     val qualifiedAccessChain = resolveQualifiedChain(chainOfValues.first(), chainOfValues.map { it.chainName })
                     if (qualifiedAccessChain == null) {
-                        println("can't resolve qualified access for $obj, ${obj.toQualifiedAccessChain}")
+                        logger.severe("can't resolve qualified access for $obj, ${obj.toQualifiedAccessChain}")
                         continue
                     }
 

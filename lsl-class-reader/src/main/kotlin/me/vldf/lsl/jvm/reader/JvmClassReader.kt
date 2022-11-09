@@ -2,6 +2,7 @@ package me.vldf.lsl.jvm.reader
 
 import me.vldf.lsl.extractor.platform.AnalysisStage
 import me.vldf.lsl.extractor.platform.LslHolder
+import me.vldf.lsl.extractor.platform.platformLogger
 import org.jetbrains.research.libsl.asg.*
 import org.jetbrains.research.libsl.asg.Annotation
 import org.jetbrains.research.libsl.asg.Function
@@ -14,15 +15,16 @@ import org.vorpal.research.kfg.ir.Method
 import org.vorpal.research.kfg.type.ClassType
 
 class JvmClassReader : AnalysisStage {
+    override val name: String = this::class.simpleName!!
+
     private val classManagerConfig = KfgConfigBuilder()
         .failOnError(true)
         .build()
-
     private var classManager = ClassManager(classManagerConfig)
     private lateinit var lslContext: LslContext
     private lateinit var lslHolder: LslHolder
 
-    override val name: String = this::class.simpleName!!
+    private val logger by platformLogger()
 
     override fun run(lslHolder: LslHolder) {
         val directoryContainer = DirectoryContainer(lslHolder.pipelineConfig.libraryPath, Package.defaultPackage)
@@ -105,7 +107,7 @@ class JvmClassReader : AnalysisStage {
         for (klass in classManager.concreteClasses) {
             val automatonType = lslContext.resolveType(klass.fullName.canonicName)
             if (automatonType == null) {
-                println("error while parsing class $klass: can't find klass $klass")
+                logger.severe("error while parsing class $klass: can't find klass $klass")
                 continue
             }
 
@@ -120,7 +122,7 @@ class JvmClassReader : AnalysisStage {
                 }
 
                 if (argSemanticType == null) {
-                    println("skipping constructor argument klass $argType")
+                    logger.info("skipping constructor argument klass $argType")
                     continue
                 }
 
@@ -151,7 +153,7 @@ class JvmClassReader : AnalysisStage {
         val methodArgs = method.argTypes.mapIndexedNotNull { index, argType ->
             val argumentSemanticType = lslContext.resolveType(argType.name.canonicName)
             if (argumentSemanticType == null) {
-                println("unresolved type ${argType.name}")
+                logger.severe("unresolved type ${argType.name}")
 
                 null
             } else {
@@ -166,7 +168,7 @@ class JvmClassReader : AnalysisStage {
 
         val returnType = lslContext.resolveType(method.returnType.name.canonicName)
         if (returnType == null) {
-            println("unresolved type ${method.returnType.name}")
+            logger.severe("unresolved type ${method.returnType.name}")
         }
 
         val function = Function(
