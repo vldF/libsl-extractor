@@ -20,4 +20,9 @@ class Tests {
     fun controlflow() {
         TestPlatform.runForDir("controlflow")
     }
+
+    @Test
+    fun recursion() {
+        TestPlatform.runForDir("recursion")
+    }
 }

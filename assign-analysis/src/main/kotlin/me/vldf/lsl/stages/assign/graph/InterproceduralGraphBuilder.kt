@@ -27,18 +27,18 @@ class InterproceduralGraphBuilder {
         if (methodsToMethodNodes[method] != null) {
             return
         }
+        val result = MethodNode(method)
+        methodsToMethodNodes[method] = result
 
         val callInsts = method.instructions.filterIsInstance<CallInst>()
-        val calls = callInsts.map { inst ->
-            val passArguments = inst.args
+        for (callInst in callInsts) {
+            val passArguments = callInst.args
                 .filter { arg -> arg is Argument || arg is ThisRef }
                 .map { arg -> nameMapper.getOriginalValue(arg) }
 
-            build(inst.method)
-            MethodCallNode(method, method.klass, inst.method, passArguments)
+            build(callInst.method)
+            val methodCallNode = MethodCallNode(method, method.klass, callInst.method, passArguments)
+            result.addCall(methodCallNode)
         }
-
-        val result = MethodNode(method, calls)
-        methodsToMethodNodes[method] = result
     }
 }

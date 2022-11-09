@@ -80,7 +80,13 @@ class AssignExtractor : AnalysisStage {
     }
 
     private fun analyzeMethod(method: Method, mapper: NameMapper = NameMapper()): List<AssignInfo> {
+        if (analysisContext.assigns[method] != null) {
+            return analysisContext.assigns[method]!!.toList()
+        }
+
         val result = mutableSetOf<AssignInfo>()
+        analysisContext.assigns[method] = result
+
         for (instruction in method.instructions) {
             when (instruction) {
                 is FieldStoreInst -> {
@@ -132,7 +138,6 @@ class AssignExtractor : AnalysisStage {
             }
         }
 
-        analysisContext.assigns[method] = result
         return result.toList()
     }
 
