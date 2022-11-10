@@ -5,7 +5,6 @@ import org.jetbrains.research.libsl.asg.QualifiedAccess
 import org.vorpal.research.kfg.ir.Method
 import org.vorpal.research.kfg.ir.value.Argument
 import org.vorpal.research.kfg.ir.value.ThisRef
-import org.vorpal.research.kfg.ir.value.Value
 
 
 sealed interface AssignInfo {
@@ -13,8 +12,8 @@ sealed interface AssignInfo {
     val qualifiedAccess: QualifiedAccess
 }
 
-object AssignInfoBuilder {
-    fun build(methodInfo: MethodInfo, qualifiedAccesses: QualifiedAccess): AssignInfo? {
+object AssignInfoFabric {
+    fun create(methodInfo: MethodInfo, qualifiedAccesses: QualifiedAccess): AssignInfo? {
         return when (val value = methodInfo.chain.first()) {
             is Argument -> ArgumentAssignInfo(value.method, qualifiedAccesses, value.index)
             is ThisRef -> ThisAssignInfo(methodInfo.method, qualifiedAccesses)

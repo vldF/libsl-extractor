@@ -66,7 +66,7 @@ class AssignExtractor : AnalysisStage {
             return null
         }
 
-        return when(val assignInfo = AssignInfoBuilder.build(methodInfo, qualifiedAccess)) {
+        return when(val assignInfo = AssignInfoFabric.create(methodInfo, qualifiedAccess)) {
             is ArgumentAssignInfo -> {
                 val expression = assignInfo.qualifiedAccess
 
