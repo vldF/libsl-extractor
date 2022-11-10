@@ -14,7 +14,7 @@ type me.vldf.lsl.test.controlflow.A {
 
 type me.vldf.lsl.test.controlflow.B {
     field: int;
-    anotherB: `me.vldf.lsl.test.controlflow.B`;
+    anotherB: me.vldf.lsl.test.controlflow.B;
 }
 
 type me.vldf.lsl.test.controlflow.ClassModifiedByInnerMethod {
