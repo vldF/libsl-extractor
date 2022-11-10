@@ -3,63 +3,70 @@ package me.vldf.lsl.stages.assign
 import me.vldf.lsl.extractor.platform.AnalysisStage
 import me.vldf.lsl.extractor.platform.LslHolder
 import me.vldf.lsl.extractor.platform.platformLogger
-import me.vldf.lsl.stages.assign.graph.InterproceduralGraphBuilder
-import me.vldf.lsl.stages.assign.graph.NameMapper
+import me.vldf.lsl.stages.assign.ipa.InterproceduralAnalyzer
+import me.vldf.lsl.stages.assign.localanalysis.MethodInfo
 import org.jetbrains.research.libsl.asg.*
 import org.jetbrains.research.libsl.asg.Function
 import org.jetbrains.research.libsl.utils.QualifiedAccessUtils
 import org.vorpal.research.kfg.ClassManager
-import org.vorpal.research.kfg.ir.Class
-import org.vorpal.research.kfg.ir.Method
 import org.vorpal.research.kfg.ir.value.*
-import org.vorpal.research.kfg.ir.value.instruction.CallInst
 import org.vorpal.research.kfg.ir.value.instruction.FieldLoadInst
 import org.vorpal.research.kfg.ir.value.instruction.FieldStoreInst
 
 class AssignExtractor : AnalysisStage {
     override val name: String = "Assign contract extractor"
 
-    private val analysisContext = AnalysisContext()
-    private val graphBuilder = InterproceduralGraphBuilder()
+    private val logger by platformLogger()
+
     private lateinit var lslContext: LslContext
     private lateinit var cm: ClassManager
 
-    private val logger by platformLogger()
+    private val interproceduralAnalyzer by lazy { InterproceduralAnalyzer(cm) }
 
     override fun run(lslHolder: LslHolder) {
         cm = lslHolder.kfgClassManager
         lslContext = lslHolder.lslContext
 
         runAnalysis()
-        saveAssigns(lslHolder.library, lslHolder.lslContext)
+        saveAssigns()
     }
 
     private fun runAnalysis() {
         for (klass in cm.concreteClasses) {
-            val classNode = graphBuilder.build(klass)
-            analysisContext.classes.add(classNode)
-            analyzeClass(klass)
+            interproceduralAnalyzer.analyze(klass)
         }
     }
 
-    private fun saveAssigns(library: Library, lslContext: LslContext) {
-        for ((method, infos) in analysisContext.assigns) {
+    private fun saveAssigns() {
+        val analysisResults = interproceduralAnalyzer.getAnalysisResults()
+
+        for ((method, infos) in analysisResults) {
             val function = lslContext.resolveFunction(method.name, method.klass.fullName.canonicName)
             if (function == null) {
                 logger.severe("missing function: ${method.klass.fullName}.${method.name}")
                 continue
             }
 
-            for (info in infos) {
-                function.contracts.add(
-                    createAssignsContract(info, function)
-                )
+            for (info in infos.getInfos()) {
+                val assignsContract = createAssignsContract(info, function) ?: continue
+                if (function.contracts.contains(assignsContract)) {
+                    logger.info("skipping repeating contract $assignsContract")
+                    continue
+                }
+                function.contracts.add(assignsContract)
             }
         }
     }
 
-    private fun createAssignsContract(assignInfo: AssignInfo, function: Function): Contract {
-        return when(assignInfo){
+    private fun createAssignsContract(methodInfo: MethodInfo, function: Function): Contract? {
+        val chainOfNames = methodInfo.chain.mapNotNull { it.chainElementName }
+        val qualifiedAccess = resolveQualifiedChain(methodInfo.chain.first(), chainOfNames)
+        if (qualifiedAccess == null) {
+            logger.severe("qualified access is null for $chainOfNames")
+            return null
+        }
+
+        return when(val assignInfo = AssignInfoBuilder.build(methodInfo, qualifiedAccess)) {
             is ArgumentAssignInfo -> {
                 val expression = assignInfo.qualifiedAccess
 
@@ -70,95 +77,11 @@ class AssignExtractor : AnalysisStage {
 
                 Contract(name = null, expression, ContractKind.ASSIGNS)
             }
+            null -> null
         }
     }
 
-    private fun analyzeClass(klass: Class) {
-        for (method in klass.allMethods) {
-            analyzeMethod(method)
-        }
-    }
-
-    private fun analyzeMethod(method: Method, mapper: NameMapper = NameMapper()): List<AssignInfo> {
-        if (analysisContext.assigns[method] != null) {
-            return analysisContext.assigns[method]!!.toList()
-        }
-
-        val result = mutableSetOf<AssignInfo>()
-        analysisContext.assigns[method] = result
-
-        for (instruction in method.instructions) {
-            when (instruction) {
-                is FieldStoreInst -> {
-                    if (!instruction.hasOwner)
-                        continue
-
-                    val obj = mapper.getOriginalValue(instruction.owner)
-                    if (obj !is Argument && obj !is ThisRef && obj !is FieldLoadInst)
-                        continue
-
-                    val chainOfValues = obj.toQualifiedAccessChain.plusElement(instruction)
-                    if (chainOfValues.isEmpty()) {
-                        logger.severe("can't process $instruction")
-                        continue
-                    }
-
-                    val qualifiedAccessChain = resolveQualifiedChain(chainOfValues.first(), chainOfValues.map { it.chainName })
-                    if (qualifiedAccessChain == null) {
-                        logger.severe("can't resolve qualified access for $obj, ${obj.toQualifiedAccessChain}")
-                        continue
-                    }
-
-                    val info = AssignInfoBuilder.build(chainOfValues.first(), method, qualifiedAccessChain) ?: continue
-                    result.add(info)
-                }
-                is CallInst -> {
-                    val calleeMethod = instruction.method
-                    for ((idx, arg) in instruction.args.withIndex()) {
-                        val argumentInsideMethod = cm.value.getArgument(idx, calleeMethod, calleeMethod.argTypes[idx])
-                        mapper.addAlias(argumentInsideMethod, arg)
-                    }
-
-                    // add infos to result only if:
-                    //   it's an argument usage and the argument is our method's argument
-                    //   it's a ThisRef usage
-                    for (info in analyzeMethod(calleeMethod, mapper)) {
-                        when (info) {
-                            is ArgumentAssignInfo -> {
-                                if (info.method == method) {
-                                    result.add(info)
-                                }
-                            }
-                            is ThisAssignInfo -> {
-                                result.add(info)
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        return result.toList()
-    }
-
-    private val Value.toQualifiedAccessChain: List<Value>
-        get() {
-            return when (this) {
-                is FieldLoadInst -> {
-                    this.owner.toQualifiedAccessChain.plusElement(this)
-                }
-                is FieldStoreInst -> {
-                    this.owner.toQualifiedAccessChain.plusElement(this)
-                }
-                is Argument -> {
-                    listOf(this)
-                }
-
-                else -> listOf()
-            }
-        }
-
-    private val Value.chainName: String
+    private val Value.chainElementName: String?
         get() {
             return when (this) {
                 is FieldLoadInst -> this.field.name
@@ -168,6 +91,7 @@ class AssignExtractor : AnalysisStage {
                     is ConstantName -> argName.name
                     else -> error("type: ${argName::class}")
                 }
+                is ThisRef -> null
                 else -> error("type ${this::class}")
             }
         }

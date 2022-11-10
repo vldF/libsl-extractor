@@ -1,6 +1,6 @@
 package me.vldf.lsl.stages.assign
 
-import org.jetbrains.research.libsl.asg.Expression
+import me.vldf.lsl.stages.assign.localanalysis.MethodInfo
 import org.jetbrains.research.libsl.asg.QualifiedAccess
 import org.vorpal.research.kfg.ir.Method
 import org.vorpal.research.kfg.ir.value.Argument
@@ -14,10 +14,10 @@ sealed interface AssignInfo {
 }
 
 object AssignInfoBuilder {
-    fun build(value: Value, method: Method, qualifiedAccesses: QualifiedAccess): AssignInfo? {
-        return when (value) {
+    fun build(methodInfo: MethodInfo, qualifiedAccesses: QualifiedAccess): AssignInfo? {
+        return when (val value = methodInfo.chain.first()) {
             is Argument -> ArgumentAssignInfo(value.method, qualifiedAccesses, value.index)
-            is ThisRef -> ThisAssignInfo(method, qualifiedAccesses)
+            is ThisRef -> ThisAssignInfo(methodInfo.method, qualifiedAccesses)
             else -> null
         }
     }

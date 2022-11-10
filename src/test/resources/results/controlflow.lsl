@@ -23,9 +23,10 @@ type me.vldf.lsl.test.controlflow.ClassModifiedByInnerMethod {
 
 automaton me.vldf.lsl.test.controlflow.A : me.vldf.lsl.test.controlflow.A {
     fun foo(): void;
-    
+
     fun bar(arg0: me.vldf.lsl.test.controlflow.B): void
         assigns arg0.field;
+        assigns arg0.anotherB.field;
 
     fun tar(arg0: int, arg1: me.vldf.lsl.test.controlflow.B): void
         assigns arg1.field;
@@ -35,6 +36,6 @@ automaton me.vldf.lsl.test.controlflow.B : me.vldf.lsl.test.controlflow.B {
 }
 automaton me.vldf.lsl.test.controlflow.ClassModifiedByInnerMethod : me.vldf.lsl.test.controlflow.ClassModifiedByInnerMethod {
     fun impureMethod(): void;
-    
+
     fun implicitImpureMethod(): void;
 }
