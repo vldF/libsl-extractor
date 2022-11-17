@@ -4,7 +4,6 @@ import me.vldf.lsl.extractor.platform.AnalysisStage
 import me.vldf.lsl.extractor.platform.LslHolder
 import me.vldf.lsl.extractor.platform.platformLogger
 import org.jetbrains.research.libsl.asg.*
-import org.jetbrains.research.libsl.asg.Annotation
 import org.jetbrains.research.libsl.asg.Function
 import org.vorpal.research.kfg.ClassManager
 import org.vorpal.research.kfg.KfgConfigBuilder
@@ -157,12 +156,7 @@ class JvmClassReader : AnalysisStage {
 
                 null
             } else {
-                val parameterAnnotation = method.parameters.getOrNull(index)?.annotations?.firstOrNull()
-                val annotation = parameterAnnotation?.let { annotation ->
-                    val annotationName = (annotation.type as ClassType).klass.fullName.canonicName
-                    Annotation(annotationName, mutableListOf())
-                }
-                FunctionArgument("arg$index", argumentSemanticType, index, annotation = annotation)
+                FunctionArgument("arg$index", argumentSemanticType, index)
             }
         }.toMutableList()
 
