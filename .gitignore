@@ -1,2 +1,20 @@
 # Project exclude paths
 /.gradle/
+/common/build/
+/assign-analysis/build/
+/platform/build/
+/testData/build/
+/workDir/
+/.idea/modules/
+/.idea/.gitignore
+/.idea/compiler.xml
+/.idea/gradle.xml
+/.idea/jarRepositories.xml
+/.idea/kotlinc.xml
+/.idea/misc.xml
+/.idea/vcs.xml
+/.idea/workspace.xml
+/build/
+/lsl-class-reader/build/
+/gradle/wrapper/gradle-wrapper.jar
+/gradle/wrapper/gradle-wrapper.properties
