@@ -24,6 +24,14 @@ Analyzing states are atomic steps of specification extracting. To implement new 
 5. Add your analysis stage to the test pipeline. You can do it in file [TestPlatform](src/test/kotlin/TestPlatform.kt),
     in function `runForDir`.
 
+## Tests
+The testdata (files to be compiled and used in tests) are located [here](testData). You can add new packages like 
+existing ones. Also, you can add any dependency to gradle (see [build.gradle.kts](testData/build.gradle.kts)) and use
+it as a testdata. 
+
+After the new testdata was added, you should add test-function to [Tests.kt](src/test/kotlin/Tests.kt). You read this 
+file for examples.
+
 ## Examples of APIs usage
 The main APIs are [kfg](https://github.com/vorpal-research/kfg) and [LibSL Parser Api](https://github.com/vldf/libsl).
 The first one provides API to work with JVM bytecode. The second one provides API to work with LibSL code: 
