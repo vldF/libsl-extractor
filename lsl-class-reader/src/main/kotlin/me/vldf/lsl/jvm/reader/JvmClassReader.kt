@@ -9,6 +9,7 @@ import org.vorpal.research.kfg.ClassManager
 import org.vorpal.research.kfg.KfgConfigBuilder
 import org.vorpal.research.kfg.Package
 import org.vorpal.research.kfg.container.DirectoryContainer
+import org.vorpal.research.kfg.container.asContainer
 import org.vorpal.research.kfg.ir.ConcreteClass
 import org.vorpal.research.kfg.ir.Method
 import org.vorpal.research.kfg.type.ClassType
@@ -26,7 +27,9 @@ class JvmClassReader : AnalysisStage {
     private val logger by platformLogger()
 
     override fun run(lslHolder: LslHolder) {
-        val directoryContainer = DirectoryContainer(lslHolder.pipelineConfig.libraryPath, Package.defaultPackage)
+        val directoryContainer = lslHolder.pipelineConfig.libraryPath.asContainer()
+            ?: throw IllegalArgumentException("can't parse libraryPath: ${lslHolder.pipelineConfig.libraryPath}")
+
         classManager.initialize(directoryContainer)
         this.lslHolder = lslHolder
         this.lslContext = lslHolder.lslContext

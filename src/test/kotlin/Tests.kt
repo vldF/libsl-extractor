@@ -25,4 +25,9 @@ class Tests {
     fun recursion() {
         TestPlatform.runForDir("recursion")
     }
+
+    @Test
+    fun okHttpTest() {
+        TestPlatform.runForJar("okhttp-4.7.2")
+    }
 }
