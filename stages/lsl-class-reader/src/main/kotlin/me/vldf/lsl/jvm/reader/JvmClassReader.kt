@@ -7,8 +7,6 @@ import org.jetbrains.research.libsl.asg.*
 import org.jetbrains.research.libsl.asg.Function
 import org.vorpal.research.kfg.ClassManager
 import org.vorpal.research.kfg.KfgConfigBuilder
-import org.vorpal.research.kfg.Package
-import org.vorpal.research.kfg.container.DirectoryContainer
 import org.vorpal.research.kfg.container.asContainer
 import org.vorpal.research.kfg.ir.ConcreteClass
 import org.vorpal.research.kfg.ir.Method

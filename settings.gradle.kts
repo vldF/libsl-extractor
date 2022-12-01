@@ -1,7 +1,7 @@
 
 rootProject.name = "libsl-extractor"
-include("lsl-class-reader")
-include("testData")
-include("platform")
-include("common")
-include("assign-analysis")
+include(":testData")
+include(":platform")
+include(":stages:lsl-class-reader")
+include(":stages:common")
+include(":stages:assign-analysis")

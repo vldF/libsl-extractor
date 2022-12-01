@@ -20,7 +20,7 @@ Analyzing states are atomic steps of specification extracting. To implement new 
     ```
     These repositories and dependencies allows to local debugging the whole technology stack (this project, the stage, 
     LibSL parser) as good as developing a parser's improvement.
-4. Implement the interface `me.vldf.lsl.extractor.platform.AnalysisStage`
+4. Implement the interface `AnalysisStage`
 5. Add your analysis stage to the test pipeline. You can do it in file [TestPlatform](src/test/kotlin/TestPlatform.kt),
     in function `runForDir`.
 
