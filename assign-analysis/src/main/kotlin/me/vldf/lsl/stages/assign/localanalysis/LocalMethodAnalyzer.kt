@@ -6,6 +6,7 @@ import org.vorpal.research.kfg.ir.Method
 import org.vorpal.research.kfg.ir.value.Argument
 import org.vorpal.research.kfg.ir.value.ThisRef
 import org.vorpal.research.kfg.ir.value.Value
+import org.vorpal.research.kfg.ir.value.instruction.CastInst
 import org.vorpal.research.kfg.ir.value.instruction.FieldLoadInst
 import org.vorpal.research.kfg.ir.value.instruction.FieldStoreInst
 
@@ -60,6 +61,10 @@ class LocalMethodAnalyzer {
                 }
                 is ThisRef -> {
                     listOf(this)
+                }
+
+                is CastInst -> {
+                    this.operand.toQualifiedAccessChain
                 }
 
                 else -> listOf()

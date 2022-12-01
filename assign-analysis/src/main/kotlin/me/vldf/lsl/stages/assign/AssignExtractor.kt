@@ -66,19 +66,8 @@ class AssignExtractor : AnalysisStage {
             return null
         }
 
-        return when(val assignInfo = AssignInfoFabric.create(methodInfo, qualifiedAccess)) {
-            is ArgumentAssignInfo -> {
-                val expression = assignInfo.qualifiedAccess
-
-                Contract(name = null, expression, ContractKind.ASSIGNS)
-            }
-            is ThisAssignInfo -> {
-                val expression = function.automaton.variables.firstOrNull() ?: error("")
-
-                Contract(name = null, expression, ContractKind.ASSIGNS)
-            }
-            null -> null
-        }
+        val assignInfo = AssignInfoFabric.create(methodInfo, qualifiedAccess) ?: return null
+        return Contract(name = null, assignInfo.qualifiedAccess, ContractKind.ASSIGNS)
     }
 
     private val Value.chainElementName: String?
@@ -119,20 +108,20 @@ class AssignExtractor : AnalysisStage {
             }
             is ThisRef -> {
                 val klassOwner = baseValue.type
-                val type = lslContext.resolveType(klassOwner.name) ?: return null
+                val type = lslContext.resolveType(klassOwner.name.canonicName) ?: return null
 
                 type
             }
             is FieldLoadInst -> {
                 val klassOwner = baseValue.type
-                val type = lslContext.resolveType(klassOwner.name) ?: return null
+                val type = lslContext.resolveType(klassOwner.name.canonicName) ?: return null
 
                 type
             }
 
             is FieldStoreInst -> {
                 val klassOwner = baseValue.type
-                val type = lslContext.resolveType(klassOwner.name) ?: return null
+                val type = lslContext.resolveType(klassOwner.name.canonicName) ?: return null
 
                 type
             }

@@ -35,7 +35,9 @@ automaton me.vldf.lsl.test.controlflow.A : me.vldf.lsl.test.controlflow.A {
 automaton me.vldf.lsl.test.controlflow.B : me.vldf.lsl.test.controlflow.B {
 }
 automaton me.vldf.lsl.test.controlflow.ClassModifiedByInnerMethod : me.vldf.lsl.test.controlflow.ClassModifiedByInnerMethod {
-    fun impureMethod(): void;
+    fun impureMethod(): void
+        assigns state;
 
-    fun implicitImpureMethod(): void;
+    fun implicitImpureMethod(): void
+        assigns state;
 }
