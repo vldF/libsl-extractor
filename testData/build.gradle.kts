@@ -11,6 +11,7 @@ repositories {
 }
 
 dependencies {
+    // add new gradle dependencies here:
     implementation("org.jetbrains:annotations:23.0.0")
     implementation("com.squareup.okhttp3:okhttp:4.7.2")
 }
