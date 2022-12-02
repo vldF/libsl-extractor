@@ -17,8 +17,8 @@ Analyzing stages are atomic steps of specification extracting. To implement new 
         }
     }
     ```
-3. Add your analysis stage to the test pipeline. You can do it in file [TestPlatform](platform/src/test/kotlin/TestPlatform.kt),
-    in function `runForDir`.
+3. Add your analysis stage to the integration tests pipeline. You can do it in file
+[TestPlatform](platform/src/test/kotlin/TestPlatform.kt), in property `analysisStagesFactory`.
 
 ## Tests
 The testdata (files to be compiled and used in tests) are located [here](testData). You can add new packages like 

@@ -11,6 +11,9 @@ object TestPlatform {
     private val testDataClassesDir = File("../testData/build/classes/java/main/me/vldf/lsl/test")
     private val testDataJarsDir = File("../testData/build/jars/")
     private val resultDir = File("./src/test/resources/results")
+    private val analysisStagesFactory = {
+        listOf(JvmClassReader(), AssignExtractor())
+    }
 
     init {
         if (!testDataClassesDir.isDirectory || testDataClassesDir.listFiles()!!.isEmpty()) {
@@ -22,7 +25,7 @@ object TestPlatform {
         runTest(testCase) {
             PipelineConfig {
                 this.libraryPath = testDataClassesDir.resolve(testCase)
-                this.stages.addAll(listOf(JvmClassReader(), AssignExtractor()))
+                this.stages.addAll(analysisStagesFactory())
             }
         }
     }
@@ -31,7 +34,7 @@ object TestPlatform {
         runTest(testCase) {
             PipelineConfig {
                 this.libraryPath = testDataJarsDir.resolve("$testCase.jar")
-                this.stages.addAll(listOf(JvmClassReader(), AssignExtractor()))
+                this.stages.addAll(analysisStagesFactory())
             }
         }
     }
