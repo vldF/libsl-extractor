@@ -32,5 +32,10 @@ tasks.create<Copy>("extractDeps") {
 
     tasks.build.get().dependsOn("extractDeps")
 
-    from(sourceSets.main.get().compileClasspath).into("./build/jars/")
+    from(sourceSets.main.get().compileClasspath)
+        .into("./build/jars/")
+        .exclude(
+            "annotations*",
+            "kotlin-stdlib*",
+        )
 }

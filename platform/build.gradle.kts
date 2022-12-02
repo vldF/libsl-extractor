@@ -1,3 +1,5 @@
+import org.gradle.internal.impldep.org.junit.runners.model.TestClass
+
 plugins {
     id("kotlin")
 }
@@ -19,10 +21,15 @@ dependencies {
     implementation(project(":stages:common"))
     implementation(project(":stages:lsl-class-reader"))
     implementation(project(":stages:assign-analysis"))
+    testImplementation(project(":testData"))
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
 }
 
 tasks.getByName<Test>("test") {
     useJUnitPlatform()
+}
+
+tasks.testClasses {
+    dependsOn(":testData:extractDeps")
 }

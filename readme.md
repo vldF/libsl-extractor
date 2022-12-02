@@ -23,10 +23,7 @@ Analyzing stages are atomic steps of specification extracting. To implement new 
 ## Tests
 The testdata (files to be compiled and used in tests) are located [here](testData). You can add new packages like 
 [existing ones](testData/src/main/java/me/vldf/lsl/test). Also, you can add any dependencies to gradle 
-(see [build.gradle.kts](testData/build.gradle.kts)) and use it as a testdata. 
-
-**NB**: you should run a build of the `testData` module every change of its content. You can do it via gradle:
-![img2.png](readme-images/img2.png)
+(see [build.gradle.kts](testData/build.gradle.kts)) and use it as a testdata.
 
 After the new testdata was added, you should add test-function to [Tests.kt](platform/src/test/kotlin/Tests.kt). 
 You can use this file for examples.
