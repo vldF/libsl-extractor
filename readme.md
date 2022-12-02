@@ -4,8 +4,8 @@ This tool provides an automatic way to extract semantic information from JVM lib
 by .lsl files written in [LibSL](https://github.com/vldf/libsl) (library specification language).
 
 ## Implementing the new stage
-Analyzing states are atomic steps of specification extracting. To implement new one, you must:
-1. Create new gradle module (via the IDE or manually)
+Analyzing stages are atomic steps of specification extracting. To implement new one, you should:
+1. Create new gradle submodule in module `stages` (via the IDE or manually)
 2. Add the next repositories to it:
     ```kotlin
         mavenLocal()

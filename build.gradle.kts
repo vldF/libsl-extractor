@@ -8,6 +8,7 @@ group = "me.vldf"
 version = "1.0-SNAPSHOT"
 
 val libslVersion: String by project
+val kfgVersion: String by project
 
 repositories {
     mavenLocal()

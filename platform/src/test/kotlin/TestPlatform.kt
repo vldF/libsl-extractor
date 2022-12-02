@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Assertions
 import java.io.File
 
 object TestPlatform {
-    private val testDataClassesDir = File("./testData/build/classes/java/main/me/vldf/lsl/test")
-    private val testDataJarsDir = File("./testData/build/jars/")
+    private val testDataClassesDir = File("../testData/build/classes/java/main/me/vldf/lsl/test")
+    private val testDataJarsDir = File("../testData/build/jars/")
     private val resultDir = File("./src/test/resources/results")
 
     init {
