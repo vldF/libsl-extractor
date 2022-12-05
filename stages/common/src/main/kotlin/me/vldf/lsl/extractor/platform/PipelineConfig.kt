@@ -3,7 +3,7 @@ package me.vldf.lsl.extractor.platform
 import java.io.File
 
 class PipelineConfig (builder: PipelineConfig.() -> Unit) {
-    lateinit var libraryPath: File
+    lateinit var librariesPath: File
     val workDirPath: String = "./workDir/"
     val workDir = File(workDirPath)
 

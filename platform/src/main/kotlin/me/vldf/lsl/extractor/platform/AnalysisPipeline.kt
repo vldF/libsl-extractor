@@ -7,10 +7,10 @@ class AnalysisPipeline(private val config: PipelineConfig) {
     init {
         config.workDir.mkdirs()
     }
-    private val lslHolder = LslHolder.getLslHolder(config)
+    private val globalAnalysisContext = GlobalAnalysisContext.getGlobalAnalysisContext(config)
 
     @TestOnly
-    fun getLslHolder() = lslHolder
+    fun getGlobalAnalysisContext() = globalAnalysisContext
 
     private var currentStageIndex: Int = 0
     private val currentStage: AnalysisStage
@@ -24,16 +24,22 @@ class AnalysisPipeline(private val config: PipelineConfig) {
     }
 
     private fun runNextStage() {
-        currentStage.run(lslHolder)
+        currentStage.run(globalAnalysisContext)
         afterStage()
     }
 
     private fun afterStage() {
-        dumpCurrentStateTo(fileName = currentStage.name)
+        dumpCurrentStateTo()
     }
 
-    private fun dumpCurrentStateTo(fileName: String) {
-        val dump = lslHolder.library.dumpToString()
-        config.workDir.resolve("$currentStageIndex $fileName.lsl").writeText(dump)
+    private fun dumpCurrentStateTo() {
+        val workDir = config.workDir
+        val parentDir = workDir.resolve("stage $currentStageIndex")
+        parentDir.mkdirs()
+
+        for ((libraryDescriptor, library) in globalAnalysisContext.descriptorsToLibraries) {
+            val dump = library.dumpToString()
+            parentDir.resolve("${libraryDescriptor.name}.lsl").writeText(dump)
+        }
     }
 }

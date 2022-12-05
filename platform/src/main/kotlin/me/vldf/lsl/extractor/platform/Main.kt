@@ -6,7 +6,7 @@ import java.io.File
 
 fun main() {
     val config = PipelineConfig {
-        libraryPath = File("./testData/build/classes/java/main/")
+        librariesPath = File("./testData/build/classes/java/main/")
         stages.add(JvmClassReader())
         stages.add(AssignExtractor())
     }
