@@ -1,5 +1,4 @@
 import me.vldf.lsl.extractor.platform.AnalysisPipeline
-import me.vldf.lsl.extractor.platform.LslHolder.Companion.createLslContext
 import me.vldf.lsl.extractor.platform.PipelineConfig
 import me.vldf.lsl.jvm.reader.JvmClassReader
 import me.vldf.lsl.stages.assign.AssignExtractor
@@ -8,23 +7,23 @@ import org.junit.jupiter.api.Assertions
 import java.io.File
 
 object TestPlatform {
-    private val testDataClassesDir = File("../testData/build/classes/java/main/me/vldf/lsl/test")
-    private val testDataJarsDir = File("../testData/build/jars/")
+    private val testDataClassesParentDir = File("../testData/build/classes/java/main/me/vldf/lsl/test")
+    private val testDataJarsParentDir = File("../testData/build/jars/")
     private val resultDir = File("./src/test/resources/results")
     private val analysisStagesFactory = {
         listOf(JvmClassReader(), AssignExtractor())
     }
 
     init {
-        if (!testDataClassesDir.isDirectory || testDataClassesDir.listFiles()!!.isEmpty()) {
+        if (!testDataClassesParentDir.isDirectory || testDataClassesParentDir.listFiles()!!.isEmpty()) {
             throw IllegalStateException("compile test data before tests!")
         }
     }
 
-    fun runForDir(testCase: String) {
+    fun runForClassesDir(testCase: String) {
         runTest(testCase) {
             PipelineConfig {
-                this.libraryPath = testDataClassesDir.resolve(testCase)
+                this.librariesPath = testDataClassesParentDir.resolve(testCase)
                 this.stages.addAll(analysisStagesFactory())
             }
         }
@@ -33,7 +32,7 @@ object TestPlatform {
     fun runForJar(testCase: String) {
         runTest(testCase) {
             PipelineConfig {
-                this.libraryPath = testDataJarsDir.resolve("$testCase.jar")
+                this.librariesPath = testDataJarsParentDir.resolve("$testCase.jar")
                 this.stages.addAll(analysisStagesFactory())
             }
         }
@@ -43,30 +42,34 @@ object TestPlatform {
         val analysisPipeline = AnalysisPipeline(pipelineConfigProvider())
         analysisPipeline.run()
 
-        val actualContent = analysisPipeline.getLslHolder().library.dumpToString()
-        val resultFile = resultDir.resolve("$testCaseName.lsl")
+        for ((descriptor, library) in analysisPipeline.getGlobalAnalysisContext().descriptorsToLibraries) {
+            val libraryName = descriptor.name
+            val actualContent = library.dumpToString()
+            val resultFile = resultDir.resolve(testCaseName).resolve("$libraryName.lsl")
+            resultFile.mkdirs()
 
-        if (resultFile.isFile) {
-            val expectedContent = resultFile.readText()
-            Assertions.assertEquals(textCleaner(expectedContent), textCleaner(actualContent))
-        } else {
-            testLslCorrectness(actualContent)
-            resultFile.writeText(actualContent)
+            if (resultFile.isFile) {
+                val expectedContent = resultFile.readText()
+                Assertions.assertEquals(textCleaner(expectedContent), textCleaner(actualContent))
+            } else {
+//                testLslCorrectness(actualContent)
+                resultFile.writeText(actualContent)
+            }
         }
     }
 
-    /**
-     * This function parses the description via lsl parser and dumps the lsl IR to text again. Then, asserts equals of
-     * [lslDescription] and dumped text
-     */
-    private fun testLslCorrectness(lslDescription: String) {
-        val context = createLslContext()
-        val libSL = LibSL("", context)
-        val library = libSL.loadFromString(lslDescription)
-        val dumpLsl = library.dumpToString()
-        Assertions.assertEquals(textCleaner(lslDescription), textCleaner(dumpLsl))
-    }
-
+//    /**
+//     * This function parses the description via lsl parser and dumps the lsl IR to text again. Then, asserts equals of
+//     * [lslDescription] and dumped text
+//     */
+//    private fun testLslCorrectness(lslDescription: String) {
+//        val context = createLslContext()
+//        val libSL = LibSL("", context)
+//        val library = libSL.loadFromString(lslDescription)
+//        val dumpLsl = library.dumpToString()
+//        Assertions.assertEquals(textCleaner(lslDescription), textCleaner(dumpLsl))
+//    }
+//
     /**
      * removes all space-only lines in text
      */

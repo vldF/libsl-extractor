@@ -29,11 +29,11 @@ class JvmClassReader : AnalysisStage {
     private val logger by platformLogger()
 
     override fun run(analysisContext: GlobalAnalysisContext) {
-        val directoryContainer = analysisContext.pipelineConfig.librariesPath
-
-        initializeKfg(directoryContainer)
         this.analysisContext = analysisContext
         this.analysisContext.kfgClassManager = classManager
+
+        val directoryContainer = analysisContext.pipelineConfig.librariesPath
+        initializeKfg(directoryContainer)
 
         readToLibrary()
     }
