@@ -28,6 +28,6 @@ class Tests {
 
     @Test
     fun okHttpTest() {
-        TestPlatform.runForJar("okhttp-4.7.2")
+        TestPlatform.runForJarDir("okhttp")
     }
 }

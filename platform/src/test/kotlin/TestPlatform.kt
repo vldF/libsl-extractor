@@ -2,7 +2,6 @@ import me.vldf.lsl.extractor.platform.AnalysisPipeline
 import me.vldf.lsl.extractor.platform.PipelineConfig
 import me.vldf.lsl.jvm.reader.JvmClassReader
 import me.vldf.lsl.stages.assign.AssignExtractor
-import org.jetbrains.research.libsl.LibSL
 import org.junit.jupiter.api.Assertions
 import java.io.File
 
@@ -29,10 +28,10 @@ object TestPlatform {
         }
     }
 
-    fun runForJar(testCase: String) {
+    fun runForJarDir(testCase: String) {
         runTest(testCase) {
             PipelineConfig {
-                this.librariesPath = testDataJarsParentDir.resolve("$testCase.jar")
+                this.librariesPath = testDataJarsParentDir.resolve("$testCase/")
                 this.stages.addAll(analysisStagesFactory())
             }
         }
