@@ -10,32 +10,45 @@ repositories {
     mavenCentral()
 }
 
+val testdata by configurations.creating {
+    this.extendsFrom(configurations.implementation.get())
+}
+val testdataJarsParentDir = project.buildDir.resolve("jars/")
+
 dependencies {
     // add new gradle dependencies here:
     implementation("org.jetbrains:annotations:23.0.0")
-    implementation("com.squareup.okhttp3:okhttp:4.7.2")
+
+    testdata("com.squareup.okhttp3:okhttp:4.7.2")
 }
 
 tasks.getByName<Test>("test") {
     useJUnitPlatform()
 }
 
-fun ConfigurationContainer.resolveAll() = this
-    .filter { it.isCanBeResolved }
-    .forEach { it.resolve() }
-
-tasks.create<Copy>("extractDeps") {
+tasks.build.get().dependsOn("extractDeps")
+tasks.create("extractDeps") {
     doFirst {
-        configurations.resolveAll()
-        buildscript.configurations.resolveAll()
+        testdata.resolve()
+
+        testdataJarsParentDir.deleteRecursively()
+
+        for (dependency in testdata.dependencies) {
+            val testdataDirName = dependency.name
+            val destinationDir = testdataJarsParentDir.resolve("$testdataDirName/")
+            destinationDir.mkdirs()
+
+            testdata.resolvedConfiguration.getFiles { dep ->
+                dep == dependency
+            }
+            .filter { file -> !file.isIgnored }
+            .map { file ->
+                file.copyTo(destinationDir.resolve(file.name), overwrite = true)
+            }
+        }
+
     }
-
-    tasks.build.get().dependsOn("extractDeps")
-
-    from(sourceSets.main.get().compileClasspath)
-        .into("./build/jars/")
-        .exclude(
-            "annotations*",
-            "kotlin-stdlib*",
-        )
 }
+
+val File.isIgnored: Boolean
+    get() = listOf("kotlin-").any { ignoreName -> this.name.contains(ignoreName) }
