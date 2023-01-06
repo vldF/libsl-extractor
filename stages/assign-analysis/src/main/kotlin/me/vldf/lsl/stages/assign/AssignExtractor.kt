@@ -2,11 +2,13 @@ package me.vldf.lsl.stages.assign
 
 import me.vldf.lsl.extractor.platform.AnalysisStage
 import me.vldf.lsl.extractor.platform.GlobalAnalysisContext
+import me.vldf.lsl.extractor.platform.KfgHelper.createMethodReference
 import me.vldf.lsl.extractor.platform.platformLogger
 import me.vldf.lsl.stages.assign.ipa.InterproceduralAnalyzer
 import me.vldf.lsl.stages.assign.localanalysis.MethodInfo
-import org.jetbrains.research.libsl.asg.*
-import org.jetbrains.research.libsl.utils.QualifiedAccessUtils
+import org.jetbrains.research.libsl.context.LslContextBase
+import org.jetbrains.research.libsl.nodes.Contract
+import org.jetbrains.research.libsl.nodes.ContractKind
 import org.vorpal.research.kfg.ClassManager
 import org.vorpal.research.kfg.ir.value.*
 import org.vorpal.research.kfg.ir.value.instruction.FieldLoadInst
@@ -41,7 +43,8 @@ class AssignExtractor : AnalysisStage {
 
         for ((method, infos) in analysisResults) {
             val context = analysisContext.libraryHelper.getContext(method.klass)
-            val function = context.resolveFunction(method.name, method.klass.fullName.canonicName)
+            val functionRef = method.createMethodReference(context)
+            val function = functionRef.resolve()
             if (function == null) {
                 logger.severe("missing function: ${method.klass.fullName}.${method.name}")
                 continue
@@ -53,14 +56,16 @@ class AssignExtractor : AnalysisStage {
                     logger.info("skipping repeating contract $assignsContract")
                     continue
                 }
+
                 function.contracts.add(assignsContract)
             }
         }
     }
 
-    private fun createAssignsContract(methodInfo: MethodInfo, context: LslContext): Contract? {
+    private fun createAssignsContract(methodInfo: MethodInfo, context: LslContextBase): Contract? {
         val chainOfNames = methodInfo.chain.mapNotNull { it.chainElementName }
-        val qualifiedAccess = resolveQualifiedChain(methodInfo.chain.first(), chainOfNames, context)
+        val qualifiedAccess = QualifiedAccessResolver.resolve(chainOfNames, context)
+
         if (qualifiedAccess == null) {
             logger.severe("qualified access is null for $chainOfNames")
             return null
@@ -84,55 +89,4 @@ class AssignExtractor : AnalysisStage {
                 else -> error("type ${this::class}")
             }
         }
-
-    private fun resolveQualifiedChain(baseValue: Value, chain: List<String>, context: LslContext): QualifiedAccess? {
-        val semanticType = when (baseValue) {
-            is Argument -> {
-                val method = baseValue.method
-                val automaton = context.resolveAutomaton(method.klass.fullName.canonicName)
-                automaton ?: return null
-                val function = automaton.functions.firstOrNull { f -> f.name == method.name && f.args.size == method.argTypes.size } // todo
-                function ?: return null
-
-                val functionArgument = function.args[baseValue.index]
-                val type = functionArgument.type
-                return VariableAccess(functionArgument.name, childAccess = null, type = type, functionArgument).apply {
-                    if (chain.size > 1) {
-                        this.childAccess = QualifiedAccessUtils.resolvePeriodSeparatedChain(
-                            type,
-                            chain.drop(1),
-                            throwExceptions = false
-                        )
-                    }
-                }
-            }
-            is ThisRef -> {
-                val klassOwner = baseValue.type
-                val type = context.resolveType(klassOwner.name.canonicName) ?: return null
-
-                type
-            }
-            is FieldLoadInst -> {
-                val klassOwner = baseValue.type
-                val type = context.resolveType(klassOwner.name.canonicName) ?: return null
-
-                type
-            }
-
-            is FieldStoreInst -> {
-                val klassOwner = baseValue.type
-                val type = context.resolveType(klassOwner.name.canonicName) ?: return null
-
-                type
-            }
-
-            else -> error("unsupported type: ${baseValue::class}")
-        }
-
-        return QualifiedAccessUtils.resolvePeriodSeparatedChain(semanticType, chain, throwExceptions = false)
-    }
-
-    // todo
-    private val String.canonicName: String
-        get() = this.replace("/", ".")
 }

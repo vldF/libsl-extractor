@@ -1,7 +1,7 @@
 package me.vldf.lsl.stages.assign
 
 import me.vldf.lsl.stages.assign.localanalysis.MethodInfo
-import org.jetbrains.research.libsl.asg.QualifiedAccess
+import org.jetbrains.research.libsl.nodes.QualifiedAccess
 import org.vorpal.research.kfg.ir.Method
 import org.vorpal.research.kfg.ir.value.Argument
 import org.vorpal.research.kfg.ir.value.ThisRef

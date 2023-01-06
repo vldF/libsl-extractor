@@ -13,6 +13,10 @@ class ImmutableNameMapper(private val cm: ClassManager) {
      * obj = to, mapper is reversed
      */
     fun addAlias(obj: Value, to: Value) {
+        if (obj == to) {
+            return
+        }
+
         val toValue = mappingInfo.getOrDefault(to, to)
         mappingInfo[toValue] = obj
     }
@@ -30,7 +34,11 @@ class ImmutableNameMapper(private val cm: ClassManager) {
     fun getOriginalValue(to: Value): Value {
         var result: Value = to
         while (true) {
-            result = mappingInfo[result] ?: return result
+            val value = mappingInfo[result]
+            if (value == result)
+                return result
+
+            result = value ?: return result
         }
     }
 

@@ -1,13 +1,14 @@
 package me.vldf.lsl.extractor.platform
 
-import org.jetbrains.research.libsl.asg.MetaNode
+import org.jetbrains.research.libsl.nodes.LslVersion
+import org.jetbrains.research.libsl.nodes.MetaNode
 
 data class LibraryDescriptor (
     val name: String,
     val version: String? = null,
     val language: String? = null,
     val url: String? = null,
-    val lslVersion: Triple<UInt, UInt, UInt> = Triple(1u, 0u, 0u)
+    val lslVersion: LslVersion = LslVersion.fromString("1.0.0")
 ) {
     fun getMetaNode(): MetaNode {
         return MetaNode(

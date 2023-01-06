@@ -45,9 +45,9 @@ object TestPlatform {
             val libraryName = descriptor.name
             val actualContent = library.dumpToString()
             val resultFile = resultDir.resolve(testCaseName).resolve("$libraryName.lsl")
-            resultFile.mkdirs()
+            resultFile.parentFile.mkdirs()
 
-            if (resultFile.isFile) {
+            if (resultFile.exists()) {
                 val expectedContent = resultFile.readText()
                 Assertions.assertEquals(textCleaner(expectedContent), textCleaner(actualContent))
             } else {

@@ -2,17 +2,29 @@ package me.vldf.lsl.jvm.reader
 
 import me.vldf.lsl.extractor.platform.AnalysisStage
 import me.vldf.lsl.extractor.platform.GlobalAnalysisContext
+import me.vldf.lsl.extractor.platform.KfgHelper.createAutomatonReference
+import me.vldf.lsl.extractor.platform.KfgHelper.createLslTypeReference
+import me.vldf.lsl.extractor.platform.KfgHelper.lslName
+import me.vldf.lsl.extractor.platform.KfgHelper.lslNameParts
 import me.vldf.lsl.extractor.platform.LibraryDescriptor
 import me.vldf.lsl.extractor.platform.platformLogger
-import org.jetbrains.research.libsl.asg.*
-import org.jetbrains.research.libsl.asg.Function
+import org.jetbrains.research.libsl.context.AutomatonContext
+import org.jetbrains.research.libsl.context.LslContextBase
+import org.jetbrains.research.libsl.nodes.*
+import org.jetbrains.research.libsl.nodes.Function
+import org.jetbrains.research.libsl.nodes.references.TypeReference
+import org.jetbrains.research.libsl.nodes.references.builders.AutomatonReferenceBuilder.getReference
+import org.jetbrains.research.libsl.nodes.references.builders.TypeReferenceBuilder
+import org.jetbrains.research.libsl.nodes.references.builders.TypeReferenceBuilder.getReference
+import org.jetbrains.research.libsl.type.EnumType
+import org.jetbrains.research.libsl.type.RealType
+import org.jetbrains.research.libsl.type.StructuredType
 import org.vorpal.research.kfg.ClassManager
 import org.vorpal.research.kfg.KfgConfigBuilder
 import org.vorpal.research.kfg.container.Container
 import org.vorpal.research.kfg.container.asContainer
 import org.vorpal.research.kfg.ir.ConcreteClass
 import org.vorpal.research.kfg.ir.Method
-import org.vorpal.research.kfg.type.ClassType
 import org.vorpal.research.kfg.util.isClass
 import org.vorpal.research.kfg.util.isJar
 import java.io.File
@@ -35,7 +47,7 @@ class JvmClassReader : AnalysisStage {
         val directoryContainer = analysisContext.pipelineConfig.librariesPath
         initializeKfg(directoryContainer)
 
-        readToLibrary()
+        readLibraries()
     }
 
     // todo: split the code
@@ -90,11 +102,11 @@ class JvmClassReader : AnalysisStage {
     private fun initializeKfgByContainer(container: Container, libraryName: String) {
         val libraryDescriptor = LibraryDescriptor(libraryName)
 
-        analysisContext.libraryHelper.addLibrary(libraryDescriptor, container.pkg)
+        analysisContext.libraryHelper.initNewLibrary(libraryDescriptor, container.pkg)
         classManager.initialize(container)
     }
 
-    private fun readToLibrary() {
+    private fun readLibraries() {
         generateSemanticTypes()
         generateAutomata()
     }
@@ -112,13 +124,13 @@ class JvmClassReader : AnalysisStage {
                 }
             }
 
-            lslContext.storeResolvedType(semanticType)
+            lslContext.storeType(semanticType)
 
-            library.semanticTypes.add(semanticType)
+            library.semanticTypesReferences.add(semanticType.getReference(lslContext))
         }
     }
 
-    private fun getEnumType(klass: ConcreteClass, context: LslContext): EnumType {
+    private fun getEnumType(klass: ConcreteClass, context: LslContextBase): EnumType {
         val enumFields = klass.fields.filter { field -> field.isEnum }
         val entries = mutableMapOf<String, IntegerLiteral>()
 
@@ -126,61 +138,56 @@ class JvmClassReader : AnalysisStage {
             entries[field.name] = IntegerLiteral(index)
         }
 
-        return EnumType(klass.fullName.canonicName, entries, context)
+        return EnumType(klass.lslName, entries, context)
     }
 
-    private fun resolveRealType(klass: ConcreteClass, lslContext: LslContext) {
-        val realType = RealType(klass.fullName.split("/"), isPointer = false, generic = null, lslContext)
-        lslContext.storeResolvedType(realType)
+    private fun resolveRealType(klass: ConcreteClass, lslContext: LslContextBase) {
+        val realType = RealType(klass.lslNameParts, context = lslContext)
+        lslContext.storeType(realType)
     }
 
-    private fun getStructuredType(klass: ConcreteClass, context: LslContext): StructuredType {
-        val realType = context.resolveType(klass.fullName.canonicName) as? RealType ?: error("not a real type: ${klass.fullName}")
+    private fun getStructuredType(klass: ConcreteClass, context: LslContextBase): StructuredType {
+        val realTypeRef = klass.createLslTypeReference(context)
         val type = StructuredType(
-            name = klass.fullName.canonicName,
-            type = realType,
-            context = context,
-            entries = mapOf()
+            name = realTypeRef.name,
+            entries = mapOf(),
+            context = context
         )
-        context.storeResolvedType(type)
+        context.storeType(type)
         type.entries = getStructuredTypeEntries(klass, context)
 
         return type
     }
 
-    private fun getStructuredTypeEntries(klass: ConcreteClass, context: LslContext): Map<String, Type> {
+    private fun getStructuredTypeEntries(klass: ConcreteClass, context: LslContextBase): Map<String, TypeReference> {
         return buildMap {
             for (field in klass.fields) {
-                put(field.name, (context.resolveType(field.type.name.canonicName) ?: continue))
+                val fieldTypeRef = field.type.createLslTypeReference(context)
+                fieldTypeRef.resolve() ?: continue
+                put(field.name, fieldTypeRef)
             }
         }
     }
 
     private fun generateAutomata() {
         for (klass in classManager.concreteClasses) {
-            val context = analysisContext.libraryHelper.getContext(klass)
+            val globalContext = analysisContext.libraryHelper.getContext(klass)
             val library = analysisContext.libraryHelper.getLibrary(klass)
 
-            val automatonType = context.resolveType(klass.fullName.canonicName)
+            val automatonContext = AutomatonContext(globalContext)
+
+            val automatonTypeRef = TypeReferenceBuilder.build(klass.lslName, context = automatonContext)
+            val automatonType = automatonTypeRef.resolve()
             if (automatonType == null) {
                 logger.severe("error while parsing class $klass: can't find klass $klass")
                 continue
             }
 
             val primaryConstructor = klass.constructors.firstOrNull()
-            val constructorArgs = mutableListOf<Type>()
+            val constructorArgs = mutableListOf<TypeReference>()
 
             for (argType in primaryConstructor?.argTypes ?: listOf()) {
-                val argSemanticType = if (argType is ClassType) {
-                    context.resolveType(argType.klass.fullName.canonicName)
-                } else {
-                    null
-                }
-
-                if (argSemanticType == null) {
-                    logger.info("skipping constructor argument klass $argType")
-                    continue
-                }
+                val argSemanticType = argType.createLslTypeReference(automatonContext)
 
                 constructorArgs.add(argSemanticType)
             }
@@ -189,55 +196,41 @@ class JvmClassReader : AnalysisStage {
                 ConstructorArgument("arg$index", argType)
             }.toMutableList()
 
-            val localFunctions = klass.methods.map { method -> getLocalFunction(method, context)}.toMutableList()
+            val localFunctions = klass.methods.map { method -> getLocalFunction(method, automatonContext)}.toMutableList()
 
             val automaton = Automaton(
-                name = klass.fullName.canonicName,
-                type = automatonType,
+                name = klass.lslName,
+                typeReference = automatonTypeRef,
                 constructorVariables = constructorVariables,
-                localFunctions = localFunctions
+                localFunctions = localFunctions,
+                context = automatonContext
             )
 
-            library.automata.add(automaton)
-            context.storeResolvedAutomaton(automaton)
+            globalContext.storeAutomata(automaton)
+            library.automataReferences.add(automaton.getReference(automatonContext))
         }
     }
 
-    private fun getLocalFunction(method: Method, context: LslContext): Function {
-        val methodArgs = method.argTypes.mapIndexedNotNull { index, argType ->
-            val argumentSemanticType = context.resolveType(argType.name.canonicName)
-            if (argumentSemanticType == null) {
-                logger.severe("unresolved type ${argType.name}")
+    private fun getLocalFunction(method: Method, context: LslContextBase): Function {
+        val methodArgs = method.argTypes.mapIndexed { index, argType ->
+            val argTypeRef = argType.createLslTypeReference(context)
 
-                null
-            } else {
-                FunctionArgument("arg$index", argumentSemanticType, index)
-            }
+            FunctionArgument("arg$index", argTypeRef, index)
         }.toMutableList()
 
-        val returnType = context.resolveType(method.returnType.name.canonicName)
-        if (returnType == null) {
-            logger.severe("unresolved type ${method.returnType.name}")
-        }
+        val returnTypeRef = method.returnType.createLslTypeReference(context)
+        val automatonRef = method.returnType.createAutomatonReference(context)
 
         val function = Function(
             name = method.name,
-            automatonName = method.klass.fullName.canonicName,
+            automatonReference = automatonRef,
             args = methodArgs,
-            returnType = returnType,
+            returnType = returnTypeRef,
             context = context
         )
-        context.storeResolvedFunction(function)
+
+        context.storeFunction(function)
 
         return function
     }
-
-    // todo
-    private fun LslContext.resolveSimpleType(realTypeName: String): Type? {
-        return this.typeStorage.values.firstOrNull { type -> type is SimpleType && type.realType.name == realTypeName }
-    }
-
-    // todo
-    private val String.canonicName: String
-        get() = this.replace("/", ".")
 }
