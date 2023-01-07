@@ -6,6 +6,7 @@ import me.vldf.lsl.extractor.platform.KfgHelper.createAutomatonReference
 import me.vldf.lsl.extractor.platform.KfgHelper.createLslTypeReference
 import me.vldf.lsl.extractor.platform.KfgHelper.lslName
 import me.vldf.lsl.extractor.platform.KfgHelper.lslNameParts
+import me.vldf.lsl.extractor.platform.KfgHelper.takeIfUnresolved
 import me.vldf.lsl.extractor.platform.LibraryDescriptor
 import me.vldf.lsl.extractor.platform.platformLogger
 import org.jetbrains.research.libsl.context.AutomatonContext
@@ -108,6 +109,7 @@ class JvmClassReader : AnalysisStage {
 
     private fun readLibraries() {
         generateSemanticTypes()
+
         generateAutomata()
     }
 
@@ -163,7 +165,7 @@ class JvmClassReader : AnalysisStage {
         return buildMap {
             for (field in klass.fields) {
                 val fieldTypeRef = field.type.createLslTypeReference(context)
-                fieldTypeRef.resolve() ?: continue
+
                 put(field.name, fieldTypeRef)
             }
         }
@@ -187,7 +189,7 @@ class JvmClassReader : AnalysisStage {
             val constructorArgs = mutableListOf<TypeReference>()
 
             for (argType in primaryConstructor?.argTypes ?: listOf()) {
-                val argSemanticType = argType.createLslTypeReference(automatonContext)
+                val argSemanticType = argType.createLslTypeReference(automatonContext).takeIfUnresolved(getUnresolvedTypeRef(automatonContext))
 
                 constructorArgs.add(argSemanticType)
             }
@@ -232,5 +234,9 @@ class JvmClassReader : AnalysisStage {
         context.storeFunction(function)
 
         return function
+    }
+
+    private fun getUnresolvedTypeRef(context: LslContextBase): TypeReference {
+        return TypeReferenceBuilder.build("<unresolved_type>", context = context)
     }
 }

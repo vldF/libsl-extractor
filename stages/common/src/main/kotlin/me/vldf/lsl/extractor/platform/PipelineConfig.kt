@@ -13,9 +13,9 @@ class PipelineConfig (builder: PipelineConfig.() -> Unit) {
     val workDir = File(workDirPath)
 
     var libraryName: String = "Test Library"
-    var libraryVersion = "1.0.0"
-    var libraryUrl = "https://example.com"
-    var libraryLanguage = "unknown"
+    var libraryVersion: String? = null
+    var libraryUrl: String? = null
+    var libraryLanguage: String? = null
 
     val stages: MutableList<AnalysisStage> = mutableListOf()
 

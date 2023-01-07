@@ -59,6 +59,13 @@ type org.intellij.lang.annotations.MagicConstant {
 }
 
 type org.intellij.lang.annotations.PrintFormatPattern {
+    ARG_INDEX: java.lang.String;
+    FLAGS: java.lang.String;
+    WIDTH: java.lang.String;
+    PRECISION: java.lang.String;
+    CONVERSION: java.lang.String;
+    TEXT: java.lang.String;
+    PRINT_FORMAT: java.lang.String;
 }
 
 type org.intellij.lang.annotations.JdkConstants {
@@ -116,6 +123,11 @@ type org.intellij.lang.annotations.Subst {
 }
 
 type org.intellij.lang.annotations.Flow {
+    DEFAULT_SOURCE: java.lang.String;
+    THIS_SOURCE: java.lang.String;
+    DEFAULT_TARGET: java.lang.String;
+    RETURN_METHOD_TARGET: java.lang.String;
+    THIS_TARGET: java.lang.String;
 }
 
 type org.jetbrains.annotations.Nullable {
@@ -178,10 +190,10 @@ type org.intellij.lang.annotations.JdkConstants$TitledBorderJustification {
 type org.intellij.lang.annotations.JdkConstants$FontStyle {
 }
 
-automaton org.jetbrains.annotations.Nls$Capitalization : org.jetbrains.annotations.Nls$Capitalization {
-    fun values();
+automaton org.jetbrains.annotations.Nls$Capitalization (var arg0: java.lang.String, var arg1: int) : org.jetbrains.annotations.Nls$Capitalization {
+    fun values(): array<org.jetbrains.annotations.Nls$Capitalization>;
     
-    fun valueOf(): org.jetbrains.annotations.Nls$Capitalization;
+    fun valueOf(arg0: java.lang.String): org.jetbrains.annotations.Nls$Capitalization;
     
     fun `<clinit>`(): void;
 }
@@ -197,7 +209,7 @@ automaton org.jetbrains.annotations.ApiStatus : org.jetbrains.annotations.ApiSta
 automaton org.intellij.lang.annotations.JdkConstants$ListSelectionMode : org.intellij.lang.annotations.JdkConstants$ListSelectionMode {
 }
 automaton org.intellij.lang.annotations.Pattern : org.intellij.lang.annotations.Pattern {
-    fun value();
+    fun value(): java.lang.String;
 }
 automaton org.jetbrains.annotations.VisibleForTesting : org.jetbrains.annotations.VisibleForTesting {
 }
@@ -206,21 +218,21 @@ automaton org.jetbrains.annotations.ApiStatus$Internal : org.jetbrains.annotatio
 automaton org.intellij.lang.annotations.JdkConstants$CursorType : org.intellij.lang.annotations.JdkConstants$CursorType {
 }
 automaton org.jetbrains.annotations.Contract : org.jetbrains.annotations.Contract {
-    fun value();
+    fun value(): java.lang.String;
     
     fun pure(): bool;
     
-    fun mutates();
+    fun mutates(): java.lang.String;
 }
 automaton org.jetbrains.annotations.ApiStatus$ScheduledForRemoval : org.jetbrains.annotations.ApiStatus$ScheduledForRemoval {
-    fun inVersion();
+    fun inVersion(): java.lang.String;
 }
 automaton org.jetbrains.annotations.Async$Schedule : org.jetbrains.annotations.Async$Schedule {
 }
 automaton org.jetbrains.annotations.NotNull : org.jetbrains.annotations.NotNull {
-    fun value();
+    fun value(): java.lang.String;
     
-    fun exception();
+    fun exception(): `<UNRESOLVED_TYPE>`;
 }
 automaton org.intellij.lang.annotations.JdkConstants$TitledBorderTitlePosition : org.intellij.lang.annotations.JdkConstants$TitledBorderTitlePosition {
 }
@@ -231,15 +243,15 @@ automaton org.jetbrains.annotations.NonBlocking : org.jetbrains.annotations.NonB
 automaton org.intellij.lang.annotations.JdkConstants$PatternFlags : org.intellij.lang.annotations.JdkConstants$PatternFlags {
 }
 automaton org.intellij.lang.annotations.MagicConstant : org.intellij.lang.annotations.MagicConstant {
-    fun intValues();
+    fun intValues(): array<long>;
     
-    fun stringValues();
+    fun stringValues(): array<java.lang.String>;
     
-    fun flags();
+    fun flags(): array<long>;
     
-    fun valuesFromClass();
+    fun valuesFromClass(): `<UNRESOLVED_TYPE>`;
     
-    fun flagsFromClass();
+    fun flagsFromClass(): `<UNRESOLVED_TYPE>`;
 }
 automaton org.intellij.lang.annotations.PrintFormatPattern : org.intellij.lang.annotations.PrintFormatPattern {
 }
@@ -252,11 +264,11 @@ automaton module-info : module-info {
 automaton org.intellij.lang.annotations.JdkConstants$FlowLayoutAlignment : org.intellij.lang.annotations.JdkConstants$FlowLayoutAlignment {
 }
 automaton org.intellij.lang.annotations.Language : org.intellij.lang.annotations.Language {
-    fun value();
+    fun value(): java.lang.String;
     
-    fun prefix();
+    fun prefix(): java.lang.String;
     
-    fun suffix();
+    fun suffix(): java.lang.String;
 }
 automaton org.jetbrains.annotations.Blocking : org.jetbrains.annotations.Blocking {
 }
@@ -271,11 +283,11 @@ automaton org.intellij.lang.annotations.JdkConstants$TreeSelectionMode : org.int
 automaton org.jetbrains.annotations.BlockingExecutor : org.jetbrains.annotations.BlockingExecutor {
 }
 automaton org.jetbrains.annotations.Debug$Renderer : org.jetbrains.annotations.Debug$Renderer {
-    fun text();
+    fun text(): java.lang.String;
     
-    fun childrenArray();
+    fun childrenArray(): java.lang.String;
     
-    fun hasChildren();
+    fun hasChildren(): java.lang.String;
 }
 automaton org.intellij.lang.annotations.Identifier : org.intellij.lang.annotations.Identifier {
 }
@@ -288,19 +300,19 @@ automaton org.intellij.lang.annotations.JdkConstants$TabPlacement : org.intellij
 automaton org.jetbrains.annotations.Debug : org.jetbrains.annotations.Debug {
 }
 automaton org.intellij.lang.annotations.Subst : org.intellij.lang.annotations.Subst {
-    fun value();
+    fun value(): java.lang.String;
 }
 automaton org.intellij.lang.annotations.Flow : org.intellij.lang.annotations.Flow {
-    fun source();
+    fun source(): java.lang.String;
     
     fun sourceIsContainer(): bool;
     
-    fun target();
+    fun target(): java.lang.String;
     
     fun targetIsContainer(): bool;
 }
 automaton org.jetbrains.annotations.Nullable : org.jetbrains.annotations.Nullable {
-    fun value();
+    fun value(): java.lang.String;
 }
 automaton org.jetbrains.annotations.ApiStatus$NonExtendable : org.jetbrains.annotations.ApiStatus$NonExtendable {
 }
@@ -308,7 +320,7 @@ automaton org.jetbrains.annotations.Nls : org.jetbrains.annotations.Nls {
     fun capitalization(): org.jetbrains.annotations.Nls$Capitalization;
 }
 automaton org.jetbrains.annotations.ApiStatus$AvailableSince : org.jetbrains.annotations.ApiStatus$AvailableSince {
-    fun value();
+    fun value(): java.lang.String;
 }
 automaton org.jetbrains.annotations.MustBeInvokedByOverriders : org.jetbrains.annotations.MustBeInvokedByOverriders {
 }
@@ -325,12 +337,12 @@ automaton org.jetbrains.annotations.NonBlockingExecutor : org.jetbrains.annotati
 automaton org.jetbrains.annotations.TestOnly : org.jetbrains.annotations.TestOnly {
 }
 automaton org.jetbrains.annotations.UnknownNullability : org.jetbrains.annotations.UnknownNullability {
-    fun value();
+    fun value(): java.lang.String;
 }
 automaton org.intellij.lang.annotations.RegExp : org.intellij.lang.annotations.RegExp {
-    fun prefix();
+    fun prefix(): java.lang.String;
     
-    fun suffix();
+    fun suffix(): java.lang.String;
 }
 automaton org.intellij.lang.annotations.JdkConstants$HorizontalScrollBarPolicy : org.intellij.lang.annotations.JdkConstants$HorizontalScrollBarPolicy {
 }
@@ -341,7 +353,7 @@ automaton org.jetbrains.annotations.UnmodifiableView : org.jetbrains.annotations
 automaton org.intellij.lang.annotations.JdkConstants$HorizontalAlignment : org.intellij.lang.annotations.JdkConstants$HorizontalAlignment {
 }
 automaton org.jetbrains.annotations.PropertyKey : org.jetbrains.annotations.PropertyKey {
-    fun resourceBundle();
+    fun resourceBundle(): java.lang.String;
 }
 automaton org.intellij.lang.annotations.JdkConstants$TitledBorderJustification : org.intellij.lang.annotations.JdkConstants$TitledBorderJustification {
 }

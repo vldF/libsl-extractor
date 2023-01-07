@@ -4,6 +4,8 @@ import org.jetbrains.research.libsl.context.LslContextBase
 import org.jetbrains.research.libsl.context.LslGlobalContext
 import org.jetbrains.research.libsl.nodes.Library
 import org.jetbrains.research.libsl.nodes.references.builders.TypeReferenceBuilder
+import org.jetbrains.research.libsl.type.RealType
+import org.jetbrains.research.libsl.type.SimpleType
 import org.jetbrains.research.libsl.type.TypeAlias
 import org.vorpal.research.kfg.Package
 import org.vorpal.research.kfg.ir.Class
@@ -15,6 +17,12 @@ class LibraryHelper(private val lslHolder: GlobalAnalysisContext) {
     fun initNewLibrary(descriptor: LibraryDescriptor, pkg: Package) {
         val lslContextBase = createLslContextBase()
         val libraryMeta = descriptor.getMetaNode()
+
+        for ((_, context) in lslHolder.descriptorsToContexts) {
+            lslContextBase.import(context)
+            context.import(lslContextBase)
+
+        }
 
         lslHolder.descriptorsToContexts[descriptor] = lslContextBase
         lslHolder._descriptorsToLibraries[descriptor] = Library(libraryMeta)
@@ -29,15 +37,11 @@ class LibraryHelper(private val lslHolder: GlobalAnalysisContext) {
         }
     }
 
-    fun getLibraryOrNull(klass: Class) = tryOrNull { getLibrary(klass) }
-
     fun getLibrary(klass: Class): Library {
         val descriptor = resolveLibraryDescriptor(klass)
             ?: error("can't get library for ${klass.fullName}")
         return lslHolder._descriptorsToLibraries[descriptor]!!
     }
-
-    fun getContextOrNull(klass: Class): LslContextBase? = tryOrNull { getContext(klass) }
 
     fun getContext(klass: Class): LslGlobalContext {
         val descriptor = resolveLibraryDescriptor(klass)
@@ -69,6 +73,9 @@ class LibraryHelper(private val lslHolder: GlobalAnalysisContext) {
             val boolTypeRef = TypeReferenceBuilder.build("bool", context = context)
             val stringTypeRef = TypeReferenceBuilder.build("string", context = context)
 
+            val objectType = RealType("java.lang.Object".split("."), context = context)
+            val unresolvedType = RealType(listOf("<unresolved_type>"), context = context)
+
             context.storeType(
                 TypeAlias("byte", int8TypeRef, context)
             )
@@ -87,6 +94,8 @@ class LibraryHelper(private val lslHolder: GlobalAnalysisContext) {
             context.storeType(
                 TypeAlias("java.lang.String", stringTypeRef, context)
             )
+            context.storeType(objectType)
+            context.storeType(unresolvedType)
         }
     }
 }
