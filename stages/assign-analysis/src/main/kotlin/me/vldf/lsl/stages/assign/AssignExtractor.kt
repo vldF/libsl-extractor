@@ -3,10 +3,12 @@ package me.vldf.lsl.stages.assign
 import me.vldf.lsl.extractor.platform.AnalysisStage
 import me.vldf.lsl.extractor.platform.GlobalAnalysisContext
 import me.vldf.lsl.extractor.platform.KfgHelper.createMethodReference
+import me.vldf.lsl.extractor.platform.KfgHelper.getLslFunctionContext
+import me.vldf.lsl.extractor.platform.QualifiedAccessResolver
 import me.vldf.lsl.extractor.platform.platformLogger
 import me.vldf.lsl.stages.assign.ipa.InterproceduralAnalyzer
 import me.vldf.lsl.stages.assign.localanalysis.MethodInfo
-import org.jetbrains.research.libsl.context.LslContextBase
+import org.jetbrains.research.libsl.context.LslGlobalContext
 import org.jetbrains.research.libsl.nodes.Contract
 import org.jetbrains.research.libsl.nodes.ContractKind
 import org.vorpal.research.kfg.ClassManager
@@ -62,9 +64,15 @@ class AssignExtractor : AnalysisStage {
         }
     }
 
-    private fun createAssignsContract(methodInfo: MethodInfo, context: LslContextBase): Contract? {
+    private fun createAssignsContract(methodInfo: MethodInfo, context: LslGlobalContext): Contract? {
+        val functionContext = methodInfo.method.getLslFunctionContext(context)
+        if (functionContext == null) {
+            logger.severe("can't resolve a function context for method ${methodInfo.method.name}")
+            return null
+        }
+
         val chainOfNames = methodInfo.chain.mapNotNull { it.chainElementName }
-        val qualifiedAccess = QualifiedAccessResolver.resolve(chainOfNames, context)
+        val qualifiedAccess = QualifiedAccessResolver.resolve(chainOfNames, functionContext)
 
         if (qualifiedAccess == null) {
             logger.severe("qualified access is null for $chainOfNames")
@@ -80,10 +88,8 @@ class AssignExtractor : AnalysisStage {
             return when (this) {
                 is FieldLoadInst -> this.field.name
                 is FieldStoreInst -> this.field.name
-                is Argument -> when (val argName = this.name) {
-                    is StringName -> argName.name
-                    is ConstantName -> argName.name
-                    else -> error("type: ${argName::class}")
+                is Argument -> {
+                    "arg${this.index}"
                 }
                 is ThisRef -> null
                 else -> error("type ${this::class}")

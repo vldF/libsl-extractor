@@ -1,6 +1,11 @@
 package me.vldf.lsl.extractor.platform
 
+import me.vldf.lsl.extractor.platform.KfgHelper.createAutomatonReference
+import me.vldf.lsl.extractor.platform.KfgHelper.createMethodReference
+import org.jetbrains.research.libsl.context.AutomatonContext
+import org.jetbrains.research.libsl.context.FunctionContext
 import org.jetbrains.research.libsl.context.LslContextBase
+import org.jetbrains.research.libsl.context.LslGlobalContext
 import org.jetbrains.research.libsl.nodes.references.AutomatonReference
 import org.jetbrains.research.libsl.nodes.references.FunctionReference
 import org.jetbrains.research.libsl.nodes.references.LslReference
@@ -10,9 +15,9 @@ import org.jetbrains.research.libsl.nodes.references.builders.FunctionReferenceB
 import org.jetbrains.research.libsl.nodes.references.builders.TypeReferenceBuilder
 import org.vorpal.research.kfg.ir.Class
 import org.vorpal.research.kfg.ir.Method
+import org.vorpal.research.kfg.ir.value.instruction.Instruction
 import org.vorpal.research.kfg.type.ArrayType
 import org.vorpal.research.kfg.type.ClassType
-import org.vorpal.research.kfg.type.Reference
 import org.vorpal.research.kfg.type.Type
 
 object KfgHelper {
@@ -67,8 +72,25 @@ object KfgHelper {
         get() = this.name.split("/")
 
     fun Method.createMethodReference(context: LslContextBase): FunctionReference {
-        val argTypes = this.argTypes.map { it.createLslTypeReference(context) }
-        return FunctionReferenceBuilder.build(this.name, argTypes, context)
+        val contextToSearch = if (context !is AutomatonContext) {
+            val automatonRef = this.klass.createAutomatonReference(context)
+            val automaton = automatonRef.resolve()
+            automaton?.context ?: context
+        } else {
+            context
+        }
+
+        val argTypes = this.argTypes.map { it.createLslTypeReference(contextToSearch) }
+        return FunctionReferenceBuilder.build(this.name, argTypes, contextToSearch)
+    }
+
+    fun Method.getLslFunctionContext(baseContextBase: LslGlobalContext): FunctionContext? {
+        val automatonRef = this.klass.createAutomatonReference(baseContextBase)
+        val automaton = automatonRef.resolve() ?: return null
+        val functionRef = this.createMethodReference(automaton.context)
+        val function = functionRef.resolve() ?: return null
+
+        return function.context
     }
 
     fun <T, R, G : LslReference<T, R>> G.takeIfUnresolved(value: G): G {
@@ -78,4 +100,7 @@ object KfgHelper {
             value
         }
     }
+
+    val Method.instructions: List<Instruction>
+        get() = this.body.flatten()
 }

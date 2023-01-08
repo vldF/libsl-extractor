@@ -1,7 +1,7 @@
 package me.vldf.lsl.stages.assign.localanalysis
 
+import me.vldf.lsl.extractor.platform.KfgHelper.instructions
 import me.vldf.lsl.extractor.platform.platformLogger
-import me.vldf.lsl.stages.assign.instructions
 import org.vorpal.research.kfg.ir.Method
 import org.vorpal.research.kfg.ir.value.Argument
 import org.vorpal.research.kfg.ir.value.ThisRef

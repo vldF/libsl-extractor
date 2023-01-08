@@ -10,6 +10,7 @@ import me.vldf.lsl.extractor.platform.KfgHelper.takeIfUnresolved
 import me.vldf.lsl.extractor.platform.LibraryDescriptor
 import me.vldf.lsl.extractor.platform.platformLogger
 import org.jetbrains.research.libsl.context.AutomatonContext
+import org.jetbrains.research.libsl.context.FunctionContext
 import org.jetbrains.research.libsl.context.LslContextBase
 import org.jetbrains.research.libsl.nodes.*
 import org.jetbrains.research.libsl.nodes.Function
@@ -20,6 +21,7 @@ import org.jetbrains.research.libsl.nodes.references.builders.TypeReferenceBuild
 import org.jetbrains.research.libsl.type.EnumType
 import org.jetbrains.research.libsl.type.RealType
 import org.jetbrains.research.libsl.type.StructuredType
+import org.jetbrains.research.libsl.type.Type
 import org.vorpal.research.kfg.ClassManager
 import org.vorpal.research.kfg.KfgConfigBuilder
 import org.vorpal.research.kfg.container.Container
@@ -200,11 +202,15 @@ class JvmClassReader : AnalysisStage {
 
             val localFunctions = klass.methods.map { method -> getLocalFunction(method, automatonContext)}.toMutableList()
 
+            val internalVariables = getInternalVariables(klass, automatonContext)
+            internalVariables.forEach { variable -> automatonContext.storeVariable(variable) }
+
             val automaton = Automaton(
                 name = klass.lslName,
                 typeReference = automatonTypeRef,
                 constructorVariables = constructorVariables,
                 localFunctions = localFunctions,
+                internalVariables = internalVariables.toMutableList(),
                 context = automatonContext
             )
 
@@ -213,30 +219,44 @@ class JvmClassReader : AnalysisStage {
         }
     }
 
-    private fun getLocalFunction(method: Method, context: LslContextBase): Function {
+    private fun getLocalFunction(method: Method, automatonContext: AutomatonContext): Function {
+        val functionContext = FunctionContext(automatonContext)
+
         val methodArgs = method.argTypes.mapIndexed { index, argType ->
-            val argTypeRef = argType.createLslTypeReference(context)
+            val argTypeRef = argType.createLslTypeReference(functionContext)
 
             FunctionArgument("arg$index", argTypeRef, index)
         }.toMutableList()
 
-        val returnTypeRef = method.returnType.createLslTypeReference(context)
-        val automatonRef = method.returnType.createAutomatonReference(context)
+        val returnTypeRef = method.returnType.createLslTypeReference(functionContext)
+        val automatonRef = method.returnType.createAutomatonReference(functionContext)
 
         val function = Function(
             name = method.name,
             automatonReference = automatonRef,
             args = methodArgs,
             returnType = returnTypeRef,
-            context = context
+            context = functionContext
         )
 
-        context.storeFunction(function)
+        automatonContext.storeFunction(function)
+        methodArgs.forEach { arg -> functionContext.storeFunctionArgument(arg) }
 
         return function
     }
 
+    private fun getInternalVariables(klass: ConcreteClass, automatonContext: AutomatonContext): List<VariableWithInitialValue> {
+        return buildList {
+            for (field in klass.fields) {
+                val variableName = field.name
+                val variableType = field.type.createLslTypeReference(automatonContext)
+                val internalVariable = VariableWithInitialValue(variableName, variableType, initialValue = null)
+                add(internalVariable)
+            }
+        }
+    }
+
     private fun getUnresolvedTypeRef(context: LslContextBase): TypeReference {
-        return TypeReferenceBuilder.build("<unresolved_type>", context = context)
+        return TypeReferenceBuilder.build(Type.UNRESOLVED_TYPE_SYMBOL, context = context)
     }
 }

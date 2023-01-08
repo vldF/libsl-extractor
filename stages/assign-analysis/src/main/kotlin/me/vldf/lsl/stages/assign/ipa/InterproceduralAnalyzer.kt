@@ -1,7 +1,7 @@
 package me.vldf.lsl.stages.assign.ipa
 
+import me.vldf.lsl.extractor.platform.KfgHelper.instructions
 import me.vldf.lsl.extractor.platform.platformLogger
-import me.vldf.lsl.stages.assign.instructions
 import me.vldf.lsl.stages.assign.localanalysis.AnalysisInfosHolder
 import me.vldf.lsl.stages.assign.localanalysis.LocalMethodAnalyzer
 import me.vldf.lsl.stages.assign.localanalysis.MethodInfo
