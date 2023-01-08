@@ -2,6 +2,7 @@ import me.vldf.lsl.extractor.platform.AnalysisPipeline
 import me.vldf.lsl.extractor.platform.PipelineConfig
 import me.vldf.lsl.jvm.reader.JvmClassReader
 import me.vldf.lsl.stages.assign.AssignExtractor
+import org.jetbrains.research.libsl.LibSL
 import org.junit.jupiter.api.Assertions
 import java.io.File
 
@@ -51,24 +52,11 @@ object TestPlatform {
                 val expectedContent = resultFile.readText()
                 Assertions.assertEquals(textCleaner(expectedContent), textCleaner(actualContent))
             } else {
-//                testLslCorrectness(actualContent)
                 resultFile.writeText(actualContent)
             }
         }
     }
 
-//    /**
-//     * This function parses the description via lsl parser and dumps the lsl IR to text again. Then, asserts equals of
-//     * [lslDescription] and dumped text
-//     */
-//    private fun testLslCorrectness(lslDescription: String) {
-//        val context = createLslContext()
-//        val libSL = LibSL("", context)
-//        val library = libSL.loadFromString(lslDescription)
-//        val dumpLsl = library.dumpToString()
-//        Assertions.assertEquals(textCleaner(lslDescription), textCleaner(dumpLsl))
-//    }
-//
     /**
      * removes all space-only lines in text
      */
