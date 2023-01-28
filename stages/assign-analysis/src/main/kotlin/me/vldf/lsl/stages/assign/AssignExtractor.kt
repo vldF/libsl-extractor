@@ -35,9 +35,7 @@ class AssignExtractor : AnalysisStage {
     }
 
     private fun runAnalysis() {
-        for (klass in cm.concreteClasses) {
-            interproceduralAnalyzer.analyze(klass)
-        }
+        interproceduralAnalyzer.runAnalysis()
     }
 
     private fun saveAssigns() {

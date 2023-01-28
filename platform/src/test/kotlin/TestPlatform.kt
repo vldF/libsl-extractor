@@ -39,6 +39,8 @@ object TestPlatform {
     }
 
     private fun runTest(testCaseName: String, pipelineConfigProvider: () -> PipelineConfig) {
+        printSystemInfo()
+
         val analysisPipeline = AnalysisPipeline(pipelineConfigProvider())
         analysisPipeline.run()
 
@@ -55,6 +57,11 @@ object TestPlatform {
                 resultFile.writeText(actualContent)
             }
         }
+    }
+
+    private fun printSystemInfo() {
+        val maxMemory = Runtime.getRuntime().maxMemory() shr 10 shr 10 // megabytes
+        println("available memory: $maxMemory megabytes")
     }
 
     /**

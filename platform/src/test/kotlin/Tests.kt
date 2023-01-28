@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 class Tests {
@@ -29,5 +30,10 @@ class Tests {
     @Test
     fun okHttpTest() {
         TestPlatform.runForJarDir("okhttp")
+    }
+
+    @Test
+    fun virtualMethodsTest() {
+        TestPlatform.runForClassesDir("virtualmethods")
     }
 }

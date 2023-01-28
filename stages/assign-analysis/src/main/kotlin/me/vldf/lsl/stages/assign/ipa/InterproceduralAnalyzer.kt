@@ -2,12 +2,14 @@ package me.vldf.lsl.stages.assign.ipa
 
 import me.vldf.lsl.extractor.platform.KfgHelper.instructions
 import me.vldf.lsl.extractor.platform.platformLogger
+import me.vldf.lsl.stages.assign.inheritance.InheritanceService
 import me.vldf.lsl.stages.assign.localanalysis.AnalysisInfosHolder
 import me.vldf.lsl.stages.assign.localanalysis.LocalMethodAnalyzer
 import me.vldf.lsl.stages.assign.localanalysis.MethodInfo
 import org.vorpal.research.kfg.ClassManager
 import org.vorpal.research.kfg.ir.Class
 import org.vorpal.research.kfg.ir.Method
+import org.vorpal.research.kfg.ir.value.Argument
 import org.vorpal.research.kfg.ir.value.ThisRef
 import org.vorpal.research.kfg.ir.value.instruction.CallInst
 
@@ -16,62 +18,122 @@ class InterproceduralAnalyzer(private val cm: ClassManager) {
     private val localAnalyzingInfos = mutableMapOf<Method, AnalysisInfosHolder>()
     private val interproceduralMethodInfos = mutableMapOf<Method, AnalysisInfosHolder>()
     private val localMethodAnalyzer = LocalMethodAnalyzer()
+    private val inheritanceService = InheritanceService(cm)
     private val logger by platformLogger()
 
-    fun analyze(klass: Class) {
-        analyzeEveryMethod(klass)
-        computeInterprocedural(klass)
+    init {
+        inheritanceService.initialize()
     }
 
-    fun getAnalysisResults() = interproceduralMethodInfos.toMap()
+    fun runAnalysis() {
+        for (klass in cm.concreteClasses) {
+            analyzeLocal(klass)
+        }
 
-    private fun analyzeEveryMethod(klass: Class) {
+        for (klass in cm.concreteClasses) {
+            runInterproceduralAnalyze(klass)
+        }
+    }
+
+    private fun analyzeLocal(klass: Class) {
+        runLocalAnalyze(klass)
+    }
+
+    private fun runLocalAnalyze(klass: Class) {
         for (method in klass.methods) {
             val localAnalysisInfo = localMethodAnalyzer.analyze(method)
             localAnalyzingInfos[method] = localAnalysisInfo
         }
     }
 
-    private fun computeInterprocedural(klass: Class) {
+    private fun runInterproceduralAnalyze(klass: Class) {
         for (method in klass.methods) {
-            computeInterprocedural(method)
+            runInterproceduralAnalyze(method)
         }
     }
 
-    private fun computeInterprocedural(method: Method, callHistory: List<Method> = listOf()) {
-        if (method in callHistory)
+    private fun runInterproceduralAnalyze(
+        method: Method,
+        callHistory: List<Method> = listOf()
+    ) {
+        if (method in callHistory) {
             return
-
-        val currentMethodIpaInfos = AnalysisInfosHolder()
-        interproceduralMethodInfos[method] = currentMethodIpaInfos
-        val mapper = ImmutableNameMapper(cm)
+        }
 
         val callInstructions = method.instructions.filterIsInstance<CallInst>()
-        for (callInst in callInstructions) {
-            val calleeMethod = callInst.method
-            mapper.addAliasesForCallInst(callInst)
+        val currentMethodInfo = AnalysisInfosHolder()
+        interproceduralMethodInfos[method] = currentMethodInfo
 
-            computeInterprocedural(calleeMethod, callHistory + method)
-
-            val calleeMethodIpaInfos = interproceduralMethodInfos[calleeMethod]
-            if (calleeMethodIpaInfos == null) {
-                logger.warning("can't get infos for a callee method ${calleeMethod.klass}.${calleeMethod.name}")
-                continue
-            }
-
-            for (calleeInfo in calleeMethodIpaInfos.getInfos()) {
-                val rootValue = calleeInfo.chain.first()
-                val originValue = mapper.getOriginalValue(rootValue)
-                if (rootValue == originValue && originValue !is ThisRef)
-                    continue
-
-                currentMethodIpaInfos.addInfo(MethodInfo(listOf(originValue) + calleeInfo.chain.drop(1), method))
-            }
+        val currentMethodLocalInfos = localAnalyzingInfos[method]
+        if (currentMethodLocalInfos != null) {
+            currentMethodInfo.addInfos(currentMethodLocalInfos.getInfos())
         }
 
-        val currentMethodLocalInfos = localAnalyzingInfos[method] ?: return
-        for (localInfo in currentMethodLocalInfos.getInfos()) {
-            currentMethodIpaInfos.addInfo(localInfo)
+        for (callInst in callInstructions) {
+            val possibleCalleeMethods = inheritanceService.findAllOverrides(callInst.method)
+
+            for (calleeMethod in possibleCalleeMethods) {
+                if (interproceduralMethodInfos[calleeMethod] == null) {
+                    runInterproceduralAnalyze(calleeMethod, callHistory + method)
+                }
+
+                val previousAnalyzedInfos = interproceduralMethodInfos[calleeMethod]
+                if (previousAnalyzedInfos == null) {
+                    logger.severe("can't get previousAnalyzedInfos for method $method")
+                    continue
+                }
+
+                val methodInfos = mapInfosToCurrentFunction(previousAnalyzedInfos, callInst, method)
+                currentMethodInfo.addInfos(methodInfos)
+            }
         }
     }
+
+    private fun mapInfosToCurrentFunction(
+        methodInfos: AnalysisInfosHolder,
+        callInst: CallInst,
+        currentMethod: Method
+    ): List<MethodInfo> {
+        return buildList {
+            for (info in methodInfos.getInfos()) {
+                val mappedMethodInfo = mapInfoToCurrentFunction(info, callInst) ?: continue
+                add(MethodInfo(mappedMethodInfo.chain, currentMethod))
+            }
+        }
+    }
+
+    // todo: introduce a static method call support
+    private fun mapInfoToCurrentFunction(methodInfo: MethodInfo, callInst: CallInst): MethodInfo? {
+        val callingClassValue = if (callInst.isStatic) {
+            callInst.args[0]
+        } else {
+            callInst.callee
+        }
+
+        val method = callInst.method
+        val rootOfCallChain = methodInfo.chain.first()
+        if (rootOfCallChain is ThisRef) {
+            if (callingClassValue !is ThisRef && callingClassValue !is Argument) {
+                // not a global state modification
+                return null
+            }
+
+            val chain = listOf(callingClassValue) + methodInfo.chain.drop(1)
+            return MethodInfo(chain, method)
+        }
+
+        check(rootOfCallChain is Argument) { "root of the calling chain ${methodInfo.chain} is not an argument" }
+        val argIndex = rootOfCallChain.index
+        val newRootValue = callInst.args[argIndex]
+
+        if (newRootValue !is ThisRef && newRootValue !is Argument) {
+            // not a global state modification
+            return null
+        }
+
+        val chain = listOf(newRootValue) + methodInfo.chain.drop(1)
+        return MethodInfo(chain, method)
+    }
+
+    fun getAnalysisResults() = interproceduralMethodInfos.toMap()
 }
