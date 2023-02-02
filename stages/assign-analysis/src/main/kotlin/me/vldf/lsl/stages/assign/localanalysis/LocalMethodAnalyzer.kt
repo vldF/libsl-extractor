@@ -25,7 +25,7 @@ class LocalMethodAnalyzer {
                     }
 
                     val firstValue = chainOfValues.first()
-                    if (firstValue !is Argument && firstValue !is ThisRef) {
+                    if (firstValue !is Argument && firstValue !is ThisRef && firstValue !is FieldStoreInst && firstValue !is FieldLoadInst) {
                         continue
                     }
 
@@ -50,7 +50,9 @@ class LocalMethodAnalyzer {
                     }
                 }
                 is FieldStoreInst -> {
-                    if (!this.hasOwner) {
+                    if (this.isStatic) {
+                        this.operands.first().toQualifiedAccessChain.plusElement(this)
+                    } else if (!this.hasOwner) {
                         listOf()
                     } else {
                         this.owner.toQualifiedAccessChain.plusElement(this)

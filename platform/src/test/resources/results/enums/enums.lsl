@@ -13,10 +13,14 @@ automaton me.vldf.lsl.test.enums.EnumClass (var arg0: java.lang.String, var arg1
     var C: me.vldf.lsl.test.enums.EnumClass;
     var $VALUES: array<me.vldf.lsl.test.enums.EnumClass>;
     fun values(): array<me.vldf.lsl.test.enums.EnumClass>;
-    
+
     fun valueOf(arg0: java.lang.String): me.vldf.lsl.test.enums.EnumClass;
-    
+
     fun $values(): array<me.vldf.lsl.test.enums.EnumClass>;
-    
-    fun `<clinit>`(): void;
+
+    fun `<clinit>`(): void
+        assigns A;
+        assigns B;
+        assigns C;
+        assigns $VALUES;
 }

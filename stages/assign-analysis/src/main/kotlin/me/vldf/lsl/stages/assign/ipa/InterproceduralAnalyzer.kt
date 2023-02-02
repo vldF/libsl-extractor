@@ -12,6 +12,8 @@ import org.vorpal.research.kfg.ir.Method
 import org.vorpal.research.kfg.ir.value.Argument
 import org.vorpal.research.kfg.ir.value.ThisRef
 import org.vorpal.research.kfg.ir.value.instruction.CallInst
+import org.vorpal.research.kfg.ir.value.instruction.FieldLoadInst
+import org.vorpal.research.kfg.ir.value.instruction.FieldStoreInst
 
 
 class InterproceduralAnalyzer(private val cm: ClassManager) {
@@ -103,12 +105,17 @@ class InterproceduralAnalyzer(private val cm: ClassManager) {
     }
 
     // todo: introduce a static method call support
+    // todo: introduce a phi support
     private fun mapInfoToCurrentFunction(methodInfo: MethodInfo, callInst: CallInst): MethodInfo? {
-        val callingClassValue = if (callInst.isStatic) {
-            callInst.args[0]
-        } else {
-            callInst.callee
-        }
+       return if (callInst.isStatic) {
+           mapInfoToCurrentMethodStatic(methodInfo, callInst)
+       } else {
+           mapInfoToCurrentMethodNonStatic(methodInfo, callInst)
+       }
+    }
+
+    private fun mapInfoToCurrentMethodNonStatic(methodInfo: MethodInfo, callInst: CallInst): MethodInfo? {
+        val callingClassValue = callInst.callee
 
         val method = callInst.method
         val rootOfCallChain = methodInfo.chain.first()
@@ -128,6 +135,25 @@ class InterproceduralAnalyzer(private val cm: ClassManager) {
 
         if (newRootValue !is ThisRef && newRootValue !is Argument) {
             // not a global state modification
+            return null
+        }
+
+        val chain = listOf(newRootValue) + methodInfo.chain.drop(1)
+        return MethodInfo(chain, method)
+    }
+
+    private fun mapInfoToCurrentMethodStatic(methodInfo: MethodInfo, callInst: CallInst): MethodInfo? {
+        val method = callInst.method
+        val rootOfCallChain = methodInfo.chain.first()
+
+        val newRootValue = if (rootOfCallChain is Argument) {
+            val argIndex = rootOfCallChain.index
+            callInst.args[argIndex]
+        } else if (rootOfCallChain is FieldLoadInst && rootOfCallChain.isStatic) {
+            rootOfCallChain
+        } else if (rootOfCallChain is FieldStoreInst && rootOfCallChain.isStatic) {
+            rootOfCallChain
+        } else {
             return null
         }
 

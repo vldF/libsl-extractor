@@ -5,6 +5,8 @@ import org.jetbrains.research.libsl.nodes.QualifiedAccess
 import org.vorpal.research.kfg.ir.Method
 import org.vorpal.research.kfg.ir.value.Argument
 import org.vorpal.research.kfg.ir.value.ThisRef
+import org.vorpal.research.kfg.ir.value.instruction.FieldLoadInst
+import org.vorpal.research.kfg.ir.value.instruction.FieldStoreInst
 
 
 sealed interface AssignInfo {
@@ -17,6 +19,8 @@ object AssignInfoFabric {
         return when (val value = methodInfo.chain.first()) {
             is Argument -> ArgumentAssignInfo(value.method, qualifiedAccesses, value.index)
             is ThisRef -> ThisAssignInfo(methodInfo.method, qualifiedAccesses)
+            is FieldStoreInst -> StaticFieldStoreInfo(methodInfo.method, qualifiedAccesses)
+            is FieldLoadInst -> StaticFieldStoreInfo(methodInfo.method, qualifiedAccesses)
             else -> null
         }
     }
@@ -29,6 +33,11 @@ data class ArgumentAssignInfo(
 ) : AssignInfo
 
 data class ThisAssignInfo(
+    override val method: Method,
+    override val qualifiedAccess: QualifiedAccess
+) : AssignInfo
+
+data class StaticFieldStoreInfo(
     override val method: Method,
     override val qualifiedAccess: QualifiedAccess
 ) : AssignInfo

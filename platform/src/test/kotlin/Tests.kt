@@ -36,4 +36,9 @@ class Tests {
     fun virtualMethodsTest() {
         TestPlatform.runForClassesDir("virtualmethods")
     }
+
+    @Test
+    fun staticMethodsTest() {
+        TestPlatform.runForClassesDir("staticmethods")
+    }
 }
