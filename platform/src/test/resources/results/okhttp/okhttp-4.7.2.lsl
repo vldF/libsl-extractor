@@ -2377,7 +2377,8 @@ automaton okhttp3.internal.ws.WebSocketExtensions (var arg0: bool, var arg1: int
     var Companion: okhttp3.internal.ws.WebSocketExtensions$Companion;
     fun noContextTakeover(arg0: bool): bool;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 
     fun component1(): bool;
 
@@ -2555,7 +2556,8 @@ automaton okhttp3.OkHttpClient (var arg0: okhttp3.OkHttpClient$Builder) : okhttp
 
     fun `-deprecated_pingIntervalMillis`(): int;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 
     fun clone(): java.lang.Object;
 
@@ -2655,7 +2657,8 @@ automaton okhttp3.EventListener : okhttp3.EventListener {
 
     fun cacheConditionalHit(arg0: okhttp3.Call, arg1: okhttp3.Response): void;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 }
 automaton okhttp3.internal.http2.Http2Connection$ReaderRunnable$settings$$inlined$execute$1 (var arg0: java.lang.String, var arg1: bool, var arg2: java.lang.String, var arg3: bool, var arg4: okhttp3.internal.http2.Http2Connection$ReaderRunnable, var arg5: bool, var arg6: okhttp3.internal.http2.Settings) : okhttp3.internal.http2.Http2Connection$ReaderRunnable$settings$$inlined$execute$1 {
     var $name: java.lang.String;
@@ -2690,7 +2693,9 @@ automaton okhttp3.internal.platform.BouncyCastlePlatform : okhttp3.internal.plat
 
     fun getSelectedProtocol(arg0: javax.net.ssl.SSLSocket): java.lang.String;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
+        assigns isSupported;
 
     fun access$isSupported$cp(): bool;
 }
@@ -2795,7 +2800,10 @@ automaton okhttp3.internal.cache2.Relay (var arg0: `<UNRESOLVED_TYPE>`, var arg1
 
     fun getBufferMaxSize(): long;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
+        assigns PREFIX_CLEAN;
+        assigns PREFIX_DIRTY;
 
     fun access$writeHeader(arg0: okhttp3.internal.cache2.Relay, arg1: okio.ByteString, arg2: long, arg3: long): void;
 }
@@ -2895,7 +2903,8 @@ automaton okhttp3.Headers (var arg0: array<java.lang.String>) : okhttp3.Headers 
 
     fun toMultimap(): `<UNRESOLVED_TYPE>`;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 
     fun of(arg0: array): okhttp3.Headers;
 
@@ -2960,7 +2969,8 @@ automaton okhttp3.internal.http2.Http2Writer (var arg0: okio.BufferedSink, var a
 
     fun windowUpdate(arg0: int, arg1: long): void;
 
-    fun frameHeader(arg0: int, arg1: int, arg2: int, arg3: int): void;
+    fun frameHeader(arg0: int, arg1: int, arg2: int, arg3: int): void
+        assigns sink;
 
     fun close(): void
         assigns closed;
@@ -2969,7 +2979,8 @@ automaton okhttp3.internal.http2.Http2Writer (var arg0: okio.BufferedSink, var a
 
     fun headers(arg0: bool, arg1: int, arg2: java.util.List): void;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 }
 automaton okhttp3.FormBody (var arg0: `<UNRESOLVED_TYPE>`, var arg1: `<UNRESOLVED_TYPE>`) : okhttp3.FormBody {
     var encodedNames: `<UNRESOLVED_TYPE>`;
@@ -2996,7 +3007,9 @@ automaton okhttp3.FormBody (var arg0: `<UNRESOLVED_TYPE>`, var arg1: `<UNRESOLVE
 
     fun writeOrCountBytes(arg0: okio.BufferedSink, arg1: bool): long;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
+        assigns CONTENT_TYPE;
 }
 automaton okhttp3.internal.connection.RealConnectionPool (var arg0: okhttp3.internal.concurrent.TaskRunner, var arg1: int, var arg2: long, var arg3: `<UNRESOLVED_TYPE>`) : okhttp3.internal.connection.RealConnectionPool {
     var keepAliveDurationNs: long;
@@ -3024,7 +3037,8 @@ automaton okhttp3.internal.connection.RealConnectionPool (var arg0: okhttp3.inte
         assigns arg0.noNewExchanges;
         assigns arg0.idleAtNs;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 }
 automaton okhttp3.internal.http.RealInterceptorChain (var arg0: okhttp3.internal.connection.RealCall, var arg1: `<UNRESOLVED_TYPE>`, var arg2: int, var arg3: okhttp3.internal.connection.Exchange, var arg4: okhttp3.Request, var arg5: int, var arg6: int, var arg7: int) : okhttp3.internal.http.RealInterceptorChain {
     var calls: int;
@@ -3084,7 +3098,8 @@ automaton okhttp3.internal.http.StatusLine (var arg0: okhttp3.Protocol, var arg1
     var Companion: okhttp3.internal.http.StatusLine$Companion;
     fun toString(): java.lang.String;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 }
 automaton okhttp3.Cache$CacheResponseBody$1 (var arg0: okhttp3.Cache$CacheResponseBody, var arg1: okio.Source, var arg2: okio.Source) : okhttp3.Cache$CacheResponseBody$1 {
     var this$0: okhttp3.Cache$CacheResponseBody;
@@ -3115,7 +3130,9 @@ automaton okhttp3.MultipartReader (var arg0: okio.BufferedSource, var arg1: java
 
     fun boundary(): java.lang.String;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
+        assigns afterBoundaryOptions;
 
     fun access$getCurrentPart$p(arg0: okhttp3.MultipartReader): okhttp3.MultipartReader$PartSource;
 
@@ -3141,7 +3158,8 @@ automaton okhttp3.internal.platform.Jdk8WithJettyBootPlatform (var arg0: `<UNRES
 
     fun getSelectedProtocol(arg0: javax.net.ssl.SSLSocket): java.lang.String;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 }
 automaton okhttp3.CipherSuite$Companion$ORDER_BY_NAME$1 : okhttp3.CipherSuite$Companion$ORDER_BY_NAME$1 {
     fun compare(arg0: java.lang.String, arg1: java.lang.String): int;
@@ -3194,7 +3212,8 @@ automaton okhttp3.internal.http2.Http2ExchangeCodec (var arg0: okhttp3.OkHttpCli
 
     fun getConnection(): okhttp3.internal.connection.RealConnection;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 
     fun access$getHTTP_2_SKIPPED_REQUEST_HEADERS$cp(): `<UNRESOLVED_TYPE>`;
 
@@ -3215,7 +3234,8 @@ automaton okhttp3.internal.tls.BasicCertificateChainCleaner (var arg0: okhttp3.i
 
     fun equals(arg0: java.lang.Object): bool;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 }
 automaton okhttp3.internal.platform.OpenJSSEPlatform$Companion : okhttp3.internal.platform.OpenJSSEPlatform$Companion {
     fun isSupported(): bool;
@@ -3245,29 +3265,21 @@ automaton okhttp3.CacheControl$Builder : okhttp3.CacheControl$Builder {
     var onlyIfCached: bool;
     var noTransform: bool;
     var immutable: bool;
-    fun noCache(): okhttp3.CacheControl$Builder
-        assigns noCache;
+    fun noCache(): okhttp3.CacheControl$Builder;
 
-    fun noStore(): okhttp3.CacheControl$Builder
-        assigns noStore;
+    fun noStore(): okhttp3.CacheControl$Builder;
 
-    fun maxAge(arg0: int, arg1: java.util.concurrent.TimeUnit): okhttp3.CacheControl$Builder
-        assigns maxAgeSeconds;
+    fun maxAge(arg0: int, arg1: java.util.concurrent.TimeUnit): okhttp3.CacheControl$Builder;
 
-    fun maxStale(arg0: int, arg1: java.util.concurrent.TimeUnit): okhttp3.CacheControl$Builder
-        assigns maxStaleSeconds;
+    fun maxStale(arg0: int, arg1: java.util.concurrent.TimeUnit): okhttp3.CacheControl$Builder;
 
-    fun minFresh(arg0: int, arg1: java.util.concurrent.TimeUnit): okhttp3.CacheControl$Builder
-        assigns minFreshSeconds;
+    fun minFresh(arg0: int, arg1: java.util.concurrent.TimeUnit): okhttp3.CacheControl$Builder;
 
-    fun onlyIfCached(): okhttp3.CacheControl$Builder
-        assigns onlyIfCached;
+    fun onlyIfCached(): okhttp3.CacheControl$Builder;
 
-    fun noTransform(): okhttp3.CacheControl$Builder
-        assigns noTransform;
+    fun noTransform(): okhttp3.CacheControl$Builder;
 
-    fun immutable(): okhttp3.CacheControl$Builder
-        assigns immutable;
+    fun immutable(): okhttp3.CacheControl$Builder;
 
     fun clampToInt(arg0: long): int;
 
@@ -3290,7 +3302,8 @@ automaton okhttp3.internal.platform.android.AndroidSocketAdapter (var arg0: `<UN
 
     fun getSelectedProtocol(arg0: javax.net.ssl.SSLSocket): java.lang.String;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 
     fun matchesSocketFactory(arg0: javax.net.ssl.SSLSocketFactory): bool;
 }
@@ -3320,7 +3333,8 @@ automaton okhttp3.internal.connection.ConnectInterceptor : okhttp3.internal.conn
     var INSTANCE: okhttp3.internal.connection.ConnectInterceptor;
     fun intercept(arg0: okhttp3.Interceptor$Chain): okhttp3.Response;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns INSTANCE;
 }
 automaton okhttp3.internal.http2.Http2 : okhttp3.internal.http2.Http2 {
     var CONNECTION_PREFACE: okio.ByteString;
@@ -3351,7 +3365,12 @@ automaton okhttp3.internal.http2.Http2 : okhttp3.internal.http2.Http2 {
 
     fun formatFlags(arg0: int, arg1: int): java.lang.String;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns INSTANCE;
+        assigns CONNECTION_PREFACE;
+        assigns FRAME_NAMES;
+        assigns FLAGS;
+        assigns BINARY;
 }
 automaton okhttp3.internal.http2.Http2Reader$Companion : okhttp3.internal.http2.Http2Reader$Companion {
     fun getLogger(): `<UNRESOLVED_TYPE>`;
@@ -3525,11 +3544,9 @@ automaton okhttp3.OkHttpClient$Builder : okhttp3.OkHttpClient$Builder {
     fun setRouteDatabase$okhttp(arg0: okhttp3.internal.connection.RouteDatabase): void
         assigns routeDatabase;
 
-    fun dispatcher(arg0: okhttp3.Dispatcher): okhttp3.OkHttpClient$Builder
-        assigns dispatcher;
+    fun dispatcher(arg0: okhttp3.Dispatcher): okhttp3.OkHttpClient$Builder;
 
-    fun connectionPool(arg0: okhttp3.ConnectionPool): okhttp3.OkHttpClient$Builder
-        assigns connectionPool;
+    fun connectionPool(arg0: okhttp3.ConnectionPool): okhttp3.OkHttpClient$Builder;
 
     fun interceptors(): `<UNRESOLVED_TYPE>`;
 
@@ -3543,95 +3560,65 @@ automaton okhttp3.OkHttpClient$Builder : okhttp3.OkHttpClient$Builder {
 
     fun `-addNetworkInterceptor`(arg0: kotlin.jvm.functions.Function1): okhttp3.OkHttpClient$Builder;
 
-    fun eventListener(arg0: okhttp3.EventListener): okhttp3.OkHttpClient$Builder
-        assigns eventListenerFactory;
+    fun eventListener(arg0: okhttp3.EventListener): okhttp3.OkHttpClient$Builder;
 
-    fun eventListenerFactory(arg0: okhttp3.EventListener$Factory): okhttp3.OkHttpClient$Builder
-        assigns eventListenerFactory;
+    fun eventListenerFactory(arg0: okhttp3.EventListener$Factory): okhttp3.OkHttpClient$Builder;
 
-    fun retryOnConnectionFailure(arg0: bool): okhttp3.OkHttpClient$Builder
-        assigns retryOnConnectionFailure;
+    fun retryOnConnectionFailure(arg0: bool): okhttp3.OkHttpClient$Builder;
 
-    fun authenticator(arg0: okhttp3.Authenticator): okhttp3.OkHttpClient$Builder
-        assigns authenticator;
+    fun authenticator(arg0: okhttp3.Authenticator): okhttp3.OkHttpClient$Builder;
 
-    fun followRedirects(arg0: bool): okhttp3.OkHttpClient$Builder
-        assigns followRedirects;
+    fun followRedirects(arg0: bool): okhttp3.OkHttpClient$Builder;
 
-    fun followSslRedirects(arg0: bool): okhttp3.OkHttpClient$Builder
-        assigns followSslRedirects;
+    fun followSslRedirects(arg0: bool): okhttp3.OkHttpClient$Builder;
 
-    fun cookieJar(arg0: okhttp3.CookieJar): okhttp3.OkHttpClient$Builder
-        assigns cookieJar;
+    fun cookieJar(arg0: okhttp3.CookieJar): okhttp3.OkHttpClient$Builder;
 
-    fun cache(arg0: okhttp3.Cache): okhttp3.OkHttpClient$Builder
-        assigns cache;
+    fun cache(arg0: okhttp3.Cache): okhttp3.OkHttpClient$Builder;
 
-    fun dns(arg0: okhttp3.Dns): okhttp3.OkHttpClient$Builder
-        assigns routeDatabase;
-        assigns dns;
+    fun dns(arg0: okhttp3.Dns): okhttp3.OkHttpClient$Builder;
 
-    fun proxy(arg0: java.net.Proxy): okhttp3.OkHttpClient$Builder
-        assigns routeDatabase;
+    fun proxy(arg0: java.net.Proxy): okhttp3.OkHttpClient$Builder;
 
-    fun proxySelector(arg0: java.net.ProxySelector): okhttp3.OkHttpClient$Builder
-        assigns routeDatabase;
+    fun proxySelector(arg0: java.net.ProxySelector): okhttp3.OkHttpClient$Builder;
 
-    fun proxyAuthenticator(arg0: okhttp3.Authenticator): okhttp3.OkHttpClient$Builder
-        assigns routeDatabase;
-        assigns proxyAuthenticator;
+    fun proxyAuthenticator(arg0: okhttp3.Authenticator): okhttp3.OkHttpClient$Builder;
 
-    fun socketFactory(arg0: javax.net.SocketFactory): okhttp3.OkHttpClient$Builder
-        assigns routeDatabase;
+    fun socketFactory(arg0: javax.net.SocketFactory): okhttp3.OkHttpClient$Builder;
 
-    fun sslSocketFactory(arg0: javax.net.ssl.SSLSocketFactory): okhttp3.OkHttpClient$Builder
-        assigns routeDatabase;
-        assigns certificateChainCleaner;
+    fun sslSocketFactory(arg0: javax.net.ssl.SSLSocketFactory): okhttp3.OkHttpClient$Builder;
 
-    fun sslSocketFactory(arg0: javax.net.ssl.SSLSocketFactory, arg1: javax.net.ssl.X509TrustManager): okhttp3.OkHttpClient$Builder
-        assigns routeDatabase;
-        assigns certificateChainCleaner;
+    fun sslSocketFactory(arg0: javax.net.ssl.SSLSocketFactory, arg1: javax.net.ssl.X509TrustManager): okhttp3.OkHttpClient$Builder;
 
-    fun connectionSpecs(arg0: java.util.List): okhttp3.OkHttpClient$Builder
-        assigns routeDatabase;
+    fun connectionSpecs(arg0: java.util.List): okhttp3.OkHttpClient$Builder;
 
-    fun protocols(arg0: java.util.List): okhttp3.OkHttpClient$Builder
-        assigns routeDatabase;
+    fun protocols(arg0: java.util.List): okhttp3.OkHttpClient$Builder;
 
-    fun hostnameVerifier(arg0: javax.net.ssl.HostnameVerifier): okhttp3.OkHttpClient$Builder
-        assigns routeDatabase;
+    fun hostnameVerifier(arg0: javax.net.ssl.HostnameVerifier): okhttp3.OkHttpClient$Builder;
 
-    fun certificatePinner(arg0: okhttp3.CertificatePinner): okhttp3.OkHttpClient$Builder
-        assigns routeDatabase;
-        assigns certificatePinner;
+    fun certificatePinner(arg0: okhttp3.CertificatePinner): okhttp3.OkHttpClient$Builder;
 
-    fun callTimeout(arg0: long, arg1: java.util.concurrent.TimeUnit): okhttp3.OkHttpClient$Builder
-        assigns callTimeout;
+    fun callTimeout(arg0: long, arg1: java.util.concurrent.TimeUnit): okhttp3.OkHttpClient$Builder;
 
     fun callTimeout(arg0: java.time.Duration): okhttp3.OkHttpClient$Builder;
 
-    fun connectTimeout(arg0: long, arg1: java.util.concurrent.TimeUnit): okhttp3.OkHttpClient$Builder
-        assigns connectTimeout;
+    fun connectTimeout(arg0: long, arg1: java.util.concurrent.TimeUnit): okhttp3.OkHttpClient$Builder;
 
     fun connectTimeout(arg0: java.time.Duration): okhttp3.OkHttpClient$Builder;
 
-    fun readTimeout(arg0: long, arg1: java.util.concurrent.TimeUnit): okhttp3.OkHttpClient$Builder
-        assigns readTimeout;
+    fun readTimeout(arg0: long, arg1: java.util.concurrent.TimeUnit): okhttp3.OkHttpClient$Builder;
 
     fun readTimeout(arg0: java.time.Duration): okhttp3.OkHttpClient$Builder;
 
-    fun writeTimeout(arg0: long, arg1: java.util.concurrent.TimeUnit): okhttp3.OkHttpClient$Builder
-        assigns writeTimeout;
+    fun writeTimeout(arg0: long, arg1: java.util.concurrent.TimeUnit): okhttp3.OkHttpClient$Builder;
 
     fun writeTimeout(arg0: java.time.Duration): okhttp3.OkHttpClient$Builder;
 
-    fun pingInterval(arg0: long, arg1: java.util.concurrent.TimeUnit): okhttp3.OkHttpClient$Builder
-        assigns pingInterval;
+    fun pingInterval(arg0: long, arg1: java.util.concurrent.TimeUnit): okhttp3.OkHttpClient$Builder;
 
     fun pingInterval(arg0: java.time.Duration): okhttp3.OkHttpClient$Builder;
 
-    fun minWebSocketMessageToCompress(arg0: long): okhttp3.OkHttpClient$Builder
-        assigns minWebSocketMessageToCompress;
+    fun minWebSocketMessageToCompress(arg0: long): okhttp3.OkHttpClient$Builder;
 
     fun build(): okhttp3.OkHttpClient;
 }
@@ -3747,11 +3734,14 @@ automaton okhttp3.internal.platform.Platform : okhttp3.internal.platform.Platfor
 
     fun toString(): java.lang.String;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
+        assigns platform;
 
     fun access$getPlatform$cp(): okhttp3.internal.platform.Platform;
 
-    fun access$setPlatform$cp(arg0: okhttp3.internal.platform.Platform): void;
+    fun access$setPlatform$cp(arg0: okhttp3.internal.platform.Platform): void
+        assigns arg0.platform;
 
     fun get(): okhttp3.internal.platform.Platform;
 }
@@ -3792,7 +3782,9 @@ automaton okhttp3.internal.http.HttpHeaders : okhttp3.internal.http.HttpHeaders 
 
     fun hasBody(arg0: okhttp3.Response): bool;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns QUOTED_STRING_DELIMITERS;
+        assigns TOKEN_DELIMITERS;
 }
 automaton okhttp3.internal.connection.ExchangeFinder (var arg0: okhttp3.internal.connection.RealConnectionPool, var arg1: okhttp3.Address, var arg2: okhttp3.internal.connection.RealCall, var arg3: okhttp3.EventListener) : okhttp3.internal.connection.ExchangeFinder {
     var routeSelection: okhttp3.internal.connection.RouteSelector$Selection;
@@ -3999,7 +3991,11 @@ automaton okhttp3.internal.http2.Huffman : okhttp3.internal.http2.Huffman {
 
     fun addCode(arg0: int, arg1: int, arg2: int): void;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns INSTANCE;
+        assigns CODES;
+        assigns CODE_BIT_COUNTS;
+        assigns root;
 }
 automaton okhttp3.Challenge (var arg0: java.lang.String, var arg1: `<UNRESOLVED_TYPE>`) : okhttp3.Challenge {
     var authParams: `<UNRESOLVED_TYPE>`;
@@ -4157,7 +4153,8 @@ automaton okhttp3.internal.http2.Http2Connection$writeWindowUpdateLater$$inlined
     var this$0: okhttp3.internal.http2.Http2Connection;
     var $streamId$inlined: int;
     var $unacknowledgedBytesRead$inlined: long;
-    fun runOnce(): long;
+    fun runOnce(): long
+        assigns this$0.isShutdown;
 }
 automaton okhttp3.CertificatePinner$Companion : okhttp3.CertificatePinner$Companion {
     fun sha1Hash(arg0: java.security.cert.X509Certificate): okio.ByteString;
@@ -4178,7 +4175,8 @@ automaton okhttp3.internal.platform.android.BouncyCastleSocketAdapter : okhttp3.
 
     fun configureTlsExtensions(arg0: javax.net.ssl.SSLSocket, arg1: java.lang.String, arg2: java.util.List): void;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 
     fun matchesSocketFactory(arg0: javax.net.ssl.SSLSocketFactory): bool;
 }
@@ -4371,7 +4369,8 @@ automaton okhttp3.Handshake (var arg0: okhttp3.TlsVersion, var arg1: okhttp3.Cip
 
     fun localCertificates(): `<UNRESOLVED_TYPE>`;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 
     fun get(arg0: javax.net.ssl.SSLSession): okhttp3.Handshake;
 
@@ -4390,7 +4389,8 @@ automaton okhttp3.internal.http.BridgeInterceptor (var arg0: okhttp3.CookieJar) 
 automaton okhttp3.internal.ws.RealWebSocket$connect$1 (var arg0: okhttp3.internal.ws.RealWebSocket, var arg1: okhttp3.Request) : okhttp3.internal.ws.RealWebSocket$connect$1 {
     var this$0: okhttp3.internal.ws.RealWebSocket;
     var $request: okhttp3.Request;
-    fun onResponse(arg0: okhttp3.Call, arg1: okhttp3.Response): void;
+    fun onResponse(arg0: okhttp3.Call, arg1: okhttp3.Response): void
+        assigns this$0.extensions;
 
     fun onFailure(arg0: okhttp3.Call, arg1: java.io.IOException): void;
 }
@@ -4425,7 +4425,8 @@ automaton okhttp3.internal.cache.CacheInterceptor (var arg0: okhttp3.Cache) : ok
 
     fun getCache$okhttp(): okhttp3.Cache;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 }
 automaton okhttp3.MediaType (var arg0: java.lang.String, var arg1: java.lang.String, var arg2: java.lang.String, var arg3: array<java.lang.String>) : okhttp3.MediaType {
     var mediaType: java.lang.String;
@@ -4459,7 +4460,8 @@ automaton okhttp3.MediaType (var arg0: java.lang.String, var arg1: java.lang.Str
 
     fun subtype(): java.lang.String;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 
     fun access$getTYPE_SUBTYPE$cp(): `<UNRESOLVED_TYPE>`;
 
@@ -4514,7 +4516,16 @@ automaton okhttp3.MultipartBody (var arg0: okio.ByteString, var arg1: okhttp3.Me
 
     fun parts(): `<UNRESOLVED_TYPE>`;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
+        assigns MIXED;
+        assigns ALTERNATIVE;
+        assigns DIGEST;
+        assigns PARALLEL;
+        assigns FORM;
+        assigns COLONSPACE;
+        assigns CRLF;
+        assigns DASHDASH;
 }
 automaton okhttp3.internal.platform.android.SocketAdapter : okhttp3.internal.platform.android.SocketAdapter {
     fun isSupported(): bool;
@@ -4593,7 +4604,8 @@ automaton okhttp3.Dns : okhttp3.Dns {
     var Companion: okhttp3.Dns$Companion;
     fun lookup(arg0: java.lang.String): `<UNRESOLVED_TYPE>`;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 }
 automaton okhttp3.internal.http1.Http1ExchangeCodec$ChunkedSink (var arg0: okhttp3.internal.http1.Http1ExchangeCodec) : okhttp3.internal.http1.Http1ExchangeCodec$ChunkedSink {
     var timeout: okio.ForwardingTimeout;
@@ -4612,6 +4624,8 @@ automaton okhttp3.internal.http1.Http1ExchangeCodec$ChunkedSink (var arg0: okhtt
 
     fun close(): void
         assigns closed;
+        assigns timeout.delegate;
+        assigns this$0.state;
 }
 automaton okhttp3.TlsVersion (var arg0: java.lang.String, var arg1: int, var arg2: java.lang.String) : okhttp3.TlsVersion {
     var TLS_1_3: okhttp3.TlsVersion;
@@ -4622,7 +4636,14 @@ automaton okhttp3.TlsVersion (var arg0: java.lang.String, var arg1: int, var arg
     var $VALUES: array<okhttp3.TlsVersion>;
     var javaName: java.lang.String;
     var Companion: okhttp3.TlsVersion$Companion;
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns TLS_1_3;
+        assigns TLS_1_2;
+        assigns TLS_1_1;
+        assigns TLS_1_0;
+        assigns SSL_3_0;
+        assigns $VALUES;
+        assigns Companion;
 
     fun `-deprecated_javaName`(): java.lang.String;
 
@@ -4704,6 +4725,7 @@ automaton okhttp3.internal.http2.Http2Reader$ContinuationSource (var arg0: okio.
         assigns length;
         assigns flags;
         assigns streamId;
+        assigns source;
 }
 automaton okhttp3.internal.http.DatesKt : okhttp3.internal.http.DatesKt {
     var MAX_DATE: long;
@@ -4714,7 +4736,9 @@ automaton okhttp3.internal.http.DatesKt : okhttp3.internal.http.DatesKt {
 
     fun toHttpDateString(arg0: java.util.Date): java.lang.String;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns STANDARD_DATE_FORMAT;
+        assigns BROWSER_COMPATIBLE_DATE_FORMAT_STRINGS;
 }
 automaton okhttp3.FormBody$Builder (var arg0: `<UNRESOLVED_TYPE>`) : okhttp3.FormBody$Builder {
     var names: `<UNRESOLVED_TYPE>`;
@@ -4905,7 +4929,127 @@ automaton okhttp3.CipherSuite (var arg0: java.lang.String) : okhttp3.CipherSuite
 
     fun javaName(): java.lang.String;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
+        assigns TLS_RSA_WITH_NULL_MD5;
+        assigns TLS_RSA_WITH_NULL_SHA;
+        assigns TLS_RSA_EXPORT_WITH_RC4_40_MD5;
+        assigns TLS_RSA_WITH_RC4_128_MD5;
+        assigns TLS_RSA_WITH_RC4_128_SHA;
+        assigns TLS_RSA_EXPORT_WITH_DES40_CBC_SHA;
+        assigns TLS_RSA_WITH_DES_CBC_SHA;
+        assigns TLS_RSA_WITH_3DES_EDE_CBC_SHA;
+        assigns TLS_DHE_DSS_EXPORT_WITH_DES40_CBC_SHA;
+        assigns TLS_DHE_DSS_WITH_DES_CBC_SHA;
+        assigns TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA;
+        assigns TLS_DHE_RSA_EXPORT_WITH_DES40_CBC_SHA;
+        assigns TLS_DHE_RSA_WITH_DES_CBC_SHA;
+        assigns TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA;
+        assigns TLS_DH_anon_EXPORT_WITH_RC4_40_MD5;
+        assigns TLS_DH_anon_WITH_RC4_128_MD5;
+        assigns TLS_DH_anon_EXPORT_WITH_DES40_CBC_SHA;
+        assigns TLS_DH_anon_WITH_DES_CBC_SHA;
+        assigns TLS_DH_anon_WITH_3DES_EDE_CBC_SHA;
+        assigns TLS_KRB5_WITH_DES_CBC_SHA;
+        assigns TLS_KRB5_WITH_3DES_EDE_CBC_SHA;
+        assigns TLS_KRB5_WITH_RC4_128_SHA;
+        assigns TLS_KRB5_WITH_DES_CBC_MD5;
+        assigns TLS_KRB5_WITH_3DES_EDE_CBC_MD5;
+        assigns TLS_KRB5_WITH_RC4_128_MD5;
+        assigns TLS_KRB5_EXPORT_WITH_DES_CBC_40_SHA;
+        assigns TLS_KRB5_EXPORT_WITH_RC4_40_SHA;
+        assigns TLS_KRB5_EXPORT_WITH_DES_CBC_40_MD5;
+        assigns TLS_KRB5_EXPORT_WITH_RC4_40_MD5;
+        assigns TLS_RSA_WITH_AES_128_CBC_SHA;
+        assigns TLS_DHE_DSS_WITH_AES_128_CBC_SHA;
+        assigns TLS_DHE_RSA_WITH_AES_128_CBC_SHA;
+        assigns TLS_DH_anon_WITH_AES_128_CBC_SHA;
+        assigns TLS_RSA_WITH_AES_256_CBC_SHA;
+        assigns TLS_DHE_DSS_WITH_AES_256_CBC_SHA;
+        assigns TLS_DHE_RSA_WITH_AES_256_CBC_SHA;
+        assigns TLS_DH_anon_WITH_AES_256_CBC_SHA;
+        assigns TLS_RSA_WITH_NULL_SHA256;
+        assigns TLS_RSA_WITH_AES_128_CBC_SHA256;
+        assigns TLS_RSA_WITH_AES_256_CBC_SHA256;
+        assigns TLS_DHE_DSS_WITH_AES_128_CBC_SHA256;
+        assigns TLS_RSA_WITH_CAMELLIA_128_CBC_SHA;
+        assigns TLS_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA;
+        assigns TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA;
+        assigns TLS_DHE_RSA_WITH_AES_128_CBC_SHA256;
+        assigns TLS_DHE_DSS_WITH_AES_256_CBC_SHA256;
+        assigns TLS_DHE_RSA_WITH_AES_256_CBC_SHA256;
+        assigns TLS_DH_anon_WITH_AES_128_CBC_SHA256;
+        assigns TLS_DH_anon_WITH_AES_256_CBC_SHA256;
+        assigns TLS_RSA_WITH_CAMELLIA_256_CBC_SHA;
+        assigns TLS_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA;
+        assigns TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA;
+        assigns TLS_PSK_WITH_RC4_128_SHA;
+        assigns TLS_PSK_WITH_3DES_EDE_CBC_SHA;
+        assigns TLS_PSK_WITH_AES_128_CBC_SHA;
+        assigns TLS_PSK_WITH_AES_256_CBC_SHA;
+        assigns TLS_RSA_WITH_SEED_CBC_SHA;
+        assigns TLS_RSA_WITH_AES_128_GCM_SHA256;
+        assigns TLS_RSA_WITH_AES_256_GCM_SHA384;
+        assigns TLS_DHE_RSA_WITH_AES_128_GCM_SHA256;
+        assigns TLS_DHE_RSA_WITH_AES_256_GCM_SHA384;
+        assigns TLS_DHE_DSS_WITH_AES_128_GCM_SHA256;
+        assigns TLS_DHE_DSS_WITH_AES_256_GCM_SHA384;
+        assigns TLS_DH_anon_WITH_AES_128_GCM_SHA256;
+        assigns TLS_DH_anon_WITH_AES_256_GCM_SHA384;
+        assigns TLS_EMPTY_RENEGOTIATION_INFO_SCSV;
+        assigns TLS_FALLBACK_SCSV;
+        assigns TLS_ECDH_ECDSA_WITH_NULL_SHA;
+        assigns TLS_ECDH_ECDSA_WITH_RC4_128_SHA;
+        assigns TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA;
+        assigns TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA;
+        assigns TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA;
+        assigns TLS_ECDHE_ECDSA_WITH_NULL_SHA;
+        assigns TLS_ECDHE_ECDSA_WITH_RC4_128_SHA;
+        assigns TLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA;
+        assigns TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA;
+        assigns TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA;
+        assigns TLS_ECDH_RSA_WITH_NULL_SHA;
+        assigns TLS_ECDH_RSA_WITH_RC4_128_SHA;
+        assigns TLS_ECDH_RSA_WITH_3DES_EDE_CBC_SHA;
+        assigns TLS_ECDH_RSA_WITH_AES_128_CBC_SHA;
+        assigns TLS_ECDH_RSA_WITH_AES_256_CBC_SHA;
+        assigns TLS_ECDHE_RSA_WITH_NULL_SHA;
+        assigns TLS_ECDHE_RSA_WITH_RC4_128_SHA;
+        assigns TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA;
+        assigns TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA;
+        assigns TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA;
+        assigns TLS_ECDH_anon_WITH_NULL_SHA;
+        assigns TLS_ECDH_anon_WITH_RC4_128_SHA;
+        assigns TLS_ECDH_anon_WITH_3DES_EDE_CBC_SHA;
+        assigns TLS_ECDH_anon_WITH_AES_128_CBC_SHA;
+        assigns TLS_ECDH_anon_WITH_AES_256_CBC_SHA;
+        assigns TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256;
+        assigns TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384;
+        assigns TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256;
+        assigns TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384;
+        assigns TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256;
+        assigns TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384;
+        assigns TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256;
+        assigns TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384;
+        assigns TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256;
+        assigns TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384;
+        assigns TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256;
+        assigns TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384;
+        assigns TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256;
+        assigns TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384;
+        assigns TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256;
+        assigns TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384;
+        assigns TLS_ECDHE_PSK_WITH_AES_128_CBC_SHA;
+        assigns TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA;
+        assigns TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256;
+        assigns TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256;
+        assigns TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256;
+        assigns TLS_ECDHE_PSK_WITH_CHACHA20_POLY1305_SHA256;
+        assigns TLS_AES_128_GCM_SHA256;
+        assigns TLS_AES_256_GCM_SHA384;
+        assigns TLS_CHACHA20_POLY1305_SHA256;
+        assigns TLS_AES_128_CCM_SHA256;
+        assigns TLS_AES_128_CCM_8_SHA256;
 
     fun access$getORDER_BY_NAME$cp(): `<UNRESOLVED_TYPE>`;
 
@@ -5042,7 +5186,9 @@ automaton okhttp3.HttpUrl (var arg0: java.lang.String, var arg1: java.lang.Strin
 
     fun fragment(): java.lang.String;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
+        assigns HEX_DIGITS;
 
     fun access$getHEX_DIGITS$cp(): array<char>;
 
@@ -5063,7 +5209,8 @@ automaton okhttp3.internal.http2.Http2Connection$Listener : okhttp3.internal.htt
 
     fun onSettings(arg0: okhttp3.internal.http2.Http2Connection, arg1: okhttp3.internal.http2.Settings): void;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 }
 automaton okhttp3.internal.platform.Jdk9Platform$Companion : okhttp3.internal.platform.Jdk9Platform$Companion {
     fun isAvailable(): bool;
@@ -5088,7 +5235,23 @@ automaton okhttp3.internal.http2.ErrorCode (var arg0: java.lang.String, var arg1
     var $VALUES: array<okhttp3.internal.http2.ErrorCode>;
     var httpCode: int;
     var Companion: okhttp3.internal.http2.ErrorCode$Companion;
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns NO_ERROR;
+        assigns PROTOCOL_ERROR;
+        assigns INTERNAL_ERROR;
+        assigns FLOW_CONTROL_ERROR;
+        assigns SETTINGS_TIMEOUT;
+        assigns STREAM_CLOSED;
+        assigns FRAME_SIZE_ERROR;
+        assigns REFUSED_STREAM;
+        assigns CANCEL;
+        assigns COMPRESSION_ERROR;
+        assigns CONNECT_ERROR;
+        assigns ENHANCE_YOUR_CALM;
+        assigns INADEQUATE_SECURITY;
+        assigns HTTP_1_1_REQUIRED;
+        assigns $VALUES;
+        assigns Companion;
 
     fun getHttpCode(): int;
 
@@ -5103,7 +5266,8 @@ automaton okhttp3.OkHttpClient$Builder$addNetworkInterceptor$$inlined$invoke$1 (
 automaton okhttp3.OkHttp : okhttp3.OkHttp {
     var VERSION: java.lang.String;
     var INSTANCE: okhttp3.OkHttp;
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns INSTANCE;
 }
 automaton okhttp3.internal.cache.DiskLruCache (var arg0: okhttp3.internal.io.FileSystem, var arg1: `<UNRESOLVED_TYPE>`, var arg2: int, var arg3: int, var arg4: long, var arg5: okhttp3.internal.concurrent.TaskRunner) : okhttp3.internal.cache.DiskLruCache {
     var maxSize: long;
@@ -5321,7 +5485,18 @@ automaton okhttp3.internal.cache.DiskLruCache (var arg0: okhttp3.internal.io.Fil
 
     fun getValueCount$okhttp(): int;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
+        assigns JOURNAL_FILE;
+        assigns JOURNAL_FILE_TEMP;
+        assigns JOURNAL_FILE_BACKUP;
+        assigns MAGIC;
+        assigns VERSION_1;
+        assigns ANY_SEQUENCE_NUMBER;
+        assigns CLEAN;
+        assigns DIRTY;
+        assigns REMOVE;
+        assigns READ;
 
     fun access$getCivilizedFileSystem$p(arg0: okhttp3.internal.cache.DiskLruCache): bool;
 
@@ -5397,7 +5572,9 @@ automaton okhttp3.internal.concurrent.TaskRunner (var arg0: okhttp3.internal.con
 
     fun getBackend(): okhttp3.internal.concurrent.TaskRunner$Backend;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
+        assigns INSTANCE;
 
     fun access$runTask(arg0: okhttp3.internal.concurrent.TaskRunner, arg1: okhttp3.internal.concurrent.Task): void
         assigns arg1.queue;
@@ -5409,7 +5586,8 @@ automaton okhttp3.internal.tls.CertificateChainCleaner : okhttp3.internal.tls.Ce
     var Companion: okhttp3.internal.tls.CertificateChainCleaner$Companion;
     fun clean(arg0: java.util.List, arg1: java.lang.String): `<UNRESOLVED_TYPE>`;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 }
 automaton okhttp3.internal.http2.PushObserver$Companion : okhttp3.internal.http2.PushObserver$Companion {
     var $$INSTANCE: okhttp3.internal.http2.PushObserver$Companion;
@@ -5426,7 +5604,8 @@ automaton okhttp3.internal.platform.android.CloseGuard (var arg0: `<UNRESOLVED_T
 
     fun warnIfOpen(arg0: java.lang.Object): bool;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 }
 automaton okhttp3.internal.http2.Http2Connection$Builder (var arg0: bool, var arg1: okhttp3.internal.concurrent.TaskRunner) : okhttp3.internal.http2.Http2Connection$Builder {
     var socket: `<UNRESOLVED_TYPE>`;
@@ -5472,40 +5651,21 @@ automaton okhttp3.internal.http2.Http2Connection$Builder (var arg0: bool, var ar
     fun setPingIntervalMillis$okhttp(arg0: int): void
         assigns pingIntervalMillis;
 
-    fun socket(arg0: java.net.Socket, arg1: java.lang.String, arg2: okio.BufferedSource, arg3: okio.BufferedSink): okhttp3.internal.http2.Http2Connection$Builder
-        assigns connectionName;
-        assigns source;
-        assigns sink;
+    fun socket(arg0: java.net.Socket, arg1: java.lang.String, arg2: okio.BufferedSource, arg3: okio.BufferedSink): okhttp3.internal.http2.Http2Connection$Builder;
 
-    fun socket$default(arg0: okhttp3.internal.http2.Http2Connection$Builder, arg1: java.net.Socket, arg2: java.lang.String, arg3: okio.BufferedSource, arg4: okio.BufferedSink, arg5: int, arg6: java.lang.Object): okhttp3.internal.http2.Http2Connection$Builder
-        assigns arg0;
-        assigns arg0.connectionName;
-        assigns arg0.source;
-        assigns arg0.sink;
+    fun socket$default(arg0: okhttp3.internal.http2.Http2Connection$Builder, arg1: java.net.Socket, arg2: java.lang.String, arg3: okio.BufferedSource, arg4: okio.BufferedSink, arg5: int, arg6: java.lang.Object): okhttp3.internal.http2.Http2Connection$Builder;
 
-    fun socket(arg0: java.net.Socket, arg1: java.lang.String, arg2: okio.BufferedSource): okhttp3.internal.http2.Http2Connection$Builder
-        assigns connectionName;
-        assigns source;
-        assigns sink;
+    fun socket(arg0: java.net.Socket, arg1: java.lang.String, arg2: okio.BufferedSource): okhttp3.internal.http2.Http2Connection$Builder;
 
-    fun socket(arg0: java.net.Socket, arg1: java.lang.String): okhttp3.internal.http2.Http2Connection$Builder
-        assigns connectionName;
-        assigns source;
-        assigns sink;
+    fun socket(arg0: java.net.Socket, arg1: java.lang.String): okhttp3.internal.http2.Http2Connection$Builder;
 
-    fun socket(arg0: java.net.Socket): okhttp3.internal.http2.Http2Connection$Builder
-        assigns connectionName;
-        assigns source;
-        assigns sink;
+    fun socket(arg0: java.net.Socket): okhttp3.internal.http2.Http2Connection$Builder;
 
-    fun listener(arg0: okhttp3.internal.http2.Http2Connection$Listener): okhttp3.internal.http2.Http2Connection$Builder
-        assigns listener;
+    fun listener(arg0: okhttp3.internal.http2.Http2Connection$Listener): okhttp3.internal.http2.Http2Connection$Builder;
 
-    fun pushObserver(arg0: okhttp3.internal.http2.PushObserver): okhttp3.internal.http2.Http2Connection$Builder
-        assigns pushObserver;
+    fun pushObserver(arg0: okhttp3.internal.http2.PushObserver): okhttp3.internal.http2.Http2Connection$Builder;
 
-    fun pingIntervalMillis(arg0: int): okhttp3.internal.http2.Http2Connection$Builder
-        assigns pingIntervalMillis;
+    fun pingIntervalMillis(arg0: int): okhttp3.internal.http2.Http2Connection$Builder;
 
     fun build(): okhttp3.internal.http2.Http2Connection;
 
@@ -5537,7 +5697,8 @@ automaton okhttp3.internal.io.FileSystem : okhttp3.internal.io.FileSystem {
 
     fun deleteContents(arg0: java.io.File): void;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 }
 automaton okhttp3.Request$Builder : okhttp3.Request$Builder {
     var `url`: okhttp3.HttpUrl;
@@ -5569,8 +5730,7 @@ automaton okhttp3.Request$Builder : okhttp3.Request$Builder {
 
     fun setTags$okhttp(arg0: java.util.Map): void;
 
-    fun `url`(arg0: okhttp3.HttpUrl): okhttp3.Request$Builder
-        assigns url;
+    fun `url`(arg0: okhttp3.HttpUrl): okhttp3.Request$Builder;
 
     fun `url`(arg0: java.lang.String): okhttp3.Request$Builder;
 
@@ -5582,47 +5742,28 @@ automaton okhttp3.Request$Builder : okhttp3.Request$Builder {
 
     fun removeHeader(arg0: java.lang.String): okhttp3.Request$Builder;
 
-    fun headers(arg0: okhttp3.Headers): okhttp3.Request$Builder
-        assigns headers;
+    fun headers(arg0: okhttp3.Headers): okhttp3.Request$Builder;
 
     fun cacheControl(arg0: okhttp3.CacheControl): okhttp3.Request$Builder
         assigns arg0.headerValue;
 
-    fun get(): okhttp3.Request$Builder
-        assigns method;
-        assigns body;
+    fun get(): okhttp3.Request$Builder;
 
-    fun head(): okhttp3.Request$Builder
-        assigns method;
-        assigns body;
+    fun head(): okhttp3.Request$Builder;
 
-    fun post(arg0: okhttp3.RequestBody): okhttp3.Request$Builder
-        assigns method;
-        assigns body;
+    fun post(arg0: okhttp3.RequestBody): okhttp3.Request$Builder;
 
-    fun delete(arg0: okhttp3.RequestBody): okhttp3.Request$Builder
-        assigns method;
-        assigns body;
+    fun delete(arg0: okhttp3.RequestBody): okhttp3.Request$Builder;
 
-    fun delete$default(arg0: okhttp3.Request$Builder, arg1: okhttp3.RequestBody, arg2: int, arg3: java.lang.Object): okhttp3.Request$Builder
-        assigns arg0.method;
-        assigns arg0.body;
+    fun delete$default(arg0: okhttp3.Request$Builder, arg1: okhttp3.RequestBody, arg2: int, arg3: java.lang.Object): okhttp3.Request$Builder;
 
-    fun delete(): okhttp3.Request$Builder
-        assigns method;
-        assigns body;
+    fun delete(): okhttp3.Request$Builder;
 
-    fun put(arg0: okhttp3.RequestBody): okhttp3.Request$Builder
-        assigns method;
-        assigns body;
+    fun put(arg0: okhttp3.RequestBody): okhttp3.Request$Builder;
 
-    fun patch(arg0: okhttp3.RequestBody): okhttp3.Request$Builder
-        assigns method;
-        assigns body;
+    fun patch(arg0: okhttp3.RequestBody): okhttp3.Request$Builder;
 
-    fun method(arg0: java.lang.String, arg1: okhttp3.RequestBody): okhttp3.Request$Builder
-        assigns method;
-        assigns body;
+    fun method(arg0: java.lang.String, arg1: okhttp3.RequestBody): okhttp3.Request$Builder;
 
     fun tag(arg0: java.lang.Object): okhttp3.Request$Builder;
 
@@ -5642,7 +5783,8 @@ automaton okhttp3.internal.http.RealResponseBody (var arg0: java.lang.String, va
 }
 automaton okhttp3.internal.connection.RealConnection$WhenMappings : okhttp3.internal.connection.RealConnection$WhenMappings {
     var $EnumSwitchMapping$0: array<int>;
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns $EnumSwitchMapping$0;
 }
 automaton okhttp3.RequestBody$Companion$toRequestBody$1 (var arg0: okio.ByteString, var arg1: okhttp3.MediaType) : okhttp3.RequestBody$Companion$toRequestBody$1 {
     var $this_toRequestBody: okio.ByteString;
@@ -5882,7 +6024,14 @@ automaton okhttp3.internal.Util : okhttp3.internal.Util {
 
     fun filterList(arg0: java.lang.Iterable, arg1: kotlin.jvm.functions.Function1): `<UNRESOLVED_TYPE>`;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns EMPTY_BYTE_ARRAY;
+        assigns EMPTY_HEADERS;
+        assigns EMPTY_RESPONSE;
+        assigns EMPTY_REQUEST;
+        assigns UNICODE_BOMS;
+        assigns assertionsEnabled;
+        assigns okHttpName;
 }
 automaton okhttp3.internal.concurrent.TaskRunner$runnable$1 (var arg0: okhttp3.internal.concurrent.TaskRunner) : okhttp3.internal.concurrent.TaskRunner$runnable$1 {
     var this$0: okhttp3.internal.concurrent.TaskRunner;
@@ -5914,6 +6063,7 @@ automaton okhttp3.internal.http1.Http1ExchangeCodec$ChunkedSource (var arg0: okh
     fun readChunkSize(): void
         assigns bytesRemainingInChunk;
         assigns hasMoreChunks;
+        assigns this$0.trailers;
 
     fun close(): void
         assigns bytesRemainingInChunk;
@@ -6034,14 +6184,16 @@ automaton okhttp3.internal.http2.Http2Stream (var arg0: int, var arg1: okhttp3.i
 
     fun getConnection(): okhttp3.internal.http2.Http2Connection;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 }
 automaton okhttp3.ResponseBody$BomAwareReader (var arg0: okio.BufferedSource, var arg1: `<UNRESOLVED_TYPE>`) : okhttp3.ResponseBody$BomAwareReader {
     var closed: bool;
     var delegate: `<UNRESOLVED_TYPE>`;
     var source: okio.BufferedSource;
     var charset: `<UNRESOLVED_TYPE>`;
-    fun read(arg0: array, arg1: int, arg2: int): int;
+    fun read(arg0: array, arg1: int, arg2: int): int
+        assigns source;
 
     fun close(): void
         assigns closed;
@@ -6068,7 +6220,8 @@ automaton okhttp3.internal.platform.ConscryptPlatform$platformTrustManager$2 : o
     var INSTANCE: okhttp3.internal.platform.ConscryptPlatform$platformTrustManager$2;
     fun verify(arg0: java.lang.String, arg1: javax.net.ssl.SSLSession): bool;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns INSTANCE;
 }
 automaton okhttp3.RequestBody : okhttp3.RequestBody {
     var Companion: okhttp3.RequestBody$Companion;
@@ -6082,7 +6235,8 @@ automaton okhttp3.RequestBody : okhttp3.RequestBody {
 
     fun isOneShot(): bool;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 
     fun create(arg0: java.lang.String, arg1: okhttp3.MediaType): okhttp3.RequestBody;
 
@@ -6182,15 +6336,21 @@ automaton okhttp3.internal.http2.Http2Connection$ReaderRunnable (var arg0: okhtt
 
     fun settings(arg0: bool, arg1: okhttp3.internal.http2.Settings): void;
 
-    fun applyAndAckSettings(arg0: bool, arg1: okhttp3.internal.http2.Settings): void;
+    fun applyAndAckSettings(arg0: bool, arg1: okhttp3.internal.http2.Settings): void
+        assigns this$0.isShutdown;
 
     fun ackSettings(): void;
 
-    fun ping(arg0: bool, arg1: int, arg2: int): void;
+    fun ping(arg0: bool, arg1: int, arg2: int): void
+        assigns this$0.intervalPongsReceived;
+        assigns this$0.degradedPongsReceived;
+        assigns this$0.awaitPongsReceived;
 
-    fun goAway(arg0: int, arg1: okhttp3.internal.http2.ErrorCode, arg2: okio.ByteString): void;
+    fun goAway(arg0: int, arg1: okhttp3.internal.http2.ErrorCode, arg2: okio.ByteString): void
+        assigns this$0.isShutdown;
 
-    fun windowUpdate(arg0: int, arg1: long): void;
+    fun windowUpdate(arg0: int, arg1: long): void
+        assigns this$0.writeBytesMaximum;
 
     fun priority(arg0: int, arg1: int, arg2: int, arg3: bool): void;
 
@@ -6206,7 +6366,8 @@ automaton okhttp3.internal.proxy.NullProxySelector : okhttp3.internal.proxy.Null
 
     fun connectFailed(arg0: java.net.URI, arg1: java.net.SocketAddress, arg2: java.io.IOException): void;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns INSTANCE;
 }
 automaton okhttp3.internal.http1.Http1ExchangeCodec$UnknownLengthSource (var arg0: okhttp3.internal.http1.Http1ExchangeCodec) : okhttp3.internal.http1.Http1ExchangeCodec$UnknownLengthSource {
     var inputExhausted: bool;
@@ -6230,7 +6391,8 @@ automaton okhttp3.internal.platform.android.Android10SocketAdapter : okhttp3.int
 
     fun configureTlsExtensions(arg0: javax.net.ssl.SSLSocket, arg1: java.lang.String, arg2: java.util.List): void;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 
     fun matchesSocketFactory(arg0: javax.net.ssl.SSLSocketFactory): bool;
 }
@@ -6283,7 +6445,16 @@ automaton okhttp3.Cache (var arg0: `<UNRESOLVED_TYPE>`, var arg1: long, var arg2
 
     fun get$okhttp(arg0: okhttp3.Request): okhttp3.Response;
 
-    fun put$okhttp(arg0: okhttp3.Response): okhttp3.internal.cache.CacheRequest;
+    fun put$okhttp(arg0: okhttp3.Response): okhttp3.internal.cache.CacheRequest
+        assigns cache.civilizedFileSystem;
+        assigns cache.initialized;
+        assigns cache.closed;
+        assigns cache.redundantOpCount;
+        assigns cache.journalWriter;
+        assigns cache.hasJournalErrors;
+        assigns cache.mostRecentRebuildFailed;
+        assigns cache.size;
+        assigns cache.mostRecentTrimFailed;
 
     fun remove$okhttp(arg0: okhttp3.Request): void;
 
@@ -6330,7 +6501,8 @@ automaton okhttp3.Cache (var arg0: `<UNRESOLVED_TYPE>`, var arg1: long, var arg2
 
     fun requestCount(): int;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 
     fun key(arg0: okhttp3.HttpUrl): java.lang.String;
 }
@@ -6424,7 +6596,8 @@ automaton okhttp3.internal.http2.Settings : okhttp3.internal.http2.Settings {
     fun merge(arg0: okhttp3.internal.http2.Settings): void
         assigns set;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 }
 automaton okhttp3.internal.HostnamesKt : okhttp3.internal.HostnamesKt {
     fun toCanonicalHost(arg0: java.lang.String): java.lang.String;
@@ -6515,7 +6688,10 @@ automaton okhttp3.internal.publicsuffix.PublicSuffixDatabase : okhttp3.internal.
         assigns publicSuffixListBytes;
         assigns publicSuffixExceptionListBytes;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
+        assigns WILDCARD_LABEL;
+        assigns instance;
 
     fun access$getPublicSuffixListBytes$p(arg0: okhttp3.internal.publicsuffix.PublicSuffixDatabase): array<byte>;
 
@@ -6623,7 +6799,10 @@ automaton okhttp3.CacheControl (var arg0: bool, var arg1: bool, var arg2: int, v
 
     fun immutable(): bool;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
+        assigns FORCE_NETWORK;
+        assigns FORCE_CACHE;
 
     fun parse(arg0: okhttp3.Headers): okhttp3.CacheControl;
 }
@@ -6731,12 +6910,14 @@ automaton okhttp3.ResponseBody$Companion : okhttp3.ResponseBody$Companion {
 }
 automaton okhttp3.internal.authenticator.JavaNetAuthenticator$WhenMappings : okhttp3.internal.authenticator.JavaNetAuthenticator$WhenMappings {
     var $EnumSwitchMapping$0: array<int>;
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns $EnumSwitchMapping$0;
 }
 automaton okhttp3.internal.platform.Platform$Companion : okhttp3.internal.platform.Platform$Companion {
     fun get(): okhttp3.internal.platform.Platform;
 
-    fun resetForTests(arg0: okhttp3.internal.platform.Platform): void;
+    fun resetForTests(arg0: okhttp3.internal.platform.Platform): void
+        assigns arg0.platform;
 
     fun resetForTests$default(arg0: okhttp3.internal.platform.Platform$Companion, arg1: okhttp3.internal.platform.Platform, arg2: int, arg3: java.lang.Object): void;
 
@@ -6778,7 +6959,14 @@ automaton okhttp3.internal.http2.Header (var arg0: okio.ByteString, var arg1: ok
     var Companion: okhttp3.internal.http2.Header$Companion;
     fun toString(): java.lang.String;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
+        assigns PSEUDO_PREFIX;
+        assigns RESPONSE_STATUS;
+        assigns TARGET_METHOD;
+        assigns TARGET_PATH;
+        assigns TARGET_SCHEME;
+        assigns TARGET_AUTHORITY;
 
     fun component1(): okio.ByteString;
 
@@ -6820,7 +7008,9 @@ automaton okhttp3.internal.platform.AndroidPlatform : okhttp3.internal.platform.
 
     fun buildTrustRootIndex(arg0: javax.net.ssl.X509TrustManager): okhttp3.internal.tls.TrustRootIndex;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
+        assigns isSupported;
 
     fun access$isSupported$cp(): bool;
 }
@@ -6844,7 +7034,9 @@ automaton okhttp3.internal.http1.Http1ExchangeCodec$AbstractSource (var arg0: ok
         assigns arg0.head;
         assigns arg0.size;
 
-    fun responseBodyComplete$okhttp(): void;
+    fun responseBodyComplete$okhttp(): void
+        assigns timeout.delegate;
+        assigns this$0.state;
 }
 automaton okhttp3.internal.http2.Http2Connection$pushRequestLater$$inlined$execute$1 (var arg0: java.lang.String, var arg1: bool, var arg2: java.lang.String, var arg3: bool, var arg4: okhttp3.internal.http2.Http2Connection, var arg5: int, var arg6: `<UNRESOLVED_TYPE>`) : okhttp3.internal.http2.Http2Connection$pushRequestLater$$inlined$execute$1 {
     var $name: java.lang.String;
@@ -6863,7 +7055,8 @@ automaton okhttp3.Interceptor$Companion : okhttp3.Interceptor$Companion {
     var $$INSTANCE: okhttp3.Interceptor$Companion;
     fun invoke(arg0: kotlin.jvm.functions.Function1): okhttp3.Interceptor;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns $$INSTANCE;
 }
 automaton okhttp3.internal.connection.Exchange$ResponseBodySource (var arg0: okhttp3.internal.connection.Exchange, var arg1: okio.Source, var arg2: long) : okhttp3.internal.connection.Exchange$ResponseBodySource {
     var bytesReceived: long;
@@ -6906,7 +7099,8 @@ automaton okhttp3.internal.tls.OkHostnameVerifier : okhttp3.internal.tls.OkHostn
 
     fun getSubjectAltNames(arg0: java.security.cert.X509Certificate, arg1: int): `<UNRESOLVED_TYPE>`;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns INSTANCE;
 }
 automaton okhttp3.internal.cache2.Relay$Companion : okhttp3.internal.cache2.Relay$Companion {
     fun edit(arg0: java.io.File, arg1: okio.Source, arg2: okio.ByteString, arg3: long): okhttp3.internal.cache2.Relay;
@@ -6921,7 +7115,8 @@ automaton okhttp3.internal.platform.android.AndroidLogHandler : okhttp3.internal
 
     fun close(): void;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns INSTANCE;
 }
 automaton okhttp3.internal.authenticator.JavaNetAuthenticator (var arg0: okhttp3.Dns) : okhttp3.internal.authenticator.JavaNetAuthenticator {
     var defaultDns: okhttp3.Dns;
@@ -6933,7 +7128,9 @@ automaton okhttp3.internal.http2.Http2Connection$$special$$inlined$schedule$1 (v
     var $name: java.lang.String;
     var this$0: okhttp3.internal.http2.Http2Connection;
     var $pingIntervalNanos$inlined: long;
-    fun runOnce(): long;
+    fun runOnce(): long
+        assigns this$0.intervalPingsSent;
+        assigns this$0.isShutdown;
 }
 automaton okhttp3.internal.http2.Hpack : okhttp3.internal.http2.Hpack {
     var PREFIX_4_BITS: int;
@@ -6954,7 +7151,9 @@ automaton okhttp3.internal.http2.Hpack : okhttp3.internal.http2.Hpack {
     fun checkLowercase(arg0: okio.ByteString): okio.ByteString
         assigns arg0.utf8;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns INSTANCE;
+        assigns STATIC_HEADER_TABLE;
 }
 automaton okhttp3.internal.concurrent.TaskQueue$AwaitIdleTask : okhttp3.internal.concurrent.TaskQueue$AwaitIdleTask {
     var latch: `<UNRESOLVED_TYPE>`;
@@ -6993,7 +7192,8 @@ automaton okhttp3.internal.platform.android.AndroidCertificateChainCleaner (var 
 
     fun hashCode(): int;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 }
 automaton okhttp3.internal.http2.Http2Connection$ReaderRunnable$ping$$inlined$execute$1 (var arg0: java.lang.String, var arg1: bool, var arg2: java.lang.String, var arg3: bool, var arg4: okhttp3.internal.http2.Http2Connection$ReaderRunnable, var arg5: int, var arg6: int) : okhttp3.internal.http2.Http2Connection$ReaderRunnable$ping$$inlined$execute$1 {
     var $name: java.lang.String;
@@ -7009,7 +7209,8 @@ automaton okhttp3.TlsVersion$Companion : okhttp3.TlsVersion$Companion {
 automaton okhttp3.MultipartReader$PartSource (var arg0: okhttp3.MultipartReader) : okhttp3.MultipartReader$PartSource {
     var timeout: okio.Timeout;
     var this$0: okhttp3.MultipartReader;
-    fun close(): void;
+    fun close(): void
+        assigns this$0.currentPart;
 
     fun read(arg0: okio.Buffer, arg1: long): long
         assigns arg0.head;
@@ -7080,7 +7281,9 @@ automaton okhttp3.internal.platform.Android10Platform : okhttp3.internal.platfor
 
     fun buildCertificateChainCleaner(arg0: javax.net.ssl.X509TrustManager): okhttp3.internal.tls.CertificateChainCleaner;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
+        assigns isSupported;
 
     fun access$isSupported$cp(): bool;
 }
@@ -7099,7 +7302,8 @@ automaton okhttp3.internal.http1.HeadersReader (var arg0: okio.BufferedSource) :
 
     fun getSource(): okio.BufferedSource;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 }
 automaton okhttp3.internal.platform.Jdk8WithJettyBootPlatform$Companion : okhttp3.internal.platform.Jdk8WithJettyBootPlatform$Companion {
     fun buildIfSupported(): okhttp3.internal.platform.Platform;
@@ -7138,6 +7342,8 @@ automaton okhttp3.internal.http1.Http1ExchangeCodec$KnownLengthSink (var arg0: o
 
     fun close(): void
         assigns closed;
+        assigns timeout.delegate;
+        assigns this$0.state;
 }
 automaton okhttp3.internal.platform.android.ConscryptSocketAdapter : okhttp3.internal.platform.android.ConscryptSocketAdapter {
     var Companion: okhttp3.internal.platform.android.ConscryptSocketAdapter$Companion;
@@ -7151,7 +7357,8 @@ automaton okhttp3.internal.platform.android.ConscryptSocketAdapter : okhttp3.int
 
     fun configureTlsExtensions(arg0: javax.net.ssl.SSLSocket, arg1: java.lang.String, arg2: java.util.List): void;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 
     fun matchesSocketFactory(arg0: javax.net.ssl.SSLSocketFactory): bool;
 }
@@ -7160,7 +7367,8 @@ automaton okhttp3.internal.http2.ConnectionShutdownException : okhttp3.internal.
 automaton okhttp3.internal.ws.MessageDeflaterKt : okhttp3.internal.ws.MessageDeflaterKt {
     var EMPTY_DEFLATE_BLOCK: okio.ByteString;
     var LAST_OCTETS_COUNT_TO_REMOVE_AFTER_DEFLATION: int;
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns EMPTY_DEFLATE_BLOCK;
 
     fun access$getEMPTY_DEFLATE_BLOCK$p(): okio.ByteString;
 }
@@ -7196,7 +7404,8 @@ automaton okhttp3.Authenticator : okhttp3.Authenticator {
     var Companion: okhttp3.Authenticator$Companion;
     fun authenticate(arg0: okhttp3.Route, arg1: okhttp3.Response): okhttp3.Request;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 }
 automaton okhttp3.Credentials : okhttp3.Credentials {
     var INSTANCE: okhttp3.Credentials;
@@ -7206,7 +7415,8 @@ automaton okhttp3.Credentials : okhttp3.Credentials {
 
     fun basic(arg0: java.lang.String, arg1: java.lang.String): java.lang.String;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns INSTANCE;
 }
 automaton okhttp3.internal.http2.Http2Connection (var arg0: okhttp3.internal.http2.Http2Connection$Builder) : okhttp3.internal.http2.Http2Connection {
     var client: bool;
@@ -7377,7 +7587,9 @@ automaton okhttp3.internal.http2.Http2Connection (var arg0: okhttp3.internal.htt
 
     fun pushResetLater$okhttp(arg0: int, arg1: okhttp3.internal.http2.ErrorCode): void;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
+        assigns DEFAULT_SETTINGS;
 
     fun access$isShutdown$p(arg0: okhttp3.internal.http2.Http2Connection): bool;
 
@@ -7441,11 +7653,16 @@ automaton okhttp3.internal.http.HttpMethod : okhttp3.internal.http.HttpMethod {
 
     fun redirectsToGet(arg0: java.lang.String): bool;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns INSTANCE;
 }
 automaton okhttp3.internal.cache.DiskLruCache$cleanupTask$1 (var arg0: okhttp3.internal.cache.DiskLruCache, var arg1: java.lang.String) : okhttp3.internal.cache.DiskLruCache$cleanupTask$1 {
     var this$0: okhttp3.internal.cache.DiskLruCache;
-    fun runOnce(): long;
+    fun runOnce(): long
+        assigns this$0.mostRecentTrimFailed;
+        assigns this$0.redundantOpCount;
+        assigns this$0.mostRecentRebuildFailed;
+        assigns this$0.journalWriter;
 }
 automaton okhttp3.internal.connection.RealConnectionPool$cleanupTask$1 (var arg0: okhttp3.internal.connection.RealConnectionPool, var arg1: java.lang.String) : okhttp3.internal.connection.RealConnectionPool$cleanupTask$1 {
     var this$0: okhttp3.internal.connection.RealConnectionPool;
@@ -7529,7 +7746,8 @@ automaton okhttp3.internal.http1.Http1ExchangeCodec (var arg0: okhttp3.OkHttpCli
 
     fun getConnection(): okhttp3.internal.connection.RealConnection;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 
     fun access$getSink$p(arg0: okhttp3.internal.http1.Http1ExchangeCodec): okio.BufferedSink;
 
@@ -7562,36 +7780,23 @@ automaton okhttp3.Cookie$Builder : okhttp3.Cookie$Builder {
     var httpOnly: bool;
     var persistent: bool;
     var hostOnly: bool;
-    fun name(arg0: java.lang.String): okhttp3.Cookie$Builder
-        assigns name;
+    fun name(arg0: java.lang.String): okhttp3.Cookie$Builder;
 
-    fun value(arg0: java.lang.String): okhttp3.Cookie$Builder
-        assigns value;
+    fun value(arg0: java.lang.String): okhttp3.Cookie$Builder;
 
-    fun expiresAt(arg0: long): okhttp3.Cookie$Builder
-        assigns expiresAt;
-        assigns persistent;
+    fun expiresAt(arg0: long): okhttp3.Cookie$Builder;
 
-    fun domain(arg0: java.lang.String): okhttp3.Cookie$Builder
-        assigns domain;
-        assigns hostOnly;
+    fun domain(arg0: java.lang.String): okhttp3.Cookie$Builder;
 
-    fun hostOnlyDomain(arg0: java.lang.String): okhttp3.Cookie$Builder
-        assigns domain;
-        assigns hostOnly;
+    fun hostOnlyDomain(arg0: java.lang.String): okhttp3.Cookie$Builder;
 
-    fun domain(arg0: java.lang.String, arg1: bool): okhttp3.Cookie$Builder
-        assigns domain;
-        assigns hostOnly;
+    fun domain(arg0: java.lang.String, arg1: bool): okhttp3.Cookie$Builder;
 
-    fun path(arg0: java.lang.String): okhttp3.Cookie$Builder
-        assigns path;
+    fun path(arg0: java.lang.String): okhttp3.Cookie$Builder;
 
-    fun secure(): okhttp3.Cookie$Builder
-        assigns secure;
+    fun secure(): okhttp3.Cookie$Builder;
 
-    fun httpOnly(): okhttp3.Cookie$Builder
-        assigns httpOnly;
+    fun httpOnly(): okhttp3.Cookie$Builder;
 
     fun build(): okhttp3.Cookie;
 }
@@ -7655,7 +7860,14 @@ automaton okhttp3.ConnectionSpec (var arg0: bool, var arg1: bool, var arg2: arra
 
     fun supportsTlsExtensions(): bool;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
+        assigns RESTRICTED_CIPHER_SUITES;
+        assigns APPROVED_CIPHER_SUITES;
+        assigns RESTRICTED_TLS;
+        assigns MODERN_TLS;
+        assigns COMPATIBLE_TLS;
+        assigns CLEARTEXT;
 
     fun access$getCipherSuitesAsString$p(arg0: okhttp3.ConnectionSpec): array<java.lang.String>;
 
@@ -7670,7 +7882,9 @@ automaton okhttp3.internal.platform.Jdk9Platform : okhttp3.internal.platform.Jdk
 
     fun trustManager(arg0: javax.net.ssl.SSLSocketFactory): `<UNRESOLVED_TYPE>`;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
+        assigns isAvailable;
 
     fun access$isAvailable$cp(): bool;
 }
@@ -7838,7 +8052,8 @@ automaton okhttp3.internal.connection.RealConnection (var arg0: okhttp3.internal
 
     fun getConnectionPool(): okhttp3.internal.connection.RealConnectionPool;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 
     fun access$getHandshake$p(arg0: okhttp3.internal.connection.RealConnection): okhttp3.Handshake;
 
@@ -7875,7 +8090,9 @@ automaton okhttp3.CertificatePinner (var arg0: `<UNRESOLVED_TYPE>`, var arg1: ok
 
     fun getCertificateChainCleaner$okhttp(): okhttp3.internal.tls.CertificateChainCleaner;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
+        assigns DEFAULT;
 
     fun sha1Hash(arg0: java.security.cert.X509Certificate): okio.ByteString;
 
@@ -7917,7 +8134,8 @@ automaton okhttp3.ResponseBody : okhttp3.ResponseBody {
 
     fun close(): void;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 
     fun create(arg0: java.lang.String, arg1: okhttp3.MediaType): okhttp3.ResponseBody;
 
@@ -7949,7 +8167,9 @@ automaton okhttp3.internal.platform.OpenJSSEPlatform : okhttp3.internal.platform
 
     fun getSelectedProtocol(arg0: javax.net.ssl.SSLSocket): java.lang.String;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
+        assigns isSupported;
 
     fun access$isSupported$cp(): bool;
 }
@@ -7965,7 +8185,8 @@ automaton okhttp3.internal.platform.ConscryptPlatform$Companion : okhttp3.intern
 automaton okhttp3.internal.http.ExchangeCodec$Companion : okhttp3.internal.http.ExchangeCodec$Companion {
     var DISCARD_STREAM_TIMEOUT_MILLIS: int;
     var $$INSTANCE: okhttp3.internal.http.ExchangeCodec$Companion;
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns $$INSTANCE;
 }
 automaton okhttp3.CertificatePinner$Builder : okhttp3.CertificatePinner$Builder {
     var pins: `<UNRESOLVED_TYPE>`;
@@ -8040,7 +8261,8 @@ automaton okhttp3.internal.http2.PushObserver : okhttp3.internal.http2.PushObser
 
     fun onReset(arg0: int, arg1: okhttp3.internal.http2.ErrorCode): void;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 }
 automaton okhttp3.internal.http2.Http2Writer$Companion : okhttp3.internal.http2.Http2Writer$Companion {
 }
@@ -8145,26 +8367,19 @@ automaton okhttp3.HttpUrl$Builder : okhttp3.HttpUrl$Builder {
     fun setEncodedFragment$okhttp(arg0: java.lang.String): void
         assigns encodedFragment;
 
-    fun scheme(arg0: java.lang.String): okhttp3.HttpUrl$Builder
-        assigns scheme;
+    fun scheme(arg0: java.lang.String): okhttp3.HttpUrl$Builder;
 
-    fun username(arg0: java.lang.String): okhttp3.HttpUrl$Builder
-        assigns encodedUsername;
+    fun username(arg0: java.lang.String): okhttp3.HttpUrl$Builder;
 
-    fun encodedUsername(arg0: java.lang.String): okhttp3.HttpUrl$Builder
-        assigns encodedUsername;
+    fun encodedUsername(arg0: java.lang.String): okhttp3.HttpUrl$Builder;
 
-    fun password(arg0: java.lang.String): okhttp3.HttpUrl$Builder
-        assigns encodedPassword;
+    fun password(arg0: java.lang.String): okhttp3.HttpUrl$Builder;
 
-    fun encodedPassword(arg0: java.lang.String): okhttp3.HttpUrl$Builder
-        assigns encodedPassword;
+    fun encodedPassword(arg0: java.lang.String): okhttp3.HttpUrl$Builder;
 
-    fun host(arg0: java.lang.String): okhttp3.HttpUrl$Builder
-        assigns host;
+    fun host(arg0: java.lang.String): okhttp3.HttpUrl$Builder;
 
-    fun port(arg0: int): okhttp3.HttpUrl$Builder
-        assigns port;
+    fun port(arg0: int): okhttp3.HttpUrl$Builder;
 
     fun effectivePort(): int;
 
@@ -8204,15 +8419,11 @@ automaton okhttp3.HttpUrl$Builder : okhttp3.HttpUrl$Builder {
 
     fun removeAllCanonicalQueryParameters(arg0: java.lang.String): void;
 
-    fun fragment(arg0: java.lang.String): okhttp3.HttpUrl$Builder
-        assigns encodedFragment;
+    fun fragment(arg0: java.lang.String): okhttp3.HttpUrl$Builder;
 
-    fun encodedFragment(arg0: java.lang.String): okhttp3.HttpUrl$Builder
-        assigns encodedFragment;
+    fun encodedFragment(arg0: java.lang.String): okhttp3.HttpUrl$Builder;
 
-    fun reencodeForUri$okhttp(): okhttp3.HttpUrl$Builder
-        assigns host;
-        assigns encodedFragment;
+    fun reencodeForUri$okhttp(): okhttp3.HttpUrl$Builder;
 
     fun build(): okhttp3.HttpUrl;
 
@@ -8236,7 +8447,8 @@ automaton okhttp3.HttpUrl$Builder : okhttp3.HttpUrl$Builder {
 
     fun pop(): void;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 }
 automaton okhttp3.internal.http2.Http2Reader (var arg0: okio.BufferedSource, var arg1: bool) : okhttp3.internal.http2.Http2Reader {
     var continuation: okhttp3.internal.http2.Http2Reader$ContinuationSource;
@@ -8247,7 +8459,8 @@ automaton okhttp3.internal.http2.Http2Reader (var arg0: okio.BufferedSource, var
     var Companion: okhttp3.internal.http2.Http2Reader$Companion;
     fun readConnectionPreface(arg0: okhttp3.internal.http2.Http2Reader$Handler): void;
 
-    fun nextFrame(arg0: bool, arg1: okhttp3.internal.http2.Http2Reader$Handler): bool;
+    fun nextFrame(arg0: bool, arg1: okhttp3.internal.http2.Http2Reader$Handler): bool
+        assigns source;
 
     fun readHeaders(arg0: okhttp3.internal.http2.Http2Reader$Handler, arg1: int, arg2: int, arg3: int): void;
 
@@ -8273,7 +8486,8 @@ automaton okhttp3.internal.http2.Http2Reader (var arg0: okio.BufferedSource, var
 
     fun close(): void;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 
     fun access$getLogger$cp(): `<UNRESOLVED_TYPE>`;
 }
@@ -8285,7 +8499,8 @@ automaton okhttp3.internal.http2.Http2Connection$writeSynResetLater$$inlined$exe
     var this$0: okhttp3.internal.http2.Http2Connection;
     var $streamId$inlined: int;
     var $errorCode$inlined: okhttp3.internal.http2.ErrorCode;
-    fun runOnce(): long;
+    fun runOnce(): long
+        assigns this$0.isShutdown;
 }
 automaton okhttp3.internal.platform.android.AndroidLog : okhttp3.internal.platform.android.AndroidLog {
     var MAX_LOG_LENGTH: int;
@@ -8300,7 +8515,8 @@ automaton okhttp3.internal.platform.android.AndroidLog : okhttp3.internal.platfo
 
     fun enableLogging(arg0: java.lang.String, arg1: java.lang.String): void;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns INSTANCE;
 }
 automaton okhttp3.ConnectionPool (var arg0: okhttp3.internal.connection.RealConnectionPool) : okhttp3.ConnectionPool {
     var delegate: okhttp3.internal.connection.RealConnectionPool;
@@ -8345,7 +8561,8 @@ automaton okhttp3.CookieJar : okhttp3.CookieJar {
 
     fun loadForRequest(arg0: okhttp3.HttpUrl): `<UNRESOLVED_TYPE>`;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 }
 automaton okhttp3.OkHttpClient$Builder$addInterceptor$$inlined$invoke$1 (var arg0: `<UNRESOLVED_TYPE>`) : okhttp3.OkHttpClient$Builder$addInterceptor$$inlined$invoke$1 {
     var $block$inlined: `<UNRESOLVED_TYPE>`;
@@ -8361,7 +8578,15 @@ automaton okhttp3.Protocol (var arg0: java.lang.String, var arg1: int, var arg2:
     var $VALUES: array<okhttp3.Protocol>;
     var protocol: java.lang.String;
     var Companion: okhttp3.Protocol$Companion;
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns HTTP_1_0;
+        assigns HTTP_1_1;
+        assigns SPDY_3;
+        assigns HTTP_2;
+        assigns H2_PRIOR_KNOWLEDGE;
+        assigns QUIC;
+        assigns $VALUES;
+        assigns Companion;
 
     fun toString(): java.lang.String;
 
@@ -8471,7 +8696,8 @@ automaton okhttp3.internal.ws.WebSocketProtocol : okhttp3.internal.ws.WebSocketP
 
     fun acceptHeader(arg0: java.lang.String): java.lang.String;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns INSTANCE;
 }
 automaton okhttp3.internal.concurrent.Task (var arg0: java.lang.String, var arg1: bool) : okhttp3.internal.concurrent.Task {
     var queue: okhttp3.internal.concurrent.TaskQueue;
@@ -8676,20 +8902,15 @@ automaton okhttp3.Response$Builder : okhttp3.Response$Builder {
     fun setExchange$okhttp(arg0: okhttp3.internal.connection.Exchange): void
         assigns exchange;
 
-    fun request(arg0: okhttp3.Request): okhttp3.Response$Builder
-        assigns request;
+    fun request(arg0: okhttp3.Request): okhttp3.Response$Builder;
 
-    fun protocol(arg0: okhttp3.Protocol): okhttp3.Response$Builder
-        assigns protocol;
+    fun protocol(arg0: okhttp3.Protocol): okhttp3.Response$Builder;
 
-    fun code(arg0: int): okhttp3.Response$Builder
-        assigns code;
+    fun code(arg0: int): okhttp3.Response$Builder;
 
-    fun message(arg0: java.lang.String): okhttp3.Response$Builder
-        assigns message;
+    fun message(arg0: java.lang.String): okhttp3.Response$Builder;
 
-    fun handshake(arg0: okhttp3.Handshake): okhttp3.Response$Builder
-        assigns handshake;
+    fun handshake(arg0: okhttp3.Handshake): okhttp3.Response$Builder;
 
     fun header(arg0: java.lang.String, arg1: java.lang.String): okhttp3.Response$Builder;
 
@@ -8697,30 +8918,23 @@ automaton okhttp3.Response$Builder : okhttp3.Response$Builder {
 
     fun removeHeader(arg0: java.lang.String): okhttp3.Response$Builder;
 
-    fun headers(arg0: okhttp3.Headers): okhttp3.Response$Builder
-        assigns headers;
+    fun headers(arg0: okhttp3.Headers): okhttp3.Response$Builder;
 
-    fun body(arg0: okhttp3.ResponseBody): okhttp3.Response$Builder
-        assigns body;
+    fun body(arg0: okhttp3.ResponseBody): okhttp3.Response$Builder;
 
-    fun networkResponse(arg0: okhttp3.Response): okhttp3.Response$Builder
-        assigns networkResponse;
+    fun networkResponse(arg0: okhttp3.Response): okhttp3.Response$Builder;
 
-    fun cacheResponse(arg0: okhttp3.Response): okhttp3.Response$Builder
-        assigns cacheResponse;
+    fun cacheResponse(arg0: okhttp3.Response): okhttp3.Response$Builder;
 
     fun checkSupportResponse(arg0: java.lang.String, arg1: okhttp3.Response): void;
 
-    fun priorResponse(arg0: okhttp3.Response): okhttp3.Response$Builder
-        assigns priorResponse;
+    fun priorResponse(arg0: okhttp3.Response): okhttp3.Response$Builder;
 
     fun checkPriorResponse(arg0: okhttp3.Response): void;
 
-    fun sentRequestAtMillis(arg0: long): okhttp3.Response$Builder
-        assigns sentRequestAtMillis;
+    fun sentRequestAtMillis(arg0: long): okhttp3.Response$Builder;
 
-    fun receivedResponseAtMillis(arg0: long): okhttp3.Response$Builder
-        assigns receivedResponseAtMillis;
+    fun receivedResponseAtMillis(arg0: long): okhttp3.Response$Builder;
 
     fun initExchange$okhttp(arg0: okhttp3.internal.connection.Exchange): void
         assigns exchange;
@@ -8750,7 +8964,8 @@ automaton okhttp3.internal.http.ExchangeCodec : okhttp3.internal.http.ExchangeCo
 
     fun cancel(): void;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 }
 automaton okhttp3.internal.tls.TrustRootIndex : okhttp3.internal.tls.TrustRootIndex {
     fun findByIssuerAndSignature(arg0: java.security.cert.X509Certificate): `<UNRESOLVED_TYPE>`;
@@ -8761,8 +8976,7 @@ automaton okhttp3.MultipartBody$Builder (var arg0: java.lang.String) : okhttp3.M
     var boundary: okio.ByteString;
     var `type`: okhttp3.MediaType;
     var parts: `<UNRESOLVED_TYPE>`;
-    fun setType(arg0: okhttp3.MediaType): okhttp3.MultipartBody$Builder
-        assigns type;
+    fun setType(arg0: okhttp3.MediaType): okhttp3.MultipartBody$Builder;
 
     fun addPart(arg0: okhttp3.RequestBody): okhttp3.MultipartBody$Builder;
 
@@ -8790,7 +9004,8 @@ automaton okhttp3.internal.cache.CacheStrategy (var arg0: okhttp3.Request, var a
 
     fun getCacheResponse(): okhttp3.Response;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 }
 automaton okhttp3.internal.platform.ConscryptPlatform : okhttp3.internal.platform.ConscryptPlatform {
     var provider: `<UNRESOLVED_TYPE>`;
@@ -8808,7 +9023,9 @@ automaton okhttp3.internal.platform.ConscryptPlatform : okhttp3.internal.platfor
 
     fun newSslSocketFactory(arg0: javax.net.ssl.X509TrustManager): `<UNRESOLVED_TYPE>`;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
+        assigns isSupported;
 
     fun access$isSupported$cp(): bool;
 }
@@ -8846,7 +9063,8 @@ automaton okhttp3.Interceptor : okhttp3.Interceptor {
     var Companion: okhttp3.Interceptor$Companion;
     fun intercept(arg0: okhttp3.Interceptor$Chain): okhttp3.Response;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 }
 automaton okhttp3.internal.http.RetryAndFollowUpInterceptor (var arg0: okhttp3.OkHttpClient) : okhttp3.internal.http.RetryAndFollowUpInterceptor {
     var client: okhttp3.OkHttpClient;
@@ -8866,7 +9084,8 @@ automaton okhttp3.internal.http.RetryAndFollowUpInterceptor (var arg0: okhttp3.O
 
     fun retryAfter(arg0: okhttp3.Response, arg1: int): int;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 }
 automaton okhttp3.internal.connection.RouteSelector (var arg0: okhttp3.Address, var arg1: okhttp3.internal.connection.RouteDatabase, var arg2: okhttp3.Call, var arg3: okhttp3.EventListener) : okhttp3.internal.connection.RouteSelector {
     var proxies: `<UNRESOLVED_TYPE>`;
@@ -8893,7 +9112,8 @@ automaton okhttp3.internal.connection.RouteSelector (var arg0: okhttp3.Address, 
 
     fun resetNextInetSocketAddress(arg0: java.net.Proxy): void;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 
     fun access$getAddress$p(arg0: okhttp3.internal.connection.RouteSelector): okhttp3.Address;
 }
@@ -8905,7 +9125,8 @@ automaton okhttp3.internal.http.RequestLine : okhttp3.internal.http.RequestLine 
 
     fun requestPath(arg0: okhttp3.HttpUrl): java.lang.String;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns INSTANCE;
 }
 automaton okhttp3.internal.http2.Settings$Companion : okhttp3.internal.http2.Settings$Companion {
 }
@@ -8930,7 +9151,8 @@ automaton okhttp3.internal.platform.android.StandardAndroidSocketAdapter (var ar
 
     fun trustManager(arg0: javax.net.ssl.SSLSocketFactory): `<UNRESOLVED_TYPE>`;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 }
 automaton okhttp3.internal.concurrent.TaskQueue (var arg0: okhttp3.internal.concurrent.TaskRunner, var arg1: java.lang.String) : okhttp3.internal.concurrent.TaskQueue {
     var shutdown: bool;
@@ -9027,7 +9249,10 @@ automaton okhttp3.Cache$Entry (var arg0: okio.Source) : okhttp3.Cache$Entry {
 
     fun response(arg0: okhttp3.internal.cache.DiskLruCache$Snapshot): okhttp3.Response;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
+        assigns SENT_MILLIS;
+        assigns RECEIVED_MILLIS;
 }
 automaton okhttp3.internal.cache.DiskLruCache$Entry (var arg0: okhttp3.internal.cache.DiskLruCache, var arg1: java.lang.String) : okhttp3.internal.cache.DiskLruCache$Entry {
     var lengths: array<long>;
@@ -9120,7 +9345,8 @@ automaton okhttp3.internal.platform.Jdk8WithJettyBootPlatform$AlpnProvider (var 
 }
 automaton okhttp3.internal.cache.DiskLruCache$newJournalWriter$faultHidingSink$1 (var arg0: okhttp3.internal.cache.DiskLruCache) : okhttp3.internal.cache.DiskLruCache$newJournalWriter$faultHidingSink$1 {
     var this$0: okhttp3.internal.cache.DiskLruCache;
-    fun invoke(arg0: java.lang.Object): java.lang.Object;
+    fun invoke(arg0: java.lang.Object): java.lang.Object
+        assigns this$0.hasJournalErrors;
 
     fun invoke(arg0: java.io.IOException): void;
 }
@@ -9288,7 +9514,8 @@ automaton okhttp3.Cookie (var arg0: java.lang.String, var arg1: java.lang.String
 
     fun hostOnly(): bool;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 
     fun access$getTIME_PATTERN$cp(): `<UNRESOLVED_TYPE>`;
 
@@ -9492,7 +9719,9 @@ automaton okhttp3.internal.ws.RealWebSocket (var arg0: okhttp3.internal.concurre
     fun close(arg0: int, arg1: java.lang.String, arg2: long): bool
         assigns enqueuedClose;
 
-    fun runWriter(): void;
+    fun runWriter(): void
+        assigns writerTask.queue;
+        assigns writerTask.nextExecuteNanoTime;
 
     fun writeOneFrame$okhttp(): bool
         assigns streams;
@@ -9516,7 +9745,8 @@ automaton okhttp3.internal.ws.RealWebSocket (var arg0: okhttp3.internal.concurre
 
     fun getListener$okhttp(): okhttp3.WebSocketListener;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 
     fun access$getName$p(arg0: okhttp3.internal.ws.RealWebSocket): java.lang.String;
 
@@ -9544,7 +9774,8 @@ automaton okhttp3.MultipartBody$Part (var arg0: okhttp3.Headers, var arg1: okhtt
 
     fun body(): okhttp3.RequestBody;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 
     fun create(arg0: okhttp3.RequestBody): okhttp3.MultipartBody$Part;
 
@@ -9579,24 +9810,19 @@ automaton okhttp3.ConnectionSpec$Builder (var arg0: bool) : okhttp3.ConnectionSp
     fun setSupportsTlsExtensions$okhttp(arg0: bool): void
         assigns supportsTlsExtensions;
 
-    fun allEnabledCipherSuites(): okhttp3.ConnectionSpec$Builder
-        assigns cipherSuites;
-
-    fun cipherSuites(arg0: array): okhttp3.ConnectionSpec$Builder
-        assigns cipherSuites;
+    fun allEnabledCipherSuites(): okhttp3.ConnectionSpec$Builder;
 
     fun cipherSuites(arg0: array): okhttp3.ConnectionSpec$Builder;
 
-    fun allEnabledTlsVersions(): okhttp3.ConnectionSpec$Builder
-        assigns tlsVersions;
+    fun cipherSuites(arg0: array): okhttp3.ConnectionSpec$Builder;
 
-    fun tlsVersions(arg0: array): okhttp3.ConnectionSpec$Builder
-        assigns tlsVersions;
+    fun allEnabledTlsVersions(): okhttp3.ConnectionSpec$Builder;
 
     fun tlsVersions(arg0: array): okhttp3.ConnectionSpec$Builder;
 
-    fun supportsTlsExtensions(arg0: bool): okhttp3.ConnectionSpec$Builder
-        assigns supportsTlsExtensions;
+    fun tlsVersions(arg0: array): okhttp3.ConnectionSpec$Builder;
+
+    fun supportsTlsExtensions(arg0: bool): okhttp3.ConnectionSpec$Builder;
 
     fun build(): okhttp3.ConnectionSpec;
 }

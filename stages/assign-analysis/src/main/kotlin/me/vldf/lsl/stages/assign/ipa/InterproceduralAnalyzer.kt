@@ -104,8 +104,6 @@ class InterproceduralAnalyzer(private val cm: ClassManager) {
         }
     }
 
-    // todo: introduce a static method call support
-    // todo: introduce a phi support
     private fun mapInfoToCurrentFunction(methodInfo: MethodInfo, callInst: CallInst): MethodInfo? {
        return if (callInst.isStatic) {
            mapInfoToCurrentMethodStatic(methodInfo, callInst)
@@ -129,7 +127,11 @@ class InterproceduralAnalyzer(private val cm: ClassManager) {
             return MethodInfo(chain, method)
         }
 
-        check(rootOfCallChain is Argument) { "root of the calling chain ${methodInfo.chain} is not an argument" }
+        if (rootOfCallChain !is Argument) {
+            logger.warning("root of the calling chain ${methodInfo.chain} is not an argument but ${rootOfCallChain::class}")
+            return null
+        }
+
         val argIndex = rootOfCallChain.index
         val newRootValue = callInst.args[argIndex]
 

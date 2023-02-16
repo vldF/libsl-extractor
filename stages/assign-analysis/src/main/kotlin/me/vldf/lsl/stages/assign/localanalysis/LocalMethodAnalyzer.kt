@@ -3,73 +3,21 @@ package me.vldf.lsl.stages.assign.localanalysis
 import me.vldf.lsl.extractor.platform.KfgHelper.instructions
 import me.vldf.lsl.extractor.platform.platformLogger
 import org.vorpal.research.kfg.ir.Method
-import org.vorpal.research.kfg.ir.value.Argument
-import org.vorpal.research.kfg.ir.value.ThisRef
-import org.vorpal.research.kfg.ir.value.Value
-import org.vorpal.research.kfg.ir.value.instruction.CastInst
-import org.vorpal.research.kfg.ir.value.instruction.FieldLoadInst
-import org.vorpal.research.kfg.ir.value.instruction.FieldStoreInst
 
 class LocalMethodAnalyzer {
     private val logger by platformLogger()
+    private val methodInfoProviderService = MethodInfoProviderService()
 
     fun analyze(method: Method): AnalysisInfosHolder {
+        logger.info("analyzing method ${method.name} of class ${method.klass}")
         val analysisInfo = AnalysisInfosHolder()
 
         for (instruction in method.instructions) {
-            when (instruction) {
-                is FieldStoreInst -> {
-                    val chainOfValues = instruction.toQualifiedAccessChain
-                    if (chainOfValues.isEmpty()) {
-                        continue
-                    }
+            val infos = methodInfoProviderService.getMethodInfo(instruction, method)
 
-                    val firstValue = chainOfValues.first()
-                    if (firstValue !is Argument && firstValue !is ThisRef && firstValue !is FieldStoreInst && firstValue !is FieldLoadInst) {
-                        continue
-                    }
-
-                    logger.info("$chainOfValues")
-                    val info = MethodInfo(chainOfValues, method)
-                    analysisInfo.addInfo(info)
-                }
-            }
+            analysisInfo.addInfos(infos)
         }
 
         return analysisInfo
     }
-
-    private val Value.toQualifiedAccessChain: List<Value>
-        get() {
-            return when (this) {
-                is FieldLoadInst -> {
-                    if (!this.hasOwner) {
-                        listOf()
-                    } else {
-                        this.owner.toQualifiedAccessChain.plusElement(this)
-                    }
-                }
-                is FieldStoreInst -> {
-                    if (this.isStatic) {
-                        this.operands.first().toQualifiedAccessChain.plusElement(this)
-                    } else if (!this.hasOwner) {
-                        listOf()
-                    } else {
-                        this.owner.toQualifiedAccessChain.plusElement(this)
-                    }
-                }
-                is Argument -> {
-                    listOf(this)
-                }
-                is ThisRef -> {
-                    listOf(this)
-                }
-
-                is CastInst -> {
-                    this.operand.toQualifiedAccessChain
-                }
-
-                else -> listOf()
-            }
-        }
 }

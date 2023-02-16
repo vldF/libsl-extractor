@@ -13,6 +13,7 @@ import org.jetbrains.research.libsl.nodes.Contract
 import org.jetbrains.research.libsl.nodes.ContractKind
 import org.vorpal.research.kfg.ClassManager
 import org.vorpal.research.kfg.ir.value.*
+import org.vorpal.research.kfg.ir.value.instruction.CastInst
 import org.vorpal.research.kfg.ir.value.instruction.FieldLoadInst
 import org.vorpal.research.kfg.ir.value.instruction.FieldStoreInst
 
@@ -90,7 +91,7 @@ class AssignExtractor : AnalysisStage {
                     "arg${this.index}"
                 }
                 is ThisRef -> null
-                else -> error("type ${this::class}")
+                else -> null
             }
         }
 }

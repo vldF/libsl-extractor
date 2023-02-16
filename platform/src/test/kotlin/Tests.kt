@@ -41,4 +41,14 @@ class Tests {
     fun staticMethodsTest() {
         TestPlatform.runForClassesDir("staticmethods")
     }
+
+    @Test
+    fun phiTest() {
+        TestPlatform.runForClassesDir("phistatement")
+    }
+
+    @Test
+    fun staticFieldsTest() {
+        TestPlatform.runForClassesDir("staticfields")
+    }
 }

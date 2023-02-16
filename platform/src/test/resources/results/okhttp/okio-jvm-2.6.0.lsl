@@ -363,7 +363,9 @@ automaton okio.-DeprecatedUpgrade : okio.-DeprecatedUpgrade {
 
     fun getUtf8(): okio.-DeprecatedUtf8;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Okio;
+        assigns Utf8;
 }
 automaton okio.internal._Utf8Kt : okio.internal._Utf8Kt {
     fun commonToUtf8String(arg0: array, arg1: int, arg2: int): java.lang.String;
@@ -434,11 +436,17 @@ automaton okio.RealBufferedSource (var arg0: okio.Source) : okio.RealBufferedSou
 
     fun readString(arg0: long, arg1: java.nio.charset.Charset): java.lang.String;
 
-    fun readUtf8Line(): java.lang.String;
+    fun readUtf8Line(): java.lang.String
+        assigns bufferField.head.pos;
+        assigns bufferField.size;
+        assigns bufferField.head;
 
     fun readUtf8LineStrict(): java.lang.String;
 
-    fun readUtf8LineStrict(arg0: long): java.lang.String;
+    fun readUtf8LineStrict(arg0: long): java.lang.String
+        assigns bufferField.head.pos;
+        assigns bufferField.size;
+        assigns bufferField.head;
 
     fun readUtf8CodePoint(): int;
 
@@ -748,7 +756,8 @@ automaton okio.Timeout : okio.Timeout {
         assigns hasDeadline;
         assigns deadlineNanoTime;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 }
 automaton okio.-Base64 : okio.-Base64 {
     var BASE64: array<byte>;
@@ -763,7 +772,9 @@ automaton okio.-Base64 : okio.-Base64 {
 
     fun encodeBase64$default(arg0: array, arg1: array, arg2: int, arg3: java.lang.Object): java.lang.String;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns BASE64;
+        assigns BASE64_URL_SAFE;
 }
 automaton okio.SegmentPool : okio.SegmentPool {
     var MAX_SIZE: long;
@@ -772,20 +783,25 @@ automaton okio.SegmentPool : okio.SegmentPool {
     var INSTANCE: okio.SegmentPool;
     fun getNext(): okio.Segment;
 
-    fun setNext(arg0: okio.Segment): void;
+    fun setNext(arg0: okio.Segment): void
+        assigns arg0.next;
 
     fun getByteCount(): long;
 
-    fun setByteCount(arg0: long): void;
+    fun setByteCount(arg0: long): void
+        assigns arg0;
 
-    fun take(): okio.Segment;
+    fun take(): okio.Segment
+        assigns byteCount;
 
     fun recycle(arg0: okio.Segment): void
+        assigns byteCount;
         assigns arg0.next;
         assigns arg0.limit;
         assigns arg0.pos;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns INSTANCE;
 }
 automaton okio.Pipe$source$1 (var arg0: okio.Pipe) : okio.Pipe$source$1 {
     var timeout: okio.Timeout;
@@ -907,7 +923,8 @@ automaton okio.Options (var arg0: array<okio.ByteString>, var arg1: array<int>) 
 
     fun getTrie$okio(): array<int>;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 
     fun contains(arg0: okio.ByteString): bool;
 
@@ -1000,14 +1017,17 @@ automaton okio.Buffer : okio.Buffer {
         assigns arg1.size;
 
     fun writeTo(arg0: java.io.OutputStream, arg1: long): okio.Buffer
+        assigns head.pos;
         assigns size;
         assigns head;
 
     fun writeTo$default(arg0: okio.Buffer, arg1: java.io.OutputStream, arg2: long, arg3: int, arg4: java.lang.Object): okio.Buffer
+        assigns arg0.head.pos;
         assigns arg0.size;
         assigns arg0.head;
 
     fun writeTo(arg0: java.io.OutputStream): okio.Buffer
+        assigns head.pos;
         assigns size;
         assigns head;
 
@@ -1073,11 +1093,13 @@ automaton okio.Buffer : okio.Buffer {
         assigns size;
 
     fun readByteString(): okio.ByteString
+        assigns head.shared;
         assigns head.pos;
         assigns head;
         assigns size;
 
     fun readByteString(arg0: long): okio.ByteString
+        assigns head.shared;
         assigns head.pos;
         assigns head;
         assigns size;
@@ -1359,7 +1381,8 @@ automaton okio.Buffer : okio.Buffer {
 
     fun hashCode(): int;
 
-    fun toString(): java.lang.String;
+    fun toString(): java.lang.String
+        assigns head.shared;
 
     fun copy(): okio.Buffer;
 
@@ -1367,9 +1390,11 @@ automaton okio.Buffer : okio.Buffer {
 
     fun clone(): java.lang.Object;
 
-    fun snapshot(): okio.ByteString;
+    fun snapshot(): okio.ByteString
+        assigns head.shared;
 
-    fun snapshot(arg0: int): okio.ByteString;
+    fun snapshot(arg0: int): okio.ByteString
+        assigns head.shared;
 
     fun readUnsafe(arg0: okio.Buffer$UnsafeCursor): okio.Buffer$UnsafeCursor
         assigns arg0.buffer;
@@ -1579,11 +1604,15 @@ automaton okio.AsyncTimeout : okio.AsyncTimeout {
 
     fun newTimeoutException(arg0: java.io.IOException): `<UNRESOLVED_TYPE>`;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
+        assigns IDLE_TIMEOUT_MILLIS;
+        assigns IDLE_TIMEOUT_NANOS;
 
     fun access$getHead$cp(): okio.AsyncTimeout;
 
-    fun access$setHead$cp(arg0: okio.AsyncTimeout): void;
+    fun access$setHead$cp(arg0: okio.AsyncTimeout): void
+        assigns arg0.head;
 
     fun access$getTimeoutAt$p(arg0: okio.AsyncTimeout): long;
 
@@ -1680,7 +1709,8 @@ automaton okio.HashingSink (var arg0: okio.Sink, var arg1: java.lang.String) : o
 
     fun `-deprecated_hash`(): okio.ByteString;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 
     fun md5(arg0: okio.Sink): okio.HashingSink;
 
@@ -1730,7 +1760,8 @@ automaton okio.HashingSource (var arg0: okio.Source, var arg1: java.lang.String)
 
     fun `-deprecated_hash`(): okio.ByteString;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 
     fun md5(arg0: okio.Source): okio.HashingSource;
 
@@ -1963,7 +1994,8 @@ automaton okio.internal.ByteStringKt : okio.internal.ByteStringKt {
 
     fun codePointIndexToCharIndex(arg0: array, arg1: int): int;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns HEX_DIGIT_CHARS;
 
     fun access$decodeHexDigit(arg0: char): int;
 
@@ -2187,7 +2219,9 @@ automaton okio.ByteString (var arg0: array<byte>) : okio.ByteString {
 
     fun getData$okio(): array<byte>;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
+        assigns EMPTY;
 
     fun of(arg0: array): okio.ByteString;
 
@@ -2269,7 +2303,8 @@ automaton okio.Segment : okio.Segment {
         assigns arg0.pos;
         assigns pos;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns Companion;
 }
 automaton okio.Timeout$Companion : okio.Timeout$Companion {
     fun minTimeout(arg0: long, arg1: long): long;
@@ -2433,11 +2468,13 @@ automaton okio.internal.BufferKt : okio.internal.BufferKt {
         assigns arg0.size;
 
     fun commonReadByteString(arg0: okio.Buffer): okio.ByteString
+        assigns arg0.head.shared;
         assigns arg0.head.pos;
         assigns arg0.head;
         assigns arg0.size;
 
     fun commonReadByteString(arg0: okio.Buffer, arg1: long): okio.ByteString
+        assigns arg0.head.shared;
         assigns arg0.head.pos;
         assigns arg0.head;
         assigns arg0.size;
@@ -2541,11 +2578,14 @@ automaton okio.internal.BufferKt : okio.internal.BufferKt {
 
     fun commonCopy(arg0: okio.Buffer): okio.Buffer;
 
-    fun commonSnapshot(arg0: okio.Buffer): okio.ByteString;
+    fun commonSnapshot(arg0: okio.Buffer): okio.ByteString
+        assigns arg0.head.shared;
 
-    fun commonSnapshot(arg0: okio.Buffer, arg1: int): okio.ByteString;
+    fun commonSnapshot(arg0: okio.Buffer, arg1: int): okio.ByteString
+        assigns arg0.head.shared;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns HEX_DIGIT_BYTES;
 }
 automaton okio.ForwardingTimeout (var arg0: okio.Timeout) : okio.ForwardingTimeout {
     var delegate: okio.Timeout;
@@ -2578,7 +2618,8 @@ automaton okio.-DeprecatedUtf8 : okio.-DeprecatedUtf8 {
 
     fun size(arg0: java.lang.String, arg1: int, arg2: int): long;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns INSTANCE;
 }
 automaton okio.Segment$Companion : okio.Segment$Companion {
 }
@@ -2664,7 +2705,8 @@ automaton okio.-DeprecatedOkio : okio.-DeprecatedOkio {
 
     fun blackhole(): okio.Sink;
 
-    fun `<clinit>`(): void;
+    fun `<clinit>`(): void
+        assigns INSTANCE;
 }
 automaton okio.InputStreamSource (var arg0: `<UNRESOLVED_TYPE>`, var arg1: okio.Timeout) : okio.InputStreamSource {
     var input: `<UNRESOLVED_TYPE>`;
