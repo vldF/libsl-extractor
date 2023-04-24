@@ -229,7 +229,7 @@ class JvmClassReader : AnalysisStage {
         }.toMutableList()
 
         val returnTypeRef = method.returnType.createLslTypeReference(functionContext)
-        val automatonRef = method.returnType.createAutomatonReference(functionContext)
+        val automatonRef = method.klass.createAutomatonReference(functionContext)
 
         val function = Function(
             name = method.name,
