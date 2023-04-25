@@ -1,6 +1,5 @@
 package me.vldf.lsl.extractor.platform
 
-import org.jetbrains.research.libsl.context.LslContextBase
 import org.jetbrains.research.libsl.context.LslGlobalContext
 import org.jetbrains.research.libsl.nodes.Library
 import org.vorpal.research.kfg.ClassManager

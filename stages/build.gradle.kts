@@ -1,5 +1,7 @@
 plugins {
     id("java")
+    id("kotlin")
+    kotlin("plugin.serialization") version "1.8.20"
 }
 
 group = "me.vldf.lsl.extractor"
@@ -12,6 +14,11 @@ configure(allprojects) {
     apply {
         plugin("java")
         plugin("kotlin")
+    }
+
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
     }
 }
 
@@ -27,6 +34,7 @@ subprojects {
         plugins.withType<JavaPlugin> {
             implementation("org.vorpal.research:kfg:$kfgVersion")
             implementation("com.github.vldf:libsl:$libslVersion")
+            implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.20")
             testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
             testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
 
