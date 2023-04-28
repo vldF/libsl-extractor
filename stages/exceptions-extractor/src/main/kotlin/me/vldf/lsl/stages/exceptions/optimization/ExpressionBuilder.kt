@@ -15,6 +15,7 @@ import org.vorpal.research.kfg.ir.value.instruction.CmpOpcode
 
 class ExpressionBuilder(private val context: LslContextBase) {
     private val logger by platformLogger()
+    private val predicateStateCleaner = PredicateStateCleaner()
 
     fun isTrivial(predicate: PredicateStateWithPath): Boolean {
         return Optimizer.apply(predicate.toPredicateState()) !is ChainState
@@ -33,7 +34,12 @@ class ExpressionBuilder(private val context: LslContextBase) {
         val mappings = getMappings(optimizedState)
         val termRemapper = TermRemapper(mappings)
 
-        return termRemapper.apply(optimizedState.path)
+        val remappedPredicateState = termRemapper.apply(optimizedState.path)
+        return cleanPredicateState(remappedPredicateState)
+    }
+
+    private fun cleanPredicateState(ps: PredicateState): PredicateState {
+        return predicateStateCleaner.apply(ps)
     }
 
     private fun getMappings(predicateChainState: ChainState, mappings: Map<Term, Term> = mapOf()): Map<Term, Term> {
@@ -140,6 +146,13 @@ class ExpressionBuilder(private val context: LslContextBase) {
     private fun acceptBinaryPredicate(lhv: Term, rhv: Term, op: ArithmeticBinaryOps): Expression? {
         val left = acceptTerm(lhv) ?: return null
         val right = acceptTerm(rhv) ?: return null
+
+        if (right is BoolLiteral) {
+            return when {
+                right.value -> left
+                else -> UnaryOpExpression(left, ArithmeticUnaryOp.INVERSION)
+            }
+        }
 
         return BinaryOpExpression(left, right, op)
     }
