@@ -158,9 +158,19 @@ class ExpressionBuilder(private val context: LslContextBase) {
     }
 
     private fun getVariableAccessByTerm(term: Term): VariableAccess {
-        val name = term.name
+        val name = if (term is ArgumentTerm) {
+            term.libslArgumentName
+        } else {
+            term.name
+        }
+
         val ref = VariableReferenceBuilder.build(name, context)
         return VariableAccess(name, childAccess = null, ref)
+    }
+
+    private val ArgumentTerm.libslArgumentName: String
+        get() {
+        return "arg${this.index}"
     }
 
     private fun getVariableAccessByFieldTerm(term: FieldTerm): VariableAccess {
