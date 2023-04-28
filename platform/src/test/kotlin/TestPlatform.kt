@@ -2,6 +2,7 @@ import me.vldf.lsl.extractor.platform.AnalysisPipeline
 import me.vldf.lsl.extractor.platform.PipelineConfig
 import me.vldf.lsl.jvm.reader.JvmClassReader
 import me.vldf.lsl.stages.assign.AssignExtractor
+import me.vldf.lsl.stages.exceptions.ExceptionsExtractorStage
 import org.jetbrains.research.libsl.LibSL
 import org.junit.jupiter.api.Assertions
 import java.io.File
@@ -11,7 +12,7 @@ object TestPlatform {
     private val testDataJarsParentDir = File("../testData/build/jars/")
     private val resultDir = File("./src/test/resources/results")
     private val analysisStagesFactory = {
-        listOf(JvmClassReader(), AssignExtractor())
+        listOf(JvmClassReader(), ExceptionsExtractorStage())
     }
 
     init {
@@ -34,6 +35,7 @@ object TestPlatform {
             PipelineConfig {
                 this.librariesPath = testDataJarsParentDir.resolve("$testCase/")
                 this.stages.addAll(analysisStagesFactory())
+                this.refinementsFileName = testCase
             }
         }
     }

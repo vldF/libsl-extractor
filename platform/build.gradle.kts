@@ -23,6 +23,7 @@ dependencies {
     implementation(project(":stages:assign-analysis"))
     testImplementation(project(":testData"))
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
+    testImplementation(project(mapOf("path" to ":stages:exceptions-extractor")))
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
 }
 
