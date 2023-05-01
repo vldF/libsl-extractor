@@ -2,6 +2,9 @@ package me.vldf.lsl.extractor.platform
 
 import org.jetbrains.research.libsl.context.LslContextBase
 import org.jetbrains.research.libsl.context.LslGlobalContext
+import org.jetbrains.research.libsl.nodes.Annotation
+import org.jetbrains.research.libsl.nodes.AnnotationArgumentDescriptor
+import org.jetbrains.research.libsl.nodes.BoolLiteral
 import org.jetbrains.research.libsl.nodes.Library
 import org.jetbrains.research.libsl.nodes.references.builders.TypeReferenceBuilder
 import org.jetbrains.research.libsl.type.RealType
@@ -49,6 +52,10 @@ class LibraryHelper(private val lslHolder: GlobalAnalysisContext) {
         return lslHolder.descriptorsToContexts[descriptor]!!
     }
 
+    fun getContext(descriptor: LibraryDescriptor): LslGlobalContext {
+        return lslHolder.descriptorsToContexts[descriptor]!!
+    }
+
     private fun resolveLibraryDescriptor(klass: Class): LibraryDescriptor? {
         val classPackage = resolvePackage(klass)
         if (classPackage == null) {
@@ -76,6 +83,21 @@ class LibraryHelper(private val lslHolder: GlobalAnalysisContext) {
             val objectType = RealType("java.lang.Object".split("."), context = context)
             val unresolvedType = RealType(listOf("<unresolved_type>"), context = context)
 
+            val exceptionNameArgumentDescriptor = AnnotationArgumentDescriptor(
+                "exception",
+                stringTypeRef,
+                initialValue = null
+            )
+            val predicateArgumentDescriptor = AnnotationArgumentDescriptor(
+                "predicate",
+                boolTypeRef,
+                initialValue = BoolLiteral(true)
+            )
+            val throwsAnnotation = Annotation(
+                "Throws",
+                mutableListOf(exceptionNameArgumentDescriptor, predicateArgumentDescriptor)
+            )
+
             context.storeType(
                 TypeAlias("byte", int8TypeRef, context)
             )
@@ -96,6 +118,8 @@ class LibraryHelper(private val lslHolder: GlobalAnalysisContext) {
             )
             context.storeType(objectType)
             context.storeType(unresolvedType)
+
+            context.storeAnnotation(throwsAnnotation)
         }
     }
 }

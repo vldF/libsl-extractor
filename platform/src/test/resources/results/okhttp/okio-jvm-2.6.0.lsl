@@ -357,15 +357,13 @@ type okio.Sink {
 }
 
 automaton okio.-DeprecatedUpgrade : okio.-DeprecatedUpgrade {
-    var Okio: okio.-DeprecatedOkio;
-    var Utf8: okio.-DeprecatedUtf8;
+    val Okio: okio.-DeprecatedOkio;
+    val Utf8: okio.-DeprecatedUtf8;
     fun getOkio(): okio.-DeprecatedOkio;
 
     fun getUtf8(): okio.-DeprecatedUtf8;
 
-    fun `<clinit>`(): void
-        assigns Okio;
-        assigns Utf8;
+    fun `<clinit>`(): void;
 }
 automaton okio.internal._Utf8Kt : okio.internal._Utf8Kt {
     fun commonToUtf8String(arg0: array, arg1: int, arg2: int): java.lang.String;
@@ -381,19 +379,17 @@ automaton okio.Source : okio.Source {
 
     fun close(): void;
 }
-automaton okio.RealBufferedSource (var arg0: okio.Source) : okio.RealBufferedSource {
-    var bufferField: okio.Buffer;
-    var closed: bool;
-    var source: okio.Source;
+automaton okio.RealBufferedSource (val arg0: okio.Source) : okio.RealBufferedSource {
+    val bufferField: okio.Buffer;
+    val closed: bool;
+    val source: okio.Source;
     fun buffer$annotations(): void;
 
     fun getBuffer(): okio.Buffer;
 
     fun buffer(): okio.Buffer;
 
-    fun read(arg0: okio.Buffer, arg1: long): long
-        assigns arg0.head;
-        assigns arg0.size;
+    fun read(arg0: okio.Buffer, arg1: long): long;
 
     fun exhausted(): bool;
 
@@ -421,12 +417,9 @@ automaton okio.RealBufferedSource (var arg0: okio.Source) : okio.RealBufferedSou
 
     fun read(arg0: java.nio.ByteBuffer): int;
 
-    fun readFully(arg0: okio.Buffer, arg1: long): void
-        assigns arg0.head;
-        assigns arg0.size;
+    fun readFully(arg0: okio.Buffer, arg1: long): void;
 
-    fun readAll(arg0: okio.Sink): long
-        assigns arg0;
+    fun readAll(arg0: okio.Sink): long;
 
     fun readUtf8(): java.lang.String;
 
@@ -436,17 +429,11 @@ automaton okio.RealBufferedSource (var arg0: okio.Source) : okio.RealBufferedSou
 
     fun readString(arg0: long, arg1: java.nio.charset.Charset): java.lang.String;
 
-    fun readUtf8Line(): java.lang.String
-        assigns bufferField.head.pos;
-        assigns bufferField.size;
-        assigns bufferField.head;
+    fun readUtf8Line(): java.lang.String;
 
     fun readUtf8LineStrict(): java.lang.String;
 
-    fun readUtf8LineStrict(arg0: long): java.lang.String
-        assigns bufferField.head.pos;
-        assigns bufferField.size;
-        assigns bufferField.head;
+    fun readUtf8LineStrict(arg0: long): java.lang.String;
 
     fun readUtf8CodePoint(): int;
 
@@ -492,22 +479,16 @@ automaton okio.RealBufferedSource (var arg0: okio.Source) : okio.RealBufferedSou
 
     fun isOpen(): bool;
 
-    fun close(): void
-        assigns closed;
+    fun close(): void;
 
     fun timeout(): okio.Timeout;
 
     fun toString(): java.lang.String;
 }
-automaton okio.Pipe$sink$1 (var arg0: okio.Pipe) : okio.Pipe$sink$1 {
-    var timeout: okio.Timeout;
-    var this$0: okio.Pipe;
-    fun write(arg0: okio.Buffer, arg1: long): void
-        assigns arg0.head;
-        assigns arg0.head.prev;
-        assigns arg0.head.next;
-        assigns arg0.size;
-        assigns arg0.head.pos;
+automaton okio.Pipe$sink$1 (val arg0: okio.Pipe) : okio.Pipe$sink$1 {
+    val timeout: okio.Timeout;
+    val this$0: okio.Pipe;
+    fun write(arg0: okio.Buffer, arg1: long): void;
 
     fun flush(): void;
 
@@ -515,11 +496,9 @@ automaton okio.Pipe$sink$1 (var arg0: okio.Pipe) : okio.Pipe$sink$1 {
 
     fun timeout(): okio.Timeout;
 }
-automaton okio.ForwardingSource (var arg0: okio.Source) : okio.ForwardingSource {
-    var delegate: okio.Source;
-    fun read(arg0: okio.Buffer, arg1: long): long
-        assigns arg0.head;
-        assigns arg0.size;
+automaton okio.ForwardingSource (val arg0: okio.Source) : okio.ForwardingSource {
+    val delegate: okio.Source;
+    fun read(arg0: okio.Buffer, arg1: long): long;
 
     fun timeout(): okio.Timeout;
 
@@ -531,8 +510,8 @@ automaton okio.ForwardingSource (var arg0: okio.Source) : okio.ForwardingSource 
 
     fun delegate(): okio.Source;
 }
-automaton okio.RealBufferedSink$outputStream$1 (var arg0: okio.RealBufferedSink) : okio.RealBufferedSink$outputStream$1 {
-    var this$0: okio.RealBufferedSink;
+automaton okio.RealBufferedSink$outputStream$1 (val arg0: okio.RealBufferedSink) : okio.RealBufferedSink$outputStream$1 {
+    val this$0: okio.RealBufferedSink;
     fun write(arg0: int): void;
 
     fun write(arg0: array, arg1: int, arg2: int): void;
@@ -550,36 +529,22 @@ automaton okio.Timeout$Companion$NONE$1 : okio.Timeout$Companion$NONE$1 {
 
     fun throwIfReached(): void;
 }
-automaton okio.Throttler (var arg0: long) : okio.Throttler {
-    var bytesPerSecond: long;
-    var waitByteCount: long;
-    var maxByteCount: long;
-    var allocatedUntil: long;
-    fun bytesPerSecond(arg0: long, arg1: long, arg2: long): void
-        assigns bytesPerSecond;
-        assigns waitByteCount;
-        assigns maxByteCount;
+automaton okio.Throttler (val arg0: long) : okio.Throttler {
+    val bytesPerSecond: long;
+    val waitByteCount: long;
+    val maxByteCount: long;
+    val allocatedUntil: long;
+    fun bytesPerSecond(arg0: long, arg1: long, arg2: long): void;
 
-    fun bytesPerSecond$default(arg0: okio.Throttler, arg1: long, arg2: long, arg3: long, arg4: int, arg5: java.lang.Object): void
-        assigns arg0.bytesPerSecond;
-        assigns arg0.waitByteCount;
-        assigns arg0.maxByteCount;
+    fun bytesPerSecond$default(arg0: okio.Throttler, arg1: long, arg2: long, arg3: long, arg4: int, arg5: java.lang.Object): void;
 
-    fun bytesPerSecond(arg0: long, arg1: long): void
-        assigns bytesPerSecond;
-        assigns waitByteCount;
-        assigns maxByteCount;
+    fun bytesPerSecond(arg0: long, arg1: long): void;
 
-    fun bytesPerSecond(arg0: long): void
-        assigns bytesPerSecond;
-        assigns waitByteCount;
-        assigns maxByteCount;
+    fun bytesPerSecond(arg0: long): void;
 
-    fun take$okio(arg0: long): long
-        assigns allocatedUntil;
+    fun take$okio(arg0: long): long;
 
-    fun byteCountOrWaitNanos$okio(arg0: long, arg1: long): long
-        assigns allocatedUntil;
+    fun byteCountOrWaitNanos$okio(arg0: long, arg1: long): long;
 
     fun nanosToBytes(arg0: long): long;
 
@@ -591,25 +556,21 @@ automaton okio.Throttler (var arg0: long) : okio.Throttler {
 
     fun sink(arg0: okio.Sink): okio.Sink;
 }
-automaton okio.GzipSink (var arg0: okio.Sink) : okio.GzipSink {
-    var sink: okio.RealBufferedSink;
-    var deflater: `<UNRESOLVED_TYPE>`;
-    var deflaterSink: okio.DeflaterSink;
-    var closed: bool;
-    var crc: `<UNRESOLVED_TYPE>`;
+automaton okio.GzipSink (val arg0: okio.Sink) : okio.GzipSink {
+    val sink: okio.RealBufferedSink;
+    val deflater: `<UNRESOLVED_TYPE>`;
+    val deflaterSink: okio.DeflaterSink;
+    val closed: bool;
+    val crc: `<UNRESOLVED_TYPE>`;
     fun deflater(): `<UNRESOLVED_TYPE>`;
 
-    fun write(arg0: okio.Buffer, arg1: long): void
-        assigns arg0.head.pos;
-        assigns arg0.head;
-        assigns arg0.size;
+    fun write(arg0: okio.Buffer, arg1: long): void;
 
     fun flush(): void;
 
     fun timeout(): okio.Timeout;
 
-    fun close(): void
-        assigns closed;
+    fun close(): void;
 
     fun writeFooter(): void;
 
@@ -617,8 +578,8 @@ automaton okio.GzipSink (var arg0: okio.Sink) : okio.GzipSink {
 
     fun `-deprecated_deflater`(): `<UNRESOLVED_TYPE>`;
 }
-automaton okio.Buffer$outputStream$1 (var arg0: okio.Buffer) : okio.Buffer$outputStream$1 {
-    var this$0: okio.Buffer;
+automaton okio.Buffer$outputStream$1 (val arg0: okio.Buffer) : okio.Buffer$outputStream$1 {
+    val this$0: okio.Buffer;
     fun write(arg0: int): void;
 
     fun write(arg0: array, arg1: int, arg2: int): void;
@@ -719,13 +680,12 @@ automaton okio.BufferedSource : okio.BufferedSource {
     fun inputStream(): `<UNRESOLVED_TYPE>`;
 }
 automaton okio.Timeout : okio.Timeout {
-    var hasDeadline: bool;
-    var deadlineNanoTime: long;
-    var timeoutNanos: long;
-    var NONE: okio.Timeout;
-    var Companion: okio.Timeout$Companion;
-    fun timeout(arg0: long, arg1: java.util.concurrent.TimeUnit): okio.Timeout
-        assigns timeoutNanos;
+    val hasDeadline: bool;
+    val deadlineNanoTime: long;
+    val timeoutNanos: long;
+    val NONE: okio.Timeout;
+    val Companion: okio.Timeout$Companion;
+    fun timeout(arg0: long, arg1: java.util.concurrent.TimeUnit): okio.Timeout;
 
     fun timeoutNanos(): long;
 
@@ -733,35 +693,25 @@ automaton okio.Timeout : okio.Timeout {
 
     fun deadlineNanoTime(): long;
 
-    fun deadlineNanoTime(arg0: long): okio.Timeout
-        assigns hasDeadline;
-        assigns deadlineNanoTime;
+    fun deadlineNanoTime(arg0: long): okio.Timeout;
 
-    fun deadline(arg0: long, arg1: java.util.concurrent.TimeUnit): okio.Timeout
-        assigns hasDeadline;
-        assigns deadlineNanoTime;
+    fun deadline(arg0: long, arg1: java.util.concurrent.TimeUnit): okio.Timeout;
 
-    fun clearTimeout(): okio.Timeout
-        assigns timeoutNanos;
+    fun clearTimeout(): okio.Timeout;
 
-    fun clearDeadline(): okio.Timeout
-        assigns hasDeadline;
+    fun clearDeadline(): okio.Timeout;
 
     fun throwIfReached(): void;
 
     fun waitUntilNotified(arg0: java.lang.Object): void;
 
-    fun intersectWith(arg0: okio.Timeout, arg1: kotlin.jvm.functions.Function0): void
-        assigns timeoutNanos;
-        assigns hasDeadline;
-        assigns deadlineNanoTime;
+    fun intersectWith(arg0: okio.Timeout, arg1: kotlin.jvm.functions.Function0): void;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 }
 automaton okio.-Base64 : okio.-Base64 {
-    var BASE64: array<byte>;
-    var BASE64_URL_SAFE: array<byte>;
+    val BASE64: array<byte>;
+    val BASE64_URL_SAFE: array<byte>;
     fun getBASE64(): array<byte>;
 
     fun getBASE64_URL_SAFE(): array<byte>;
@@ -772,63 +722,44 @@ automaton okio.-Base64 : okio.-Base64 {
 
     fun encodeBase64$default(arg0: array, arg1: array, arg2: int, arg3: java.lang.Object): java.lang.String;
 
-    fun `<clinit>`(): void
-        assigns BASE64;
-        assigns BASE64_URL_SAFE;
+    fun `<clinit>`(): void;
 }
 automaton okio.SegmentPool : okio.SegmentPool {
-    var MAX_SIZE: long;
-    var next: okio.Segment;
-    var byteCount: long;
-    var INSTANCE: okio.SegmentPool;
+    val MAX_SIZE: long;
+    val next: okio.Segment;
+    val byteCount: long;
+    val INSTANCE: okio.SegmentPool;
     fun getNext(): okio.Segment;
 
-    fun setNext(arg0: okio.Segment): void
-        assigns arg0.next;
+    fun setNext(arg0: okio.Segment): void;
 
     fun getByteCount(): long;
 
-    fun setByteCount(arg0: long): void
-        assigns arg0;
+    fun setByteCount(arg0: long): void;
 
-    fun take(): okio.Segment
-        assigns byteCount;
+    fun take(): okio.Segment;
 
-    fun recycle(arg0: okio.Segment): void
-        assigns byteCount;
-        assigns arg0.next;
-        assigns arg0.limit;
-        assigns arg0.pos;
+    fun recycle(arg0: okio.Segment): void;
 
-    fun `<clinit>`(): void
-        assigns INSTANCE;
+    fun `<clinit>`(): void;
 }
-automaton okio.Pipe$source$1 (var arg0: okio.Pipe) : okio.Pipe$source$1 {
-    var timeout: okio.Timeout;
-    var this$0: okio.Pipe;
-    fun read(arg0: okio.Buffer, arg1: long): long
-        assigns arg0.head;
-        assigns arg0.size;
+automaton okio.Pipe$source$1 (val arg0: okio.Pipe) : okio.Pipe$source$1 {
+    val timeout: okio.Timeout;
+    val this$0: okio.Pipe;
+    fun read(arg0: okio.Buffer, arg1: long): long;
 
     fun close(): void;
 
     fun timeout(): okio.Timeout;
 }
-automaton okio.Throttler$source$1 (var arg0: okio.Throttler, var arg1: okio.Source, var arg2: okio.Source) : okio.Throttler$source$1 {
-    var this$0: okio.Throttler;
-    var $source: okio.Source;
-    fun read(arg0: okio.Buffer, arg1: long): long
-        assigns arg0.head;
-        assigns arg0.size;
+automaton okio.Throttler$source$1 (val arg0: okio.Throttler, val arg1: okio.Source, val arg2: okio.Source) : okio.Throttler$source$1 {
+    val this$0: okio.Throttler;
+    val $source: okio.Source;
+    fun read(arg0: okio.Buffer, arg1: long): long;
 }
-automaton okio.ForwardingSink (var arg0: okio.Sink) : okio.ForwardingSink {
-    var delegate: okio.Sink;
-    fun write(arg0: okio.Buffer, arg1: long): void
-        assigns arg0.head;
-        assigns arg0.head.prev;
-        assigns arg0.head.next;
-        assigns arg0.size;
-        assigns arg0.head.pos;
+automaton okio.ForwardingSink (val arg0: okio.Sink) : okio.ForwardingSink {
+    val delegate: okio.Sink;
+    fun write(arg0: okio.Buffer, arg1: long): void;
 
     fun flush(): void;
 
@@ -842,39 +773,33 @@ automaton okio.ForwardingSink (var arg0: okio.Sink) : okio.ForwardingSink {
 
     fun delegate(): okio.Sink;
 }
-automaton okio.Pipe (var arg0: long) : okio.Pipe {
-    var buffer: okio.Buffer;
-    var sinkClosed: bool;
-    var sourceClosed: bool;
-    var foldedSink: okio.Sink;
-    var sink: okio.Sink;
-    var source: okio.Source;
-    var maxBufferSize: long;
+automaton okio.Pipe (val arg0: long) : okio.Pipe {
+    val buffer: okio.Buffer;
+    val sinkClosed: bool;
+    val sourceClosed: bool;
+    val foldedSink: okio.Sink;
+    val sink: okio.Sink;
+    val source: okio.Source;
+    val maxBufferSize: long;
     fun getBuffer$okio(): okio.Buffer;
 
     fun getSinkClosed$okio(): bool;
 
-    fun setSinkClosed$okio(arg0: bool): void
-        assigns sinkClosed;
+    fun setSinkClosed$okio(arg0: bool): void;
 
     fun getSourceClosed$okio(): bool;
 
-    fun setSourceClosed$okio(arg0: bool): void
-        assigns sourceClosed;
+    fun setSourceClosed$okio(arg0: bool): void;
 
     fun getFoldedSink$okio(): okio.Sink;
 
-    fun setFoldedSink$okio(arg0: okio.Sink): void
-        assigns foldedSink;
+    fun setFoldedSink$okio(arg0: okio.Sink): void;
 
     fun sink(): okio.Sink;
 
     fun source(): okio.Source;
 
-    fun fold(arg0: okio.Sink): void
-        assigns sourceClosed;
-        assigns foldedSink;
-        assigns arg0;
+    fun fold(arg0: okio.Sink): void;
 
     fun forward(arg0: okio.Sink, arg1: kotlin.jvm.functions.Function1): void;
 
@@ -886,16 +811,13 @@ automaton okio.Pipe (var arg0: long) : okio.Pipe {
 
     fun access$forward(arg0: okio.Pipe, arg1: okio.Sink, arg2: kotlin.jvm.functions.Function1): void;
 }
-automaton okio.GzipSource (var arg0: okio.Source) : okio.GzipSource {
-    var section: byte;
-    var source: okio.RealBufferedSource;
-    var inflater: `<UNRESOLVED_TYPE>`;
-    var inflaterSource: okio.InflaterSource;
-    var crc: `<UNRESOLVED_TYPE>`;
-    fun read(arg0: okio.Buffer, arg1: long): long
-        assigns section;
-        assigns arg0.head;
-        assigns arg0.size;
+automaton okio.GzipSource (val arg0: okio.Source) : okio.GzipSource {
+    val section: byte;
+    val source: okio.RealBufferedSource;
+    val inflater: `<UNRESOLVED_TYPE>`;
+    val inflaterSource: okio.InflaterSource;
+    val crc: `<UNRESOLVED_TYPE>`;
+    fun read(arg0: okio.Buffer, arg1: long): long;
 
     fun consumeHeader(): void;
 
@@ -909,10 +831,10 @@ automaton okio.GzipSource (var arg0: okio.Source) : okio.GzipSource {
 
     fun checkEqual(arg0: java.lang.String, arg1: int, arg2: int): void;
 }
-automaton okio.Options (var arg0: array<okio.ByteString>, var arg1: array<int>) : okio.Options {
-    var byteStrings: array<okio.ByteString>;
-    var trie: array<int>;
-    var Companion: okio.Options$Companion;
+automaton okio.Options (val arg0: array<okio.ByteString>, val arg1: array<int>) : okio.Options {
+    val byteStrings: array<okio.ByteString>;
+    val trie: array<int>;
+    val Companion: okio.Options$Companion;
     fun getSize(): int;
 
     fun get(arg0: int): okio.ByteString;
@@ -923,8 +845,7 @@ automaton okio.Options (var arg0: array<okio.ByteString>, var arg1: array<int>) 
 
     fun getTrie$okio(): array<int>;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 
     fun contains(arg0: okio.ByteString): bool;
 
@@ -940,39 +861,29 @@ automaton okio.Options (var arg0: array<okio.ByteString>, var arg1: array<int>) 
 
     fun of(arg0: array): okio.Options;
 }
-automaton okio.InflaterSource (var arg0: okio.BufferedSource, var arg1: `<UNRESOLVED_TYPE>`) : okio.InflaterSource {
-    var bufferBytesHeldByInflater: int;
-    var closed: bool;
-    var source: okio.BufferedSource;
-    var inflater: `<UNRESOLVED_TYPE>`;
-    fun read(arg0: okio.Buffer, arg1: long): long
-        assigns arg0.head;
-        assigns bufferBytesHeldByInflater;
-        assigns arg0.size;
+automaton okio.InflaterSource (val arg0: okio.BufferedSource, val arg1: `<UNRESOLVED_TYPE>`) : okio.InflaterSource {
+    val bufferBytesHeldByInflater: int;
+    val closed: bool;
+    val source: okio.BufferedSource;
+    val inflater: `<UNRESOLVED_TYPE>`;
+    fun read(arg0: okio.Buffer, arg1: long): long;
 
-    fun readOrInflate(arg0: okio.Buffer, arg1: long): long
-        assigns arg0.head;
-        assigns bufferBytesHeldByInflater;
-        assigns arg0.size;
+    fun readOrInflate(arg0: okio.Buffer, arg1: long): long;
 
-    fun refill(): bool
-        assigns bufferBytesHeldByInflater;
+    fun refill(): bool;
 
-    fun releaseBytesAfterInflate(): void
-        assigns bufferBytesHeldByInflater;
+    fun releaseBytesAfterInflate(): void;
 
     fun timeout(): okio.Timeout;
 
-    fun close(): void
-        assigns closed;
+    fun close(): void;
 }
 automaton okio.Buffer : okio.Buffer {
-    var head: okio.Segment;
-    var size: long;
+    val head: okio.Segment;
+    val size: long;
     fun size(): long;
 
-    fun setSize$okio(arg0: long): void
-        assigns size;
+    fun setSize$okio(arg0: long): void;
 
     fun buffer(): okio.Buffer;
 
@@ -1012,235 +923,109 @@ automaton okio.Buffer : okio.Buffer {
 
     fun copyTo(arg0: okio.Buffer, arg1: long): okio.Buffer;
 
-    fun copyTo$default(arg0: okio.Buffer, arg1: okio.Buffer, arg2: long, arg3: int, arg4: java.lang.Object): okio.Buffer
-        assigns arg1.head;
-        assigns arg1.size;
+    fun copyTo$default(arg0: okio.Buffer, arg1: okio.Buffer, arg2: long, arg3: int, arg4: java.lang.Object): okio.Buffer;
 
-    fun writeTo(arg0: java.io.OutputStream, arg1: long): okio.Buffer
-        assigns head.pos;
-        assigns size;
-        assigns head;
+    fun writeTo(arg0: java.io.OutputStream, arg1: long): okio.Buffer;
 
-    fun writeTo$default(arg0: okio.Buffer, arg1: java.io.OutputStream, arg2: long, arg3: int, arg4: java.lang.Object): okio.Buffer
-        assigns arg0.head.pos;
-        assigns arg0.size;
-        assigns arg0.head;
+    fun writeTo$default(arg0: okio.Buffer, arg1: java.io.OutputStream, arg2: long, arg3: int, arg4: java.lang.Object): okio.Buffer;
 
-    fun writeTo(arg0: java.io.OutputStream): okio.Buffer
-        assigns head.pos;
-        assigns size;
-        assigns head;
+    fun writeTo(arg0: java.io.OutputStream): okio.Buffer;
 
-    fun readFrom(arg0: java.io.InputStream): okio.Buffer
-        assigns head;
-        assigns size;
+    fun readFrom(arg0: java.io.InputStream): okio.Buffer;
 
-    fun readFrom(arg0: java.io.InputStream, arg1: long): okio.Buffer
-        assigns head;
-        assigns size;
+    fun readFrom(arg0: java.io.InputStream, arg1: long): okio.Buffer;
 
-    fun readFrom(arg0: java.io.InputStream, arg1: long, arg2: bool): void
-        assigns head;
-        assigns size;
+    fun readFrom(arg0: java.io.InputStream, arg1: long, arg2: bool): void;
 
     fun completeSegmentByteCount(): long;
 
-    fun readByte(): byte
-        assigns head;
-        assigns head.pos;
-        assigns size;
+    fun readByte(): byte;
 
     fun getByte(arg0: long): byte;
 
-    fun readShort(): short
-        assigns head;
-        assigns head.pos;
-        assigns size;
+    fun readShort(): short;
 
-    fun readInt(): int
-        assigns head;
-        assigns head.pos;
-        assigns size;
+    fun readInt(): int;
 
-    fun readLong(): long
-        assigns head;
-        assigns head.pos;
-        assigns size;
+    fun readLong(): long;
 
-    fun readShortLe(): short
-        assigns head;
-        assigns head.pos;
-        assigns size;
+    fun readShortLe(): short;
 
-    fun readIntLe(): int
-        assigns head;
-        assigns head.pos;
-        assigns size;
+    fun readIntLe(): int;
 
-    fun readLongLe(): long
-        assigns head;
-        assigns head.pos;
-        assigns size;
+    fun readLongLe(): long;
 
-    fun readDecimalLong(): long
-        assigns head;
-        assigns head.pos;
-        assigns size;
+    fun readDecimalLong(): long;
 
-    fun readHexadecimalUnsignedLong(): long
-        assigns head;
-        assigns head.pos;
-        assigns size;
+    fun readHexadecimalUnsignedLong(): long;
 
-    fun readByteString(): okio.ByteString
-        assigns head.shared;
-        assigns head.pos;
-        assigns head;
-        assigns size;
+    fun readByteString(): okio.ByteString;
 
-    fun readByteString(arg0: long): okio.ByteString
-        assigns head.shared;
-        assigns head.pos;
-        assigns head;
-        assigns size;
+    fun readByteString(arg0: long): okio.ByteString;
 
-    fun select(arg0: okio.Options): int
-        assigns head.pos;
-        assigns head;
-        assigns size;
+    fun select(arg0: okio.Options): int;
 
-    fun readFully(arg0: okio.Buffer, arg1: long): void
-        assigns head;
-        assigns arg0.head;
-        assigns head.prev;
-        assigns head.next;
-        assigns size;
-        assigns arg0.size;
+    fun readFully(arg0: okio.Buffer, arg1: long): void;
 
-    fun readAll(arg0: okio.Sink): long
-        assigns head;
-        assigns head.prev;
-        assigns head.next;
-        assigns size;
-        assigns head.pos;
-        assigns arg0;
+    fun readAll(arg0: okio.Sink): long;
 
-    fun readUtf8(): java.lang.String
-        assigns head.pos;
-        assigns size;
-        assigns head;
+    fun readUtf8(): java.lang.String;
 
-    fun readUtf8(arg0: long): java.lang.String
-        assigns head.pos;
-        assigns size;
-        assigns head;
+    fun readUtf8(arg0: long): java.lang.String;
 
-    fun readString(arg0: java.nio.charset.Charset): java.lang.String
-        assigns head.pos;
-        assigns size;
-        assigns head;
+    fun readString(arg0: java.nio.charset.Charset): java.lang.String;
 
-    fun readString(arg0: long, arg1: java.nio.charset.Charset): java.lang.String
-        assigns head.pos;
-        assigns size;
-        assigns head;
+    fun readString(arg0: long, arg1: java.nio.charset.Charset): java.lang.String;
 
-    fun readUtf8Line(): java.lang.String
-        assigns head.pos;
-        assigns size;
-        assigns head;
+    fun readUtf8Line(): java.lang.String;
 
-    fun readUtf8LineStrict(): java.lang.String
-        assigns head.pos;
-        assigns size;
-        assigns head;
+    fun readUtf8LineStrict(): java.lang.String;
 
-    fun readUtf8LineStrict(arg0: long): java.lang.String
-        assigns head.pos;
-        assigns size;
-        assigns head;
+    fun readUtf8LineStrict(arg0: long): java.lang.String;
 
-    fun readUtf8CodePoint(): int
-        assigns head.pos;
-        assigns head;
-        assigns size;
+    fun readUtf8CodePoint(): int;
 
-    fun readByteArray(): array<byte>
-        assigns head.pos;
-        assigns head;
-        assigns size;
+    fun readByteArray(): array<byte>;
 
-    fun readByteArray(arg0: long): array<byte>
-        assigns head.pos;
-        assigns head;
-        assigns size;
+    fun readByteArray(arg0: long): array<byte>;
 
-    fun read(arg0: array): int
-        assigns head.pos;
-        assigns size;
-        assigns head;
+    fun read(arg0: array): int;
 
-    fun readFully(arg0: array): void
-        assigns head.pos;
-        assigns head;
-        assigns size;
+    fun readFully(arg0: array): void;
 
-    fun read(arg0: array, arg1: int, arg2: int): int
-        assigns head.pos;
-        assigns head;
-        assigns size;
+    fun read(arg0: array, arg1: int, arg2: int): int;
 
     fun read(arg0: java.nio.ByteBuffer): int;
 
-    fun clear(): void
-        assigns head.pos;
-        assigns head;
-        assigns size;
+    fun clear(): void;
 
-    fun skip(arg0: long): void
-        assigns head.pos;
-        assigns head;
-        assigns size;
+    fun skip(arg0: long): void;
 
-    fun write(arg0: okio.ByteString): okio.Buffer
-        assigns head;
-        assigns size;
+    fun write(arg0: okio.ByteString): okio.Buffer;
 
     fun write(arg0: okio.ByteString): okio.BufferedSink;
 
-    fun write(arg0: okio.ByteString, arg1: int, arg2: int): okio.Buffer
-        assigns head;
-        assigns size;
+    fun write(arg0: okio.ByteString, arg1: int, arg2: int): okio.Buffer;
 
     fun write(arg0: okio.ByteString, arg1: int, arg2: int): okio.BufferedSink;
 
-    fun writeUtf8(arg0: java.lang.String): okio.Buffer
-        assigns head;
-        assigns size;
+    fun writeUtf8(arg0: java.lang.String): okio.Buffer;
 
     fun writeUtf8(arg0: java.lang.String): okio.BufferedSink;
 
-    fun writeUtf8(arg0: java.lang.String, arg1: int, arg2: int): okio.Buffer
-        assigns head;
-        assigns size;
+    fun writeUtf8(arg0: java.lang.String, arg1: int, arg2: int): okio.Buffer;
 
     fun writeUtf8(arg0: java.lang.String, arg1: int, arg2: int): okio.BufferedSink;
 
-    fun writeUtf8CodePoint(arg0: int): okio.Buffer
-        assigns head;
-        assigns size;
+    fun writeUtf8CodePoint(arg0: int): okio.Buffer;
 
     fun writeUtf8CodePoint(arg0: int): okio.BufferedSink;
 
-    fun writeString(arg0: java.lang.String, arg1: java.nio.charset.Charset): okio.Buffer
-        assigns head;
-        assigns size;
+    fun writeString(arg0: java.lang.String, arg1: java.nio.charset.Charset): okio.Buffer;
 
     fun writeString(arg0: java.lang.String, arg1: java.nio.charset.Charset): okio.BufferedSink;
 
-    fun writeString(arg0: java.lang.String, arg1: int, arg2: int, arg3: java.nio.charset.Charset): okio.Buffer
-        assigns head;
-        assigns size;
+    fun writeString(arg0: java.lang.String, arg1: int, arg2: int, arg3: java.nio.charset.Charset): okio.Buffer;
 
     fun writeString(arg0: java.lang.String, arg1: int, arg2: int, arg3: java.nio.charset.Charset): okio.BufferedSink;
 
@@ -1254,84 +1039,53 @@ automaton okio.Buffer : okio.Buffer {
 
     fun write(arg0: java.nio.ByteBuffer): int;
 
-    fun writeAll(arg0: okio.Source): long
-        assigns head;
-        assigns size;
-        assigns arg0;
+    fun writeAll(arg0: okio.Source): long;
 
-    fun write(arg0: okio.Source, arg1: long): okio.Buffer
-        assigns arg0;
-        assigns head;
-        assigns size;
+    fun write(arg0: okio.Source, arg1: long): okio.Buffer;
 
     fun write(arg0: okio.Source, arg1: long): okio.BufferedSink;
 
-    fun writeByte(arg0: int): okio.Buffer
-        assigns head;
-        assigns size;
+    fun writeByte(arg0: int): okio.Buffer;
 
     fun writeByte(arg0: int): okio.BufferedSink;
 
-    fun writeShort(arg0: int): okio.Buffer
-        assigns head;
-        assigns size;
+    fun writeShort(arg0: int): okio.Buffer;
 
     fun writeShort(arg0: int): okio.BufferedSink;
 
-    fun writeShortLe(arg0: int): okio.Buffer
-        assigns head;
-        assigns size;
+    fun writeShortLe(arg0: int): okio.Buffer;
 
     fun writeShortLe(arg0: int): okio.BufferedSink;
 
-    fun writeInt(arg0: int): okio.Buffer
-        assigns head;
-        assigns size;
+    fun writeInt(arg0: int): okio.Buffer;
 
     fun writeInt(arg0: int): okio.BufferedSink;
 
-    fun writeIntLe(arg0: int): okio.Buffer
-        assigns head;
-        assigns size;
+    fun writeIntLe(arg0: int): okio.Buffer;
 
     fun writeIntLe(arg0: int): okio.BufferedSink;
 
-    fun writeLong(arg0: long): okio.Buffer
-        assigns head;
-        assigns size;
+    fun writeLong(arg0: long): okio.Buffer;
 
     fun writeLong(arg0: long): okio.BufferedSink;
 
-    fun writeLongLe(arg0: long): okio.Buffer
-        assigns head;
-        assigns size;
+    fun writeLongLe(arg0: long): okio.Buffer;
 
     fun writeLongLe(arg0: long): okio.BufferedSink;
 
-    fun writeDecimalLong(arg0: long): okio.Buffer
-        assigns head;
-        assigns size;
+    fun writeDecimalLong(arg0: long): okio.Buffer;
 
     fun writeDecimalLong(arg0: long): okio.BufferedSink;
 
-    fun writeHexadecimalUnsignedLong(arg0: long): okio.Buffer
-        assigns head;
-        assigns size;
+    fun writeHexadecimalUnsignedLong(arg0: long): okio.Buffer;
 
     fun writeHexadecimalUnsignedLong(arg0: long): okio.BufferedSink;
 
-    fun writableSegment$okio(arg0: int): okio.Segment
-        assigns head;
+    fun writableSegment$okio(arg0: int): okio.Segment;
 
     fun write(arg0: okio.Buffer, arg1: long): void;
 
-    fun read(arg0: okio.Buffer, arg1: long): long
-        assigns head;
-        assigns arg0.head;
-        assigns head.prev;
-        assigns head.next;
-        assigns size;
-        assigns arg0.size;
+    fun read(arg0: okio.Buffer, arg1: long): long;
 
     fun indexOf(arg0: byte): long;
 
@@ -1381,8 +1135,7 @@ automaton okio.Buffer : okio.Buffer {
 
     fun hashCode(): int;
 
-    fun toString(): java.lang.String
-        assigns head.shared;
+    fun toString(): java.lang.String;
 
     fun copy(): okio.Buffer;
 
@@ -1390,23 +1143,17 @@ automaton okio.Buffer : okio.Buffer {
 
     fun clone(): java.lang.Object;
 
-    fun snapshot(): okio.ByteString
-        assigns head.shared;
+    fun snapshot(): okio.ByteString;
 
-    fun snapshot(arg0: int): okio.ByteString
-        assigns head.shared;
+    fun snapshot(arg0: int): okio.ByteString;
 
-    fun readUnsafe(arg0: okio.Buffer$UnsafeCursor): okio.Buffer$UnsafeCursor
-        assigns arg0.buffer;
-        assigns arg0.readWrite;
+    fun readUnsafe(arg0: okio.Buffer$UnsafeCursor): okio.Buffer$UnsafeCursor;
 
     fun readUnsafe$default(arg0: okio.Buffer, arg1: okio.Buffer$UnsafeCursor, arg2: int, arg3: java.lang.Object): okio.Buffer$UnsafeCursor;
 
     fun readUnsafe(): okio.Buffer$UnsafeCursor;
 
-    fun readAndWriteUnsafe(arg0: okio.Buffer$UnsafeCursor): okio.Buffer$UnsafeCursor
-        assigns arg0.buffer;
-        assigns arg0.readWrite;
+    fun readAndWriteUnsafe(arg0: okio.Buffer$UnsafeCursor): okio.Buffer$UnsafeCursor;
 
     fun readAndWriteUnsafe$default(arg0: okio.Buffer, arg1: okio.Buffer$UnsafeCursor, arg2: int, arg3: java.lang.Object): okio.Buffer$UnsafeCursor;
 
@@ -1416,14 +1163,11 @@ automaton okio.Buffer : okio.Buffer {
 
     fun `-deprecated_size`(): long;
 }
-automaton okio.DeflaterSink (var arg0: okio.BufferedSink, var arg1: `<UNRESOLVED_TYPE>`) : okio.DeflaterSink {
-    var closed: bool;
-    var sink: okio.BufferedSink;
-    var deflater: `<UNRESOLVED_TYPE>`;
-    fun write(arg0: okio.Buffer, arg1: long): void
-        assigns arg0.head.pos;
-        assigns arg0.head;
-        assigns arg0.size;
+automaton okio.DeflaterSink (val arg0: okio.BufferedSink, val arg1: `<UNRESOLVED_TYPE>`) : okio.DeflaterSink {
+    val closed: bool;
+    val sink: okio.BufferedSink;
+    val deflater: `<UNRESOLVED_TYPE>`;
+    fun write(arg0: okio.Buffer, arg1: long): void;
 
     fun deflate(arg0: bool): void;
 
@@ -1431,29 +1175,23 @@ automaton okio.DeflaterSink (var arg0: okio.BufferedSink, var arg1: `<UNRESOLVED
 
     fun finishDeflate$okio(): void;
 
-    fun close(): void
-        assigns closed;
+    fun close(): void;
 
     fun timeout(): okio.Timeout;
 
     fun toString(): java.lang.String;
 }
-automaton okio.RealBufferedSink (var arg0: okio.Sink) : okio.RealBufferedSink {
-    var bufferField: okio.Buffer;
-    var closed: bool;
-    var sink: okio.Sink;
+automaton okio.RealBufferedSink (val arg0: okio.Sink) : okio.RealBufferedSink {
+    val bufferField: okio.Buffer;
+    val closed: bool;
+    val sink: okio.Sink;
     fun buffer$annotations(): void;
 
     fun getBuffer(): okio.Buffer;
 
     fun buffer(): okio.Buffer;
 
-    fun write(arg0: okio.Buffer, arg1: long): void
-        assigns arg0.head;
-        assigns arg0.head.prev;
-        assigns arg0.head.next;
-        assigns arg0.size;
-        assigns arg0;
+    fun write(arg0: okio.Buffer, arg1: long): void;
 
     fun write(arg0: okio.ByteString): okio.BufferedSink;
 
@@ -1475,8 +1213,7 @@ automaton okio.RealBufferedSink (var arg0: okio.Sink) : okio.RealBufferedSink {
 
     fun write(arg0: java.nio.ByteBuffer): int;
 
-    fun writeAll(arg0: okio.Source): long
-        assigns arg0;
+    fun writeAll(arg0: okio.Source): long;
 
     fun write(arg0: okio.Source, arg1: long): okio.BufferedSink;
 
@@ -1508,8 +1245,7 @@ automaton okio.RealBufferedSink (var arg0: okio.Sink) : okio.RealBufferedSink {
 
     fun isOpen(): bool;
 
-    fun close(): void
-        assigns closed;
+    fun close(): void;
 
     fun timeout(): okio.Timeout;
 
@@ -1546,46 +1282,32 @@ automaton okio.Okio : okio.Okio {
 
     fun source(arg0: java.nio.file.Path, arg1: array): okio.Source;
 }
-automaton okio.Throttler$sink$1 (var arg0: okio.Throttler, var arg1: okio.Sink, var arg2: okio.Sink) : okio.Throttler$sink$1 {
-    var this$0: okio.Throttler;
-    var $sink: okio.Sink;
-    fun write(arg0: okio.Buffer, arg1: long): void
-        assigns arg0.head;
-        assigns arg0.head.prev;
-        assigns arg0.head.next;
-        assigns arg0.size;
-        assigns arg0.head.pos;
+automaton okio.Throttler$sink$1 (val arg0: okio.Throttler, val arg1: okio.Sink, val arg2: okio.Sink) : okio.Throttler$sink$1 {
+    val this$0: okio.Throttler;
+    val $sink: okio.Sink;
+    fun write(arg0: okio.Buffer, arg1: long): void;
 }
 automaton okio.Options$Companion : okio.Options$Companion {
     fun of(arg0: array): okio.Options;
 
-    fun buildTrieRecursive(arg0: long, arg1: okio.Buffer, arg2: int, arg3: java.util.List, arg4: int, arg5: int, arg6: java.util.List): void
-        assigns arg1.head;
-        assigns arg1.size;
+    fun buildTrieRecursive(arg0: long, arg1: okio.Buffer, arg2: int, arg3: java.util.List, arg4: int, arg5: int, arg6: java.util.List): void;
 
-    fun buildTrieRecursive$default(arg0: okio.Options$Companion, arg1: long, arg2: okio.Buffer, arg3: int, arg4: java.util.List, arg5: int, arg6: int, arg7: java.util.List, arg8: int, arg9: java.lang.Object): void
-        assigns arg2.head;
-        assigns arg2.size;
+    fun buildTrieRecursive$default(arg0: okio.Options$Companion, arg1: long, arg2: okio.Buffer, arg3: int, arg4: java.util.List, arg5: int, arg6: int, arg7: java.util.List, arg8: int, arg9: java.lang.Object): void;
 
     fun getIntCount(arg0: okio.Buffer): long;
 }
 automaton okio.AsyncTimeout : okio.AsyncTimeout {
-    var inQueue: bool;
-    var next: okio.AsyncTimeout;
-    var timeoutAt: long;
-    var TIMEOUT_WRITE_SIZE: int;
-    var IDLE_TIMEOUT_MILLIS: long;
-    var IDLE_TIMEOUT_NANOS: long;
-    var head: okio.AsyncTimeout;
-    var Companion: okio.AsyncTimeout$Companion;
-    fun enter(): void
-        assigns inQueue;
-        assigns timeoutAt;
-        assigns next;
+    val inQueue: bool;
+    val next: okio.AsyncTimeout;
+    val timeoutAt: long;
+    val TIMEOUT_WRITE_SIZE: int;
+    val IDLE_TIMEOUT_MILLIS: long;
+    val IDLE_TIMEOUT_NANOS: long;
+    val head: okio.AsyncTimeout;
+    val Companion: okio.AsyncTimeout$Companion;
+    fun enter(): void;
 
-    fun exit(): bool
-        assigns inQueue;
-        assigns next;
+    fun exit(): bool;
 
     fun remainingNanos(arg0: long): long;
 
@@ -1595,36 +1317,27 @@ automaton okio.AsyncTimeout : okio.AsyncTimeout {
 
     fun source(arg0: okio.Source): okio.Source;
 
-    fun withTimeout(arg0: kotlin.jvm.functions.Function0): java.lang.Object
-        assigns inQueue;
-        assigns timeoutAt;
-        assigns next;
+    fun withTimeout(arg0: kotlin.jvm.functions.Function0): java.lang.Object;
 
     fun access$newTimeoutException(arg0: java.io.IOException): `<UNRESOLVED_TYPE>`;
 
     fun newTimeoutException(arg0: java.io.IOException): `<UNRESOLVED_TYPE>`;
 
-    fun `<clinit>`(): void
-        assigns Companion;
-        assigns IDLE_TIMEOUT_MILLIS;
-        assigns IDLE_TIMEOUT_NANOS;
+    fun `<clinit>`(): void;
 
     fun access$getHead$cp(): okio.AsyncTimeout;
 
-    fun access$setHead$cp(arg0: okio.AsyncTimeout): void
-        assigns arg0.head;
+    fun access$setHead$cp(arg0: okio.AsyncTimeout): void;
 
     fun access$getTimeoutAt$p(arg0: okio.AsyncTimeout): long;
 
-    fun access$setTimeoutAt$p(arg0: okio.AsyncTimeout, arg1: long): void
-        assigns arg0.timeoutAt;
+    fun access$setTimeoutAt$p(arg0: okio.AsyncTimeout, arg1: long): void;
 
     fun access$remainingNanos(arg0: okio.AsyncTimeout, arg1: long): long;
 
     fun access$getNext$p(arg0: okio.AsyncTimeout): okio.AsyncTimeout;
 
-    fun access$setNext$p(arg0: okio.AsyncTimeout, arg1: okio.AsyncTimeout): void
-        assigns arg0.next;
+    fun access$setNext$p(arg0: okio.AsyncTimeout, arg1: okio.AsyncTimeout): void;
 
     fun access$getIDLE_TIMEOUT_MILLIS$cp(): long;
 
@@ -1635,9 +1348,9 @@ automaton okio.-InflaterSourceExtensions : okio.-InflaterSourceExtensions {
 
     fun inflate$default(arg0: okio.Source, arg1: java.util.zip.Inflater, arg2: int, arg3: java.lang.Object): okio.InflaterSource;
 }
-automaton okio.SegmentedByteString (var arg0: array<array<byte>>, var arg1: array<int>) : okio.SegmentedByteString {
-    var segments: array<array<byte>>;
-    var directory: array<int>;
+automaton okio.SegmentedByteString (val arg0: array<array<byte>>, val arg1: array<int>) : okio.SegmentedByteString {
+    val segments: array<array<byte>>;
+    val directory: array<int>;
     fun string(arg0: java.nio.charset.Charset): java.lang.String;
 
     fun base64(): java.lang.String;
@@ -1666,9 +1379,7 @@ automaton okio.SegmentedByteString (var arg0: array<array<byte>>, var arg1: arra
 
     fun write(arg0: java.io.OutputStream): void;
 
-    fun write$okio(arg0: okio.Buffer, arg1: int, arg2: int): void
-        assigns arg0.head;
-        assigns arg0.size;
+    fun write$okio(arg0: okio.Buffer, arg1: int, arg2: int): void;
 
     fun rangeEquals(arg0: int, arg1: okio.ByteString, arg2: int, arg3: int): bool;
 
@@ -1694,23 +1405,17 @@ automaton okio.SegmentedByteString (var arg0: array<array<byte>>, var arg1: arra
 
     fun getDirectory$okio(): array<int>;
 }
-automaton okio.HashingSink (var arg0: okio.Sink, var arg1: java.lang.String) : okio.HashingSink {
-    var messageDigest: `<UNRESOLVED_TYPE>`;
-    var mac: `<UNRESOLVED_TYPE>`;
-    var Companion: okio.HashingSink$Companion;
-    fun write(arg0: okio.Buffer, arg1: long): void
-        assigns arg0.head;
-        assigns arg0.head.prev;
-        assigns arg0.head.next;
-        assigns arg0.size;
-        assigns arg0.head.pos;
+automaton okio.HashingSink (val arg0: okio.Sink, val arg1: java.lang.String) : okio.HashingSink {
+    val messageDigest: `<UNRESOLVED_TYPE>`;
+    val mac: `<UNRESOLVED_TYPE>`;
+    val Companion: okio.HashingSink$Companion;
+    fun write(arg0: okio.Buffer, arg1: long): void;
 
     fun hash(): okio.ByteString;
 
     fun `-deprecated_hash`(): okio.ByteString;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 
     fun md5(arg0: okio.Sink): okio.HashingSink;
 
@@ -1726,19 +1431,17 @@ automaton okio.HashingSink (var arg0: okio.Sink, var arg1: java.lang.String) : o
 
     fun hmacSha512(arg0: okio.Sink, arg1: okio.ByteString): okio.HashingSink;
 }
-automaton okio.SocketAsyncTimeout (var arg0: `<UNRESOLVED_TYPE>`) : okio.SocketAsyncTimeout {
-    var logger: `<UNRESOLVED_TYPE>`;
-    var socket: `<UNRESOLVED_TYPE>`;
+automaton okio.SocketAsyncTimeout (val arg0: `<UNRESOLVED_TYPE>`) : okio.SocketAsyncTimeout {
+    val logger: `<UNRESOLVED_TYPE>`;
+    val socket: `<UNRESOLVED_TYPE>`;
     fun newTimeoutException(arg0: java.io.IOException): `<UNRESOLVED_TYPE>`;
 
     fun timedOut(): void;
 }
-automaton okio.AsyncTimeout$source$1 (var arg0: okio.AsyncTimeout, var arg1: okio.Source) : okio.AsyncTimeout$source$1 {
-    var this$0: okio.AsyncTimeout;
-    var $source: okio.Source;
-    fun read(arg0: okio.Buffer, arg1: long): long
-        assigns arg0.head;
-        assigns arg0.size;
+automaton okio.AsyncTimeout$source$1 (val arg0: okio.AsyncTimeout, val arg1: okio.Source) : okio.AsyncTimeout$source$1 {
+    val this$0: okio.AsyncTimeout;
+    val $source: okio.Source;
+    fun read(arg0: okio.Buffer, arg1: long): long;
 
     fun close(): void;
 
@@ -1748,20 +1451,17 @@ automaton okio.AsyncTimeout$source$1 (var arg0: okio.AsyncTimeout, var arg1: oki
 
     fun toString(): java.lang.String;
 }
-automaton okio.HashingSource (var arg0: okio.Source, var arg1: java.lang.String) : okio.HashingSource {
-    var messageDigest: `<UNRESOLVED_TYPE>`;
-    var mac: `<UNRESOLVED_TYPE>`;
-    var Companion: okio.HashingSource$Companion;
-    fun read(arg0: okio.Buffer, arg1: long): long
-        assigns arg0.head;
-        assigns arg0.size;
+automaton okio.HashingSource (val arg0: okio.Source, val arg1: java.lang.String) : okio.HashingSource {
+    val messageDigest: `<UNRESOLVED_TYPE>`;
+    val mac: `<UNRESOLVED_TYPE>`;
+    val Companion: okio.HashingSource$Companion;
+    fun read(arg0: okio.Buffer, arg1: long): long;
 
     fun hash(): okio.ByteString;
 
     fun `-deprecated_hash`(): okio.ByteString;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 
     fun md5(arg0: okio.Source): okio.HashingSource;
 
@@ -1838,31 +1538,25 @@ automaton okio.BufferedSink : okio.BufferedSink {
     fun outputStream(): `<UNRESOLVED_TYPE>`;
 }
 automaton okio.AsyncTimeout$Companion : okio.AsyncTimeout$Companion {
-    fun scheduleTimeout(arg0: okio.AsyncTimeout, arg1: long, arg2: bool): void
-        assigns arg0.timeoutAt;
-        assigns arg0.next;
+    fun scheduleTimeout(arg0: okio.AsyncTimeout, arg1: long, arg2: bool): void;
 
-    fun cancelScheduledTimeout(arg0: okio.AsyncTimeout): bool
-        assigns arg0.next;
+    fun cancelScheduledTimeout(arg0: okio.AsyncTimeout): bool;
 
     fun awaitTimeout$okio(): okio.AsyncTimeout;
 
-    fun access$scheduleTimeout(arg0: okio.AsyncTimeout$Companion, arg1: okio.AsyncTimeout, arg2: long, arg3: bool): void
-        assigns arg1.timeoutAt;
-        assigns arg1.next;
+    fun access$scheduleTimeout(arg0: okio.AsyncTimeout$Companion, arg1: okio.AsyncTimeout, arg2: long, arg3: bool): void;
 
-    fun access$cancelScheduledTimeout(arg0: okio.AsyncTimeout$Companion, arg1: okio.AsyncTimeout): bool
-        assigns arg1.next;
+    fun access$cancelScheduledTimeout(arg0: okio.AsyncTimeout$Companion, arg1: okio.AsyncTimeout): bool;
 }
 automaton okio.Utf8 : okio.Utf8 {
-    var REPLACEMENT_BYTE: byte;
-    var REPLACEMENT_CHARACTER: char;
-    var REPLACEMENT_CODE_POINT: int;
-    var HIGH_SURROGATE_HEADER: int;
-    var LOG_SURROGATE_HEADER: int;
-    var MASK_2BYTES: int;
-    var MASK_3BYTES: int;
-    var MASK_4BYTES: int;
+    val REPLACEMENT_BYTE: byte;
+    val REPLACEMENT_CHARACTER: char;
+    val REPLACEMENT_CODE_POINT: int;
+    val HIGH_SURROGATE_HEADER: int;
+    val LOG_SURROGATE_HEADER: int;
+    val MASK_2BYTES: int;
+    val MASK_3BYTES: int;
+    val MASK_4BYTES: int;
     fun size(arg0: java.lang.String, arg1: int, arg2: int): long;
 
     fun size$default(arg0: java.lang.String, arg1: int, arg2: int, arg3: int, arg4: java.lang.Object): long;
@@ -1902,29 +1596,22 @@ automaton okio.HashingSource$Companion : okio.HashingSource$Companion {
 
     fun hmacSha512(arg0: okio.Source, arg1: okio.ByteString): okio.HashingSource;
 }
-automaton okio.PeekSource (var arg0: okio.BufferedSource) : okio.PeekSource {
-    var buffer: okio.Buffer;
-    var expectedSegment: okio.Segment;
-    var expectedPos: int;
-    var closed: bool;
-    var pos: long;
-    var upstream: okio.BufferedSource;
-    fun read(arg0: okio.Buffer, arg1: long): long
-        assigns expectedSegment;
-        assigns expectedPos;
-        assigns pos;
-        assigns arg0.head;
-        assigns arg0.size;
+automaton okio.PeekSource (val arg0: okio.BufferedSource) : okio.PeekSource {
+    val buffer: okio.Buffer;
+    val expectedSegment: okio.Segment;
+    val expectedPos: int;
+    val closed: bool;
+    val pos: long;
+    val upstream: okio.BufferedSource;
+    fun read(arg0: okio.Buffer, arg1: long): long;
 
     fun timeout(): okio.Timeout;
 
-    fun close(): void
-        assigns closed;
+    fun close(): void;
 }
 automaton okio.internal.ByteStringKt : okio.internal.ByteStringKt {
-    var HEX_DIGIT_CHARS: array<char>;
-    fun commonUtf8(arg0: okio.ByteString): java.lang.String
-        assigns arg0.utf8;
+    val HEX_DIGIT_CHARS: array<char>;
+    fun commonUtf8(arg0: okio.ByteString): java.lang.String;
 
     fun commonBase64(arg0: okio.ByteString): java.lang.String;
 
@@ -1968,8 +1655,7 @@ automaton okio.internal.ByteStringKt : okio.internal.ByteStringKt {
 
     fun commonEquals(arg0: okio.ByteString, arg1: java.lang.Object): bool;
 
-    fun commonHashCode(arg0: okio.ByteString): int
-        assigns arg0.hashCode;
+    fun commonHashCode(arg0: okio.ByteString): int;
 
     fun commonCompareTo(arg0: okio.ByteString, arg1: okio.ByteString): int;
 
@@ -1983,19 +1669,15 @@ automaton okio.internal.ByteStringKt : okio.internal.ByteStringKt {
 
     fun commonDecodeHex(arg0: java.lang.String): okio.ByteString;
 
-    fun commonWrite(arg0: okio.ByteString, arg1: okio.Buffer, arg2: int, arg3: int): void
-        assigns arg1.head;
-        assigns arg1.size;
+    fun commonWrite(arg0: okio.ByteString, arg1: okio.Buffer, arg2: int, arg3: int): void;
 
     fun decodeHexDigit(arg0: char): int;
 
-    fun commonToString(arg0: okio.ByteString): java.lang.String
-        assigns arg0.utf8;
+    fun commonToString(arg0: okio.ByteString): java.lang.String;
 
     fun codePointIndexToCharIndex(arg0: array, arg1: int): int;
 
-    fun `<clinit>`(): void
-        assigns HEX_DIGIT_CHARS;
+    fun `<clinit>`(): void;
 
     fun access$decodeHexDigit(arg0: char): int;
 
@@ -2005,9 +1687,7 @@ automaton okio.AsyncTimeout$Watchdog : okio.AsyncTimeout$Watchdog {
     fun run(): void;
 }
 automaton okio.internal.RealBufferedSourceKt : okio.internal.RealBufferedSourceKt {
-    fun commonRead(arg0: okio.RealBufferedSource, arg1: okio.Buffer, arg2: long): long
-        assigns arg1.head;
-        assigns arg1.size;
+    fun commonRead(arg0: okio.RealBufferedSource, arg1: okio.Buffer, arg2: long): long;
 
     fun commonExhausted(arg0: okio.RealBufferedSource): bool;
 
@@ -2031,12 +1711,9 @@ automaton okio.internal.RealBufferedSourceKt : okio.internal.RealBufferedSourceK
 
     fun commonRead(arg0: okio.RealBufferedSource, arg1: array, arg2: int, arg3: int): int;
 
-    fun commonReadFully(arg0: okio.RealBufferedSource, arg1: okio.Buffer, arg2: long): void
-        assigns arg1.head;
-        assigns arg1.size;
+    fun commonReadFully(arg0: okio.RealBufferedSource, arg1: okio.Buffer, arg2: long): void;
 
-    fun commonReadAll(arg0: okio.RealBufferedSource, arg1: okio.Sink): long
-        assigns arg1;
+    fun commonReadAll(arg0: okio.RealBufferedSource, arg1: okio.Sink): long;
 
     fun commonReadUtf8(arg0: okio.RealBufferedSource): java.lang.String;
 
@@ -2076,32 +1753,28 @@ automaton okio.internal.RealBufferedSourceKt : okio.internal.RealBufferedSourceK
 
     fun commonPeek(arg0: okio.RealBufferedSource): okio.BufferedSource;
 
-    fun commonClose(arg0: okio.RealBufferedSource): void
-        assigns arg0.closed;
+    fun commonClose(arg0: okio.RealBufferedSource): void;
 
     fun commonTimeout(arg0: okio.RealBufferedSource): okio.Timeout;
 
     fun commonToString(arg0: okio.RealBufferedSource): java.lang.String;
 }
-automaton okio.ByteString (var arg0: array<byte>) : okio.ByteString {
-    var hashCode: int;
-    var utf8: java.lang.String;
-    var data: array<byte>;
-    var serialVersionUID: long;
-    var EMPTY: okio.ByteString;
-    var Companion: okio.ByteString$Companion;
+automaton okio.ByteString (val arg0: array<byte>) : okio.ByteString {
+    val hashCode: int;
+    val utf8: java.lang.String;
+    val data: array<byte>;
+    val serialVersionUID: long;
+    val EMPTY: okio.ByteString;
+    val Companion: okio.ByteString$Companion;
     fun getHashCode$okio(): int;
 
-    fun setHashCode$okio(arg0: int): void
-        assigns hashCode;
+    fun setHashCode$okio(arg0: int): void;
 
     fun getUtf8$okio(): java.lang.String;
 
-    fun setUtf8$okio(arg0: java.lang.String): void
-        assigns utf8;
+    fun setUtf8$okio(arg0: java.lang.String): void;
 
-    fun utf8(): java.lang.String
-        assigns utf8;
+    fun utf8(): java.lang.String;
 
     fun string(arg0: java.nio.charset.Charset): java.lang.String;
 
@@ -2157,9 +1830,7 @@ automaton okio.ByteString (var arg0: array<byte>) : okio.ByteString {
 
     fun write(arg0: java.io.OutputStream): void;
 
-    fun write$okio(arg0: okio.Buffer, arg1: int, arg2: int): void
-        assigns arg0.head;
-        assigns arg0.size;
+    fun write$okio(arg0: okio.Buffer, arg1: int, arg2: int): void;
 
     fun rangeEquals(arg0: int, arg1: okio.ByteString, arg2: int, arg3: int): bool;
 
@@ -2199,15 +1870,13 @@ automaton okio.ByteString (var arg0: array<byte>) : okio.ByteString {
 
     fun equals(arg0: java.lang.Object): bool;
 
-    fun hashCode(): int
-        assigns hashCode;
+    fun hashCode(): int;
 
     fun compareTo(arg0: okio.ByteString): int;
 
     fun compareTo(arg0: java.lang.Object): int;
 
-    fun toString(): java.lang.String
-        assigns utf8;
+    fun toString(): java.lang.String;
 
     fun readObject(arg0: java.io.ObjectInputStream): void;
 
@@ -2219,9 +1888,7 @@ automaton okio.ByteString (var arg0: array<byte>) : okio.ByteString {
 
     fun getData$okio(): array<byte>;
 
-    fun `<clinit>`(): void
-        assigns Companion;
-        assigns EMPTY;
+    fun `<clinit>`(): void;
 
     fun of(arg0: array): okio.ByteString;
 
@@ -2239,13 +1906,10 @@ automaton okio.ByteString (var arg0: array<byte>) : okio.ByteString {
 
     fun read(arg0: java.io.InputStream, arg1: int): okio.ByteString;
 }
-automaton okio.OutputStreamSink (var arg0: `<UNRESOLVED_TYPE>`, var arg1: okio.Timeout) : okio.OutputStreamSink {
-    var out: `<UNRESOLVED_TYPE>`;
-    var timeout: okio.Timeout;
-    fun write(arg0: okio.Buffer, arg1: long): void
-        assigns arg0.head.pos;
-        assigns arg0.head;
-        assigns arg0.size;
+automaton okio.OutputStreamSink (val arg0: `<UNRESOLVED_TYPE>`, val arg1: okio.Timeout) : okio.OutputStreamSink {
+    val out: `<UNRESOLVED_TYPE>`;
+    val timeout: okio.Timeout;
+    fun write(arg0: okio.Buffer, arg1: long): void;
 
     fun flush(): void;
 
@@ -2259,52 +1923,31 @@ automaton okio.-GzipSinkExtensions : okio.-GzipSinkExtensions {
     fun gzip(arg0: okio.Sink): okio.GzipSink;
 }
 automaton okio.Segment : okio.Segment {
-    var data: array<byte>;
-    var pos: int;
-    var limit: int;
-    var shared: bool;
-    var owner: bool;
-    var next: okio.Segment;
-    var prev: okio.Segment;
-    var SIZE: int;
-    var SHARE_MINIMUM: int;
-    var Companion: okio.Segment$Companion;
-    fun sharedCopy(): okio.Segment
-        assigns shared;
+    val data: array<byte>;
+    val pos: int;
+    val limit: int;
+    val shared: bool;
+    val owner: bool;
+    val next: okio.Segment;
+    val prev: okio.Segment;
+    val SIZE: int;
+    val SHARE_MINIMUM: int;
+    val Companion: okio.Segment$Companion;
+    fun sharedCopy(): okio.Segment;
 
     fun unsharedCopy(): okio.Segment;
 
-    fun pop(): okio.Segment
-        assigns prev.next;
-        assigns next.prev;
-        assigns next;
-        assigns prev;
+    fun pop(): okio.Segment;
 
-    fun push(arg0: okio.Segment): okio.Segment
-        assigns arg0.prev;
-        assigns arg0.next;
-        assigns next.prev;
-        assigns next;
+    fun push(arg0: okio.Segment): okio.Segment;
 
-    fun split(arg0: int): okio.Segment
-        assigns pos;
-        assigns shared;
+    fun split(arg0: int): okio.Segment;
 
-    fun compact(): void
-        assigns pos;
-        assigns prev.next;
-        assigns next.prev;
-        assigns next;
-        assigns prev;
-        assigns limit;
+    fun compact(): void;
 
-    fun writeTo(arg0: okio.Segment, arg1: int): void
-        assigns arg0.limit;
-        assigns arg0.pos;
-        assigns pos;
+    fun writeTo(arg0: okio.Segment, arg1: int): void;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 }
 automaton okio.Timeout$Companion : okio.Timeout$Companion {
     fun minTimeout(arg0: long, arg1: long): long;
@@ -2350,18 +1993,15 @@ automaton okio.Okio__JvmOkioKt : okio.Okio__JvmOkioKt {
     fun isAndroidGetsocknameError(arg0: java.lang.AssertionError): bool;
 }
 automaton okio.internal.BufferKt : okio.internal.BufferKt {
-    var HEX_DIGIT_BYTES: array<byte>;
-    var SEGMENTING_THRESHOLD: int;
-    var OVERFLOW_ZONE: long;
-    var OVERFLOW_DIGIT_START: long;
+    val HEX_DIGIT_BYTES: array<byte>;
+    val SEGMENTING_THRESHOLD: int;
+    val OVERFLOW_ZONE: long;
+    val OVERFLOW_DIGIT_START: long;
     fun getHEX_DIGIT_BYTES(): array<byte>;
 
     fun rangeEquals(arg0: okio.Segment, arg1: int, arg2: array, arg3: int, arg4: int): bool;
 
-    fun readUtf8Line(arg0: okio.Buffer, arg1: long): java.lang.String
-        assigns arg0.head.pos;
-        assigns arg0.size;
-        assigns arg0.head;
+    fun readUtf8Line(arg0: okio.Buffer, arg1: long): java.lang.String;
 
     fun seek(arg0: okio.Buffer, arg1: long, arg2: kotlin.jvm.functions.Function2): java.lang.Object;
 
@@ -2369,200 +2009,89 @@ automaton okio.internal.BufferKt : okio.internal.BufferKt {
 
     fun selectPrefix$default(arg0: okio.Buffer, arg1: okio.Options, arg2: bool, arg3: int, arg4: java.lang.Object): int;
 
-    fun commonCopyTo(arg0: okio.Buffer, arg1: okio.Buffer, arg2: long, arg3: long): okio.Buffer
-        assigns arg1.head;
-        assigns arg1.size;
+    fun commonCopyTo(arg0: okio.Buffer, arg1: okio.Buffer, arg2: long, arg3: long): okio.Buffer;
 
     fun commonCompleteSegmentByteCount(arg0: okio.Buffer): long;
 
-    fun commonReadByte(arg0: okio.Buffer): byte
-        assigns arg0.head;
-        assigns arg0.head.pos;
-        assigns arg0.size;
+    fun commonReadByte(arg0: okio.Buffer): byte;
 
-    fun commonReadShort(arg0: okio.Buffer): short
-        assigns arg0.head;
-        assigns arg0.head.pos;
-        assigns arg0.size;
+    fun commonReadShort(arg0: okio.Buffer): short;
 
-    fun commonReadInt(arg0: okio.Buffer): int
-        assigns arg0.head;
-        assigns arg0.head.pos;
-        assigns arg0.size;
+    fun commonReadInt(arg0: okio.Buffer): int;
 
-    fun commonReadLong(arg0: okio.Buffer): long
-        assigns arg0.head;
-        assigns arg0.head.pos;
-        assigns arg0.size;
+    fun commonReadLong(arg0: okio.Buffer): long;
 
     fun commonGet(arg0: okio.Buffer, arg1: long): byte;
 
-    fun commonClear(arg0: okio.Buffer): void
-        assigns arg0.head.pos;
-        assigns arg0.head;
-        assigns arg0.size;
+    fun commonClear(arg0: okio.Buffer): void;
 
-    fun commonSkip(arg0: okio.Buffer, arg1: long): void
-        assigns arg0.head.pos;
-        assigns arg0.head;
-        assigns arg0.size;
+    fun commonSkip(arg0: okio.Buffer, arg1: long): void;
 
-    fun commonWrite(arg0: okio.Buffer, arg1: okio.ByteString, arg2: int, arg3: int): okio.Buffer
-        assigns arg0.head;
-        assigns arg0.size;
+    fun commonWrite(arg0: okio.Buffer, arg1: okio.ByteString, arg2: int, arg3: int): okio.Buffer;
 
-    fun commonWrite$default(arg0: okio.Buffer, arg1: okio.ByteString, arg2: int, arg3: int, arg4: int, arg5: java.lang.Object): okio.Buffer
-        assigns arg0.head;
-        assigns arg0.size;
+    fun commonWrite$default(arg0: okio.Buffer, arg1: okio.ByteString, arg2: int, arg3: int, arg4: int, arg5: java.lang.Object): okio.Buffer;
 
-    fun commonWriteDecimalLong(arg0: okio.Buffer, arg1: long): okio.Buffer
-        assigns arg0.head;
-        assigns arg0.size;
+    fun commonWriteDecimalLong(arg0: okio.Buffer, arg1: long): okio.Buffer;
 
-    fun commonWriteHexadecimalUnsignedLong(arg0: okio.Buffer, arg1: long): okio.Buffer
-        assigns arg0.head;
-        assigns arg0.size;
+    fun commonWriteHexadecimalUnsignedLong(arg0: okio.Buffer, arg1: long): okio.Buffer;
 
-    fun commonWritableSegment(arg0: okio.Buffer, arg1: int): okio.Segment
-        assigns arg0.head;
+    fun commonWritableSegment(arg0: okio.Buffer, arg1: int): okio.Segment;
 
-    fun commonWrite(arg0: okio.Buffer, arg1: array): okio.Buffer
-        assigns arg0.head;
-        assigns arg0.size;
+    fun commonWrite(arg0: okio.Buffer, arg1: array): okio.Buffer;
 
     fun commonWrite(arg0: okio.Buffer, arg1: array, arg2: int, arg3: int): okio.Buffer;
 
-    fun commonReadByteArray(arg0: okio.Buffer): array<byte>
-        assigns arg0.head.pos;
-        assigns arg0.head;
-        assigns arg0.size;
+    fun commonReadByteArray(arg0: okio.Buffer): array<byte>;
 
-    fun commonReadByteArray(arg0: okio.Buffer, arg1: long): array<byte>
-        assigns arg0.head.pos;
-        assigns arg0.head;
-        assigns arg0.size;
+    fun commonReadByteArray(arg0: okio.Buffer, arg1: long): array<byte>;
 
-    fun commonRead(arg0: okio.Buffer, arg1: array): int
-        assigns arg0.head.pos;
-        assigns arg0.head;
-        assigns arg0.size;
+    fun commonRead(arg0: okio.Buffer, arg1: array): int;
 
-    fun commonReadFully(arg0: okio.Buffer, arg1: array): void
-        assigns arg0.head.pos;
-        assigns arg0.head;
-        assigns arg0.size;
+    fun commonReadFully(arg0: okio.Buffer, arg1: array): void;
 
-    fun commonRead(arg0: okio.Buffer, arg1: array, arg2: int, arg3: int): int
-        assigns arg0.head.pos;
-        assigns arg0.head;
-        assigns arg0.size;
+    fun commonRead(arg0: okio.Buffer, arg1: array, arg2: int, arg3: int): int;
 
-    fun commonReadDecimalLong(arg0: okio.Buffer): long
-        assigns arg0.head;
-        assigns arg0.head.pos;
-        assigns arg0.size;
+    fun commonReadDecimalLong(arg0: okio.Buffer): long;
 
-    fun commonReadHexadecimalUnsignedLong(arg0: okio.Buffer): long
-        assigns arg0.head;
-        assigns arg0.head.pos;
-        assigns arg0.size;
+    fun commonReadHexadecimalUnsignedLong(arg0: okio.Buffer): long;
 
-    fun commonReadByteString(arg0: okio.Buffer): okio.ByteString
-        assigns arg0.head.shared;
-        assigns arg0.head.pos;
-        assigns arg0.head;
-        assigns arg0.size;
+    fun commonReadByteString(arg0: okio.Buffer): okio.ByteString;
 
-    fun commonReadByteString(arg0: okio.Buffer, arg1: long): okio.ByteString
-        assigns arg0.head.shared;
-        assigns arg0.head.pos;
-        assigns arg0.head;
-        assigns arg0.size;
+    fun commonReadByteString(arg0: okio.Buffer, arg1: long): okio.ByteString;
 
-    fun commonSelect(arg0: okio.Buffer, arg1: okio.Options): int
-        assigns arg0.head.pos;
-        assigns arg0.head;
-        assigns arg0.size;
+    fun commonSelect(arg0: okio.Buffer, arg1: okio.Options): int;
 
-    fun commonReadFully(arg0: okio.Buffer, arg1: okio.Buffer, arg2: long): void
-        assigns arg0.head;
-        assigns arg1.head;
-        assigns arg0.head.prev;
-        assigns arg0.head.next;
-        assigns arg0.size;
-        assigns arg1.size;
+    fun commonReadFully(arg0: okio.Buffer, arg1: okio.Buffer, arg2: long): void;
 
-    fun commonReadAll(arg0: okio.Buffer, arg1: okio.Sink): long
-        assigns arg0.head;
-        assigns arg0.head.prev;
-        assigns arg0.head.next;
-        assigns arg0.size;
-        assigns arg0.head.pos;
-        assigns arg1;
+    fun commonReadAll(arg0: okio.Buffer, arg1: okio.Sink): long;
 
-    fun commonReadUtf8(arg0: okio.Buffer, arg1: long): java.lang.String
-        assigns arg0.head.pos;
-        assigns arg0.head;
-        assigns arg0.size;
+    fun commonReadUtf8(arg0: okio.Buffer, arg1: long): java.lang.String;
 
-    fun commonReadUtf8Line(arg0: okio.Buffer): java.lang.String
-        assigns arg0.head.pos;
-        assigns arg0.size;
-        assigns arg0.head;
+    fun commonReadUtf8Line(arg0: okio.Buffer): java.lang.String;
 
-    fun commonReadUtf8LineStrict(arg0: okio.Buffer, arg1: long): java.lang.String
-        assigns arg0.head.pos;
-        assigns arg0.size;
-        assigns arg0.head;
+    fun commonReadUtf8LineStrict(arg0: okio.Buffer, arg1: long): java.lang.String;
 
-    fun commonReadUtf8CodePoint(arg0: okio.Buffer): int
-        assigns arg0.head.pos;
-        assigns arg0.head;
-        assigns arg0.size;
+    fun commonReadUtf8CodePoint(arg0: okio.Buffer): int;
 
-    fun commonWriteUtf8(arg0: okio.Buffer, arg1: java.lang.String, arg2: int, arg3: int): okio.Buffer
-        assigns arg0.head;
-        assigns arg0.size;
+    fun commonWriteUtf8(arg0: okio.Buffer, arg1: java.lang.String, arg2: int, arg3: int): okio.Buffer;
 
-    fun commonWriteUtf8CodePoint(arg0: okio.Buffer, arg1: int): okio.Buffer
-        assigns arg0.head;
-        assigns arg0.size;
+    fun commonWriteUtf8CodePoint(arg0: okio.Buffer, arg1: int): okio.Buffer;
 
-    fun commonWriteAll(arg0: okio.Buffer, arg1: okio.Source): long
-        assigns arg0.head;
-        assigns arg0.size;
-        assigns arg1;
+    fun commonWriteAll(arg0: okio.Buffer, arg1: okio.Source): long;
 
-    fun commonWrite(arg0: okio.Buffer, arg1: okio.Source, arg2: long): okio.Buffer
-        assigns arg0.head;
-        assigns arg0.size;
-        assigns arg1;
+    fun commonWrite(arg0: okio.Buffer, arg1: okio.Source, arg2: long): okio.Buffer;
 
-    fun commonWriteByte(arg0: okio.Buffer, arg1: int): okio.Buffer
-        assigns arg0.head;
-        assigns arg0.size;
+    fun commonWriteByte(arg0: okio.Buffer, arg1: int): okio.Buffer;
 
-    fun commonWriteShort(arg0: okio.Buffer, arg1: int): okio.Buffer
-        assigns arg0.head;
-        assigns arg0.size;
+    fun commonWriteShort(arg0: okio.Buffer, arg1: int): okio.Buffer;
 
-    fun commonWriteInt(arg0: okio.Buffer, arg1: int): okio.Buffer
-        assigns arg0.head;
-        assigns arg0.size;
+    fun commonWriteInt(arg0: okio.Buffer, arg1: int): okio.Buffer;
 
-    fun commonWriteLong(arg0: okio.Buffer, arg1: long): okio.Buffer
-        assigns arg0.head;
-        assigns arg0.size;
+    fun commonWriteLong(arg0: okio.Buffer, arg1: long): okio.Buffer;
 
     fun commonWrite(arg0: okio.Buffer, arg1: okio.Buffer, arg2: long): void;
 
-    fun commonRead(arg0: okio.Buffer, arg1: okio.Buffer, arg2: long): long
-        assigns arg0.head;
-        assigns arg1.head;
-        assigns arg0.head.prev;
-        assigns arg0.head.next;
-        assigns arg0.size;
-        assigns arg1.size;
+    fun commonRead(arg0: okio.Buffer, arg1: okio.Buffer, arg2: long): long;
 
     fun commonIndexOf(arg0: okio.Buffer, arg1: byte, arg2: long, arg3: long): long;
 
@@ -2578,19 +2107,15 @@ automaton okio.internal.BufferKt : okio.internal.BufferKt {
 
     fun commonCopy(arg0: okio.Buffer): okio.Buffer;
 
-    fun commonSnapshot(arg0: okio.Buffer): okio.ByteString
-        assigns arg0.head.shared;
+    fun commonSnapshot(arg0: okio.Buffer): okio.ByteString;
 
-    fun commonSnapshot(arg0: okio.Buffer, arg1: int): okio.ByteString
-        assigns arg0.head.shared;
+    fun commonSnapshot(arg0: okio.Buffer, arg1: int): okio.ByteString;
 
-    fun `<clinit>`(): void
-        assigns HEX_DIGIT_BYTES;
+    fun `<clinit>`(): void;
 }
-automaton okio.ForwardingTimeout (var arg0: okio.Timeout) : okio.ForwardingTimeout {
-    var delegate: okio.Timeout;
-    fun setDelegate(arg0: okio.Timeout): okio.ForwardingTimeout
-        assigns delegate;
+automaton okio.ForwardingTimeout (val arg0: okio.Timeout) : okio.ForwardingTimeout {
+    val delegate: okio.Timeout;
+    fun setDelegate(arg0: okio.Timeout): okio.ForwardingTimeout;
 
     fun timeout(arg0: long, arg1: java.util.concurrent.TimeUnit): okio.Timeout;
 
@@ -2613,18 +2138,17 @@ automaton okio.ForwardingTimeout (var arg0: okio.Timeout) : okio.ForwardingTimeo
     fun setDelegate(arg0: okio.Timeout): void;
 }
 automaton okio.-DeprecatedUtf8 : okio.-DeprecatedUtf8 {
-    var INSTANCE: okio.-DeprecatedUtf8;
+    val INSTANCE: okio.-DeprecatedUtf8;
     fun size(arg0: java.lang.String): long;
 
     fun size(arg0: java.lang.String, arg1: int, arg2: int): long;
 
-    fun `<clinit>`(): void
-        assigns INSTANCE;
+    fun `<clinit>`(): void;
 }
 automaton okio.Segment$Companion : okio.Segment$Companion {
 }
-automaton okio.Buffer$inputStream$1 (var arg0: okio.Buffer) : okio.Buffer$inputStream$1 {
-    var this$0: okio.Buffer;
+automaton okio.Buffer$inputStream$1 (val arg0: okio.Buffer) : okio.Buffer$inputStream$1 {
+    val this$0: okio.Buffer;
     fun read(): int;
 
     fun read(arg0: array, arg1: int, arg2: int): int;
@@ -2636,10 +2160,7 @@ automaton okio.Buffer$inputStream$1 (var arg0: okio.Buffer) : okio.Buffer$inputS
     fun toString(): java.lang.String;
 }
 automaton okio.BlackholeSink : okio.BlackholeSink {
-    fun write(arg0: okio.Buffer, arg1: long): void
-        assigns arg0.head.pos;
-        assigns arg0.head;
-        assigns arg0.size;
+    fun write(arg0: okio.Buffer, arg1: long): void;
 
     fun flush(): void;
 
@@ -2664,9 +2185,7 @@ automaton okio.internal.SegmentedByteStringKt : okio.internal.SegmentedByteStrin
 
     fun commonToByteArray(arg0: okio.SegmentedByteString): array<byte>;
 
-    fun commonWrite(arg0: okio.SegmentedByteString, arg1: okio.Buffer, arg2: int, arg3: int): void
-        assigns arg1.head;
-        assigns arg1.size;
+    fun commonWrite(arg0: okio.SegmentedByteString, arg1: okio.Buffer, arg2: int, arg3: int): void;
 
     fun commonRangeEquals(arg0: okio.SegmentedByteString, arg1: int, arg2: okio.ByteString, arg3: int, arg4: int): bool;
 
@@ -2674,13 +2193,12 @@ automaton okio.internal.SegmentedByteStringKt : okio.internal.SegmentedByteStrin
 
     fun commonEquals(arg0: okio.SegmentedByteString, arg1: java.lang.Object): bool;
 
-    fun commonHashCode(arg0: okio.SegmentedByteString): int
-        assigns arg0;
+    fun commonHashCode(arg0: okio.SegmentedByteString): int;
 
     fun access$forEachSegment(arg0: okio.SegmentedByteString, arg1: int, arg2: int, arg3: kotlin.jvm.functions.Function3): void;
 }
 automaton okio.-DeprecatedOkio : okio.-DeprecatedOkio {
-    var INSTANCE: okio.-DeprecatedOkio;
+    val INSTANCE: okio.-DeprecatedOkio;
     fun appendingSink(arg0: java.io.File): okio.Sink;
 
     fun buffer(arg0: okio.Sink): okio.BufferedSink;
@@ -2705,15 +2223,12 @@ automaton okio.-DeprecatedOkio : okio.-DeprecatedOkio {
 
     fun blackhole(): okio.Sink;
 
-    fun `<clinit>`(): void
-        assigns INSTANCE;
+    fun `<clinit>`(): void;
 }
-automaton okio.InputStreamSource (var arg0: `<UNRESOLVED_TYPE>`, var arg1: okio.Timeout) : okio.InputStreamSource {
-    var input: `<UNRESOLVED_TYPE>`;
-    var timeout: okio.Timeout;
-    fun read(arg0: okio.Buffer, arg1: long): long
-        assigns arg0.head;
-        assigns arg0.size;
+automaton okio.InputStreamSource (val arg0: `<UNRESOLVED_TYPE>`, val arg1: okio.Timeout) : okio.InputStreamSource {
+    val input: `<UNRESOLVED_TYPE>`;
+    val timeout: okio.Timeout;
+    fun read(arg0: okio.Buffer, arg1: long): long;
 
     fun close(): void;
 
@@ -2757,14 +2272,14 @@ automaton okio.ByteString$Companion : okio.ByteString$Companion {
     fun `-deprecated_read`(arg0: java.io.InputStream, arg1: int): okio.ByteString;
 }
 automaton okio.-GzipSourceExtensions : okio.-GzipSourceExtensions {
-    var FHCRC: int;
-    var FEXTRA: int;
-    var FNAME: int;
-    var FCOMMENT: int;
-    var SECTION_HEADER: byte;
-    var SECTION_BODY: byte;
-    var SECTION_TRAILER: byte;
-    var SECTION_DONE: byte;
+    val FHCRC: int;
+    val FEXTRA: int;
+    val FNAME: int;
+    val FCOMMENT: int;
+    val SECTION_HEADER: byte;
+    val SECTION_BODY: byte;
+    val SECTION_TRAILER: byte;
+    val SECTION_DONE: byte;
     fun getBit(arg0: int, arg1: int): bool;
 
     fun gzip(arg0: okio.Source): okio.GzipSource;
@@ -2772,60 +2287,25 @@ automaton okio.-GzipSourceExtensions : okio.-GzipSourceExtensions {
     fun access$getBit(arg0: int, arg1: int): bool;
 }
 automaton okio.Buffer$UnsafeCursor : okio.Buffer$UnsafeCursor {
-    var buffer: okio.Buffer;
-    var readWrite: bool;
-    var segment: okio.Segment;
-    var offset: long;
-    var data: array<byte>;
-    var start: int;
-    var end: int;
-    fun next(): int
-        assigns segment;
-        assigns offset;
-        assigns data;
-        assigns start;
-        assigns end;
-        assigns buffer.head;
+    val buffer: okio.Buffer;
+    val readWrite: bool;
+    val segment: okio.Segment;
+    val offset: long;
+    val data: array<byte>;
+    val start: int;
+    val end: int;
+    fun next(): int;
 
-    fun seek(arg0: long): int
-        assigns segment;
-        assigns offset;
-        assigns data;
-        assigns start;
-        assigns end;
-        assigns buffer.head;
+    fun seek(arg0: long): int;
 
-    fun resizeBuffer(arg0: long): long
-        assigns buffer.head;
-        assigns buffer.head.prev.limit;
-        assigns segment;
-        assigns offset;
-        assigns data;
-        assigns start;
-        assigns end;
+    fun resizeBuffer(arg0: long): long;
 
-    fun expandBuffer(arg0: int): long
-        assigns segment;
-        assigns offset;
-        assigns data;
-        assigns start;
-        assigns end;
+    fun expandBuffer(arg0: int): long;
 
-    fun close(): void
-        assigns buffer;
-        assigns segment;
-        assigns offset;
-        assigns data;
-        assigns start;
-        assigns end;
+    fun close(): void;
 }
 automaton okio.internal.RealBufferedSinkKt : okio.internal.RealBufferedSinkKt {
-    fun commonWrite(arg0: okio.RealBufferedSink, arg1: okio.Buffer, arg2: long): void
-        assigns arg1.head;
-        assigns arg1.head.prev;
-        assigns arg1.head.next;
-        assigns arg1.size;
-        assigns arg1;
+    fun commonWrite(arg0: okio.RealBufferedSink, arg1: okio.Buffer, arg2: long): void;
 
     fun commonWrite(arg0: okio.RealBufferedSink, arg1: okio.ByteString): okio.BufferedSink;
 
@@ -2841,8 +2321,7 @@ automaton okio.internal.RealBufferedSinkKt : okio.internal.RealBufferedSinkKt {
 
     fun commonWrite(arg0: okio.RealBufferedSink, arg1: array, arg2: int, arg3: int): okio.BufferedSink;
 
-    fun commonWriteAll(arg0: okio.RealBufferedSink, arg1: okio.Source): long
-        assigns arg1;
+    fun commonWriteAll(arg0: okio.RealBufferedSink, arg1: okio.Source): long;
 
     fun commonWrite(arg0: okio.RealBufferedSink, arg1: okio.Source, arg2: long): okio.BufferedSink;
 
@@ -2870,8 +2349,7 @@ automaton okio.internal.RealBufferedSinkKt : okio.internal.RealBufferedSinkKt {
 
     fun commonFlush(arg0: okio.RealBufferedSink): void;
 
-    fun commonClose(arg0: okio.RealBufferedSink): void
-        assigns arg0.closed;
+    fun commonClose(arg0: okio.RealBufferedSink): void;
 
     fun commonTimeout(arg0: okio.RealBufferedSink): okio.Timeout;
 
@@ -2920,15 +2398,10 @@ automaton okio.-Util : okio.-Util {
 
     fun toHexString(arg0: long): java.lang.String;
 }
-automaton okio.AsyncTimeout$sink$1 (var arg0: okio.AsyncTimeout, var arg1: okio.Sink) : okio.AsyncTimeout$sink$1 {
-    var this$0: okio.AsyncTimeout;
-    var $sink: okio.Sink;
-    fun write(arg0: okio.Buffer, arg1: long): void
-        assigns arg0.head;
-        assigns arg0.head.prev;
-        assigns arg0.head.next;
-        assigns arg0.size;
-        assigns arg0.head.pos;
+automaton okio.AsyncTimeout$sink$1 (val arg0: okio.AsyncTimeout, val arg1: okio.Sink) : okio.AsyncTimeout$sink$1 {
+    val this$0: okio.AsyncTimeout;
+    val $sink: okio.Sink;
+    fun write(arg0: okio.Buffer, arg1: long): void;
 
     fun flush(): void;
 
@@ -2940,8 +2413,8 @@ automaton okio.AsyncTimeout$sink$1 (var arg0: okio.AsyncTimeout, var arg1: okio.
 
     fun toString(): java.lang.String;
 }
-automaton okio.RealBufferedSource$inputStream$1 (var arg0: okio.RealBufferedSource) : okio.RealBufferedSource$inputStream$1 {
-    var this$0: okio.RealBufferedSource;
+automaton okio.RealBufferedSource$inputStream$1 (val arg0: okio.RealBufferedSource) : okio.RealBufferedSource$inputStream$1 {
+    val this$0: okio.RealBufferedSource;
     fun read(): int;
 
     fun read(arg0: array, arg1: int, arg2: int): int;

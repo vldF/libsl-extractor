@@ -35,7 +35,7 @@ object TestPlatform {
             PipelineConfig {
                 this.librariesPath = testDataJarsParentDir.resolve("$testCase/")
                 this.stages.addAll(analysisStagesFactory())
-                this.refinementsFileName = testCase
+                this.refinementsFileNames = listOf(testCase)
             }
         }
     }

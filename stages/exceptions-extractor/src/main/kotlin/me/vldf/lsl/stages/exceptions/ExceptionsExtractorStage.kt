@@ -5,8 +5,15 @@ import kotlinx.serialization.InternalSerializationApi
 import me.vldf.lsl.extractor.platform.AnalysisStage
 import me.vldf.lsl.extractor.platform.GlobalAnalysisContext
 import me.vldf.lsl.extractor.platform.platformLogger
-import me.vldf.lsl.stages.exceptions.optimization.ReportProcessor
+import me.vldf.lsl.stages.exceptions.models.ResultModel
+import me.vldf.lsl.stages.exceptions.predicate.state.utils.ReportProcessor
 import me.vldf.lsl.stages.exceptions.serialization.RefinementsJsonReader
+import org.jetbrains.research.kex.refinements.report.MachineReadableReport
+import org.jetbrains.research.libsl.context.LslGlobalContext
+import org.jetbrains.research.libsl.nodes.Expression
+import org.jetbrains.research.libsl.nodes.Function
+import org.jetbrains.research.libsl.nodes.Library
+import org.vorpal.research.kfg.ClassManager
 import java.io.File
 
 
@@ -17,17 +24,40 @@ class ExceptionsExtractorStage : AnalysisStage {
     private val logger by platformLogger()
 
     override fun run(analysisContext: GlobalAnalysisContext) {
-        val jsonReader = RefinementsJsonReader(analysisContext.kfgClassManager)
-        val jsonFile = analysisContext.pipelineConfig.refinementsFile
+        for (refinementsFile in analysisContext.pipelineConfig.refinementsFiles) {
+            val libraryDescriptor = analysisContext.descriptorsToLibraries.keys.firstOrNull { descr ->
+                descr.name.contains(refinementsFile.nameWithoutExtension)
+            }
 
-        if (jsonFile == null) {
-            logger.info("skipping $name")
-            return
+            if (libraryDescriptor == null) {
+                logger.info("no library found for $refinementsFile file")
+                continue
+            }
+            val library = analysisContext.descriptorsToLibraries[libraryDescriptor]!!
+            val globalContext = analysisContext.libraryHelper.getContext(libraryDescriptor)
+
+            val report = readReport(refinementsFile, analysisContext.kfgClassManager)
+
+            val parsedResults = ReportProcessor(analysisContext).parseRefinementsReport(report)
+
+            updateSpecification(parsedResults, globalContext, library)
         }
+    }
 
-        val report = jsonReader.read(jsonFile)
+    private fun readReport(refinementsFile: File, kfgClassManager: ClassManager): MachineReadableReport {
+        val jsonReader = RefinementsJsonReader(kfgClassManager)
+
+        val report = jsonReader.read(refinementsFile)
         logger.info("report is read; ${report.data.size} records are loaded")
 
-        ReportProcessor(analysisContext).process(report)
+        return report
+    }
+
+    private fun updateSpecification(
+        results: List<ResultModel>,
+        lslGlobalContext: LslGlobalContext,
+        library: Library
+    ) {
+        AnalyzerResultsApplier(lslGlobalContext, library).update(results)
     }
 }

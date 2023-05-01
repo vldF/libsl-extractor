@@ -197,7 +197,7 @@ class JvmClassReader : AnalysisStage {
             }
 
             val constructorVariables = constructorArgs.mapIndexed { index, argType ->
-                ConstructorArgument("arg$index", argType)
+                ConstructorArgument(VariableKeyword.VAL,"arg$index", argType)
             }.toMutableList()
 
             val localFunctions = klass.methods.map { method -> getLocalFunction(method, automatonContext)}.toMutableList()
@@ -211,6 +211,7 @@ class JvmClassReader : AnalysisStage {
                 constructorVariables = constructorVariables,
                 localFunctions = localFunctions,
                 internalVariables = internalVariables.toMutableList(),
+                parent = null,
                 context = automatonContext
             )
 
@@ -250,7 +251,12 @@ class JvmClassReader : AnalysisStage {
             for (field in klass.fields) {
                 val variableName = field.name
                 val variableType = field.type.createLslTypeReference(automatonContext)
-                val internalVariable = VariableWithInitialValue(variableName, variableType, initialValue = null)
+                val internalVariable = VariableWithInitialValue(
+                    VariableKeyword.VAL,
+                    variableName,
+                    variableType,
+                    initialValue = null
+                )
                 add(internalVariable)
             }
         }

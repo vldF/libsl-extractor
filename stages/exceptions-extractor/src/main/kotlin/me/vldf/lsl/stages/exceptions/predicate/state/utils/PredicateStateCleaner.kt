@@ -1,4 +1,4 @@
-package me.vldf.lsl.stages.exceptions.optimization
+package me.vldf.lsl.stages.exceptions.predicate.state.utils
 
 import org.jetbrains.research.kex.state.predicate.EqualityPredicate
 import org.jetbrains.research.kex.state.predicate.Predicate

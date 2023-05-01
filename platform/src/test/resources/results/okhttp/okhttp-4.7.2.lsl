@@ -2282,38 +2282,39 @@ type okhttp3.ConnectionSpec$Builder {
 type okhttp3.ConnectionSpec$Companion {
 }
 
-automaton okhttp3.Handshake$Companion$handshake$1 (var arg0: `<UNRESOLVED_TYPE>`) : okhttp3.Handshake$Companion$handshake$1 {
-    var $peerCertificatesCopy: `<UNRESOLVED_TYPE>`;
+annotation Throws(
+    exception: string = null,
+    predicate: bool = true
+);
+automaton okhttp3.Handshake$Companion$handshake$1 (val arg0: `<UNRESOLVED_TYPE>`) : okhttp3.Handshake$Companion$handshake$1 {
+    val $peerCertificatesCopy: `<UNRESOLVED_TYPE>`;
     fun invoke(): java.lang.Object;
 
     fun invoke(): `<UNRESOLVED_TYPE>`;
 }
-automaton okhttp3.internal.connection.ConnectionSpecSelector (var arg0: `<UNRESOLVED_TYPE>`) : okhttp3.internal.connection.ConnectionSpecSelector {
-    var nextModeIndex: int;
-    var isFallbackPossible: bool;
-    var isFallback: bool;
-    var connectionSpecs: `<UNRESOLVED_TYPE>`;
-    fun configureSecureSocket(arg0: javax.net.ssl.SSLSocket): okhttp3.ConnectionSpec
-        assigns nextModeIndex;
-        assigns isFallbackPossible;
+automaton okhttp3.internal.connection.ConnectionSpecSelector (val arg0: `<UNRESOLVED_TYPE>`) : okhttp3.internal.connection.ConnectionSpecSelector {
+    val nextModeIndex: int;
+    val isFallbackPossible: bool;
+    val isFallback: bool;
+    val connectionSpecs: `<UNRESOLVED_TYPE>`;
+    fun configureSecureSocket(arg0: javax.net.ssl.SSLSocket): okhttp3.ConnectionSpec;
 
-    fun connectionFailed(arg0: java.io.IOException): bool
-        assigns isFallback;
+    fun connectionFailed(arg0: java.io.IOException): bool;
 
     fun isFallbackPossible(arg0: javax.net.ssl.SSLSocket): bool;
 }
-automaton okhttp3.Address (var arg0: java.lang.String, var arg1: int, var arg2: okhttp3.Dns, var arg3: `<UNRESOLVED_TYPE>`, var arg4: `<UNRESOLVED_TYPE>`, var arg5: `<UNRESOLVED_TYPE>`, var arg6: okhttp3.CertificatePinner, var arg7: okhttp3.Authenticator, var arg8: `<UNRESOLVED_TYPE>`, var arg9: `<UNRESOLVED_TYPE>`, var arg10: `<UNRESOLVED_TYPE>`, var arg11: `<UNRESOLVED_TYPE>`) : okhttp3.Address {
-    var `url`: okhttp3.HttpUrl;
-    var protocols: `<UNRESOLVED_TYPE>`;
-    var connectionSpecs: `<UNRESOLVED_TYPE>`;
-    var dns: okhttp3.Dns;
-    var socketFactory: `<UNRESOLVED_TYPE>`;
-    var sslSocketFactory: `<UNRESOLVED_TYPE>`;
-    var hostnameVerifier: `<UNRESOLVED_TYPE>`;
-    var certificatePinner: okhttp3.CertificatePinner;
-    var proxyAuthenticator: okhttp3.Authenticator;
-    var proxy: `<UNRESOLVED_TYPE>`;
-    var proxySelector: `<UNRESOLVED_TYPE>`;
+automaton okhttp3.Address (val arg0: java.lang.String, val arg1: int, val arg2: okhttp3.Dns, val arg3: `<UNRESOLVED_TYPE>`, val arg4: `<UNRESOLVED_TYPE>`, val arg5: `<UNRESOLVED_TYPE>`, val arg6: okhttp3.CertificatePinner, val arg7: okhttp3.Authenticator, val arg8: `<UNRESOLVED_TYPE>`, val arg9: `<UNRESOLVED_TYPE>`, val arg10: `<UNRESOLVED_TYPE>`, val arg11: `<UNRESOLVED_TYPE>`) : okhttp3.Address {
+    val `url`: okhttp3.HttpUrl;
+    val protocols: `<UNRESOLVED_TYPE>`;
+    val connectionSpecs: `<UNRESOLVED_TYPE>`;
+    val dns: okhttp3.Dns;
+    val socketFactory: `<UNRESOLVED_TYPE>`;
+    val sslSocketFactory: `<UNRESOLVED_TYPE>`;
+    val hostnameVerifier: `<UNRESOLVED_TYPE>`;
+    val certificatePinner: okhttp3.CertificatePinner;
+    val proxyAuthenticator: okhttp3.Authenticator;
+    val proxy: `<UNRESOLVED_TYPE>`;
+    val proxySelector: `<UNRESOLVED_TYPE>`;
     fun `url`(): okhttp3.HttpUrl;
 
     fun protocols(): `<UNRESOLVED_TYPE>`;
@@ -2366,19 +2367,18 @@ automaton okhttp3.Address (var arg0: java.lang.String, var arg1: int, var arg2: 
 
     fun proxySelector(): `<UNRESOLVED_TYPE>`;
 }
-automaton okhttp3.internal.ws.WebSocketExtensions (var arg0: bool, var arg1: int, var arg2: bool, var arg3: int, var arg4: bool, var arg5: bool) : okhttp3.internal.ws.WebSocketExtensions {
-    var perMessageDeflate: bool;
-    var clientMaxWindowBits: int;
-    var clientNoContextTakeover: bool;
-    var serverMaxWindowBits: int;
-    var serverNoContextTakeover: bool;
-    var unknownValues: bool;
-    var HEADER_WEB_SOCKET_EXTENSION: java.lang.String;
-    var Companion: okhttp3.internal.ws.WebSocketExtensions$Companion;
+automaton okhttp3.internal.ws.WebSocketExtensions (val arg0: bool, val arg1: int, val arg2: bool, val arg3: int, val arg4: bool, val arg5: bool) : okhttp3.internal.ws.WebSocketExtensions {
+    val perMessageDeflate: bool;
+    val clientMaxWindowBits: int;
+    val clientNoContextTakeover: bool;
+    val serverMaxWindowBits: int;
+    val serverNoContextTakeover: bool;
+    val unknownValues: bool;
+    val HEADER_WEB_SOCKET_EXTENSION: java.lang.String;
+    val Companion: okhttp3.internal.ws.WebSocketExtensions$Companion;
     fun noContextTakeover(arg0: bool): bool;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 
     fun component1(): bool;
 
@@ -2402,40 +2402,40 @@ automaton okhttp3.internal.ws.WebSocketExtensions (var arg0: bool, var arg1: int
 
     fun equals(arg0: java.lang.Object): bool;
 }
-automaton okhttp3.OkHttpClient (var arg0: okhttp3.OkHttpClient$Builder) : okhttp3.OkHttpClient {
-    var dispatcher: okhttp3.Dispatcher;
-    var connectionPool: okhttp3.ConnectionPool;
-    var interceptors: `<UNRESOLVED_TYPE>`;
-    var networkInterceptors: `<UNRESOLVED_TYPE>`;
-    var eventListenerFactory: okhttp3.EventListener$Factory;
-    var retryOnConnectionFailure: bool;
-    var authenticator: okhttp3.Authenticator;
-    var followRedirects: bool;
-    var followSslRedirects: bool;
-    var cookieJar: okhttp3.CookieJar;
-    var cache: okhttp3.Cache;
-    var dns: okhttp3.Dns;
-    var proxy: `<UNRESOLVED_TYPE>`;
-    var proxySelector: `<UNRESOLVED_TYPE>`;
-    var proxyAuthenticator: okhttp3.Authenticator;
-    var socketFactory: `<UNRESOLVED_TYPE>`;
-    var sslSocketFactoryOrNull: `<UNRESOLVED_TYPE>`;
-    var x509TrustManager: `<UNRESOLVED_TYPE>`;
-    var connectionSpecs: `<UNRESOLVED_TYPE>`;
-    var protocols: `<UNRESOLVED_TYPE>`;
-    var hostnameVerifier: `<UNRESOLVED_TYPE>`;
-    var certificatePinner: okhttp3.CertificatePinner;
-    var certificateChainCleaner: okhttp3.internal.tls.CertificateChainCleaner;
-    var callTimeoutMillis: int;
-    var connectTimeoutMillis: int;
-    var readTimeoutMillis: int;
-    var writeTimeoutMillis: int;
-    var pingIntervalMillis: int;
-    var minWebSocketMessageToCompress: long;
-    var routeDatabase: okhttp3.internal.connection.RouteDatabase;
-    var DEFAULT_PROTOCOLS: `<UNRESOLVED_TYPE>`;
-    var DEFAULT_CONNECTION_SPECS: `<UNRESOLVED_TYPE>`;
-    var Companion: okhttp3.OkHttpClient$Companion;
+automaton okhttp3.OkHttpClient (val arg0: okhttp3.OkHttpClient$Builder) : okhttp3.OkHttpClient {
+    val dispatcher: okhttp3.Dispatcher;
+    val connectionPool: okhttp3.ConnectionPool;
+    val interceptors: `<UNRESOLVED_TYPE>`;
+    val networkInterceptors: `<UNRESOLVED_TYPE>`;
+    val eventListenerFactory: okhttp3.EventListener$Factory;
+    val retryOnConnectionFailure: bool;
+    val authenticator: okhttp3.Authenticator;
+    val followRedirects: bool;
+    val followSslRedirects: bool;
+    val cookieJar: okhttp3.CookieJar;
+    val cache: okhttp3.Cache;
+    val dns: okhttp3.Dns;
+    val proxy: `<UNRESOLVED_TYPE>`;
+    val proxySelector: `<UNRESOLVED_TYPE>`;
+    val proxyAuthenticator: okhttp3.Authenticator;
+    val socketFactory: `<UNRESOLVED_TYPE>`;
+    val sslSocketFactoryOrNull: `<UNRESOLVED_TYPE>`;
+    val x509TrustManager: `<UNRESOLVED_TYPE>`;
+    val connectionSpecs: `<UNRESOLVED_TYPE>`;
+    val protocols: `<UNRESOLVED_TYPE>`;
+    val hostnameVerifier: `<UNRESOLVED_TYPE>`;
+    val certificatePinner: okhttp3.CertificatePinner;
+    val certificateChainCleaner: okhttp3.internal.tls.CertificateChainCleaner;
+    val callTimeoutMillis: int;
+    val connectTimeoutMillis: int;
+    val readTimeoutMillis: int;
+    val writeTimeoutMillis: int;
+    val pingIntervalMillis: int;
+    val minWebSocketMessageToCompress: long;
+    val routeDatabase: okhttp3.internal.connection.RouteDatabase;
+    val DEFAULT_PROTOCOLS: `<UNRESOLVED_TYPE>`;
+    val DEFAULT_CONNECTION_SPECS: `<UNRESOLVED_TYPE>`;
+    val Companion: okhttp3.OkHttpClient$Companion;
     fun dispatcher(): okhttp3.Dispatcher;
 
     fun connectionPool(): okhttp3.ConnectionPool;
@@ -2496,6 +2496,10 @@ automaton okhttp3.OkHttpClient (var arg0: okhttp3.OkHttpClient$Builder) : okhttp
 
     fun getRouteDatabase(): okhttp3.internal.connection.RouteDatabase;
 
+    @Throws("kotlin.TypeCastException", ((networkInterceptors == "'null-const'") & (interceptors != "'null-const'")))
+    @Throws("kotlin.TypeCastException", ((interceptors == "'null-const'") & (networkInterceptors != "'null-const'")))
+    @Throws("kotlin.TypeCastException", (networkInterceptors == "'null-const'"))
+    @Throws("kotlin.TypeCastException", (interceptors == "'null-const'"))
     fun verifyClientState(): void;
 
     fun newCall(arg0: okhttp3.Request): okhttp3.Call;
@@ -2556,8 +2560,7 @@ automaton okhttp3.OkHttpClient (var arg0: okhttp3.OkHttpClient$Builder) : okhttp
 
     fun `-deprecated_pingIntervalMillis`(): int;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 
     fun clone(): java.lang.Object;
 
@@ -2567,38 +2570,32 @@ automaton okhttp3.OkHttpClient (var arg0: okhttp3.OkHttpClient$Builder) : okhttp
 
     fun access$getDEFAULT_CONNECTION_SPECS$cp(): `<UNRESOLVED_TYPE>`;
 }
-automaton okhttp3.Cache$urls$1 (var arg0: okhttp3.Cache) : okhttp3.Cache$urls$1 {
-    var delegate: `<UNRESOLVED_TYPE>`;
-    var nextUrl: java.lang.String;
-    var canRemove: bool;
-    var this$0: okhttp3.Cache;
+automaton okhttp3.Cache$urls$1 (val arg0: okhttp3.Cache) : okhttp3.Cache$urls$1 {
+    val delegate: `<UNRESOLVED_TYPE>`;
+    val nextUrl: java.lang.String;
+    val canRemove: bool;
+    val this$0: okhttp3.Cache;
     fun getDelegate(): `<UNRESOLVED_TYPE>`;
 
     fun getNextUrl(): java.lang.String;
 
-    fun setNextUrl(arg0: java.lang.String): void
-        assigns nextUrl;
+    fun setNextUrl(arg0: java.lang.String): void;
 
     fun getCanRemove(): bool;
 
-    fun setCanRemove(arg0: bool): void
-        assigns canRemove;
+    fun setCanRemove(arg0: bool): void;
 
-    fun hasNext(): bool
-        assigns canRemove;
-        assigns nextUrl;
+    fun hasNext(): bool;
 
-    fun next(): java.lang.String
-        assigns nextUrl;
-        assigns canRemove;
+    fun next(): java.lang.String;
 
     fun next(): java.lang.Object;
 
     fun remove(): void;
 }
 automaton okhttp3.EventListener : okhttp3.EventListener {
-    var NONE: okhttp3.EventListener;
-    var Companion: okhttp3.EventListener$Companion;
+    val NONE: okhttp3.EventListener;
+    val Companion: okhttp3.EventListener$Companion;
     fun callStart(arg0: okhttp3.Call): void;
 
     fun proxySelectStart(arg0: okhttp3.Call, arg1: okhttp3.HttpUrl): void;
@@ -2657,15 +2654,14 @@ automaton okhttp3.EventListener : okhttp3.EventListener {
 
     fun cacheConditionalHit(arg0: okhttp3.Call, arg1: okhttp3.Response): void;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 }
-automaton okhttp3.internal.http2.Http2Connection$ReaderRunnable$settings$$inlined$execute$1 (var arg0: java.lang.String, var arg1: bool, var arg2: java.lang.String, var arg3: bool, var arg4: okhttp3.internal.http2.Http2Connection$ReaderRunnable, var arg5: bool, var arg6: okhttp3.internal.http2.Settings) : okhttp3.internal.http2.Http2Connection$ReaderRunnable$settings$$inlined$execute$1 {
-    var $name: java.lang.String;
-    var $cancelable: bool;
-    var this$0: okhttp3.internal.http2.Http2Connection$ReaderRunnable;
-    var $clearPrevious$inlined: bool;
-    var $settings$inlined: okhttp3.internal.http2.Settings;
+automaton okhttp3.internal.http2.Http2Connection$ReaderRunnable$settings$$inlined$execute$1 (val arg0: java.lang.String, val arg1: bool, val arg2: java.lang.String, val arg3: bool, val arg4: okhttp3.internal.http2.Http2Connection$ReaderRunnable, val arg5: bool, val arg6: okhttp3.internal.http2.Settings) : okhttp3.internal.http2.Http2Connection$ReaderRunnable$settings$$inlined$execute$1 {
+    val $name: java.lang.String;
+    val $cancelable: bool;
+    val this$0: okhttp3.internal.http2.Http2Connection$ReaderRunnable;
+    val $clearPrevious$inlined: bool;
+    val $settings$inlined: okhttp3.internal.http2.Settings;
     fun runOnce(): long;
 }
 automaton okhttp3.internal.http.DatesKt$STANDARD_DATE_FORMAT$1 : okhttp3.internal.http.DatesKt$STANDARD_DATE_FORMAT$1 {
@@ -2673,16 +2669,16 @@ automaton okhttp3.internal.http.DatesKt$STANDARD_DATE_FORMAT$1 : okhttp3.interna
 
     fun initialValue(): java.lang.Object;
 }
-automaton okhttp3.internal.connection.RealConnection$newWebSocketStreams$1 (var arg0: okhttp3.internal.connection.Exchange, var arg1: okio.BufferedSource, var arg2: okio.BufferedSink, var arg3: bool, var arg4: okio.BufferedSource, var arg5: okio.BufferedSink) : okhttp3.internal.connection.RealConnection$newWebSocketStreams$1 {
-    var $exchange: okhttp3.internal.connection.Exchange;
-    var $source: okio.BufferedSource;
-    var $sink: okio.BufferedSink;
+automaton okhttp3.internal.connection.RealConnection$newWebSocketStreams$1 (val arg0: okhttp3.internal.connection.Exchange, val arg1: okio.BufferedSource, val arg2: okio.BufferedSink, val arg3: bool, val arg4: okio.BufferedSource, val arg5: okio.BufferedSink) : okhttp3.internal.connection.RealConnection$newWebSocketStreams$1 {
+    val $exchange: okhttp3.internal.connection.Exchange;
+    val $source: okio.BufferedSource;
+    val $sink: okio.BufferedSink;
     fun close(): void;
 }
 automaton okhttp3.internal.platform.BouncyCastlePlatform : okhttp3.internal.platform.BouncyCastlePlatform {
-    var provider: `<UNRESOLVED_TYPE>`;
-    var isSupported: bool;
-    var Companion: okhttp3.internal.platform.BouncyCastlePlatform$Companion;
+    val provider: `<UNRESOLVED_TYPE>`;
+    val isSupported: bool;
+    val Companion: okhttp3.internal.platform.BouncyCastlePlatform$Companion;
     fun newSSLContext(): `<UNRESOLVED_TYPE>`;
 
     fun platformTrustManager(): `<UNRESOLVED_TYPE>`;
@@ -2693,64 +2689,51 @@ automaton okhttp3.internal.platform.BouncyCastlePlatform : okhttp3.internal.plat
 
     fun getSelectedProtocol(arg0: javax.net.ssl.SSLSocket): java.lang.String;
 
-    fun `<clinit>`(): void
-        assigns Companion;
-        assigns isSupported;
+    fun `<clinit>`(): void;
 
     fun access$isSupported$cp(): bool;
 }
 automaton okhttp3.internal.http2.Huffman$Node : okhttp3.internal.http2.Huffman$Node {
-    var children: array<okhttp3.internal.http2.Huffman$Node>;
-    var symbol: int;
-    var terminalBitCount: int;
+    val children: array<okhttp3.internal.http2.Huffman$Node>;
+    val symbol: int;
+    val terminalBitCount: int;
     fun getChildren(): array<okhttp3.internal.http2.Huffman$Node>;
 
     fun getSymbol(): int;
 
     fun getTerminalBitCount(): int;
 }
-automaton okhttp3.internal.connection.Exchange$RequestBodySink (var arg0: okhttp3.internal.connection.Exchange, var arg1: okio.Sink, var arg2: long) : okhttp3.internal.connection.Exchange$RequestBodySink {
-    var completed: bool;
-    var bytesReceived: long;
-    var closed: bool;
-    var contentLength: long;
-    var this$0: okhttp3.internal.connection.Exchange;
-    fun write(arg0: okio.Buffer, arg1: long): void
-        assigns bytesReceived;
-        assigns arg0.head;
-        assigns arg0.head.prev;
-        assigns arg0.head.next;
-        assigns arg0.size;
-        assigns arg0.head.pos;
-        assigns completed;
+automaton okhttp3.internal.connection.Exchange$RequestBodySink (val arg0: okhttp3.internal.connection.Exchange, val arg1: okio.Sink, val arg2: long) : okhttp3.internal.connection.Exchange$RequestBodySink {
+    val completed: bool;
+    val bytesReceived: long;
+    val closed: bool;
+    val contentLength: long;
+    val this$0: okhttp3.internal.connection.Exchange;
+    fun write(arg0: okio.Buffer, arg1: long): void;
 
-    fun flush(): void
-        assigns completed;
+    fun flush(): void;
 
-    fun close(): void
-        assigns closed;
-        assigns completed;
+    fun close(): void;
 
-    fun complete(arg0: java.io.IOException): `<UNRESOLVED_TYPE>`
-        assigns completed;
+    fun complete(arg0: java.io.IOException): `<UNRESOLVED_TYPE>`;
 }
-automaton okhttp3.internal.cache2.Relay (var arg0: `<UNRESOLVED_TYPE>`, var arg1: okio.Source, var arg2: long, var arg3: okio.ByteString, var arg4: long) : okhttp3.internal.cache2.Relay {
-    var upstreamReader: `<UNRESOLVED_TYPE>`;
-    var upstreamBuffer: okio.Buffer;
-    var complete: bool;
-    var buffer: okio.Buffer;
-    var sourceCount: int;
-    var file: `<UNRESOLVED_TYPE>`;
-    var upstream: okio.Source;
-    var upstreamPos: long;
-    var metadata: okio.ByteString;
-    var bufferMaxSize: long;
-    var SOURCE_UPSTREAM: int;
-    var SOURCE_FILE: int;
-    var PREFIX_CLEAN: okio.ByteString;
-    var PREFIX_DIRTY: okio.ByteString;
-    var FILE_HEADER_SIZE: long;
-    var Companion: okhttp3.internal.cache2.Relay$Companion;
+automaton okhttp3.internal.cache2.Relay (val arg0: `<UNRESOLVED_TYPE>`, val arg1: okio.Source, val arg2: long, val arg3: okio.ByteString, val arg4: long) : okhttp3.internal.cache2.Relay {
+    val upstreamReader: `<UNRESOLVED_TYPE>`;
+    val upstreamBuffer: okio.Buffer;
+    val complete: bool;
+    val buffer: okio.Buffer;
+    val sourceCount: int;
+    val file: `<UNRESOLVED_TYPE>`;
+    val upstream: okio.Source;
+    val upstreamPos: long;
+    val metadata: okio.ByteString;
+    val bufferMaxSize: long;
+    val SOURCE_UPSTREAM: int;
+    val SOURCE_FILE: int;
+    val PREFIX_CLEAN: okio.ByteString;
+    val PREFIX_DIRTY: okio.ByteString;
+    val FILE_HEADER_SIZE: long;
+    val Companion: okhttp3.internal.cache2.Relay$Companion;
     fun getUpstreamReader(): `<UNRESOLVED_TYPE>`;
 
     fun setUpstreamReader(arg0: java.lang.Thread): void;
@@ -2759,15 +2742,13 @@ automaton okhttp3.internal.cache2.Relay (var arg0: `<UNRESOLVED_TYPE>`, var arg1
 
     fun getComplete(): bool;
 
-    fun setComplete(arg0: bool): void
-        assigns complete;
+    fun setComplete(arg0: bool): void;
 
     fun getBuffer(): okio.Buffer;
 
     fun getSourceCount(): int;
 
-    fun setSourceCount(arg0: int): void
-        assigns sourceCount;
+    fun setSourceCount(arg0: int): void;
 
     fun isClosed(): bool;
 
@@ -2775,14 +2756,11 @@ automaton okhttp3.internal.cache2.Relay (var arg0: `<UNRESOLVED_TYPE>`, var arg1
 
     fun writeMetadata(arg0: long): void;
 
-    fun commit(arg0: long): void
-        assigns complete;
-        assigns upstream;
+    fun commit(arg0: long): void;
 
     fun metadata(): okio.ByteString;
 
-    fun newSource(): okio.Source
-        assigns sourceCount;
+    fun newSource(): okio.Source;
 
     fun getFile(): `<UNRESOLVED_TYPE>`;
 
@@ -2790,20 +2768,15 @@ automaton okhttp3.internal.cache2.Relay (var arg0: `<UNRESOLVED_TYPE>`, var arg1
 
     fun getUpstream(): okio.Source;
 
-    fun setUpstream(arg0: okio.Source): void
-        assigns upstream;
+    fun setUpstream(arg0: okio.Source): void;
 
     fun getUpstreamPos(): long;
 
-    fun setUpstreamPos(arg0: long): void
-        assigns upstreamPos;
+    fun setUpstreamPos(arg0: long): void;
 
     fun getBufferMaxSize(): long;
 
-    fun `<clinit>`(): void
-        assigns Companion;
-        assigns PREFIX_CLEAN;
-        assigns PREFIX_DIRTY;
+    fun `<clinit>`(): void;
 
     fun access$writeHeader(arg0: okhttp3.internal.cache2.Relay, arg1: okio.ByteString, arg2: long, arg3: long): void;
 }
@@ -2829,48 +2802,42 @@ automaton okhttp3.internal.io.FileSystem$Companion$SYSTEM$1 : okhttp3.internal.i
 automaton okhttp3.internal.ws.WebSocketExtensions$Companion : okhttp3.internal.ws.WebSocketExtensions$Companion {
     fun parse(arg0: okhttp3.Headers): okhttp3.internal.ws.WebSocketExtensions;
 }
-automaton okhttp3.Cache$RealCacheRequest (var arg0: okhttp3.Cache, var arg1: okhttp3.internal.cache.DiskLruCache$Editor) : okhttp3.Cache$RealCacheRequest {
-    var cacheOut: okio.Sink;
-    var body: okio.Sink;
-    var done: bool;
-    var editor: okhttp3.internal.cache.DiskLruCache$Editor;
-    var this$0: okhttp3.Cache;
+automaton okhttp3.Cache$RealCacheRequest (val arg0: okhttp3.Cache, val arg1: okhttp3.internal.cache.DiskLruCache$Editor) : okhttp3.Cache$RealCacheRequest {
+    val cacheOut: okio.Sink;
+    val body: okio.Sink;
+    val done: bool;
+    val editor: okhttp3.internal.cache.DiskLruCache$Editor;
+    val this$0: okhttp3.Cache;
     fun getDone$okhttp(): bool;
 
-    fun setDone$okhttp(arg0: bool): void
-        assigns done;
+    fun setDone$okhttp(arg0: bool): void;
 
-    fun abort(): void
-        assigns done;
+    fun abort(): void;
 
     fun body(): okio.Sink;
 
     fun access$getEditor$p(arg0: okhttp3.Cache$RealCacheRequest): okhttp3.internal.cache.DiskLruCache$Editor;
 }
-automaton okhttp3.internal.http2.Http2Connection$pushDataLater$$inlined$execute$1 (var arg0: java.lang.String, var arg1: bool, var arg2: java.lang.String, var arg3: bool, var arg4: okhttp3.internal.http2.Http2Connection, var arg5: int, var arg6: okio.Buffer, var arg7: int, var arg8: bool) : okhttp3.internal.http2.Http2Connection$pushDataLater$$inlined$execute$1 {
-    var $name: java.lang.String;
-    var $cancelable: bool;
-    var this$0: okhttp3.internal.http2.Http2Connection;
-    var $streamId$inlined: int;
-    var $buffer$inlined: okio.Buffer;
-    var $byteCount$inlined: int;
-    var $inFinished$inlined: bool;
+automaton okhttp3.internal.http2.Http2Connection$pushDataLater$$inlined$execute$1 (val arg0: java.lang.String, val arg1: bool, val arg2: java.lang.String, val arg3: bool, val arg4: okhttp3.internal.http2.Http2Connection, val arg5: int, val arg6: okio.Buffer, val arg7: int, val arg8: bool) : okhttp3.internal.http2.Http2Connection$pushDataLater$$inlined$execute$1 {
+    val $name: java.lang.String;
+    val $cancelable: bool;
+    val this$0: okhttp3.internal.http2.Http2Connection;
+    val $streamId$inlined: int;
+    val $buffer$inlined: okio.Buffer;
+    val $byteCount$inlined: int;
+    val $inFinished$inlined: bool;
     fun runOnce(): long;
 }
-automaton okhttp3.internal.http1.Http1ExchangeCodec$FixedLengthSource (var arg0: okhttp3.internal.http1.Http1ExchangeCodec, var arg1: long) : okhttp3.internal.http1.Http1ExchangeCodec$FixedLengthSource {
-    var bytesRemaining: long;
-    var this$0: okhttp3.internal.http1.Http1ExchangeCodec;
-    fun read(arg0: okio.Buffer, arg1: long): long
-        assigns bytesRemaining;
-        assigns arg0.head;
-        assigns arg0.size;
+automaton okhttp3.internal.http1.Http1ExchangeCodec$FixedLengthSource (val arg0: okhttp3.internal.http1.Http1ExchangeCodec, val arg1: long) : okhttp3.internal.http1.Http1ExchangeCodec$FixedLengthSource {
+    val bytesRemaining: long;
+    val this$0: okhttp3.internal.http1.Http1ExchangeCodec;
+    fun read(arg0: okio.Buffer, arg1: long): long;
 
-    fun close(): void
-        assigns bytesRemaining;
+    fun close(): void;
 }
-automaton okhttp3.Headers (var arg0: array<java.lang.String>) : okhttp3.Headers {
-    var namesAndValues: array<java.lang.String>;
-    var Companion: okhttp3.Headers$Companion;
+automaton okhttp3.Headers (val arg0: array<java.lang.String>) : okhttp3.Headers {
+    val namesAndValues: array<java.lang.String>;
+    val Companion: okhttp3.Headers$Companion;
     fun get(arg0: java.lang.String): java.lang.String;
 
     fun getDate(arg0: java.lang.String): `<UNRESOLVED_TYPE>`;
@@ -2903,8 +2870,7 @@ automaton okhttp3.Headers (var arg0: array<java.lang.String>) : okhttp3.Headers 
 
     fun toMultimap(): `<UNRESOLVED_TYPE>`;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 
     fun of(arg0: array): okhttp3.Headers;
 
@@ -2923,43 +2889,39 @@ automaton okhttp3.WebSocketListener : okhttp3.WebSocketListener {
 
     fun onFailure(arg0: okhttp3.WebSocket, arg1: java.lang.Throwable, arg2: okhttp3.Response): void;
 }
-automaton okhttp3.internal.http2.Http2Writer (var arg0: okio.BufferedSink, var arg1: bool) : okhttp3.internal.http2.Http2Writer {
-    var hpackBuffer: okio.Buffer;
-    var maxFrameSize: int;
-    var closed: bool;
-    var hpackWriter: okhttp3.internal.http2.Hpack$Writer;
-    var sink: okio.BufferedSink;
-    var client: bool;
-    var logger: `<UNRESOLVED_TYPE>`;
-    var Companion: okhttp3.internal.http2.Http2Writer$Companion;
+automaton okhttp3.internal.http2.Http2Writer (val arg0: okio.BufferedSink, val arg1: bool) : okhttp3.internal.http2.Http2Writer {
+    val hpackBuffer: okio.Buffer;
+    val maxFrameSize: int;
+    val closed: bool;
+    val hpackWriter: okhttp3.internal.http2.Hpack$Writer;
+    val sink: okio.BufferedSink;
+    val client: bool;
+    val logger: `<UNRESOLVED_TYPE>`;
+    val Companion: okhttp3.internal.http2.Http2Writer$Companion;
     fun getHpackWriter(): okhttp3.internal.http2.Hpack$Writer;
 
     fun connectionPreface(): void;
 
-    fun applyAndAckSettings(arg0: okhttp3.internal.http2.Settings): void
-        assigns maxFrameSize;
+    fun applyAndAckSettings(arg0: okhttp3.internal.http2.Settings): void;
 
     fun pushPromise(arg0: int, arg1: int, arg2: java.util.List): void;
 
     fun flush(): void;
 
+    @Throws("java.io.IOException", (!(httpCode == -1) & closed))
+    @Throws("java.io.IOException", (closed & (httpCode <= -1)))
+    @Throws("java.io.IOException", ((!(httpCode == -1) & closed) & (httpCode <= -1)))
+    @Throws("java.io.IOException", closed)
+    @Throws("java.io.IOException", (closed & (httpCode == -1)))
+    @Throws("java.io.IOException", (closed & (httpCode >= -1)))
+    @Throws("java.io.IOException", ((!(httpCode == -1) & closed) & (httpCode >= -1)))
     fun rstStream(arg0: int, arg1: okhttp3.internal.http2.ErrorCode): void;
 
     fun maxDataLength(): int;
 
-    fun data(arg0: bool, arg1: int, arg2: okio.Buffer, arg3: int): void
-        assigns arg2.head;
-        assigns arg2.head.prev;
-        assigns arg2.head.next;
-        assigns arg2.size;
-        assigns arg2.head.pos;
+    fun data(arg0: bool, arg1: int, arg2: okio.Buffer, arg3: int): void;
 
-    fun dataFrame(arg0: int, arg1: int, arg2: okio.Buffer, arg3: int): void
-        assigns arg2.head;
-        assigns arg2.head.prev;
-        assigns arg2.head.next;
-        assigns arg2.size;
-        assigns arg2.head.pos;
+    fun dataFrame(arg0: int, arg1: int, arg2: okio.Buffer, arg3: int): void;
 
     fun settings(arg0: okhttp3.internal.http2.Settings): void;
 
@@ -2969,24 +2931,21 @@ automaton okhttp3.internal.http2.Http2Writer (var arg0: okio.BufferedSink, var a
 
     fun windowUpdate(arg0: int, arg1: long): void;
 
-    fun frameHeader(arg0: int, arg1: int, arg2: int, arg3: int): void
-        assigns sink;
+    fun frameHeader(arg0: int, arg1: int, arg2: int, arg3: int): void;
 
-    fun close(): void
-        assigns closed;
+    fun close(): void;
 
     fun writeContinuationFrames(arg0: int, arg1: long): void;
 
     fun headers(arg0: bool, arg1: int, arg2: java.util.List): void;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 }
-automaton okhttp3.FormBody (var arg0: `<UNRESOLVED_TYPE>`, var arg1: `<UNRESOLVED_TYPE>`) : okhttp3.FormBody {
-    var encodedNames: `<UNRESOLVED_TYPE>`;
-    var encodedValues: `<UNRESOLVED_TYPE>`;
-    var CONTENT_TYPE: okhttp3.MediaType;
-    var Companion: okhttp3.FormBody$Companion;
+automaton okhttp3.FormBody (val arg0: `<UNRESOLVED_TYPE>`, val arg1: `<UNRESOLVED_TYPE>`) : okhttp3.FormBody {
+    val encodedNames: `<UNRESOLVED_TYPE>`;
+    val encodedValues: `<UNRESOLVED_TYPE>`;
+    val CONTENT_TYPE: okhttp3.MediaType;
+    val Companion: okhttp3.FormBody$Companion;
     fun size(): int;
 
     fun `-deprecated_size`(): int;
@@ -3007,23 +2966,20 @@ automaton okhttp3.FormBody (var arg0: `<UNRESOLVED_TYPE>`, var arg1: `<UNRESOLVE
 
     fun writeOrCountBytes(arg0: okio.BufferedSink, arg1: bool): long;
 
-    fun `<clinit>`(): void
-        assigns Companion;
-        assigns CONTENT_TYPE;
+    fun `<clinit>`(): void;
 }
-automaton okhttp3.internal.connection.RealConnectionPool (var arg0: okhttp3.internal.concurrent.TaskRunner, var arg1: int, var arg2: long, var arg3: `<UNRESOLVED_TYPE>`) : okhttp3.internal.connection.RealConnectionPool {
-    var keepAliveDurationNs: long;
-    var cleanupQueue: okhttp3.internal.concurrent.TaskQueue;
-    var cleanupTask: okhttp3.internal.connection.RealConnectionPool$cleanupTask$1;
-    var connections: `<UNRESOLVED_TYPE>`;
-    var maxIdleConnections: int;
-    var Companion: okhttp3.internal.connection.RealConnectionPool$Companion;
+automaton okhttp3.internal.connection.RealConnectionPool (val arg0: okhttp3.internal.concurrent.TaskRunner, val arg1: int, val arg2: long, val arg3: `<UNRESOLVED_TYPE>`) : okhttp3.internal.connection.RealConnectionPool {
+    val keepAliveDurationNs: long;
+    val cleanupQueue: okhttp3.internal.concurrent.TaskQueue;
+    val cleanupTask: okhttp3.internal.connection.RealConnectionPool$cleanupTask$1;
+    val connections: `<UNRESOLVED_TYPE>`;
+    val maxIdleConnections: int;
+    val Companion: okhttp3.internal.connection.RealConnectionPool$Companion;
     fun idleConnectionCount(): int;
 
     fun connectionCount(): int;
 
-    fun callAcquirePooledConnection(arg0: okhttp3.Address, arg1: okhttp3.internal.connection.RealCall, arg2: java.util.List, arg3: bool): bool
-        assigns arg1.connection;
+    fun callAcquirePooledConnection(arg0: okhttp3.Address, arg1: okhttp3.internal.connection.RealCall, arg2: java.util.List, arg3: bool): bool;
 
     fun put(arg0: okhttp3.internal.connection.RealConnection): void;
 
@@ -3033,23 +2989,20 @@ automaton okhttp3.internal.connection.RealConnectionPool (var arg0: okhttp3.inte
 
     fun cleanup(arg0: long): long;
 
-    fun pruneAndGetAllocationCount(arg0: okhttp3.internal.connection.RealConnection, arg1: long): int
-        assigns arg0.noNewExchanges;
-        assigns arg0.idleAtNs;
+    fun pruneAndGetAllocationCount(arg0: okhttp3.internal.connection.RealConnection, arg1: long): int;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 }
-automaton okhttp3.internal.http.RealInterceptorChain (var arg0: okhttp3.internal.connection.RealCall, var arg1: `<UNRESOLVED_TYPE>`, var arg2: int, var arg3: okhttp3.internal.connection.Exchange, var arg4: okhttp3.Request, var arg5: int, var arg6: int, var arg7: int) : okhttp3.internal.http.RealInterceptorChain {
-    var calls: int;
-    var call: okhttp3.internal.connection.RealCall;
-    var interceptors: `<UNRESOLVED_TYPE>`;
-    var index: int;
-    var exchange: okhttp3.internal.connection.Exchange;
-    var request: okhttp3.Request;
-    var connectTimeoutMillis: int;
-    var readTimeoutMillis: int;
-    var writeTimeoutMillis: int;
+automaton okhttp3.internal.http.RealInterceptorChain (val arg0: okhttp3.internal.connection.RealCall, val arg1: `<UNRESOLVED_TYPE>`, val arg2: int, val arg3: okhttp3.internal.connection.Exchange, val arg4: okhttp3.Request, val arg5: int, val arg6: int, val arg7: int) : okhttp3.internal.http.RealInterceptorChain {
+    val calls: int;
+    val call: okhttp3.internal.connection.RealCall;
+    val interceptors: `<UNRESOLVED_TYPE>`;
+    val index: int;
+    val exchange: okhttp3.internal.connection.Exchange;
+    val request: okhttp3.Request;
+    val connectTimeoutMillis: int;
+    val readTimeoutMillis: int;
+    val writeTimeoutMillis: int;
     fun copy$okhttp(arg0: int, arg1: okhttp3.internal.connection.Exchange, arg2: okhttp3.Request, arg3: int, arg4: int, arg5: int): okhttp3.internal.http.RealInterceptorChain;
 
     fun copy$okhttp$default(arg0: okhttp3.internal.http.RealInterceptorChain, arg1: int, arg2: okhttp3.internal.connection.Exchange, arg3: okhttp3.Request, arg4: int, arg5: int, arg6: int, arg7: int, arg8: java.lang.Object): okhttp3.internal.http.RealInterceptorChain;
@@ -3072,8 +3025,7 @@ automaton okhttp3.internal.http.RealInterceptorChain (var arg0: okhttp3.internal
 
     fun request(): okhttp3.Request;
 
-    fun proceed(arg0: okhttp3.Request): okhttp3.Response
-        assigns calls;
+    fun proceed(arg0: okhttp3.Request): okhttp3.Response;
 
     fun getCall$okhttp(): okhttp3.internal.connection.RealCall;
 
@@ -3087,57 +3039,48 @@ automaton okhttp3.internal.http.RealInterceptorChain (var arg0: okhttp3.internal
 
     fun getWriteTimeoutMillis$okhttp(): int;
 }
-automaton okhttp3.internal.http.StatusLine (var arg0: okhttp3.Protocol, var arg1: int, var arg2: java.lang.String) : okhttp3.internal.http.StatusLine {
-    var protocol: okhttp3.Protocol;
-    var code: int;
-    var message: java.lang.String;
-    var HTTP_TEMP_REDIRECT: int;
-    var HTTP_PERM_REDIRECT: int;
-    var HTTP_MISDIRECTED_REQUEST: int;
-    var HTTP_CONTINUE: int;
-    var Companion: okhttp3.internal.http.StatusLine$Companion;
+automaton okhttp3.internal.http.StatusLine (val arg0: okhttp3.Protocol, val arg1: int, val arg2: java.lang.String) : okhttp3.internal.http.StatusLine {
+    val protocol: okhttp3.Protocol;
+    val code: int;
+    val message: java.lang.String;
+    val HTTP_TEMP_REDIRECT: int;
+    val HTTP_PERM_REDIRECT: int;
+    val HTTP_MISDIRECTED_REQUEST: int;
+    val HTTP_CONTINUE: int;
+    val Companion: okhttp3.internal.http.StatusLine$Companion;
     fun toString(): java.lang.String;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 }
-automaton okhttp3.Cache$CacheResponseBody$1 (var arg0: okhttp3.Cache$CacheResponseBody, var arg1: okio.Source, var arg2: okio.Source) : okhttp3.Cache$CacheResponseBody$1 {
-    var this$0: okhttp3.Cache$CacheResponseBody;
-    var $source: okio.Source;
+automaton okhttp3.Cache$CacheResponseBody$1 (val arg0: okhttp3.Cache$CacheResponseBody, val arg1: okio.Source, val arg2: okio.Source) : okhttp3.Cache$CacheResponseBody$1 {
+    val this$0: okhttp3.Cache$CacheResponseBody;
+    val $source: okio.Source;
     fun close(): void;
 }
-automaton okhttp3.MultipartReader (var arg0: okio.BufferedSource, var arg1: java.lang.String) : okhttp3.MultipartReader {
-    var dashDashBoundary: okio.ByteString;
-    var crlfDashDashBoundary: okio.ByteString;
-    var partCount: int;
-    var closed: bool;
-    var noMoreParts: bool;
-    var currentPart: okhttp3.MultipartReader$PartSource;
-    var source: okio.BufferedSource;
-    var boundary: java.lang.String;
-    var afterBoundaryOptions: okio.Options;
-    var Companion: okhttp3.MultipartReader$Companion;
-    fun nextPart(): okhttp3.MultipartReader$Part
-        assigns partCount;
-        assigns noMoreParts;
-        assigns currentPart;
+automaton okhttp3.MultipartReader (val arg0: okio.BufferedSource, val arg1: java.lang.String) : okhttp3.MultipartReader {
+    val dashDashBoundary: okio.ByteString;
+    val crlfDashDashBoundary: okio.ByteString;
+    val partCount: int;
+    val closed: bool;
+    val noMoreParts: bool;
+    val currentPart: okhttp3.MultipartReader$PartSource;
+    val source: okio.BufferedSource;
+    val boundary: java.lang.String;
+    val afterBoundaryOptions: okio.Options;
+    val Companion: okhttp3.MultipartReader$Companion;
+    fun nextPart(): okhttp3.MultipartReader$Part;
 
     fun currentPartBytesRemaining(arg0: long): long;
 
-    fun close(): void
-        assigns closed;
-        assigns currentPart;
+    fun close(): void;
 
     fun boundary(): java.lang.String;
 
-    fun `<clinit>`(): void
-        assigns Companion;
-        assigns afterBoundaryOptions;
+    fun `<clinit>`(): void;
 
     fun access$getCurrentPart$p(arg0: okhttp3.MultipartReader): okhttp3.MultipartReader$PartSource;
 
-    fun access$setCurrentPart$p(arg0: okhttp3.MultipartReader, arg1: okhttp3.MultipartReader$PartSource): void
-        assigns arg0.currentPart;
+    fun access$setCurrentPart$p(arg0: okhttp3.MultipartReader, arg1: okhttp3.MultipartReader$PartSource): void;
 
     fun access$getSource$p(arg0: okhttp3.MultipartReader): okio.BufferedSource;
 
@@ -3145,55 +3088,56 @@ automaton okhttp3.MultipartReader (var arg0: okio.BufferedSource, var arg1: java
 
     fun access$getAfterBoundaryOptions$cp(): okio.Options;
 }
-automaton okhttp3.internal.platform.Jdk8WithJettyBootPlatform (var arg0: `<UNRESOLVED_TYPE>`, var arg1: `<UNRESOLVED_TYPE>`, var arg2: `<UNRESOLVED_TYPE>`, var arg3: `<UNRESOLVED_TYPE>`, var arg4: `<UNRESOLVED_TYPE>`) : okhttp3.internal.platform.Jdk8WithJettyBootPlatform {
-    var putMethod: `<UNRESOLVED_TYPE>`;
-    var getMethod: `<UNRESOLVED_TYPE>`;
-    var removeMethod: `<UNRESOLVED_TYPE>`;
-    var clientProviderClass: `<UNRESOLVED_TYPE>`;
-    var serverProviderClass: `<UNRESOLVED_TYPE>`;
-    var Companion: okhttp3.internal.platform.Jdk8WithJettyBootPlatform$Companion;
+automaton okhttp3.internal.platform.Jdk8WithJettyBootPlatform (val arg0: `<UNRESOLVED_TYPE>`, val arg1: `<UNRESOLVED_TYPE>`, val arg2: `<UNRESOLVED_TYPE>`, val arg3: `<UNRESOLVED_TYPE>`, val arg4: `<UNRESOLVED_TYPE>`) : okhttp3.internal.platform.Jdk8WithJettyBootPlatform {
+    val putMethod: `<UNRESOLVED_TYPE>`;
+    val getMethod: `<UNRESOLVED_TYPE>`;
+    val removeMethod: `<UNRESOLVED_TYPE>`;
+    val clientProviderClass: `<UNRESOLVED_TYPE>`;
+    val serverProviderClass: `<UNRESOLVED_TYPE>`;
+    val Companion: okhttp3.internal.platform.Jdk8WithJettyBootPlatform$Companion;
     fun configureTlsExtensions(arg0: javax.net.ssl.SSLSocket, arg1: java.lang.String, arg2: java.util.List): void;
 
     fun afterHandshake(arg0: javax.net.ssl.SSLSocket): void;
 
     fun getSelectedProtocol(arg0: javax.net.ssl.SSLSocket): java.lang.String;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 }
 automaton okhttp3.CipherSuite$Companion$ORDER_BY_NAME$1 : okhttp3.CipherSuite$Companion$ORDER_BY_NAME$1 {
     fun compare(arg0: java.lang.String, arg1: java.lang.String): int;
 
     fun compare(arg0: java.lang.Object, arg1: java.lang.Object): int;
 }
-automaton okhttp3.internal.cache2.FileOperator (var arg0: `<UNRESOLVED_TYPE>`) : okhttp3.internal.cache2.FileOperator {
-    var fileChannel: `<UNRESOLVED_TYPE>`;
+automaton okhttp3.internal.cache2.FileOperator (val arg0: `<UNRESOLVED_TYPE>`) : okhttp3.internal.cache2.FileOperator {
+    val fileChannel: `<UNRESOLVED_TYPE>`;
+    @Throws("java.lang.IndexOutOfBoundsException", !(arg2 == 0))
+    @Throws("java.lang.IndexOutOfBoundsException", (!(arg2 == 0) & (arg2 <= 0)))
+    @Throws("java.lang.IndexOutOfBoundsException", (!(arg2 == 0) & (arg2 >= 0)))
     fun write(arg0: long, arg1: okio.Buffer, arg2: long): void;
 
     fun read(arg0: long, arg1: okio.Buffer, arg2: long): void;
 }
-automaton okhttp3.internal.http2.Http2ExchangeCodec (var arg0: okhttp3.OkHttpClient, var arg1: okhttp3.internal.connection.RealConnection, var arg2: okhttp3.internal.http.RealInterceptorChain, var arg3: okhttp3.internal.http2.Http2Connection) : okhttp3.internal.http2.Http2ExchangeCodec {
-    var stream: okhttp3.internal.http2.Http2Stream;
-    var protocol: okhttp3.Protocol;
-    var canceled: bool;
-    var connection: okhttp3.internal.connection.RealConnection;
-    var chain: okhttp3.internal.http.RealInterceptorChain;
-    var http2Connection: okhttp3.internal.http2.Http2Connection;
-    var CONNECTION: java.lang.String;
-    var HOST: java.lang.String;
-    var KEEP_ALIVE: java.lang.String;
-    var PROXY_CONNECTION: java.lang.String;
-    var TRANSFER_ENCODING: java.lang.String;
-    var TE: java.lang.String;
-    var ENCODING: java.lang.String;
-    var UPGRADE: java.lang.String;
-    var HTTP_2_SKIPPED_REQUEST_HEADERS: `<UNRESOLVED_TYPE>`;
-    var HTTP_2_SKIPPED_RESPONSE_HEADERS: `<UNRESOLVED_TYPE>`;
-    var Companion: okhttp3.internal.http2.Http2ExchangeCodec$Companion;
+automaton okhttp3.internal.http2.Http2ExchangeCodec (val arg0: okhttp3.OkHttpClient, val arg1: okhttp3.internal.connection.RealConnection, val arg2: okhttp3.internal.http.RealInterceptorChain, val arg3: okhttp3.internal.http2.Http2Connection) : okhttp3.internal.http2.Http2ExchangeCodec {
+    val stream: okhttp3.internal.http2.Http2Stream;
+    val protocol: okhttp3.Protocol;
+    val canceled: bool;
+    val connection: okhttp3.internal.connection.RealConnection;
+    val chain: okhttp3.internal.http.RealInterceptorChain;
+    val http2Connection: okhttp3.internal.http2.Http2Connection;
+    val CONNECTION: java.lang.String;
+    val HOST: java.lang.String;
+    val KEEP_ALIVE: java.lang.String;
+    val PROXY_CONNECTION: java.lang.String;
+    val TRANSFER_ENCODING: java.lang.String;
+    val TE: java.lang.String;
+    val ENCODING: java.lang.String;
+    val UPGRADE: java.lang.String;
+    val HTTP_2_SKIPPED_REQUEST_HEADERS: `<UNRESOLVED_TYPE>`;
+    val HTTP_2_SKIPPED_RESPONSE_HEADERS: `<UNRESOLVED_TYPE>`;
+    val Companion: okhttp3.internal.http2.Http2ExchangeCodec$Companion;
     fun createRequestBody(arg0: okhttp3.Request, arg1: long): okio.Sink;
 
-    fun writeRequestHeaders(arg0: okhttp3.Request): void
-        assigns stream;
+    fun writeRequestHeaders(arg0: okhttp3.Request): void;
 
     fun flushRequest(): void;
 
@@ -3207,13 +3151,11 @@ automaton okhttp3.internal.http2.Http2ExchangeCodec (var arg0: okhttp3.OkHttpCli
 
     fun trailers(): okhttp3.Headers;
 
-    fun cancel(): void
-        assigns canceled;
+    fun cancel(): void;
 
     fun getConnection(): okhttp3.internal.connection.RealConnection;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 
     fun access$getHTTP_2_SKIPPED_REQUEST_HEADERS$cp(): `<UNRESOLVED_TYPE>`;
 
@@ -3222,10 +3164,10 @@ automaton okhttp3.internal.http2.Http2ExchangeCodec (var arg0: okhttp3.OkHttpCli
 automaton okhttp3.internal.http2.Http2Connection$Companion : okhttp3.internal.http2.Http2Connection$Companion {
     fun getDEFAULT_SETTINGS(): okhttp3.internal.http2.Settings;
 }
-automaton okhttp3.internal.tls.BasicCertificateChainCleaner (var arg0: okhttp3.internal.tls.TrustRootIndex) : okhttp3.internal.tls.BasicCertificateChainCleaner {
-    var trustRootIndex: okhttp3.internal.tls.TrustRootIndex;
-    var MAX_SIGNERS: int;
-    var Companion: okhttp3.internal.tls.BasicCertificateChainCleaner$Companion;
+automaton okhttp3.internal.tls.BasicCertificateChainCleaner (val arg0: okhttp3.internal.tls.TrustRootIndex) : okhttp3.internal.tls.BasicCertificateChainCleaner {
+    val trustRootIndex: okhttp3.internal.tls.TrustRootIndex;
+    val MAX_SIGNERS: int;
+    val Companion: okhttp3.internal.tls.BasicCertificateChainCleaner$Companion;
     fun clean(arg0: java.util.List, arg1: java.lang.String): `<UNRESOLVED_TYPE>`;
 
     fun verifySignature(arg0: java.security.cert.X509Certificate, arg1: java.security.cert.X509Certificate): bool;
@@ -3234,21 +3176,20 @@ automaton okhttp3.internal.tls.BasicCertificateChainCleaner (var arg0: okhttp3.i
 
     fun equals(arg0: java.lang.Object): bool;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 }
 automaton okhttp3.internal.platform.OpenJSSEPlatform$Companion : okhttp3.internal.platform.OpenJSSEPlatform$Companion {
     fun isSupported(): bool;
 
     fun buildIfSupported(): okhttp3.internal.platform.OpenJSSEPlatform;
 }
-automaton okhttp3.internal.http2.Http2Connection$pushHeadersLater$$inlined$execute$1 (var arg0: java.lang.String, var arg1: bool, var arg2: java.lang.String, var arg3: bool, var arg4: okhttp3.internal.http2.Http2Connection, var arg5: int, var arg6: `<UNRESOLVED_TYPE>`, var arg7: bool) : okhttp3.internal.http2.Http2Connection$pushHeadersLater$$inlined$execute$1 {
-    var $name: java.lang.String;
-    var $cancelable: bool;
-    var this$0: okhttp3.internal.http2.Http2Connection;
-    var $streamId$inlined: int;
-    var $requestHeaders$inlined: `<UNRESOLVED_TYPE>`;
-    var $inFinished$inlined: bool;
+automaton okhttp3.internal.http2.Http2Connection$pushHeadersLater$$inlined$execute$1 (val arg0: java.lang.String, val arg1: bool, val arg2: java.lang.String, val arg3: bool, val arg4: okhttp3.internal.http2.Http2Connection, val arg5: int, val arg6: `<UNRESOLVED_TYPE>`, val arg7: bool) : okhttp3.internal.http2.Http2Connection$pushHeadersLater$$inlined$execute$1 {
+    val $name: java.lang.String;
+    val $cancelable: bool;
+    val this$0: okhttp3.internal.http2.Http2Connection;
+    val $streamId$inlined: int;
+    val $requestHeaders$inlined: `<UNRESOLVED_TYPE>`;
+    val $inFinished$inlined: bool;
     fun runOnce(): long;
 }
 automaton okhttp3.internal.platform.AndroidPlatform$Companion : okhttp3.internal.platform.AndroidPlatform$Companion {
@@ -3257,14 +3198,14 @@ automaton okhttp3.internal.platform.AndroidPlatform$Companion : okhttp3.internal
     fun buildIfSupported(): okhttp3.internal.platform.Platform;
 }
 automaton okhttp3.CacheControl$Builder : okhttp3.CacheControl$Builder {
-    var noCache: bool;
-    var noStore: bool;
-    var maxAgeSeconds: int;
-    var maxStaleSeconds: int;
-    var minFreshSeconds: int;
-    var onlyIfCached: bool;
-    var noTransform: bool;
-    var immutable: bool;
+    val noCache: bool;
+    val noStore: bool;
+    val maxAgeSeconds: int;
+    val maxStaleSeconds: int;
+    val minFreshSeconds: int;
+    val onlyIfCached: bool;
+    val noTransform: bool;
+    val immutable: bool;
     fun noCache(): okhttp3.CacheControl$Builder;
 
     fun noStore(): okhttp3.CacheControl$Builder;
@@ -3285,13 +3226,13 @@ automaton okhttp3.CacheControl$Builder : okhttp3.CacheControl$Builder {
 
     fun build(): okhttp3.CacheControl;
 }
-automaton okhttp3.internal.platform.android.AndroidSocketAdapter (var arg0: `<UNRESOLVED_TYPE>`) : okhttp3.internal.platform.android.AndroidSocketAdapter {
-    var setUseSessionTickets: `<UNRESOLVED_TYPE>`;
-    var setHostname: `<UNRESOLVED_TYPE>`;
-    var getAlpnSelectedProtocol: `<UNRESOLVED_TYPE>`;
-    var setAlpnProtocols: `<UNRESOLVED_TYPE>`;
-    var sslSocketClass: `<UNRESOLVED_TYPE>`;
-    var Companion: okhttp3.internal.platform.android.AndroidSocketAdapter$Companion;
+automaton okhttp3.internal.platform.android.AndroidSocketAdapter (val arg0: `<UNRESOLVED_TYPE>`) : okhttp3.internal.platform.android.AndroidSocketAdapter {
+    val setUseSessionTickets: `<UNRESOLVED_TYPE>`;
+    val setHostname: `<UNRESOLVED_TYPE>`;
+    val getAlpnSelectedProtocol: `<UNRESOLVED_TYPE>`;
+    val setAlpnProtocols: `<UNRESOLVED_TYPE>`;
+    val sslSocketClass: `<UNRESOLVED_TYPE>`;
+    val Companion: okhttp3.internal.platform.android.AndroidSocketAdapter$Companion;
     fun isSupported(): bool;
 
     fun trustManager(arg0: javax.net.ssl.SSLSocketFactory): `<UNRESOLVED_TYPE>`;
@@ -3302,8 +3243,7 @@ automaton okhttp3.internal.platform.android.AndroidSocketAdapter (var arg0: `<UN
 
     fun getSelectedProtocol(arg0: javax.net.ssl.SSLSocket): java.lang.String;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 
     fun matchesSocketFactory(arg0: javax.net.ssl.SSLSocketFactory): bool;
 }
@@ -3330,47 +3270,41 @@ automaton okhttp3.WebSocket : okhttp3.WebSocket {
     fun cancel(): void;
 }
 automaton okhttp3.internal.connection.ConnectInterceptor : okhttp3.internal.connection.ConnectInterceptor {
-    var INSTANCE: okhttp3.internal.connection.ConnectInterceptor;
+    val INSTANCE: okhttp3.internal.connection.ConnectInterceptor;
     fun intercept(arg0: okhttp3.Interceptor$Chain): okhttp3.Response;
 
-    fun `<clinit>`(): void
-        assigns INSTANCE;
+    fun `<clinit>`(): void;
 }
 automaton okhttp3.internal.http2.Http2 : okhttp3.internal.http2.Http2 {
-    var CONNECTION_PREFACE: okio.ByteString;
-    var INITIAL_MAX_FRAME_SIZE: int;
-    var TYPE_DATA: int;
-    var TYPE_HEADERS: int;
-    var TYPE_PRIORITY: int;
-    var TYPE_RST_STREAM: int;
-    var TYPE_SETTINGS: int;
-    var TYPE_PUSH_PROMISE: int;
-    var TYPE_PING: int;
-    var TYPE_GOAWAY: int;
-    var TYPE_WINDOW_UPDATE: int;
-    var TYPE_CONTINUATION: int;
-    var FLAG_NONE: int;
-    var FLAG_ACK: int;
-    var FLAG_END_STREAM: int;
-    var FLAG_END_HEADERS: int;
-    var FLAG_END_PUSH_PROMISE: int;
-    var FLAG_PADDED: int;
-    var FLAG_PRIORITY: int;
-    var FLAG_COMPRESSED: int;
-    var FRAME_NAMES: array<java.lang.String>;
-    var FLAGS: array<java.lang.String>;
-    var BINARY: array<java.lang.String>;
-    var INSTANCE: okhttp3.internal.http2.Http2;
+    val CONNECTION_PREFACE: okio.ByteString;
+    val INITIAL_MAX_FRAME_SIZE: int;
+    val TYPE_DATA: int;
+    val TYPE_HEADERS: int;
+    val TYPE_PRIORITY: int;
+    val TYPE_RST_STREAM: int;
+    val TYPE_SETTINGS: int;
+    val TYPE_PUSH_PROMISE: int;
+    val TYPE_PING: int;
+    val TYPE_GOAWAY: int;
+    val TYPE_WINDOW_UPDATE: int;
+    val TYPE_CONTINUATION: int;
+    val FLAG_NONE: int;
+    val FLAG_ACK: int;
+    val FLAG_END_STREAM: int;
+    val FLAG_END_HEADERS: int;
+    val FLAG_END_PUSH_PROMISE: int;
+    val FLAG_PADDED: int;
+    val FLAG_PRIORITY: int;
+    val FLAG_COMPRESSED: int;
+    val FRAME_NAMES: array<java.lang.String>;
+    val FLAGS: array<java.lang.String>;
+    val BINARY: array<java.lang.String>;
+    val INSTANCE: okhttp3.internal.http2.Http2;
     fun frameLog(arg0: bool, arg1: int, arg2: int, arg3: int, arg4: int): java.lang.String;
 
     fun formatFlags(arg0: int, arg1: int): java.lang.String;
 
-    fun `<clinit>`(): void
-        assigns INSTANCE;
-        assigns CONNECTION_PREFACE;
-        assigns FRAME_NAMES;
-        assigns FLAGS;
-        assigns BINARY;
+    fun `<clinit>`(): void;
 }
 automaton okhttp3.internal.http2.Http2Reader$Companion : okhttp3.internal.http2.Http2Reader$Companion {
     fun getLogger(): `<UNRESOLVED_TYPE>`;
@@ -3378,45 +3312,43 @@ automaton okhttp3.internal.http2.Http2Reader$Companion : okhttp3.internal.http2.
     fun lengthWithoutPadding(arg0: int, arg1: int, arg2: int): int;
 }
 automaton okhttp3.OkHttpClient$Builder : okhttp3.OkHttpClient$Builder {
-    var dispatcher: okhttp3.Dispatcher;
-    var connectionPool: okhttp3.ConnectionPool;
-    var interceptors: `<UNRESOLVED_TYPE>`;
-    var networkInterceptors: `<UNRESOLVED_TYPE>`;
-    var eventListenerFactory: okhttp3.EventListener$Factory;
-    var retryOnConnectionFailure: bool;
-    var authenticator: okhttp3.Authenticator;
-    var followRedirects: bool;
-    var followSslRedirects: bool;
-    var cookieJar: okhttp3.CookieJar;
-    var cache: okhttp3.Cache;
-    var dns: okhttp3.Dns;
-    var proxy: `<UNRESOLVED_TYPE>`;
-    var proxySelector: `<UNRESOLVED_TYPE>`;
-    var proxyAuthenticator: okhttp3.Authenticator;
-    var socketFactory: `<UNRESOLVED_TYPE>`;
-    var sslSocketFactoryOrNull: `<UNRESOLVED_TYPE>`;
-    var x509TrustManagerOrNull: `<UNRESOLVED_TYPE>`;
-    var connectionSpecs: `<UNRESOLVED_TYPE>`;
-    var protocols: `<UNRESOLVED_TYPE>`;
-    var hostnameVerifier: `<UNRESOLVED_TYPE>`;
-    var certificatePinner: okhttp3.CertificatePinner;
-    var certificateChainCleaner: okhttp3.internal.tls.CertificateChainCleaner;
-    var callTimeout: int;
-    var connectTimeout: int;
-    var readTimeout: int;
-    var writeTimeout: int;
-    var pingInterval: int;
-    var minWebSocketMessageToCompress: long;
-    var routeDatabase: okhttp3.internal.connection.RouteDatabase;
+    val dispatcher: okhttp3.Dispatcher;
+    val connectionPool: okhttp3.ConnectionPool;
+    val interceptors: `<UNRESOLVED_TYPE>`;
+    val networkInterceptors: `<UNRESOLVED_TYPE>`;
+    val eventListenerFactory: okhttp3.EventListener$Factory;
+    val retryOnConnectionFailure: bool;
+    val authenticator: okhttp3.Authenticator;
+    val followRedirects: bool;
+    val followSslRedirects: bool;
+    val cookieJar: okhttp3.CookieJar;
+    val cache: okhttp3.Cache;
+    val dns: okhttp3.Dns;
+    val proxy: `<UNRESOLVED_TYPE>`;
+    val proxySelector: `<UNRESOLVED_TYPE>`;
+    val proxyAuthenticator: okhttp3.Authenticator;
+    val socketFactory: `<UNRESOLVED_TYPE>`;
+    val sslSocketFactoryOrNull: `<UNRESOLVED_TYPE>`;
+    val x509TrustManagerOrNull: `<UNRESOLVED_TYPE>`;
+    val connectionSpecs: `<UNRESOLVED_TYPE>`;
+    val protocols: `<UNRESOLVED_TYPE>`;
+    val hostnameVerifier: `<UNRESOLVED_TYPE>`;
+    val certificatePinner: okhttp3.CertificatePinner;
+    val certificateChainCleaner: okhttp3.internal.tls.CertificateChainCleaner;
+    val callTimeout: int;
+    val connectTimeout: int;
+    val readTimeout: int;
+    val writeTimeout: int;
+    val pingInterval: int;
+    val minWebSocketMessageToCompress: long;
+    val routeDatabase: okhttp3.internal.connection.RouteDatabase;
     fun getDispatcher$okhttp(): okhttp3.Dispatcher;
 
-    fun setDispatcher$okhttp(arg0: okhttp3.Dispatcher): void
-        assigns dispatcher;
+    fun setDispatcher$okhttp(arg0: okhttp3.Dispatcher): void;
 
     fun getConnectionPool$okhttp(): okhttp3.ConnectionPool;
 
-    fun setConnectionPool$okhttp(arg0: okhttp3.ConnectionPool): void
-        assigns connectionPool;
+    fun setConnectionPool$okhttp(arg0: okhttp3.ConnectionPool): void;
 
     fun getInterceptors$okhttp(): `<UNRESOLVED_TYPE>`;
 
@@ -3424,43 +3356,35 @@ automaton okhttp3.OkHttpClient$Builder : okhttp3.OkHttpClient$Builder {
 
     fun getEventListenerFactory$okhttp(): okhttp3.EventListener$Factory;
 
-    fun setEventListenerFactory$okhttp(arg0: okhttp3.EventListener$Factory): void
-        assigns eventListenerFactory;
+    fun setEventListenerFactory$okhttp(arg0: okhttp3.EventListener$Factory): void;
 
     fun getRetryOnConnectionFailure$okhttp(): bool;
 
-    fun setRetryOnConnectionFailure$okhttp(arg0: bool): void
-        assigns retryOnConnectionFailure;
+    fun setRetryOnConnectionFailure$okhttp(arg0: bool): void;
 
     fun getAuthenticator$okhttp(): okhttp3.Authenticator;
 
-    fun setAuthenticator$okhttp(arg0: okhttp3.Authenticator): void
-        assigns authenticator;
+    fun setAuthenticator$okhttp(arg0: okhttp3.Authenticator): void;
 
     fun getFollowRedirects$okhttp(): bool;
 
-    fun setFollowRedirects$okhttp(arg0: bool): void
-        assigns followRedirects;
+    fun setFollowRedirects$okhttp(arg0: bool): void;
 
     fun getFollowSslRedirects$okhttp(): bool;
 
-    fun setFollowSslRedirects$okhttp(arg0: bool): void
-        assigns followSslRedirects;
+    fun setFollowSslRedirects$okhttp(arg0: bool): void;
 
     fun getCookieJar$okhttp(): okhttp3.CookieJar;
 
-    fun setCookieJar$okhttp(arg0: okhttp3.CookieJar): void
-        assigns cookieJar;
+    fun setCookieJar$okhttp(arg0: okhttp3.CookieJar): void;
 
     fun getCache$okhttp(): okhttp3.Cache;
 
-    fun setCache$okhttp(arg0: okhttp3.Cache): void
-        assigns cache;
+    fun setCache$okhttp(arg0: okhttp3.Cache): void;
 
     fun getDns$okhttp(): okhttp3.Dns;
 
-    fun setDns$okhttp(arg0: okhttp3.Dns): void
-        assigns dns;
+    fun setDns$okhttp(arg0: okhttp3.Dns): void;
 
     fun getProxy$okhttp(): `<UNRESOLVED_TYPE>`;
 
@@ -3472,8 +3396,7 @@ automaton okhttp3.OkHttpClient$Builder : okhttp3.OkHttpClient$Builder {
 
     fun getProxyAuthenticator$okhttp(): okhttp3.Authenticator;
 
-    fun setProxyAuthenticator$okhttp(arg0: okhttp3.Authenticator): void
-        assigns proxyAuthenticator;
+    fun setProxyAuthenticator$okhttp(arg0: okhttp3.Authenticator): void;
 
     fun getSocketFactory$okhttp(): `<UNRESOLVED_TYPE>`;
 
@@ -3501,48 +3424,39 @@ automaton okhttp3.OkHttpClient$Builder : okhttp3.OkHttpClient$Builder {
 
     fun getCertificatePinner$okhttp(): okhttp3.CertificatePinner;
 
-    fun setCertificatePinner$okhttp(arg0: okhttp3.CertificatePinner): void
-        assigns certificatePinner;
+    fun setCertificatePinner$okhttp(arg0: okhttp3.CertificatePinner): void;
 
     fun getCertificateChainCleaner$okhttp(): okhttp3.internal.tls.CertificateChainCleaner;
 
-    fun setCertificateChainCleaner$okhttp(arg0: okhttp3.internal.tls.CertificateChainCleaner): void
-        assigns certificateChainCleaner;
+    fun setCertificateChainCleaner$okhttp(arg0: okhttp3.internal.tls.CertificateChainCleaner): void;
 
     fun getCallTimeout$okhttp(): int;
 
-    fun setCallTimeout$okhttp(arg0: int): void
-        assigns callTimeout;
+    fun setCallTimeout$okhttp(arg0: int): void;
 
     fun getConnectTimeout$okhttp(): int;
 
-    fun setConnectTimeout$okhttp(arg0: int): void
-        assigns connectTimeout;
+    fun setConnectTimeout$okhttp(arg0: int): void;
 
     fun getReadTimeout$okhttp(): int;
 
-    fun setReadTimeout$okhttp(arg0: int): void
-        assigns readTimeout;
+    fun setReadTimeout$okhttp(arg0: int): void;
 
     fun getWriteTimeout$okhttp(): int;
 
-    fun setWriteTimeout$okhttp(arg0: int): void
-        assigns writeTimeout;
+    fun setWriteTimeout$okhttp(arg0: int): void;
 
     fun getPingInterval$okhttp(): int;
 
-    fun setPingInterval$okhttp(arg0: int): void
-        assigns pingInterval;
+    fun setPingInterval$okhttp(arg0: int): void;
 
     fun getMinWebSocketMessageToCompress$okhttp(): long;
 
-    fun setMinWebSocketMessageToCompress$okhttp(arg0: long): void
-        assigns minWebSocketMessageToCompress;
+    fun setMinWebSocketMessageToCompress$okhttp(arg0: long): void;
 
     fun getRouteDatabase$okhttp(): okhttp3.internal.connection.RouteDatabase;
 
-    fun setRouteDatabase$okhttp(arg0: okhttp3.internal.connection.RouteDatabase): void
-        assigns routeDatabase;
+    fun setRouteDatabase$okhttp(arg0: okhttp3.internal.connection.RouteDatabase): void;
 
     fun dispatcher(arg0: okhttp3.Dispatcher): okhttp3.OkHttpClient$Builder;
 
@@ -3622,8 +3536,8 @@ automaton okhttp3.OkHttpClient$Builder : okhttp3.OkHttpClient$Builder {
 
     fun build(): okhttp3.OkHttpClient;
 }
-automaton okhttp3.internal.connection.RealCall$CallReference (var arg0: okhttp3.internal.connection.RealCall, var arg1: java.lang.Object) : okhttp3.internal.connection.RealCall$CallReference {
-    var callStackTrace: java.lang.Object;
+automaton okhttp3.internal.connection.RealCall$CallReference (val arg0: okhttp3.internal.connection.RealCall, val arg1: java.lang.Object) : okhttp3.internal.connection.RealCall$CallReference {
+    val callStackTrace: java.lang.Object;
     fun getCallStackTrace(): java.lang.Object;
 }
 automaton okhttp3.Cookie$Companion : okhttp3.Cookie$Companion {
@@ -3651,35 +3565,36 @@ automaton okhttp3.Cookie$Companion : okhttp3.Cookie$Companion {
 }
 automaton okhttp3.internal.cache.DiskLruCache$Companion : okhttp3.internal.cache.DiskLruCache$Companion {
 }
-automaton okhttp3.internal.connection.RealConnection$connectTls$2 (var arg0: okhttp3.internal.connection.RealConnection) : okhttp3.internal.connection.RealConnection$connectTls$2 {
-    var this$0: okhttp3.internal.connection.RealConnection;
+automaton okhttp3.internal.connection.RealConnection$connectTls$2 (val arg0: okhttp3.internal.connection.RealConnection) : okhttp3.internal.connection.RealConnection$connectTls$2 {
+    val this$0: okhttp3.internal.connection.RealConnection;
     fun invoke(): java.lang.Object;
 
     fun invoke(): `<UNRESOLVED_TYPE>`;
 }
-automaton okhttp3.internal.http2.Http2Connection$ReaderRunnable$headers$$inlined$synchronized$lambda$1 (var arg0: java.lang.String, var arg1: bool, var arg2: java.lang.String, var arg3: bool, var arg4: okhttp3.internal.http2.Http2Stream, var arg5: okhttp3.internal.http2.Http2Connection$ReaderRunnable, var arg6: okhttp3.internal.http2.Http2Stream, var arg7: int, var arg8: `<UNRESOLVED_TYPE>`, var arg9: bool) : okhttp3.internal.http2.Http2Connection$ReaderRunnable$headers$$inlined$synchronized$lambda$1 {
-    var $name: java.lang.String;
-    var $cancelable: bool;
-    var $newStream$inlined: okhttp3.internal.http2.Http2Stream;
-    var this$0: okhttp3.internal.http2.Http2Connection$ReaderRunnable;
-    var $stream$inlined: okhttp3.internal.http2.Http2Stream;
-    var $streamId$inlined: int;
-    var $headerBlock$inlined: `<UNRESOLVED_TYPE>`;
-    var $inFinished$inlined: bool;
+automaton okhttp3.internal.http2.Http2Connection$ReaderRunnable$headers$$inlined$synchronized$lambda$1 (val arg0: java.lang.String, val arg1: bool, val arg2: java.lang.String, val arg3: bool, val arg4: okhttp3.internal.http2.Http2Stream, val arg5: okhttp3.internal.http2.Http2Connection$ReaderRunnable, val arg6: okhttp3.internal.http2.Http2Stream, val arg7: int, val arg8: `<UNRESOLVED_TYPE>`, val arg9: bool) : okhttp3.internal.http2.Http2Connection$ReaderRunnable$headers$$inlined$synchronized$lambda$1 {
+    val $name: java.lang.String;
+    val $cancelable: bool;
+    val $newStream$inlined: okhttp3.internal.http2.Http2Stream;
+    val this$0: okhttp3.internal.http2.Http2Connection$ReaderRunnable;
+    val $stream$inlined: okhttp3.internal.http2.Http2Stream;
+    val $streamId$inlined: int;
+    val $headerBlock$inlined: `<UNRESOLVED_TYPE>`;
+    val $inFinished$inlined: bool;
     fun runOnce(): long;
 }
-automaton okhttp3.internal.connection.RealConnection$connectTls$1 (var arg0: okhttp3.CertificatePinner, var arg1: okhttp3.Handshake, var arg2: okhttp3.Address) : okhttp3.internal.connection.RealConnection$connectTls$1 {
-    var $certificatePinner: okhttp3.CertificatePinner;
-    var $unverifiedHandshake: okhttp3.Handshake;
-    var $address: okhttp3.Address;
+automaton okhttp3.internal.connection.RealConnection$connectTls$1 (val arg0: okhttp3.CertificatePinner, val arg1: okhttp3.Handshake, val arg2: okhttp3.Address) : okhttp3.internal.connection.RealConnection$connectTls$1 {
+    val $certificatePinner: okhttp3.CertificatePinner;
+    val $unverifiedHandshake: okhttp3.Handshake;
+    val $address: okhttp3.Address;
+    @Throws("kotlin.TypeCastException", ((peerCertificates$delegate != "'null-const'") & (peerCertificates$delegate <= 7)))
     fun invoke(): java.lang.Object;
 
     fun invoke(): `<UNRESOLVED_TYPE>`;
 }
-automaton okhttp3.internal.connection.RealCall$AsyncCall (var arg0: okhttp3.internal.connection.RealCall, var arg1: okhttp3.Callback) : okhttp3.internal.connection.RealCall$AsyncCall {
-    var callsPerHost: `<UNRESOLVED_TYPE>`;
-    var responseCallback: okhttp3.Callback;
-    var this$0: okhttp3.internal.connection.RealCall;
+automaton okhttp3.internal.connection.RealCall$AsyncCall (val arg0: okhttp3.internal.connection.RealCall, val arg1: okhttp3.Callback) : okhttp3.internal.connection.RealCall$AsyncCall {
+    val callsPerHost: `<UNRESOLVED_TYPE>`;
+    val responseCallback: okhttp3.Callback;
+    val this$0: okhttp3.internal.connection.RealCall;
     fun getCallsPerHost(): `<UNRESOLVED_TYPE>`;
 
     fun reuseCallsPerHostFrom(arg0: okhttp3.internal.connection.RealCall$AsyncCall): void;
@@ -3695,11 +3610,11 @@ automaton okhttp3.internal.connection.RealCall$AsyncCall (var arg0: okhttp3.inte
     fun run(): void;
 }
 automaton okhttp3.internal.platform.Platform : okhttp3.internal.platform.Platform {
-    var platform: okhttp3.internal.platform.Platform;
-    var INFO: int;
-    var WARN: int;
-    var logger: `<UNRESOLVED_TYPE>`;
-    var Companion: okhttp3.internal.platform.Platform$Companion;
+    val platform: okhttp3.internal.platform.Platform;
+    val INFO: int;
+    val WARN: int;
+    val logger: `<UNRESOLVED_TYPE>`;
+    val Companion: okhttp3.internal.platform.Platform$Companion;
     fun getPrefix(): java.lang.String;
 
     fun newSSLContext(): `<UNRESOLVED_TYPE>`;
@@ -3734,47 +3649,28 @@ automaton okhttp3.internal.platform.Platform : okhttp3.internal.platform.Platfor
 
     fun toString(): java.lang.String;
 
-    fun `<clinit>`(): void
-        assigns Companion;
-        assigns platform;
+    fun `<clinit>`(): void;
 
     fun access$getPlatform$cp(): okhttp3.internal.platform.Platform;
 
-    fun access$setPlatform$cp(arg0: okhttp3.internal.platform.Platform): void
-        assigns arg0.platform;
+    fun access$setPlatform$cp(arg0: okhttp3.internal.platform.Platform): void;
 
     fun get(): okhttp3.internal.platform.Platform;
 }
 automaton okhttp3.internal.http.HttpHeaders : okhttp3.internal.http.HttpHeaders {
-    var QUOTED_STRING_DELIMITERS: okio.ByteString;
-    var TOKEN_DELIMITERS: okio.ByteString;
+    val QUOTED_STRING_DELIMITERS: okio.ByteString;
+    val TOKEN_DELIMITERS: okio.ByteString;
     fun parseChallenges(arg0: okhttp3.Headers, arg1: java.lang.String): `<UNRESOLVED_TYPE>`;
 
-    fun readChallengeHeader(arg0: okio.Buffer, arg1: java.util.List): void
-        assigns arg0.head;
-        assigns arg0.head.pos;
-        assigns arg0.size;
-        assigns arg0.head.prev;
-        assigns arg0.head.next;
+    fun readChallengeHeader(arg0: okio.Buffer, arg1: java.util.List): void;
 
-    fun skipCommasAndWhitespace(arg0: okio.Buffer): bool
-        assigns arg0.head;
-        assigns arg0.head.pos;
-        assigns arg0.size;
+    fun skipCommasAndWhitespace(arg0: okio.Buffer): bool;
 
     fun startsWith(arg0: okio.Buffer, arg1: byte): bool;
 
-    fun readQuotedString(arg0: okio.Buffer): java.lang.String
-        assigns arg0.head;
-        assigns arg0.head.pos;
-        assigns arg0.size;
-        assigns arg0.head.prev;
-        assigns arg0.head.next;
+    fun readQuotedString(arg0: okio.Buffer): java.lang.String;
 
-    fun readToken(arg0: okio.Buffer): java.lang.String
-        assigns arg0.head.pos;
-        assigns arg0.size;
-        assigns arg0.head;
+    fun readToken(arg0: okio.Buffer): java.lang.String;
 
     fun receiveHeaders(arg0: okhttp3.CookieJar, arg1: okhttp3.HttpUrl, arg2: okhttp3.Headers): void;
 
@@ -3782,59 +3678,31 @@ automaton okhttp3.internal.http.HttpHeaders : okhttp3.internal.http.HttpHeaders 
 
     fun hasBody(arg0: okhttp3.Response): bool;
 
-    fun `<clinit>`(): void
-        assigns QUOTED_STRING_DELIMITERS;
-        assigns TOKEN_DELIMITERS;
+    fun `<clinit>`(): void;
 }
-automaton okhttp3.internal.connection.ExchangeFinder (var arg0: okhttp3.internal.connection.RealConnectionPool, var arg1: okhttp3.Address, var arg2: okhttp3.internal.connection.RealCall, var arg3: okhttp3.EventListener) : okhttp3.internal.connection.ExchangeFinder {
-    var routeSelection: okhttp3.internal.connection.RouteSelector$Selection;
-    var routeSelector: okhttp3.internal.connection.RouteSelector;
-    var connectingConnection: okhttp3.internal.connection.RealConnection;
-    var refusedStreamCount: int;
-    var connectionShutdownCount: int;
-    var otherFailureCount: int;
-    var nextRouteToTry: okhttp3.Route;
-    var connectionPool: okhttp3.internal.connection.RealConnectionPool;
-    var address: okhttp3.Address;
-    var call: okhttp3.internal.connection.RealCall;
-    var eventListener: okhttp3.EventListener;
-    fun find(arg0: okhttp3.OkHttpClient, arg1: okhttp3.internal.http.RealInterceptorChain): okhttp3.internal.http.ExchangeCodec
-        assigns refusedStreamCount;
-        assigns connectionShutdownCount;
-        assigns otherFailureCount;
-        assigns nextRouteToTry;
-        assigns routeSelector;
-        assigns routeSelection;
-        assigns connectingConnection;
+automaton okhttp3.internal.connection.ExchangeFinder (val arg0: okhttp3.internal.connection.RealConnectionPool, val arg1: okhttp3.Address, val arg2: okhttp3.internal.connection.RealCall, val arg3: okhttp3.EventListener) : okhttp3.internal.connection.ExchangeFinder {
+    val routeSelection: okhttp3.internal.connection.RouteSelector$Selection;
+    val routeSelector: okhttp3.internal.connection.RouteSelector;
+    val connectingConnection: okhttp3.internal.connection.RealConnection;
+    val refusedStreamCount: int;
+    val connectionShutdownCount: int;
+    val otherFailureCount: int;
+    val nextRouteToTry: okhttp3.Route;
+    val connectionPool: okhttp3.internal.connection.RealConnectionPool;
+    val address: okhttp3.Address;
+    val call: okhttp3.internal.connection.RealCall;
+    val eventListener: okhttp3.EventListener;
+    fun find(arg0: okhttp3.OkHttpClient, arg1: okhttp3.internal.http.RealInterceptorChain): okhttp3.internal.http.ExchangeCodec;
 
-    fun findHealthyConnection(arg0: int, arg1: int, arg2: int, arg3: int, arg4: bool, arg5: bool): okhttp3.internal.connection.RealConnection
-        assigns refusedStreamCount;
-        assigns connectionShutdownCount;
-        assigns otherFailureCount;
-        assigns nextRouteToTry;
-        assigns routeSelector;
-        assigns routeSelection;
-        assigns connectingConnection;
+    fun findHealthyConnection(arg0: int, arg1: int, arg2: int, arg3: int, arg4: bool, arg5: bool): okhttp3.internal.connection.RealConnection;
 
-    fun findConnection(arg0: int, arg1: int, arg2: int, arg3: int, arg4: bool): okhttp3.internal.connection.RealConnection
-        assigns refusedStreamCount;
-        assigns connectionShutdownCount;
-        assigns otherFailureCount;
-        assigns nextRouteToTry;
-        assigns routeSelector;
-        assigns routeSelection;
-        assigns connectingConnection;
+    fun findConnection(arg0: int, arg1: int, arg2: int, arg3: int, arg4: bool): okhttp3.internal.connection.RealConnection;
 
     fun connectingConnection(): okhttp3.internal.connection.RealConnection;
 
-    fun trackFailure(arg0: java.io.IOException): void
-        assigns nextRouteToTry;
-        assigns refusedStreamCount;
-        assigns connectionShutdownCount;
-        assigns otherFailureCount;
+    fun trackFailure(arg0: java.io.IOException): void;
 
-    fun retryAfterFailure(): bool
-        assigns nextRouteToTry;
+    fun retryAfterFailure(): bool;
 
     fun retryCurrentRoute(): bool;
 
@@ -3853,11 +3721,11 @@ automaton okhttp3.internal.concurrent.TaskLoggerKt : okhttp3.internal.concurrent
 
     fun access$log(arg0: okhttp3.internal.concurrent.Task, arg1: okhttp3.internal.concurrent.TaskQueue, arg2: java.lang.String): void;
 }
-automaton okhttp3.Cache$CacheResponseBody (var arg0: okhttp3.internal.cache.DiskLruCache$Snapshot, var arg1: java.lang.String, var arg2: java.lang.String) : okhttp3.Cache$CacheResponseBody {
-    var bodySource: okio.BufferedSource;
-    var snapshot: okhttp3.internal.cache.DiskLruCache$Snapshot;
-    var contentType: java.lang.String;
-    var contentLength: java.lang.String;
+automaton okhttp3.Cache$CacheResponseBody (val arg0: okhttp3.internal.cache.DiskLruCache$Snapshot, val arg1: java.lang.String, val arg2: java.lang.String) : okhttp3.Cache$CacheResponseBody {
+    val bodySource: okio.BufferedSource;
+    val snapshot: okhttp3.internal.cache.DiskLruCache$Snapshot;
+    val contentType: java.lang.String;
+    val contentLength: java.lang.String;
     fun contentType(): okhttp3.MediaType;
 
     fun contentLength(): long;
@@ -3871,25 +3739,20 @@ automaton okhttp3.Dns$Companion$DnsSystem : okhttp3.Dns$Companion$DnsSystem {
 }
 automaton okhttp3.EventListener$Companion$NONE$1 : okhttp3.EventListener$Companion$NONE$1 {
 }
-automaton okhttp3.internal.cache.CacheInterceptor$cacheWritingResponse$cacheWritingSource$1 (var arg0: okio.BufferedSource, var arg1: okhttp3.internal.cache.CacheRequest, var arg2: okio.BufferedSink) : okhttp3.internal.cache.CacheInterceptor$cacheWritingResponse$cacheWritingSource$1 {
-    var cacheRequestClosed: bool;
-    var $source: okio.BufferedSource;
-    var $cacheRequest: okhttp3.internal.cache.CacheRequest;
-    var $cacheBody: okio.BufferedSink;
+automaton okhttp3.internal.cache.CacheInterceptor$cacheWritingResponse$cacheWritingSource$1 (val arg0: okio.BufferedSource, val arg1: okhttp3.internal.cache.CacheRequest, val arg2: okio.BufferedSink) : okhttp3.internal.cache.CacheInterceptor$cacheWritingResponse$cacheWritingSource$1 {
+    val cacheRequestClosed: bool;
+    val $source: okio.BufferedSource;
+    val $cacheRequest: okhttp3.internal.cache.CacheRequest;
+    val $cacheBody: okio.BufferedSink;
     fun getCacheRequestClosed(): bool;
 
-    fun setCacheRequestClosed(arg0: bool): void
-        assigns cacheRequestClosed;
+    fun setCacheRequestClosed(arg0: bool): void;
 
-    fun read(arg0: okio.Buffer, arg1: long): long
-        assigns cacheRequestClosed;
-        assigns arg0.head;
-        assigns arg0.size;
+    fun read(arg0: okio.Buffer, arg1: long): long;
 
     fun timeout(): okio.Timeout;
 
-    fun close(): void
-        assigns cacheRequestClosed;
+    fun close(): void;
 }
 automaton okhttp3.internal.http1.Http1ExchangeCodec$Companion : okhttp3.internal.http1.Http1ExchangeCodec$Companion {
 }
@@ -3930,10 +3793,10 @@ automaton okhttp3.RequestBody$Companion : okhttp3.RequestBody$Companion {
 
     fun create(arg0: okhttp3.MediaType, arg1: java.io.File): okhttp3.RequestBody;
 }
-automaton okhttp3.Route (var arg0: okhttp3.Address, var arg1: `<UNRESOLVED_TYPE>`, var arg2: `<UNRESOLVED_TYPE>`) : okhttp3.Route {
-    var address: okhttp3.Address;
-    var proxy: `<UNRESOLVED_TYPE>`;
-    var socketAddress: `<UNRESOLVED_TYPE>`;
+automaton okhttp3.Route (val arg0: okhttp3.Address, val arg1: `<UNRESOLVED_TYPE>`, val arg2: `<UNRESOLVED_TYPE>`) : okhttp3.Route {
+    val address: okhttp3.Address;
+    val proxy: `<UNRESOLVED_TYPE>`;
+    val socketAddress: `<UNRESOLVED_TYPE>`;
     fun `-deprecated_address`(): okhttp3.Address;
 
     fun `-deprecated_proxy`(): `<UNRESOLVED_TYPE>`;
@@ -3971,35 +3834,28 @@ automaton okhttp3.HttpUrl$Builder$Companion : okhttp3.HttpUrl$Builder$Companion 
 
     fun access$parsePort(arg0: okhttp3.HttpUrl$Builder$Companion, arg1: java.lang.String, arg2: int, arg3: int): int;
 }
-automaton okhttp3.Cache$RealCacheRequest$1 (var arg0: okhttp3.Cache$RealCacheRequest, var arg1: okio.Sink) : okhttp3.Cache$RealCacheRequest$1 {
-    var this$0: okhttp3.Cache$RealCacheRequest;
+automaton okhttp3.Cache$RealCacheRequest$1 (val arg0: okhttp3.Cache$RealCacheRequest, val arg1: okio.Sink) : okhttp3.Cache$RealCacheRequest$1 {
+    val this$0: okhttp3.Cache$RealCacheRequest;
     fun close(): void;
 }
 automaton okhttp3.internal.http2.Huffman : okhttp3.internal.http2.Huffman {
-    var CODES: array<int>;
-    var CODE_BIT_COUNTS: array<byte>;
-    var root: okhttp3.internal.http2.Huffman$Node;
-    var INSTANCE: okhttp3.internal.http2.Huffman;
-    fun encode(arg0: okio.ByteString, arg1: okio.BufferedSink): void
-        assigns arg1;
+    val CODES: array<int>;
+    val CODE_BIT_COUNTS: array<byte>;
+    val root: okhttp3.internal.http2.Huffman$Node;
+    val INSTANCE: okhttp3.internal.http2.Huffman;
+    fun encode(arg0: okio.ByteString, arg1: okio.BufferedSink): void;
 
     fun encodedLength(arg0: okio.ByteString): int;
 
-    fun decode(arg0: okio.BufferedSource, arg1: long, arg2: okio.BufferedSink): void
-        assigns arg0;
-        assigns arg2;
+    fun decode(arg0: okio.BufferedSource, arg1: long, arg2: okio.BufferedSink): void;
 
     fun addCode(arg0: int, arg1: int, arg2: int): void;
 
-    fun `<clinit>`(): void
-        assigns INSTANCE;
-        assigns CODES;
-        assigns CODE_BIT_COUNTS;
-        assigns root;
+    fun `<clinit>`(): void;
 }
-automaton okhttp3.Challenge (var arg0: java.lang.String, var arg1: `<UNRESOLVED_TYPE>`) : okhttp3.Challenge {
-    var authParams: `<UNRESOLVED_TYPE>`;
-    var scheme: java.lang.String;
+automaton okhttp3.Challenge (val arg0: java.lang.String, val arg1: `<UNRESOLVED_TYPE>`) : okhttp3.Challenge {
+    val authParams: `<UNRESOLVED_TYPE>`;
+    val scheme: java.lang.String;
     fun authParams(): `<UNRESOLVED_TYPE>`;
 
     fun realm(): java.lang.String;
@@ -4033,83 +3889,55 @@ automaton okhttp3.MediaType$Companion : okhttp3.MediaType$Companion {
 
     fun `-deprecated_parse`(arg0: java.lang.String): okhttp3.MediaType;
 }
-automaton okhttp3.internal.http2.Hpack$Writer (var arg0: int, var arg1: bool, var arg2: okio.Buffer) : okhttp3.internal.http2.Hpack$Writer {
-    var smallestHeaderTableSizeSetting: int;
-    var emitDynamicTableSizeUpdate: bool;
-    var maxDynamicTableByteCount: int;
-    var dynamicTable: array<okhttp3.internal.http2.Header>;
-    var nextHeaderIndex: int;
-    var headerCount: int;
-    var dynamicTableByteCount: int;
-    var headerTableSizeSetting: int;
-    var useCompression: bool;
-    var out: okio.Buffer;
-    fun clearDynamicTable(): void
-        assigns nextHeaderIndex;
-        assigns headerCount;
-        assigns dynamicTableByteCount;
+automaton okhttp3.internal.http2.Hpack$Writer (val arg0: int, val arg1: bool, val arg2: okio.Buffer) : okhttp3.internal.http2.Hpack$Writer {
+    val smallestHeaderTableSizeSetting: int;
+    val emitDynamicTableSizeUpdate: bool;
+    val maxDynamicTableByteCount: int;
+    val dynamicTable: array<okhttp3.internal.http2.Header>;
+    val nextHeaderIndex: int;
+    val headerCount: int;
+    val dynamicTableByteCount: int;
+    val headerTableSizeSetting: int;
+    val useCompression: bool;
+    val out: okio.Buffer;
+    fun clearDynamicTable(): void;
 
-    fun evictToRecoverBytes(arg0: int): int
-        assigns dynamicTableByteCount;
-        assigns headerCount;
-        assigns nextHeaderIndex;
+    fun evictToRecoverBytes(arg0: int): int;
 
-    fun insertIntoDynamicTable(arg0: okhttp3.internal.http2.Header): void
-        assigns nextHeaderIndex;
-        assigns dynamicTable;
-        assigns headerCount;
-        assigns dynamicTableByteCount;
+    fun insertIntoDynamicTable(arg0: okhttp3.internal.http2.Header): void;
 
-    fun writeHeaders(arg0: java.util.List): void
-        assigns emitDynamicTableSizeUpdate;
-        assigns smallestHeaderTableSizeSetting;
-        assigns nextHeaderIndex;
-        assigns dynamicTable;
-        assigns headerCount;
-        assigns dynamicTableByteCount;
+    fun writeHeaders(arg0: java.util.List): void;
 
     fun writeInt(arg0: int, arg1: int, arg2: int): void;
 
     fun writeByteString(arg0: okio.ByteString): void;
 
-    fun resizeHeaderTable(arg0: int): void
-        assigns headerTableSizeSetting;
-        assigns smallestHeaderTableSizeSetting;
-        assigns emitDynamicTableSizeUpdate;
-        assigns maxDynamicTableByteCount;
-        assigns nextHeaderIndex;
-        assigns headerCount;
-        assigns dynamicTableByteCount;
+    fun resizeHeaderTable(arg0: int): void;
 
-    fun adjustDynamicTableByteCount(): void
-        assigns nextHeaderIndex;
-        assigns headerCount;
-        assigns dynamicTableByteCount;
+    fun adjustDynamicTableByteCount(): void;
 }
-automaton okhttp3.internal.ws.WebSocketWriter (var arg0: bool, var arg1: okio.BufferedSink, var arg2: `<UNRESOLVED_TYPE>`, var arg3: bool, var arg4: bool, var arg5: long) : okhttp3.internal.ws.WebSocketWriter {
-    var messageBuffer: okio.Buffer;
-    var sinkBuffer: okio.Buffer;
-    var writerClosed: bool;
-    var messageDeflater: okhttp3.internal.ws.MessageDeflater;
-    var maskKey: array<byte>;
-    var maskCursor: okio.Buffer$UnsafeCursor;
-    var isClient: bool;
-    var sink: okio.BufferedSink;
-    var random: `<UNRESOLVED_TYPE>`;
-    var perMessageDeflate: bool;
-    var noContextTakeover: bool;
-    var minimumDeflateSize: long;
+automaton okhttp3.internal.ws.WebSocketWriter (val arg0: bool, val arg1: okio.BufferedSink, val arg2: `<UNRESOLVED_TYPE>`, val arg3: bool, val arg4: bool, val arg5: long) : okhttp3.internal.ws.WebSocketWriter {
+    val messageBuffer: okio.Buffer;
+    val sinkBuffer: okio.Buffer;
+    val writerClosed: bool;
+    val messageDeflater: okhttp3.internal.ws.MessageDeflater;
+    val maskKey: array<byte>;
+    val maskCursor: okio.Buffer$UnsafeCursor;
+    val isClient: bool;
+    val sink: okio.BufferedSink;
+    val random: `<UNRESOLVED_TYPE>`;
+    val perMessageDeflate: bool;
+    val noContextTakeover: bool;
+    val minimumDeflateSize: long;
     fun writePing(arg0: okio.ByteString): void;
 
     fun writePong(arg0: okio.ByteString): void;
 
-    fun writeClose(arg0: int, arg1: okio.ByteString): void
-        assigns writerClosed;
+    fun writeClose(arg0: int, arg1: okio.ByteString): void;
 
     fun writeControlFrame(arg0: int, arg1: okio.ByteString): void;
 
-    fun writeMessageFrame(arg0: int, arg1: okio.ByteString): void
-        assigns messageDeflater;
+    fun writeMessageFrame(arg0: int, arg1: okio.ByteString): void;
 
     fun close(): void;
 
@@ -4118,7 +3946,7 @@ automaton okhttp3.internal.ws.WebSocketWriter (var arg0: bool, var arg1: okio.Bu
     fun getRandom(): `<UNRESOLVED_TYPE>`;
 }
 automaton okhttp3.internal.connection.RouteDatabase : okhttp3.internal.connection.RouteDatabase {
-    var failedRoutes: `<UNRESOLVED_TYPE>`;
+    val failedRoutes: `<UNRESOLVED_TYPE>`;
     fun failed(arg0: okhttp3.Route): void;
 
     fun connected(arg0: okhttp3.Route): void;
@@ -4136,6 +3964,10 @@ automaton okhttp3.internal.Internal : okhttp3.internal.Internal {
 
     fun cacheGet(arg0: okhttp3.Cache, arg1: okhttp3.Request): okhttp3.Response;
 
+    @Throws("kotlin.TypeCastException", ((cipherSuitesAsString != "'null-const'") & (tlsVersionsAsString == "'null-const'")))
+    @Throws("kotlin.TypeCastException", (tlsVersionsAsString != "'null-const'"))
+    @Throws("kotlin.TypeCastException", ((tlsVersionsAsString != "'null-const'") & (cipherSuitesAsString == "'null-const'")))
+    @Throws("kotlin.TypeCastException", (cipherSuitesAsString != "'null-const'"))
     fun applyConnectionSpec(arg0: okhttp3.ConnectionSpec, arg1: javax.net.ssl.SSLSocket, arg2: bool): void;
 }
 automaton okhttp3.Connection : okhttp3.Connection {
@@ -4147,14 +3979,13 @@ automaton okhttp3.Connection : okhttp3.Connection {
 
     fun protocol(): okhttp3.Protocol;
 }
-automaton okhttp3.internal.http2.Http2Connection$writeWindowUpdateLater$$inlined$execute$1 (var arg0: java.lang.String, var arg1: bool, var arg2: java.lang.String, var arg3: bool, var arg4: okhttp3.internal.http2.Http2Connection, var arg5: int, var arg6: long) : okhttp3.internal.http2.Http2Connection$writeWindowUpdateLater$$inlined$execute$1 {
-    var $name: java.lang.String;
-    var $cancelable: bool;
-    var this$0: okhttp3.internal.http2.Http2Connection;
-    var $streamId$inlined: int;
-    var $unacknowledgedBytesRead$inlined: long;
-    fun runOnce(): long
-        assigns this$0.isShutdown;
+automaton okhttp3.internal.http2.Http2Connection$writeWindowUpdateLater$$inlined$execute$1 (val arg0: java.lang.String, val arg1: bool, val arg2: java.lang.String, val arg3: bool, val arg4: okhttp3.internal.http2.Http2Connection, val arg5: int, val arg6: long) : okhttp3.internal.http2.Http2Connection$writeWindowUpdateLater$$inlined$execute$1 {
+    val $name: java.lang.String;
+    val $cancelable: bool;
+    val this$0: okhttp3.internal.http2.Http2Connection;
+    val $streamId$inlined: int;
+    val $unacknowledgedBytesRead$inlined: long;
+    fun runOnce(): long;
 }
 automaton okhttp3.CertificatePinner$Companion : okhttp3.CertificatePinner$Companion {
     fun sha1Hash(arg0: java.security.cert.X509Certificate): okio.ByteString;
@@ -4164,7 +3995,7 @@ automaton okhttp3.CertificatePinner$Companion : okhttp3.CertificatePinner$Compan
     fun pin(arg0: java.security.cert.Certificate): java.lang.String;
 }
 automaton okhttp3.internal.platform.android.BouncyCastleSocketAdapter : okhttp3.internal.platform.android.BouncyCastleSocketAdapter {
-    var Companion: okhttp3.internal.platform.android.BouncyCastleSocketAdapter$Companion;
+    val Companion: okhttp3.internal.platform.android.BouncyCastleSocketAdapter$Companion;
     fun trustManager(arg0: javax.net.ssl.SSLSocketFactory): `<UNRESOLVED_TYPE>`;
 
     fun matchesSocket(arg0: javax.net.ssl.SSLSocket): bool;
@@ -4175,35 +4006,33 @@ automaton okhttp3.internal.platform.android.BouncyCastleSocketAdapter : okhttp3.
 
     fun configureTlsExtensions(arg0: javax.net.ssl.SSLSocket, arg1: java.lang.String, arg2: java.util.List): void;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 
     fun matchesSocketFactory(arg0: javax.net.ssl.SSLSocketFactory): bool;
 }
-automaton okhttp3.internal.connection.RealCall (var arg0: okhttp3.OkHttpClient, var arg1: okhttp3.Request, var arg2: bool) : okhttp3.internal.connection.RealCall {
-    var connectionPool: okhttp3.internal.connection.RealConnectionPool;
-    var eventListener: okhttp3.EventListener;
-    var timeout: okhttp3.internal.connection.RealCall$timeout$1;
-    var callStackTrace: java.lang.Object;
-    var exchangeFinder: okhttp3.internal.connection.ExchangeFinder;
-    var connection: okhttp3.internal.connection.RealConnection;
-    var exchange: okhttp3.internal.connection.Exchange;
-    var exchangeRequestDone: bool;
-    var exchangeResponseDone: bool;
-    var canceled: bool;
-    var timeoutEarlyExit: bool;
-    var noMoreExchanges: bool;
-    var executed: bool;
-    var interceptorScopedExchange: okhttp3.internal.connection.Exchange;
-    var client: okhttp3.OkHttpClient;
-    var originalRequest: okhttp3.Request;
-    var forWebSocket: bool;
+automaton okhttp3.internal.connection.RealCall (val arg0: okhttp3.OkHttpClient, val arg1: okhttp3.Request, val arg2: bool) : okhttp3.internal.connection.RealCall {
+    val connectionPool: okhttp3.internal.connection.RealConnectionPool;
+    val eventListener: okhttp3.EventListener;
+    val timeout: okhttp3.internal.connection.RealCall$timeout$1;
+    val callStackTrace: java.lang.Object;
+    val exchangeFinder: okhttp3.internal.connection.ExchangeFinder;
+    val connection: okhttp3.internal.connection.RealConnection;
+    val exchange: okhttp3.internal.connection.Exchange;
+    val exchangeRequestDone: bool;
+    val exchangeResponseDone: bool;
+    val canceled: bool;
+    val timeoutEarlyExit: bool;
+    val noMoreExchanges: bool;
+    val executed: bool;
+    val interceptorScopedExchange: okhttp3.internal.connection.Exchange;
+    val client: okhttp3.OkHttpClient;
+    val originalRequest: okhttp3.Request;
+    val forWebSocket: bool;
     fun getEventListener$okhttp(): okhttp3.EventListener;
 
     fun getConnection(): okhttp3.internal.connection.RealConnection;
 
-    fun setConnection(arg0: okhttp3.internal.connection.RealConnection): void
-        assigns connection;
+    fun setConnection(arg0: okhttp3.internal.connection.RealConnection): void;
 
     fun getInterceptorScopedExchange$okhttp(): okhttp3.internal.connection.Exchange;
 
@@ -4219,65 +4048,117 @@ automaton okhttp3.internal.connection.RealCall (var arg0: okhttp3.OkHttpClient, 
 
     fun request(): okhttp3.Request;
 
-    fun cancel(): void
-        assigns canceled;
+    fun cancel(): void;
 
     fun isCanceled(): bool;
 
-    fun execute(): okhttp3.Response
-        assigns executed;
-        assigns callStackTrace;
-        assigns noMoreExchanges;
-        assigns connection;
+    fun execute(): okhttp3.Response;
 
-    fun enqueue(arg0: okhttp3.Callback): void
-        assigns executed;
-        assigns callStackTrace;
+    fun enqueue(arg0: okhttp3.Callback): void;
 
     fun isExecuted(): bool;
 
-    fun callStart(): void
-        assigns callStackTrace;
+    fun callStart(): void;
 
-    fun getResponseWithInterceptorChain$okhttp(): okhttp3.Response
-        assigns noMoreExchanges;
-        assigns connection;
+    fun getResponseWithInterceptorChain$okhttp(): okhttp3.Response;
 
-    fun enterNetworkInterceptorExchange(arg0: okhttp3.Request, arg1: bool): void
-        assigns exchangeFinder;
+    @Throws("java.lang.IllegalStateException", (interceptorScopedExchange != "'null-const'"))
+    @Throws("java.lang.IllegalStateException", ((arg1 & (exchange != "'null-const'")) & (interceptorScopedExchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((exchange != "'null-const'") & (interceptorScopedExchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((!arg1 & (exchange != "'null-const'")) & (interceptorScopedExchange != "'null-const'")) & (sslSocketFactoryOrNull == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (exchange != "'null-const'"))
+    @Throws("java.lang.IllegalStateException", ((arg1 & (exchange != "'null-const'")) & (sslSocketFactoryOrNull == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((exchange != "'null-const'") & (interceptorScopedExchange != "'null-const'")) & (sslSocketFactoryOrNull == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((exchange != "'null-const'") & (sslSocketFactoryOrNull == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (arg1 & (exchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((!arg1 & (exchange != "'null-const'")) & (interceptorScopedExchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((exchange != "'null-const'") & (interceptorScopedExchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((!(sslSocketFactoryOrNull == "'null-const'") & arg1) & (exchange != "'null-const'")) & (sslSocketFactoryOrNull == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((!(sslSocketFactoryOrNull == "'null-const'") & (exchange != "'null-const'")) & (interceptorScopedExchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((!(sslSocketFactoryOrNull == "'null-const'") & arg1) & (exchange != "'null-const'")) & (interceptorScopedExchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((!(sslSocketFactoryOrNull == "'null-const'") & arg1) & (exchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((!(sslSocketFactoryOrNull == "'null-const'") & (exchange != "'null-const'")) & (sslSocketFactoryOrNull == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((!(sslSocketFactoryOrNull == "'null-const'") & (exchange != "'null-const'")) & (interceptorScopedExchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((!arg1 & (interceptorScopedExchange != "'null-const'")) & (exchange != "'null-const'")) & (sslSocketFactoryOrNull == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((!(sslSocketFactoryOrNull == "'null-const'") & (exchange != "'null-const'")) & (interceptorScopedExchange != "'null-const'")) & (sslSocketFactoryOrNull == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((!arg1 & (exchange != "'null-const'")) & (interceptorScopedExchange == "'null-const'")) & (sslSocketFactoryOrNull == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (!(sslSocketFactoryOrNull == "'null-const'") & (exchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((exchange != "'null-const'") & (interceptorScopedExchange == "'null-const'")) & (sslSocketFactoryOrNull == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((!(sslSocketFactoryOrNull == "'null-const'") & arg1) & (exchange != "'null-const'")) & (interceptorScopedExchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((arg1 & (exchange != "'null-const'")) & (interceptorScopedExchange == "'null-const'")) & (sslSocketFactoryOrNull == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((((!(sslSocketFactoryOrNull == "'null-const'") & arg1) & (exchange != "'null-const'")) & (interceptorScopedExchange == "'null-const'")) & (sslSocketFactoryOrNull == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((arg1 & (interceptorScopedExchange != "'null-const'")) & (exchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (!arg1 & (interceptorScopedExchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((arg1 & (interceptorScopedExchange != "'null-const'")) & (sslSocketFactoryOrNull == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((!arg1 & (interceptorScopedExchange != "'null-const'")) & (exchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((!arg1 & (interceptorScopedExchange != "'null-const'")) & (sslSocketFactoryOrNull == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((arg1 & (exchange != "'null-const'")) & (interceptorScopedExchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((!(sslSocketFactoryOrNull == "'null-const'") & (exchange != "'null-const'")) & (interceptorScopedExchange == "'null-const'")) & (sslSocketFactoryOrNull == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (arg1 & (interceptorScopedExchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((interceptorScopedExchange != "'null-const'") & (exchange != "'null-const'")) & (sslSocketFactoryOrNull == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((interceptorScopedExchange != "'null-const'") & (exchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((interceptorScopedExchange != "'null-const'") & (sslSocketFactoryOrNull == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((!(sslSocketFactoryOrNull == "'null-const'") & arg1) & (interceptorScopedExchange != "'null-const'")) & (sslSocketFactoryOrNull == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((!(sslSocketFactoryOrNull == "'null-const'") & arg1) & (interceptorScopedExchange != "'null-const'")) & (exchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((!(sslSocketFactoryOrNull == "'null-const'") & arg1) & (interceptorScopedExchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((!(sslSocketFactoryOrNull == "'null-const'") & (interceptorScopedExchange != "'null-const'")) & (exchange != "'null-const'")) & (sslSocketFactoryOrNull == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((!(sslSocketFactoryOrNull == "'null-const'") & (interceptorScopedExchange != "'null-const'")) & (exchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((!(sslSocketFactoryOrNull == "'null-const'") & (interceptorScopedExchange != "'null-const'")) & (sslSocketFactoryOrNull == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (!(sslSocketFactoryOrNull == "'null-const'") & (interceptorScopedExchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((!arg1 & (interceptorScopedExchange != "'null-const'")) & (exchange == "'null-const'")) & (sslSocketFactoryOrNull == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((!arg1 & (interceptorScopedExchange != "'null-const'")) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((arg1 & (interceptorScopedExchange != "'null-const'")) & (exchange == "'null-const'")) & (sslSocketFactoryOrNull == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((arg1 & (interceptorScopedExchange != "'null-const'")) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((interceptorScopedExchange != "'null-const'") & (exchange == "'null-const'")) & (sslSocketFactoryOrNull == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((interceptorScopedExchange != "'null-const'") & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((((!(sslSocketFactoryOrNull == "'null-const'") & arg1) & (interceptorScopedExchange != "'null-const'")) & (exchange == "'null-const'")) & (sslSocketFactoryOrNull == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((!(sslSocketFactoryOrNull == "'null-const'") & arg1) & (interceptorScopedExchange != "'null-const'")) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((!(sslSocketFactoryOrNull == "'null-const'") & (interceptorScopedExchange != "'null-const'")) & (exchange == "'null-const'")) & (sslSocketFactoryOrNull == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((!(sslSocketFactoryOrNull == "'null-const'") & (interceptorScopedExchange != "'null-const'")) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((!arg1 & (sslSocketFactoryOrNull == 0)) & (exchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (!arg1 & (exchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((!arg1 & (exchange != "'null-const'")) & (interceptorScopedExchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((!arg1 & (sslSocketFactoryOrNull == 0)) & (interceptorScopedExchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (arg1 & (sslSocketFactoryOrNull == 0)))
+    @Throws("java.lang.IllegalStateException", ((sslSocketFactoryOrNull == 0) & (exchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((sslSocketFactoryOrNull == 0) & (interceptorScopedExchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((!arg1 & (sslSocketFactoryOrNull == 0)) & (exchange == "'null-const'")) & (interceptorScopedExchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((!arg1 & (exchange == "'null-const'")) & (interceptorScopedExchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((arg1 & (sslSocketFactoryOrNull == 0)) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((arg1 & (exchange == "'null-const'")) & (interceptorScopedExchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((sslSocketFactoryOrNull == 0) & (exchange == "'null-const'")) & (interceptorScopedExchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((exchange == "'null-const'") & (interceptorScopedExchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((!(sslSocketFactoryOrNull == "'null-const'") & arg1) & (exchange == "'null-const'")) & (interceptorScopedExchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((!(sslSocketFactoryOrNull == "'null-const'") & (exchange == "'null-const'")) & (interceptorScopedExchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((!arg1 & (sslSocketFactoryOrNull == 0)) & (interceptorScopedExchange == "'null-const'")) & (exchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((!arg1 & (interceptorScopedExchange == "'null-const'")) & (exchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((arg1 & (sslSocketFactoryOrNull == 0)) & (interceptorScopedExchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((arg1 & (interceptorScopedExchange == "'null-const'")) & (exchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((sslSocketFactoryOrNull == 0) & (interceptorScopedExchange == "'null-const'")) & (exchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((interceptorScopedExchange == "'null-const'") & (exchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((!(sslSocketFactoryOrNull == "'null-const'") & arg1) & (interceptorScopedExchange == "'null-const'")) & (exchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((!(sslSocketFactoryOrNull == "'null-const'") & (interceptorScopedExchange == "'null-const'")) & (exchange != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((arg1 & (sslSocketFactoryOrNull == 0)) & (interceptorScopedExchange == "'null-const'")) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((!arg1 & (exchange != "'null-const'")) & (sslSocketFactoryOrNull == "'null-const'")))
+    fun enterNetworkInterceptorExchange(arg0: okhttp3.Request, arg1: bool): void;
 
-    fun initExchange$okhttp(arg0: okhttp3.internal.http.RealInterceptorChain): okhttp3.internal.connection.Exchange
-        assigns interceptorScopedExchange;
-        assigns exchange;
-        assigns exchangeRequestDone;
-        assigns exchangeResponseDone;
+    fun initExchange$okhttp(arg0: okhttp3.internal.http.RealInterceptorChain): okhttp3.internal.connection.Exchange;
 
-    fun acquireConnectionNoEvents(arg0: okhttp3.internal.connection.RealConnection): void
-        assigns connection;
+    fun acquireConnectionNoEvents(arg0: okhttp3.internal.connection.RealConnection): void;
 
-    fun messageDone$okhttp(arg0: okhttp3.internal.connection.Exchange, arg1: bool, arg2: bool, arg3: java.io.IOException): `<UNRESOLVED_TYPE>`
-        assigns exchangeRequestDone;
-        assigns exchangeResponseDone;
-        assigns exchange;
-        assigns connection;
+    fun messageDone$okhttp(arg0: okhttp3.internal.connection.Exchange, arg1: bool, arg2: bool, arg3: java.io.IOException): `<UNRESOLVED_TYPE>`;
 
-    fun noMoreExchanges$okhttp(arg0: java.io.IOException): `<UNRESOLVED_TYPE>`
-        assigns noMoreExchanges;
-        assigns connection;
+    fun noMoreExchanges$okhttp(arg0: java.io.IOException): `<UNRESOLVED_TYPE>`;
 
-    fun maybeReleaseConnection(arg0: java.io.IOException, arg1: bool): `<UNRESOLVED_TYPE>`
-        assigns connection;
+    fun maybeReleaseConnection(arg0: java.io.IOException, arg1: bool): `<UNRESOLVED_TYPE>`;
 
-    fun releaseConnectionNoEvents$okhttp(): `<UNRESOLVED_TYPE>`
-        assigns connection;
+    fun releaseConnectionNoEvents$okhttp(): `<UNRESOLVED_TYPE>`;
 
     fun timeoutExit(arg0: java.io.IOException): `<UNRESOLVED_TYPE>`;
 
-    fun timeoutEarlyExit(): void
-        assigns timeoutEarlyExit;
+    fun timeoutEarlyExit(): void;
 
-    fun exitNetworkInterceptorExchange$okhttp(arg0: bool): void
-        assigns interceptorScopedExchange;
+    fun exitNetworkInterceptorExchange$okhttp(arg0: bool): void;
 
     fun createAddress(arg0: okhttp3.HttpUrl): okhttp3.Address;
 
@@ -4297,46 +4178,43 @@ automaton okhttp3.internal.connection.RealCall (var arg0: okhttp3.OkHttpClient, 
 
     fun access$toLoggableString(arg0: okhttp3.internal.connection.RealCall): java.lang.String;
 }
-automaton okhttp3.Handshake$peerCertificates$2 (var arg0: `<UNRESOLVED_TYPE>`) : okhttp3.Handshake$peerCertificates$2 {
-    var $peerCertificatesFn: `<UNRESOLVED_TYPE>`;
+automaton okhttp3.Handshake$peerCertificates$2 (val arg0: `<UNRESOLVED_TYPE>`) : okhttp3.Handshake$peerCertificates$2 {
+    val $peerCertificatesFn: `<UNRESOLVED_TYPE>`;
     fun invoke(): java.lang.Object;
 
     fun invoke(): `<UNRESOLVED_TYPE>`;
 }
-automaton okhttp3.internal.ws.MessageDeflater (var arg0: bool) : okhttp3.internal.ws.MessageDeflater {
-    var deflatedBytes: okio.Buffer;
-    var deflater: `<UNRESOLVED_TYPE>`;
-    var deflaterSink: okio.DeflaterSink;
-    var noContextTakeover: bool;
-    fun deflate(arg0: okio.Buffer): void
-        assigns arg0.head.pos;
-        assigns arg0.head;
-        assigns arg0.size;
+automaton okhttp3.internal.ws.MessageDeflater (val arg0: bool) : okhttp3.internal.ws.MessageDeflater {
+    val deflatedBytes: okio.Buffer;
+    val deflater: `<UNRESOLVED_TYPE>`;
+    val deflaterSink: okio.DeflaterSink;
+    val noContextTakeover: bool;
+    fun deflate(arg0: okio.Buffer): void;
 
     fun close(): void;
 
     fun endsWith(arg0: okio.Buffer, arg1: okio.ByteString): bool;
 }
-automaton okhttp3.internal.connection.RouteSelector$resetNextProxy$1 (var arg0: okhttp3.internal.connection.RouteSelector, var arg1: `<UNRESOLVED_TYPE>`, var arg2: okhttp3.HttpUrl) : okhttp3.internal.connection.RouteSelector$resetNextProxy$1 {
-    var this$0: okhttp3.internal.connection.RouteSelector;
-    var $proxy: `<UNRESOLVED_TYPE>`;
-    var $url: okhttp3.HttpUrl;
+automaton okhttp3.internal.connection.RouteSelector$resetNextProxy$1 (val arg0: okhttp3.internal.connection.RouteSelector, val arg1: `<UNRESOLVED_TYPE>`, val arg2: okhttp3.HttpUrl) : okhttp3.internal.connection.RouteSelector$resetNextProxy$1 {
+    val this$0: okhttp3.internal.connection.RouteSelector;
+    val $proxy: `<UNRESOLVED_TYPE>`;
+    val $url: okhttp3.HttpUrl;
     fun invoke(): java.lang.Object;
 
     fun invoke(): `<UNRESOLVED_TYPE>`;
 }
-automaton okhttp3.internal.http2.Http2Connection$sendDegradedPingLater$$inlined$execute$1 (var arg0: java.lang.String, var arg1: bool, var arg2: java.lang.String, var arg3: bool, var arg4: okhttp3.internal.http2.Http2Connection) : okhttp3.internal.http2.Http2Connection$sendDegradedPingLater$$inlined$execute$1 {
-    var $name: java.lang.String;
-    var $cancelable: bool;
-    var this$0: okhttp3.internal.http2.Http2Connection;
+automaton okhttp3.internal.http2.Http2Connection$sendDegradedPingLater$$inlined$execute$1 (val arg0: java.lang.String, val arg1: bool, val arg2: java.lang.String, val arg3: bool, val arg4: okhttp3.internal.http2.Http2Connection) : okhttp3.internal.http2.Http2Connection$sendDegradedPingLater$$inlined$execute$1 {
+    val $name: java.lang.String;
+    val $cancelable: bool;
+    val this$0: okhttp3.internal.http2.Http2Connection;
     fun runOnce(): long;
 }
-automaton okhttp3.Handshake (var arg0: okhttp3.TlsVersion, var arg1: okhttp3.CipherSuite, var arg2: `<UNRESOLVED_TYPE>`, var arg3: `<UNRESOLVED_TYPE>`) : okhttp3.Handshake {
-    var peerCertificates$delegate: `<UNRESOLVED_TYPE>`;
-    var tlsVersion: okhttp3.TlsVersion;
-    var cipherSuite: okhttp3.CipherSuite;
-    var localCertificates: `<UNRESOLVED_TYPE>`;
-    var Companion: okhttp3.Handshake$Companion;
+automaton okhttp3.Handshake (val arg0: okhttp3.TlsVersion, val arg1: okhttp3.CipherSuite, val arg2: `<UNRESOLVED_TYPE>`, val arg3: `<UNRESOLVED_TYPE>`) : okhttp3.Handshake {
+    val peerCertificates$delegate: `<UNRESOLVED_TYPE>`;
+    val tlsVersion: okhttp3.TlsVersion;
+    val cipherSuite: okhttp3.CipherSuite;
+    val localCertificates: `<UNRESOLVED_TYPE>`;
+    val Companion: okhttp3.Handshake$Companion;
     fun peerCertificates(): `<UNRESOLVED_TYPE>`;
 
     fun `-deprecated_tlsVersion`(): okhttp3.TlsVersion;
@@ -4369,8 +4247,7 @@ automaton okhttp3.Handshake (var arg0: okhttp3.TlsVersion, var arg1: okhttp3.Cip
 
     fun localCertificates(): `<UNRESOLVED_TYPE>`;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 
     fun get(arg0: javax.net.ssl.SSLSession): okhttp3.Handshake;
 
@@ -4379,65 +4256,59 @@ automaton okhttp3.Handshake (var arg0: okhttp3.TlsVersion, var arg1: okhttp3.Cip
 automaton okhttp3.internal.platform.android.AndroidCertificateChainCleaner$Companion : okhttp3.internal.platform.android.AndroidCertificateChainCleaner$Companion {
     fun buildIfSupported(arg0: javax.net.ssl.X509TrustManager): okhttp3.internal.platform.android.AndroidCertificateChainCleaner;
 }
-automaton okhttp3.internal.http.BridgeInterceptor (var arg0: okhttp3.CookieJar) : okhttp3.internal.http.BridgeInterceptor {
-    var cookieJar: okhttp3.CookieJar;
-    fun intercept(arg0: okhttp3.Interceptor$Chain): okhttp3.Response
-        assigns arg0;
+automaton okhttp3.internal.http.BridgeInterceptor (val arg0: okhttp3.CookieJar) : okhttp3.internal.http.BridgeInterceptor {
+    val cookieJar: okhttp3.CookieJar;
+    fun intercept(arg0: okhttp3.Interceptor$Chain): okhttp3.Response;
 
     fun cookieHeader(arg0: java.util.List): java.lang.String;
 }
-automaton okhttp3.internal.ws.RealWebSocket$connect$1 (var arg0: okhttp3.internal.ws.RealWebSocket, var arg1: okhttp3.Request) : okhttp3.internal.ws.RealWebSocket$connect$1 {
-    var this$0: okhttp3.internal.ws.RealWebSocket;
-    var $request: okhttp3.Request;
-    fun onResponse(arg0: okhttp3.Call, arg1: okhttp3.Response): void
-        assigns this$0.extensions;
+automaton okhttp3.internal.ws.RealWebSocket$connect$1 (val arg0: okhttp3.internal.ws.RealWebSocket, val arg1: okhttp3.Request) : okhttp3.internal.ws.RealWebSocket$connect$1 {
+    val this$0: okhttp3.internal.ws.RealWebSocket;
+    val $request: okhttp3.Request;
+    fun onResponse(arg0: okhttp3.Call, arg1: okhttp3.Response): void;
 
     fun onFailure(arg0: okhttp3.Call, arg1: java.io.IOException): void;
 }
-automaton okhttp3.internal.ws.MessageInflater (var arg0: bool) : okhttp3.internal.ws.MessageInflater {
-    var deflatedBytes: okio.Buffer;
-    var inflater: `<UNRESOLVED_TYPE>`;
-    var inflaterSource: okio.InflaterSource;
-    var noContextTakeover: bool;
-    fun inflate(arg0: okio.Buffer): void
-        assigns arg0.head;
-        assigns arg0.size;
+automaton okhttp3.internal.ws.MessageInflater (val arg0: bool) : okhttp3.internal.ws.MessageInflater {
+    val deflatedBytes: okio.Buffer;
+    val inflater: `<UNRESOLVED_TYPE>`;
+    val inflaterSource: okio.InflaterSource;
+    val noContextTakeover: bool;
+    fun inflate(arg0: okio.Buffer): void;
 
     fun close(): void;
 }
-automaton okhttp3.internal.ws.RealWebSocket$Streams (var arg0: bool, var arg1: okio.BufferedSource, var arg2: okio.BufferedSink) : okhttp3.internal.ws.RealWebSocket$Streams {
-    var client: bool;
-    var source: okio.BufferedSource;
-    var sink: okio.BufferedSink;
+automaton okhttp3.internal.ws.RealWebSocket$Streams (val arg0: bool, val arg1: okio.BufferedSource, val arg2: okio.BufferedSink) : okhttp3.internal.ws.RealWebSocket$Streams {
+    val client: bool;
+    val source: okio.BufferedSource;
+    val sink: okio.BufferedSink;
     fun getClient(): bool;
 
     fun getSource(): okio.BufferedSource;
 
     fun getSink(): okio.BufferedSink;
 }
-automaton okhttp3.internal.cache.CacheInterceptor (var arg0: okhttp3.Cache) : okhttp3.internal.cache.CacheInterceptor {
-    var cache: okhttp3.Cache;
-    var Companion: okhttp3.internal.cache.CacheInterceptor$Companion;
-    fun intercept(arg0: okhttp3.Interceptor$Chain): okhttp3.Response
-        assigns arg0;
+automaton okhttp3.internal.cache.CacheInterceptor (val arg0: okhttp3.Cache) : okhttp3.internal.cache.CacheInterceptor {
+    val cache: okhttp3.Cache;
+    val Companion: okhttp3.internal.cache.CacheInterceptor$Companion;
+    fun intercept(arg0: okhttp3.Interceptor$Chain): okhttp3.Response;
 
     fun cacheWritingResponse(arg0: okhttp3.internal.cache.CacheRequest, arg1: okhttp3.Response): okhttp3.Response;
 
     fun getCache$okhttp(): okhttp3.Cache;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 }
-automaton okhttp3.MediaType (var arg0: java.lang.String, var arg1: java.lang.String, var arg2: java.lang.String, var arg3: array<java.lang.String>) : okhttp3.MediaType {
-    var mediaType: java.lang.String;
-    var `type`: java.lang.String;
-    var subtype: java.lang.String;
-    var parameterNamesAndValues: array<java.lang.String>;
-    var TOKEN: java.lang.String;
-    var QUOTED: java.lang.String;
-    var TYPE_SUBTYPE: `<UNRESOLVED_TYPE>`;
-    var PARAMETER: `<UNRESOLVED_TYPE>`;
-    var Companion: okhttp3.MediaType$Companion;
+automaton okhttp3.MediaType (val arg0: java.lang.String, val arg1: java.lang.String, val arg2: java.lang.String, val arg3: array<java.lang.String>) : okhttp3.MediaType {
+    val mediaType: java.lang.String;
+    val `type`: java.lang.String;
+    val subtype: java.lang.String;
+    val parameterNamesAndValues: array<java.lang.String>;
+    val TOKEN: java.lang.String;
+    val QUOTED: java.lang.String;
+    val TYPE_SUBTYPE: `<UNRESOLVED_TYPE>`;
+    val PARAMETER: `<UNRESOLVED_TYPE>`;
+    val Companion: okhttp3.MediaType$Companion;
     fun charset(arg0: java.nio.charset.Charset): `<UNRESOLVED_TYPE>`;
 
     fun charset$default(arg0: okhttp3.MediaType, arg1: java.nio.charset.Charset, arg2: int, arg3: java.lang.Object): `<UNRESOLVED_TYPE>`;
@@ -4460,8 +4331,7 @@ automaton okhttp3.MediaType (var arg0: java.lang.String, var arg1: java.lang.Str
 
     fun subtype(): java.lang.String;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 
     fun access$getTYPE_SUBTYPE$cp(): `<UNRESOLVED_TYPE>`;
 
@@ -4474,21 +4344,21 @@ automaton okhttp3.MediaType (var arg0: java.lang.String, var arg1: java.lang.Str
 automaton okhttp3.MultipartReader$Companion : okhttp3.MultipartReader$Companion {
     fun getAfterBoundaryOptions(): okio.Options;
 }
-automaton okhttp3.MultipartBody (var arg0: okio.ByteString, var arg1: okhttp3.MediaType, var arg2: `<UNRESOLVED_TYPE>`) : okhttp3.MultipartBody {
-    var contentType: okhttp3.MediaType;
-    var contentLength: long;
-    var boundaryByteString: okio.ByteString;
-    var `type`: okhttp3.MediaType;
-    var parts: `<UNRESOLVED_TYPE>`;
-    var MIXED: okhttp3.MediaType;
-    var ALTERNATIVE: okhttp3.MediaType;
-    var DIGEST: okhttp3.MediaType;
-    var PARALLEL: okhttp3.MediaType;
-    var FORM: okhttp3.MediaType;
-    var COLONSPACE: array<byte>;
-    var CRLF: array<byte>;
-    var DASHDASH: array<byte>;
-    var Companion: okhttp3.MultipartBody$Companion;
+automaton okhttp3.MultipartBody (val arg0: okio.ByteString, val arg1: okhttp3.MediaType, val arg2: `<UNRESOLVED_TYPE>`) : okhttp3.MultipartBody {
+    val contentType: okhttp3.MediaType;
+    val contentLength: long;
+    val boundaryByteString: okio.ByteString;
+    val `type`: okhttp3.MediaType;
+    val parts: `<UNRESOLVED_TYPE>`;
+    val MIXED: okhttp3.MediaType;
+    val ALTERNATIVE: okhttp3.MediaType;
+    val DIGEST: okhttp3.MediaType;
+    val PARALLEL: okhttp3.MediaType;
+    val FORM: okhttp3.MediaType;
+    val COLONSPACE: array<byte>;
+    val CRLF: array<byte>;
+    val DASHDASH: array<byte>;
+    val Companion: okhttp3.MultipartBody$Companion;
     fun boundary(): java.lang.String;
 
     fun size(): int;
@@ -4505,8 +4375,7 @@ automaton okhttp3.MultipartBody (var arg0: okio.ByteString, var arg1: okhttp3.Me
 
     fun `-deprecated_parts`(): `<UNRESOLVED_TYPE>`;
 
-    fun contentLength(): long
-        assigns contentLength;
+    fun contentLength(): long;
 
     fun writeTo(arg0: okio.BufferedSink): void;
 
@@ -4516,16 +4385,7 @@ automaton okhttp3.MultipartBody (var arg0: okio.ByteString, var arg1: okhttp3.Me
 
     fun parts(): `<UNRESOLVED_TYPE>`;
 
-    fun `<clinit>`(): void
-        assigns Companion;
-        assigns MIXED;
-        assigns ALTERNATIVE;
-        assigns DIGEST;
-        assigns PARALLEL;
-        assigns FORM;
-        assigns COLONSPACE;
-        assigns CRLF;
-        assigns DASHDASH;
+    fun `<clinit>`(): void;
 }
 automaton okhttp3.internal.platform.android.SocketAdapter : okhttp3.internal.platform.android.SocketAdapter {
     fun isSupported(): bool;
@@ -4580,9 +4440,7 @@ automaton okhttp3.HttpUrl$Companion : okhttp3.HttpUrl$Companion {
 
     fun percentDecode$okhttp$default(arg0: okhttp3.HttpUrl$Companion, arg1: java.lang.String, arg2: int, arg3: int, arg4: bool, arg5: int, arg6: java.lang.Object): java.lang.String;
 
-    fun writePercentDecoded(arg0: okio.Buffer, arg1: java.lang.String, arg2: int, arg3: int, arg4: bool): void
-        assigns arg0.head;
-        assigns arg0.size;
+    fun writePercentDecoded(arg0: okio.Buffer, arg1: java.lang.String, arg2: int, arg3: int, arg4: bool): void;
 
     fun isPercentEncoded(arg0: java.lang.String, arg1: int, arg2: int): bool;
 
@@ -4590,60 +4448,42 @@ automaton okhttp3.HttpUrl$Companion : okhttp3.HttpUrl$Companion {
 
     fun canonicalize$okhttp$default(arg0: okhttp3.HttpUrl$Companion, arg1: java.lang.String, arg2: int, arg3: int, arg4: java.lang.String, arg5: bool, arg6: bool, arg7: bool, arg8: bool, arg9: java.nio.charset.Charset, arg10: int, arg11: java.lang.Object): java.lang.String;
 
-    fun writeCanonicalized(arg0: okio.Buffer, arg1: java.lang.String, arg2: int, arg3: int, arg4: java.lang.String, arg5: bool, arg6: bool, arg7: bool, arg8: bool, arg9: java.nio.charset.Charset): void
-        assigns arg0.head;
-        assigns arg0.size;
+    fun writeCanonicalized(arg0: okio.Buffer, arg1: java.lang.String, arg2: int, arg3: int, arg4: java.lang.String, arg5: bool, arg6: bool, arg7: bool, arg8: bool, arg9: java.nio.charset.Charset): void;
 }
-automaton okhttp3.internal.Util$threadFactory$1 (var arg0: java.lang.String, var arg1: bool) : okhttp3.internal.Util$threadFactory$1 {
-    var $name: java.lang.String;
-    var $daemon: bool;
+automaton okhttp3.internal.Util$threadFactory$1 (val arg0: java.lang.String, val arg1: bool) : okhttp3.internal.Util$threadFactory$1 {
+    val $name: java.lang.String;
+    val $daemon: bool;
     fun newThread(arg0: java.lang.Runnable): `<UNRESOLVED_TYPE>`;
 }
 automaton okhttp3.Dns : okhttp3.Dns {
-    var SYSTEM: okhttp3.Dns;
-    var Companion: okhttp3.Dns$Companion;
+    val SYSTEM: okhttp3.Dns;
+    val Companion: okhttp3.Dns$Companion;
     fun lookup(arg0: java.lang.String): `<UNRESOLVED_TYPE>`;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 }
-automaton okhttp3.internal.http1.Http1ExchangeCodec$ChunkedSink (var arg0: okhttp3.internal.http1.Http1ExchangeCodec) : okhttp3.internal.http1.Http1ExchangeCodec$ChunkedSink {
-    var timeout: okio.ForwardingTimeout;
-    var closed: bool;
-    var this$0: okhttp3.internal.http1.Http1ExchangeCodec;
+automaton okhttp3.internal.http1.Http1ExchangeCodec$ChunkedSink (val arg0: okhttp3.internal.http1.Http1ExchangeCodec) : okhttp3.internal.http1.Http1ExchangeCodec$ChunkedSink {
+    val timeout: okio.ForwardingTimeout;
+    val closed: bool;
+    val this$0: okhttp3.internal.http1.Http1ExchangeCodec;
     fun timeout(): okio.Timeout;
 
-    fun write(arg0: okio.Buffer, arg1: long): void
-        assigns arg0.head;
-        assigns arg0.head.prev;
-        assigns arg0.head.next;
-        assigns arg0.size;
-        assigns arg0.head.pos;
+    fun write(arg0: okio.Buffer, arg1: long): void;
 
     fun flush(): void;
 
-    fun close(): void
-        assigns closed;
-        assigns timeout.delegate;
-        assigns this$0.state;
+    fun close(): void;
 }
-automaton okhttp3.TlsVersion (var arg0: java.lang.String, var arg1: int, var arg2: java.lang.String) : okhttp3.TlsVersion {
-    var TLS_1_3: okhttp3.TlsVersion;
-    var TLS_1_2: okhttp3.TlsVersion;
-    var TLS_1_1: okhttp3.TlsVersion;
-    var TLS_1_0: okhttp3.TlsVersion;
-    var SSL_3_0: okhttp3.TlsVersion;
-    var $VALUES: array<okhttp3.TlsVersion>;
-    var javaName: java.lang.String;
-    var Companion: okhttp3.TlsVersion$Companion;
-    fun `<clinit>`(): void
-        assigns TLS_1_3;
-        assigns TLS_1_2;
-        assigns TLS_1_1;
-        assigns TLS_1_0;
-        assigns SSL_3_0;
-        assigns $VALUES;
-        assigns Companion;
+automaton okhttp3.TlsVersion (val arg0: java.lang.String, val arg1: int, val arg2: java.lang.String) : okhttp3.TlsVersion {
+    val TLS_1_3: okhttp3.TlsVersion;
+    val TLS_1_2: okhttp3.TlsVersion;
+    val TLS_1_1: okhttp3.TlsVersion;
+    val TLS_1_0: okhttp3.TlsVersion;
+    val SSL_3_0: okhttp3.TlsVersion;
+    val $VALUES: array<okhttp3.TlsVersion>;
+    val javaName: java.lang.String;
+    val Companion: okhttp3.TlsVersion$Companion;
+    fun `<clinit>`(): void;
 
     fun `-deprecated_javaName`(): java.lang.String;
 
@@ -4655,10 +4495,10 @@ automaton okhttp3.TlsVersion (var arg0: java.lang.String, var arg1: int, var arg
 
     fun forJavaName(arg0: java.lang.String): okhttp3.TlsVersion;
 }
-automaton okhttp3.CertificatePinner$Pin (var arg0: java.lang.String, var arg1: java.lang.String) : okhttp3.CertificatePinner$Pin {
-    var pattern: java.lang.String;
-    var hashAlgorithm: java.lang.String;
-    var hash: okio.ByteString;
+automaton okhttp3.CertificatePinner$Pin (val arg0: java.lang.String, val arg1: java.lang.String) : okhttp3.CertificatePinner$Pin {
+    val pattern: java.lang.String;
+    val hashAlgorithm: java.lang.String;
+    val hash: okio.ByteString;
     fun getPattern(): java.lang.String;
 
     fun getHashAlgorithm(): java.lang.String;
@@ -4675,75 +4515,56 @@ automaton okhttp3.CertificatePinner$Pin (var arg0: java.lang.String, var arg1: j
 
     fun hashCode(): int;
 }
-automaton okhttp3.internal.http2.Http2Reader$ContinuationSource (var arg0: okio.BufferedSource) : okhttp3.internal.http2.Http2Reader$ContinuationSource {
-    var length: int;
-    var flags: int;
-    var streamId: int;
-    var left: int;
-    var padding: int;
-    var source: okio.BufferedSource;
+automaton okhttp3.internal.http2.Http2Reader$ContinuationSource (val arg0: okio.BufferedSource) : okhttp3.internal.http2.Http2Reader$ContinuationSource {
+    val length: int;
+    val flags: int;
+    val streamId: int;
+    val left: int;
+    val padding: int;
+    val source: okio.BufferedSource;
     fun getLength(): int;
 
-    fun setLength(arg0: int): void
-        assigns length;
+    fun setLength(arg0: int): void;
 
     fun getFlags(): int;
 
-    fun setFlags(arg0: int): void
-        assigns flags;
+    fun setFlags(arg0: int): void;
 
     fun getStreamId(): int;
 
-    fun setStreamId(arg0: int): void
-        assigns streamId;
+    fun setStreamId(arg0: int): void;
 
     fun getLeft(): int;
 
-    fun setLeft(arg0: int): void
-        assigns left;
+    fun setLeft(arg0: int): void;
 
     fun getPadding(): int;
 
-    fun setPadding(arg0: int): void
-        assigns padding;
+    fun setPadding(arg0: int): void;
 
-    fun read(arg0: okio.Buffer, arg1: long): long
-        assigns padding;
-        assigns left;
-        assigns length;
-        assigns flags;
-        assigns streamId;
-        assigns arg0.head;
-        assigns arg0.size;
+    fun read(arg0: okio.Buffer, arg1: long): long;
 
     fun timeout(): okio.Timeout;
 
     fun close(): void;
 
-    fun readContinuationHeader(): void
-        assigns left;
-        assigns length;
-        assigns flags;
-        assigns streamId;
-        assigns source;
+    fun readContinuationHeader(): void;
 }
 automaton okhttp3.internal.http.DatesKt : okhttp3.internal.http.DatesKt {
-    var MAX_DATE: long;
-    var STANDARD_DATE_FORMAT: okhttp3.internal.http.DatesKt$STANDARD_DATE_FORMAT$1;
-    var BROWSER_COMPATIBLE_DATE_FORMAT_STRINGS: array<java.lang.String>;
-    var BROWSER_COMPATIBLE_DATE_FORMATS: `<UNRESOLVED_TYPE>`;
+    val MAX_DATE: long;
+    val STANDARD_DATE_FORMAT: okhttp3.internal.http.DatesKt$STANDARD_DATE_FORMAT$1;
+    val BROWSER_COMPATIBLE_DATE_FORMAT_STRINGS: array<java.lang.String>;
+    val BROWSER_COMPATIBLE_DATE_FORMATS: `<UNRESOLVED_TYPE>`;
     fun toHttpDateOrNull(arg0: java.lang.String): `<UNRESOLVED_TYPE>`;
 
     fun toHttpDateString(arg0: java.util.Date): java.lang.String;
 
-    fun `<clinit>`(): void
-        assigns STANDARD_DATE_FORMAT;
-        assigns BROWSER_COMPATIBLE_DATE_FORMAT_STRINGS;
+    fun `<clinit>`(): void;
 }
-automaton okhttp3.FormBody$Builder (var arg0: `<UNRESOLVED_TYPE>`) : okhttp3.FormBody$Builder {
-    var names: `<UNRESOLVED_TYPE>`;
-    var values: `<UNRESOLVED_TYPE>`;
-    var charset: `<UNRESOLVED_TYPE>`;
+automaton okhttp3.FormBody$Builder (val arg0: `<UNRESOLVED_TYPE>`) : okhttp3.FormBody$Builder {
+    val names: `<UNRESOLVED_TYPE>`;
+    val values: `<UNRESOLVED_TYPE>`;
+    val charset: `<UNRESOLVED_TYPE>`;
     fun add(arg0: java.lang.String, arg1: java.lang.String): okhttp3.FormBody$Builder;
 
     fun addEncoded(arg0: java.lang.String, arg1: java.lang.String): okhttp3.FormBody$Builder;
@@ -4761,14 +4582,14 @@ automaton okhttp3.Handshake$Companion : okhttp3.Handshake$Companion {
 }
 automaton okhttp3.internal.http2.Http2Connection$Listener$Companion : okhttp3.internal.http2.Http2Connection$Listener$Companion {
 }
-automaton okhttp3.internal.concurrent.TaskQueue$execute$1 (var arg0: `<UNRESOLVED_TYPE>`, var arg1: java.lang.String, var arg2: bool, var arg3: java.lang.String, var arg4: bool) : okhttp3.internal.concurrent.TaskQueue$execute$1 {
-    var $block: `<UNRESOLVED_TYPE>`;
-    var $name: java.lang.String;
-    var $cancelable: bool;
+automaton okhttp3.internal.concurrent.TaskQueue$execute$1 (val arg0: `<UNRESOLVED_TYPE>`, val arg1: java.lang.String, val arg2: bool, val arg3: java.lang.String, val arg4: bool) : okhttp3.internal.concurrent.TaskQueue$execute$1 {
+    val $block: `<UNRESOLVED_TYPE>`;
+    val $name: java.lang.String;
+    val $cancelable: bool;
     fun runOnce(): long;
 }
 automaton okhttp3.Headers$Builder : okhttp3.Headers$Builder {
-    var namesAndValues: `<UNRESOLVED_TYPE>`;
+    val namesAndValues: `<UNRESOLVED_TYPE>`;
     fun getNamesAndValues$okhttp(): `<UNRESOLVED_TYPE>`;
 
     fun addLenient$okhttp(arg0: java.lang.String): okhttp3.Headers$Builder;
@@ -4799,257 +4620,137 @@ automaton okhttp3.Headers$Builder : okhttp3.Headers$Builder {
 
     fun build(): okhttp3.Headers;
 }
-automaton okhttp3.CipherSuite (var arg0: java.lang.String) : okhttp3.CipherSuite {
-    var javaName: java.lang.String;
-    var ORDER_BY_NAME: `<UNRESOLVED_TYPE>`;
-    var INSTANCES: `<UNRESOLVED_TYPE>`;
-    var TLS_RSA_WITH_NULL_MD5: okhttp3.CipherSuite;
-    var TLS_RSA_WITH_NULL_SHA: okhttp3.CipherSuite;
-    var TLS_RSA_EXPORT_WITH_RC4_40_MD5: okhttp3.CipherSuite;
-    var TLS_RSA_WITH_RC4_128_MD5: okhttp3.CipherSuite;
-    var TLS_RSA_WITH_RC4_128_SHA: okhttp3.CipherSuite;
-    var TLS_RSA_EXPORT_WITH_DES40_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_RSA_WITH_DES_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_RSA_WITH_3DES_EDE_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_DHE_DSS_EXPORT_WITH_DES40_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_DHE_DSS_WITH_DES_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_DHE_RSA_EXPORT_WITH_DES40_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_DHE_RSA_WITH_DES_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_DH_anon_EXPORT_WITH_RC4_40_MD5: okhttp3.CipherSuite;
-    var TLS_DH_anon_WITH_RC4_128_MD5: okhttp3.CipherSuite;
-    var TLS_DH_anon_EXPORT_WITH_DES40_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_DH_anon_WITH_DES_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_DH_anon_WITH_3DES_EDE_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_KRB5_WITH_DES_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_KRB5_WITH_3DES_EDE_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_KRB5_WITH_RC4_128_SHA: okhttp3.CipherSuite;
-    var TLS_KRB5_WITH_DES_CBC_MD5: okhttp3.CipherSuite;
-    var TLS_KRB5_WITH_3DES_EDE_CBC_MD5: okhttp3.CipherSuite;
-    var TLS_KRB5_WITH_RC4_128_MD5: okhttp3.CipherSuite;
-    var TLS_KRB5_EXPORT_WITH_DES_CBC_40_SHA: okhttp3.CipherSuite;
-    var TLS_KRB5_EXPORT_WITH_RC4_40_SHA: okhttp3.CipherSuite;
-    var TLS_KRB5_EXPORT_WITH_DES_CBC_40_MD5: okhttp3.CipherSuite;
-    var TLS_KRB5_EXPORT_WITH_RC4_40_MD5: okhttp3.CipherSuite;
-    var TLS_RSA_WITH_AES_128_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_DHE_DSS_WITH_AES_128_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_DHE_RSA_WITH_AES_128_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_DH_anon_WITH_AES_128_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_RSA_WITH_AES_256_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_DHE_DSS_WITH_AES_256_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_DHE_RSA_WITH_AES_256_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_DH_anon_WITH_AES_256_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_RSA_WITH_NULL_SHA256: okhttp3.CipherSuite;
-    var TLS_RSA_WITH_AES_128_CBC_SHA256: okhttp3.CipherSuite;
-    var TLS_RSA_WITH_AES_256_CBC_SHA256: okhttp3.CipherSuite;
-    var TLS_DHE_DSS_WITH_AES_128_CBC_SHA256: okhttp3.CipherSuite;
-    var TLS_RSA_WITH_CAMELLIA_128_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_DHE_RSA_WITH_AES_128_CBC_SHA256: okhttp3.CipherSuite;
-    var TLS_DHE_DSS_WITH_AES_256_CBC_SHA256: okhttp3.CipherSuite;
-    var TLS_DHE_RSA_WITH_AES_256_CBC_SHA256: okhttp3.CipherSuite;
-    var TLS_DH_anon_WITH_AES_128_CBC_SHA256: okhttp3.CipherSuite;
-    var TLS_DH_anon_WITH_AES_256_CBC_SHA256: okhttp3.CipherSuite;
-    var TLS_RSA_WITH_CAMELLIA_256_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_PSK_WITH_RC4_128_SHA: okhttp3.CipherSuite;
-    var TLS_PSK_WITH_3DES_EDE_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_PSK_WITH_AES_128_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_PSK_WITH_AES_256_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_RSA_WITH_SEED_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_RSA_WITH_AES_128_GCM_SHA256: okhttp3.CipherSuite;
-    var TLS_RSA_WITH_AES_256_GCM_SHA384: okhttp3.CipherSuite;
-    var TLS_DHE_RSA_WITH_AES_128_GCM_SHA256: okhttp3.CipherSuite;
-    var TLS_DHE_RSA_WITH_AES_256_GCM_SHA384: okhttp3.CipherSuite;
-    var TLS_DHE_DSS_WITH_AES_128_GCM_SHA256: okhttp3.CipherSuite;
-    var TLS_DHE_DSS_WITH_AES_256_GCM_SHA384: okhttp3.CipherSuite;
-    var TLS_DH_anon_WITH_AES_128_GCM_SHA256: okhttp3.CipherSuite;
-    var TLS_DH_anon_WITH_AES_256_GCM_SHA384: okhttp3.CipherSuite;
-    var TLS_EMPTY_RENEGOTIATION_INFO_SCSV: okhttp3.CipherSuite;
-    var TLS_FALLBACK_SCSV: okhttp3.CipherSuite;
-    var TLS_ECDH_ECDSA_WITH_NULL_SHA: okhttp3.CipherSuite;
-    var TLS_ECDH_ECDSA_WITH_RC4_128_SHA: okhttp3.CipherSuite;
-    var TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_ECDHE_ECDSA_WITH_NULL_SHA: okhttp3.CipherSuite;
-    var TLS_ECDHE_ECDSA_WITH_RC4_128_SHA: okhttp3.CipherSuite;
-    var TLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_ECDH_RSA_WITH_NULL_SHA: okhttp3.CipherSuite;
-    var TLS_ECDH_RSA_WITH_RC4_128_SHA: okhttp3.CipherSuite;
-    var TLS_ECDH_RSA_WITH_3DES_EDE_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_ECDH_RSA_WITH_AES_128_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_ECDH_RSA_WITH_AES_256_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_ECDHE_RSA_WITH_NULL_SHA: okhttp3.CipherSuite;
-    var TLS_ECDHE_RSA_WITH_RC4_128_SHA: okhttp3.CipherSuite;
-    var TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_ECDH_anon_WITH_NULL_SHA: okhttp3.CipherSuite;
-    var TLS_ECDH_anon_WITH_RC4_128_SHA: okhttp3.CipherSuite;
-    var TLS_ECDH_anon_WITH_3DES_EDE_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_ECDH_anon_WITH_AES_128_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_ECDH_anon_WITH_AES_256_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256: okhttp3.CipherSuite;
-    var TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384: okhttp3.CipherSuite;
-    var TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256: okhttp3.CipherSuite;
-    var TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384: okhttp3.CipherSuite;
-    var TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256: okhttp3.CipherSuite;
-    var TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384: okhttp3.CipherSuite;
-    var TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256: okhttp3.CipherSuite;
-    var TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384: okhttp3.CipherSuite;
-    var TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256: okhttp3.CipherSuite;
-    var TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384: okhttp3.CipherSuite;
-    var TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256: okhttp3.CipherSuite;
-    var TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384: okhttp3.CipherSuite;
-    var TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256: okhttp3.CipherSuite;
-    var TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384: okhttp3.CipherSuite;
-    var TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256: okhttp3.CipherSuite;
-    var TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384: okhttp3.CipherSuite;
-    var TLS_ECDHE_PSK_WITH_AES_128_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA: okhttp3.CipherSuite;
-    var TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256: okhttp3.CipherSuite;
-    var TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256: okhttp3.CipherSuite;
-    var TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256: okhttp3.CipherSuite;
-    var TLS_ECDHE_PSK_WITH_CHACHA20_POLY1305_SHA256: okhttp3.CipherSuite;
-    var TLS_AES_128_GCM_SHA256: okhttp3.CipherSuite;
-    var TLS_AES_256_GCM_SHA384: okhttp3.CipherSuite;
-    var TLS_CHACHA20_POLY1305_SHA256: okhttp3.CipherSuite;
-    var TLS_AES_128_CCM_SHA256: okhttp3.CipherSuite;
-    var TLS_AES_128_CCM_8_SHA256: okhttp3.CipherSuite;
-    var Companion: okhttp3.CipherSuite$Companion;
+automaton okhttp3.CipherSuite (val arg0: java.lang.String) : okhttp3.CipherSuite {
+    val javaName: java.lang.String;
+    val ORDER_BY_NAME: `<UNRESOLVED_TYPE>`;
+    val INSTANCES: `<UNRESOLVED_TYPE>`;
+    val TLS_RSA_WITH_NULL_MD5: okhttp3.CipherSuite;
+    val TLS_RSA_WITH_NULL_SHA: okhttp3.CipherSuite;
+    val TLS_RSA_EXPORT_WITH_RC4_40_MD5: okhttp3.CipherSuite;
+    val TLS_RSA_WITH_RC4_128_MD5: okhttp3.CipherSuite;
+    val TLS_RSA_WITH_RC4_128_SHA: okhttp3.CipherSuite;
+    val TLS_RSA_EXPORT_WITH_DES40_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_RSA_WITH_DES_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_RSA_WITH_3DES_EDE_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_DHE_DSS_EXPORT_WITH_DES40_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_DHE_DSS_WITH_DES_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_DHE_RSA_EXPORT_WITH_DES40_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_DHE_RSA_WITH_DES_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_DH_anon_EXPORT_WITH_RC4_40_MD5: okhttp3.CipherSuite;
+    val TLS_DH_anon_WITH_RC4_128_MD5: okhttp3.CipherSuite;
+    val TLS_DH_anon_EXPORT_WITH_DES40_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_DH_anon_WITH_DES_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_DH_anon_WITH_3DES_EDE_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_KRB5_WITH_DES_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_KRB5_WITH_3DES_EDE_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_KRB5_WITH_RC4_128_SHA: okhttp3.CipherSuite;
+    val TLS_KRB5_WITH_DES_CBC_MD5: okhttp3.CipherSuite;
+    val TLS_KRB5_WITH_3DES_EDE_CBC_MD5: okhttp3.CipherSuite;
+    val TLS_KRB5_WITH_RC4_128_MD5: okhttp3.CipherSuite;
+    val TLS_KRB5_EXPORT_WITH_DES_CBC_40_SHA: okhttp3.CipherSuite;
+    val TLS_KRB5_EXPORT_WITH_RC4_40_SHA: okhttp3.CipherSuite;
+    val TLS_KRB5_EXPORT_WITH_DES_CBC_40_MD5: okhttp3.CipherSuite;
+    val TLS_KRB5_EXPORT_WITH_RC4_40_MD5: okhttp3.CipherSuite;
+    val TLS_RSA_WITH_AES_128_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_DHE_DSS_WITH_AES_128_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_DHE_RSA_WITH_AES_128_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_DH_anon_WITH_AES_128_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_RSA_WITH_AES_256_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_DHE_DSS_WITH_AES_256_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_DHE_RSA_WITH_AES_256_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_DH_anon_WITH_AES_256_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_RSA_WITH_NULL_SHA256: okhttp3.CipherSuite;
+    val TLS_RSA_WITH_AES_128_CBC_SHA256: okhttp3.CipherSuite;
+    val TLS_RSA_WITH_AES_256_CBC_SHA256: okhttp3.CipherSuite;
+    val TLS_DHE_DSS_WITH_AES_128_CBC_SHA256: okhttp3.CipherSuite;
+    val TLS_RSA_WITH_CAMELLIA_128_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_DHE_RSA_WITH_AES_128_CBC_SHA256: okhttp3.CipherSuite;
+    val TLS_DHE_DSS_WITH_AES_256_CBC_SHA256: okhttp3.CipherSuite;
+    val TLS_DHE_RSA_WITH_AES_256_CBC_SHA256: okhttp3.CipherSuite;
+    val TLS_DH_anon_WITH_AES_128_CBC_SHA256: okhttp3.CipherSuite;
+    val TLS_DH_anon_WITH_AES_256_CBC_SHA256: okhttp3.CipherSuite;
+    val TLS_RSA_WITH_CAMELLIA_256_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_PSK_WITH_RC4_128_SHA: okhttp3.CipherSuite;
+    val TLS_PSK_WITH_3DES_EDE_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_PSK_WITH_AES_128_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_PSK_WITH_AES_256_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_RSA_WITH_SEED_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_RSA_WITH_AES_128_GCM_SHA256: okhttp3.CipherSuite;
+    val TLS_RSA_WITH_AES_256_GCM_SHA384: okhttp3.CipherSuite;
+    val TLS_DHE_RSA_WITH_AES_128_GCM_SHA256: okhttp3.CipherSuite;
+    val TLS_DHE_RSA_WITH_AES_256_GCM_SHA384: okhttp3.CipherSuite;
+    val TLS_DHE_DSS_WITH_AES_128_GCM_SHA256: okhttp3.CipherSuite;
+    val TLS_DHE_DSS_WITH_AES_256_GCM_SHA384: okhttp3.CipherSuite;
+    val TLS_DH_anon_WITH_AES_128_GCM_SHA256: okhttp3.CipherSuite;
+    val TLS_DH_anon_WITH_AES_256_GCM_SHA384: okhttp3.CipherSuite;
+    val TLS_EMPTY_RENEGOTIATION_INFO_SCSV: okhttp3.CipherSuite;
+    val TLS_FALLBACK_SCSV: okhttp3.CipherSuite;
+    val TLS_ECDH_ECDSA_WITH_NULL_SHA: okhttp3.CipherSuite;
+    val TLS_ECDH_ECDSA_WITH_RC4_128_SHA: okhttp3.CipherSuite;
+    val TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_ECDHE_ECDSA_WITH_NULL_SHA: okhttp3.CipherSuite;
+    val TLS_ECDHE_ECDSA_WITH_RC4_128_SHA: okhttp3.CipherSuite;
+    val TLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_ECDH_RSA_WITH_NULL_SHA: okhttp3.CipherSuite;
+    val TLS_ECDH_RSA_WITH_RC4_128_SHA: okhttp3.CipherSuite;
+    val TLS_ECDH_RSA_WITH_3DES_EDE_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_ECDH_RSA_WITH_AES_128_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_ECDH_RSA_WITH_AES_256_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_ECDHE_RSA_WITH_NULL_SHA: okhttp3.CipherSuite;
+    val TLS_ECDHE_RSA_WITH_RC4_128_SHA: okhttp3.CipherSuite;
+    val TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_ECDH_anon_WITH_NULL_SHA: okhttp3.CipherSuite;
+    val TLS_ECDH_anon_WITH_RC4_128_SHA: okhttp3.CipherSuite;
+    val TLS_ECDH_anon_WITH_3DES_EDE_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_ECDH_anon_WITH_AES_128_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_ECDH_anon_WITH_AES_256_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256: okhttp3.CipherSuite;
+    val TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384: okhttp3.CipherSuite;
+    val TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256: okhttp3.CipherSuite;
+    val TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384: okhttp3.CipherSuite;
+    val TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256: okhttp3.CipherSuite;
+    val TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384: okhttp3.CipherSuite;
+    val TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256: okhttp3.CipherSuite;
+    val TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384: okhttp3.CipherSuite;
+    val TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256: okhttp3.CipherSuite;
+    val TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384: okhttp3.CipherSuite;
+    val TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256: okhttp3.CipherSuite;
+    val TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384: okhttp3.CipherSuite;
+    val TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256: okhttp3.CipherSuite;
+    val TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384: okhttp3.CipherSuite;
+    val TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256: okhttp3.CipherSuite;
+    val TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384: okhttp3.CipherSuite;
+    val TLS_ECDHE_PSK_WITH_AES_128_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA: okhttp3.CipherSuite;
+    val TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256: okhttp3.CipherSuite;
+    val TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256: okhttp3.CipherSuite;
+    val TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256: okhttp3.CipherSuite;
+    val TLS_ECDHE_PSK_WITH_CHACHA20_POLY1305_SHA256: okhttp3.CipherSuite;
+    val TLS_AES_128_GCM_SHA256: okhttp3.CipherSuite;
+    val TLS_AES_256_GCM_SHA384: okhttp3.CipherSuite;
+    val TLS_CHACHA20_POLY1305_SHA256: okhttp3.CipherSuite;
+    val TLS_AES_128_CCM_SHA256: okhttp3.CipherSuite;
+    val TLS_AES_128_CCM_8_SHA256: okhttp3.CipherSuite;
+    val Companion: okhttp3.CipherSuite$Companion;
     fun `-deprecated_javaName`(): java.lang.String;
 
     fun toString(): java.lang.String;
 
     fun javaName(): java.lang.String;
 
-    fun `<clinit>`(): void
-        assigns Companion;
-        assigns TLS_RSA_WITH_NULL_MD5;
-        assigns TLS_RSA_WITH_NULL_SHA;
-        assigns TLS_RSA_EXPORT_WITH_RC4_40_MD5;
-        assigns TLS_RSA_WITH_RC4_128_MD5;
-        assigns TLS_RSA_WITH_RC4_128_SHA;
-        assigns TLS_RSA_EXPORT_WITH_DES40_CBC_SHA;
-        assigns TLS_RSA_WITH_DES_CBC_SHA;
-        assigns TLS_RSA_WITH_3DES_EDE_CBC_SHA;
-        assigns TLS_DHE_DSS_EXPORT_WITH_DES40_CBC_SHA;
-        assigns TLS_DHE_DSS_WITH_DES_CBC_SHA;
-        assigns TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA;
-        assigns TLS_DHE_RSA_EXPORT_WITH_DES40_CBC_SHA;
-        assigns TLS_DHE_RSA_WITH_DES_CBC_SHA;
-        assigns TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA;
-        assigns TLS_DH_anon_EXPORT_WITH_RC4_40_MD5;
-        assigns TLS_DH_anon_WITH_RC4_128_MD5;
-        assigns TLS_DH_anon_EXPORT_WITH_DES40_CBC_SHA;
-        assigns TLS_DH_anon_WITH_DES_CBC_SHA;
-        assigns TLS_DH_anon_WITH_3DES_EDE_CBC_SHA;
-        assigns TLS_KRB5_WITH_DES_CBC_SHA;
-        assigns TLS_KRB5_WITH_3DES_EDE_CBC_SHA;
-        assigns TLS_KRB5_WITH_RC4_128_SHA;
-        assigns TLS_KRB5_WITH_DES_CBC_MD5;
-        assigns TLS_KRB5_WITH_3DES_EDE_CBC_MD5;
-        assigns TLS_KRB5_WITH_RC4_128_MD5;
-        assigns TLS_KRB5_EXPORT_WITH_DES_CBC_40_SHA;
-        assigns TLS_KRB5_EXPORT_WITH_RC4_40_SHA;
-        assigns TLS_KRB5_EXPORT_WITH_DES_CBC_40_MD5;
-        assigns TLS_KRB5_EXPORT_WITH_RC4_40_MD5;
-        assigns TLS_RSA_WITH_AES_128_CBC_SHA;
-        assigns TLS_DHE_DSS_WITH_AES_128_CBC_SHA;
-        assigns TLS_DHE_RSA_WITH_AES_128_CBC_SHA;
-        assigns TLS_DH_anon_WITH_AES_128_CBC_SHA;
-        assigns TLS_RSA_WITH_AES_256_CBC_SHA;
-        assigns TLS_DHE_DSS_WITH_AES_256_CBC_SHA;
-        assigns TLS_DHE_RSA_WITH_AES_256_CBC_SHA;
-        assigns TLS_DH_anon_WITH_AES_256_CBC_SHA;
-        assigns TLS_RSA_WITH_NULL_SHA256;
-        assigns TLS_RSA_WITH_AES_128_CBC_SHA256;
-        assigns TLS_RSA_WITH_AES_256_CBC_SHA256;
-        assigns TLS_DHE_DSS_WITH_AES_128_CBC_SHA256;
-        assigns TLS_RSA_WITH_CAMELLIA_128_CBC_SHA;
-        assigns TLS_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA;
-        assigns TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA;
-        assigns TLS_DHE_RSA_WITH_AES_128_CBC_SHA256;
-        assigns TLS_DHE_DSS_WITH_AES_256_CBC_SHA256;
-        assigns TLS_DHE_RSA_WITH_AES_256_CBC_SHA256;
-        assigns TLS_DH_anon_WITH_AES_128_CBC_SHA256;
-        assigns TLS_DH_anon_WITH_AES_256_CBC_SHA256;
-        assigns TLS_RSA_WITH_CAMELLIA_256_CBC_SHA;
-        assigns TLS_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA;
-        assigns TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA;
-        assigns TLS_PSK_WITH_RC4_128_SHA;
-        assigns TLS_PSK_WITH_3DES_EDE_CBC_SHA;
-        assigns TLS_PSK_WITH_AES_128_CBC_SHA;
-        assigns TLS_PSK_WITH_AES_256_CBC_SHA;
-        assigns TLS_RSA_WITH_SEED_CBC_SHA;
-        assigns TLS_RSA_WITH_AES_128_GCM_SHA256;
-        assigns TLS_RSA_WITH_AES_256_GCM_SHA384;
-        assigns TLS_DHE_RSA_WITH_AES_128_GCM_SHA256;
-        assigns TLS_DHE_RSA_WITH_AES_256_GCM_SHA384;
-        assigns TLS_DHE_DSS_WITH_AES_128_GCM_SHA256;
-        assigns TLS_DHE_DSS_WITH_AES_256_GCM_SHA384;
-        assigns TLS_DH_anon_WITH_AES_128_GCM_SHA256;
-        assigns TLS_DH_anon_WITH_AES_256_GCM_SHA384;
-        assigns TLS_EMPTY_RENEGOTIATION_INFO_SCSV;
-        assigns TLS_FALLBACK_SCSV;
-        assigns TLS_ECDH_ECDSA_WITH_NULL_SHA;
-        assigns TLS_ECDH_ECDSA_WITH_RC4_128_SHA;
-        assigns TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA;
-        assigns TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA;
-        assigns TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA;
-        assigns TLS_ECDHE_ECDSA_WITH_NULL_SHA;
-        assigns TLS_ECDHE_ECDSA_WITH_RC4_128_SHA;
-        assigns TLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA;
-        assigns TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA;
-        assigns TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA;
-        assigns TLS_ECDH_RSA_WITH_NULL_SHA;
-        assigns TLS_ECDH_RSA_WITH_RC4_128_SHA;
-        assigns TLS_ECDH_RSA_WITH_3DES_EDE_CBC_SHA;
-        assigns TLS_ECDH_RSA_WITH_AES_128_CBC_SHA;
-        assigns TLS_ECDH_RSA_WITH_AES_256_CBC_SHA;
-        assigns TLS_ECDHE_RSA_WITH_NULL_SHA;
-        assigns TLS_ECDHE_RSA_WITH_RC4_128_SHA;
-        assigns TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA;
-        assigns TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA;
-        assigns TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA;
-        assigns TLS_ECDH_anon_WITH_NULL_SHA;
-        assigns TLS_ECDH_anon_WITH_RC4_128_SHA;
-        assigns TLS_ECDH_anon_WITH_3DES_EDE_CBC_SHA;
-        assigns TLS_ECDH_anon_WITH_AES_128_CBC_SHA;
-        assigns TLS_ECDH_anon_WITH_AES_256_CBC_SHA;
-        assigns TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256;
-        assigns TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384;
-        assigns TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256;
-        assigns TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384;
-        assigns TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256;
-        assigns TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384;
-        assigns TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256;
-        assigns TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384;
-        assigns TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256;
-        assigns TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384;
-        assigns TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256;
-        assigns TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384;
-        assigns TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256;
-        assigns TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384;
-        assigns TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256;
-        assigns TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384;
-        assigns TLS_ECDHE_PSK_WITH_AES_128_CBC_SHA;
-        assigns TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA;
-        assigns TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256;
-        assigns TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256;
-        assigns TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256;
-        assigns TLS_ECDHE_PSK_WITH_CHACHA20_POLY1305_SHA256;
-        assigns TLS_AES_128_GCM_SHA256;
-        assigns TLS_AES_256_GCM_SHA384;
-        assigns TLS_CHACHA20_POLY1305_SHA256;
-        assigns TLS_AES_128_CCM_SHA256;
-        assigns TLS_AES_128_CCM_8_SHA256;
+    fun `<clinit>`(): void;
 
     fun access$getORDER_BY_NAME$cp(): `<UNRESOLVED_TYPE>`;
 
@@ -5060,30 +4761,30 @@ automaton okhttp3.CipherSuite (var arg0: java.lang.String) : okhttp3.CipherSuite
 automaton okhttp3.internal.platform.android.SocketAdapter$DefaultImpls : okhttp3.internal.platform.android.SocketAdapter$DefaultImpls {
     fun matchesSocketFactory(arg0: okhttp3.internal.platform.android.SocketAdapter, arg1: javax.net.ssl.SSLSocketFactory): bool;
 }
-automaton okhttp3.HttpUrl (var arg0: java.lang.String, var arg1: java.lang.String, var arg2: java.lang.String, var arg3: java.lang.String, var arg4: int, var arg5: `<UNRESOLVED_TYPE>`, var arg6: `<UNRESOLVED_TYPE>`, var arg7: java.lang.String, var arg8: java.lang.String) : okhttp3.HttpUrl {
-    var isHttps: bool;
-    var scheme: java.lang.String;
-    var username: java.lang.String;
-    var password: java.lang.String;
-    var host: java.lang.String;
-    var port: int;
-    var pathSegments: `<UNRESOLVED_TYPE>`;
-    var queryNamesAndValues: `<UNRESOLVED_TYPE>`;
-    var fragment: java.lang.String;
-    var `url`: java.lang.String;
-    var HEX_DIGITS: array<char>;
-    var USERNAME_ENCODE_SET: java.lang.String;
-    var PASSWORD_ENCODE_SET: java.lang.String;
-    var PATH_SEGMENT_ENCODE_SET: java.lang.String;
-    var PATH_SEGMENT_ENCODE_SET_URI: java.lang.String;
-    var QUERY_ENCODE_SET: java.lang.String;
-    var QUERY_COMPONENT_REENCODE_SET: java.lang.String;
-    var QUERY_COMPONENT_ENCODE_SET: java.lang.String;
-    var QUERY_COMPONENT_ENCODE_SET_URI: java.lang.String;
-    var FORM_ENCODE_SET: java.lang.String;
-    var FRAGMENT_ENCODE_SET: java.lang.String;
-    var FRAGMENT_ENCODE_SET_URI: java.lang.String;
-    var Companion: okhttp3.HttpUrl$Companion;
+automaton okhttp3.HttpUrl (val arg0: java.lang.String, val arg1: java.lang.String, val arg2: java.lang.String, val arg3: java.lang.String, val arg4: int, val arg5: `<UNRESOLVED_TYPE>`, val arg6: `<UNRESOLVED_TYPE>`, val arg7: java.lang.String, val arg8: java.lang.String) : okhttp3.HttpUrl {
+    val isHttps: bool;
+    val scheme: java.lang.String;
+    val username: java.lang.String;
+    val password: java.lang.String;
+    val host: java.lang.String;
+    val port: int;
+    val pathSegments: `<UNRESOLVED_TYPE>`;
+    val queryNamesAndValues: `<UNRESOLVED_TYPE>`;
+    val fragment: java.lang.String;
+    val `url`: java.lang.String;
+    val HEX_DIGITS: array<char>;
+    val USERNAME_ENCODE_SET: java.lang.String;
+    val PASSWORD_ENCODE_SET: java.lang.String;
+    val PATH_SEGMENT_ENCODE_SET: java.lang.String;
+    val PATH_SEGMENT_ENCODE_SET_URI: java.lang.String;
+    val QUERY_ENCODE_SET: java.lang.String;
+    val QUERY_COMPONENT_REENCODE_SET: java.lang.String;
+    val QUERY_COMPONENT_ENCODE_SET: java.lang.String;
+    val QUERY_COMPONENT_ENCODE_SET_URI: java.lang.String;
+    val FORM_ENCODE_SET: java.lang.String;
+    val FRAGMENT_ENCODE_SET: java.lang.String;
+    val FRAGMENT_ENCODE_SET_URI: java.lang.String;
+    val Companion: okhttp3.HttpUrl$Companion;
     fun isHttps(): bool;
 
     fun `url`(): `<UNRESOLVED_TYPE>`;
@@ -5186,9 +4887,7 @@ automaton okhttp3.HttpUrl (var arg0: java.lang.String, var arg1: java.lang.Strin
 
     fun fragment(): java.lang.String;
 
-    fun `<clinit>`(): void
-        assigns Companion;
-        assigns HEX_DIGITS;
+    fun `<clinit>`(): void;
 
     fun access$getHEX_DIGITS$cp(): array<char>;
 
@@ -5203,55 +4902,38 @@ automaton okhttp3.HttpUrl (var arg0: java.lang.String, var arg1: java.lang.Strin
     fun get(arg0: java.net.URI): okhttp3.HttpUrl;
 }
 automaton okhttp3.internal.http2.Http2Connection$Listener : okhttp3.internal.http2.Http2Connection$Listener {
-    var REFUSE_INCOMING_STREAMS: okhttp3.internal.http2.Http2Connection$Listener;
-    var Companion: okhttp3.internal.http2.Http2Connection$Listener$Companion;
+    val REFUSE_INCOMING_STREAMS: okhttp3.internal.http2.Http2Connection$Listener;
+    val Companion: okhttp3.internal.http2.Http2Connection$Listener$Companion;
     fun onStream(arg0: okhttp3.internal.http2.Http2Stream): void;
 
     fun onSettings(arg0: okhttp3.internal.http2.Http2Connection, arg1: okhttp3.internal.http2.Settings): void;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 }
 automaton okhttp3.internal.platform.Jdk9Platform$Companion : okhttp3.internal.platform.Jdk9Platform$Companion {
     fun isAvailable(): bool;
 
     fun buildIfSupported(): okhttp3.internal.platform.Jdk9Platform;
 }
-automaton okhttp3.internal.http2.ErrorCode (var arg0: java.lang.String, var arg1: int, var arg2: int) : okhttp3.internal.http2.ErrorCode {
-    var NO_ERROR: okhttp3.internal.http2.ErrorCode;
-    var PROTOCOL_ERROR: okhttp3.internal.http2.ErrorCode;
-    var INTERNAL_ERROR: okhttp3.internal.http2.ErrorCode;
-    var FLOW_CONTROL_ERROR: okhttp3.internal.http2.ErrorCode;
-    var SETTINGS_TIMEOUT: okhttp3.internal.http2.ErrorCode;
-    var STREAM_CLOSED: okhttp3.internal.http2.ErrorCode;
-    var FRAME_SIZE_ERROR: okhttp3.internal.http2.ErrorCode;
-    var REFUSED_STREAM: okhttp3.internal.http2.ErrorCode;
-    var CANCEL: okhttp3.internal.http2.ErrorCode;
-    var COMPRESSION_ERROR: okhttp3.internal.http2.ErrorCode;
-    var CONNECT_ERROR: okhttp3.internal.http2.ErrorCode;
-    var ENHANCE_YOUR_CALM: okhttp3.internal.http2.ErrorCode;
-    var INADEQUATE_SECURITY: okhttp3.internal.http2.ErrorCode;
-    var HTTP_1_1_REQUIRED: okhttp3.internal.http2.ErrorCode;
-    var $VALUES: array<okhttp3.internal.http2.ErrorCode>;
-    var httpCode: int;
-    var Companion: okhttp3.internal.http2.ErrorCode$Companion;
-    fun `<clinit>`(): void
-        assigns NO_ERROR;
-        assigns PROTOCOL_ERROR;
-        assigns INTERNAL_ERROR;
-        assigns FLOW_CONTROL_ERROR;
-        assigns SETTINGS_TIMEOUT;
-        assigns STREAM_CLOSED;
-        assigns FRAME_SIZE_ERROR;
-        assigns REFUSED_STREAM;
-        assigns CANCEL;
-        assigns COMPRESSION_ERROR;
-        assigns CONNECT_ERROR;
-        assigns ENHANCE_YOUR_CALM;
-        assigns INADEQUATE_SECURITY;
-        assigns HTTP_1_1_REQUIRED;
-        assigns $VALUES;
-        assigns Companion;
+automaton okhttp3.internal.http2.ErrorCode (val arg0: java.lang.String, val arg1: int, val arg2: int) : okhttp3.internal.http2.ErrorCode {
+    val NO_ERROR: okhttp3.internal.http2.ErrorCode;
+    val PROTOCOL_ERROR: okhttp3.internal.http2.ErrorCode;
+    val INTERNAL_ERROR: okhttp3.internal.http2.ErrorCode;
+    val FLOW_CONTROL_ERROR: okhttp3.internal.http2.ErrorCode;
+    val SETTINGS_TIMEOUT: okhttp3.internal.http2.ErrorCode;
+    val STREAM_CLOSED: okhttp3.internal.http2.ErrorCode;
+    val FRAME_SIZE_ERROR: okhttp3.internal.http2.ErrorCode;
+    val REFUSED_STREAM: okhttp3.internal.http2.ErrorCode;
+    val CANCEL: okhttp3.internal.http2.ErrorCode;
+    val COMPRESSION_ERROR: okhttp3.internal.http2.ErrorCode;
+    val CONNECT_ERROR: okhttp3.internal.http2.ErrorCode;
+    val ENHANCE_YOUR_CALM: okhttp3.internal.http2.ErrorCode;
+    val INADEQUATE_SECURITY: okhttp3.internal.http2.ErrorCode;
+    val HTTP_1_1_REQUIRED: okhttp3.internal.http2.ErrorCode;
+    val $VALUES: array<okhttp3.internal.http2.ErrorCode>;
+    val httpCode: int;
+    val Companion: okhttp3.internal.http2.ErrorCode$Companion;
+    fun `<clinit>`(): void;
 
     fun getHttpCode(): int;
 
@@ -5259,225 +4941,108 @@ automaton okhttp3.internal.http2.ErrorCode (var arg0: java.lang.String, var arg1
 
     fun valueOf(arg0: java.lang.String): okhttp3.internal.http2.ErrorCode;
 }
-automaton okhttp3.OkHttpClient$Builder$addNetworkInterceptor$$inlined$invoke$1 (var arg0: `<UNRESOLVED_TYPE>`) : okhttp3.OkHttpClient$Builder$addNetworkInterceptor$$inlined$invoke$1 {
-    var $block$inlined: `<UNRESOLVED_TYPE>`;
+automaton okhttp3.OkHttpClient$Builder$addNetworkInterceptor$$inlined$invoke$1 (val arg0: `<UNRESOLVED_TYPE>`) : okhttp3.OkHttpClient$Builder$addNetworkInterceptor$$inlined$invoke$1 {
+    val $block$inlined: `<UNRESOLVED_TYPE>`;
     fun intercept(arg0: okhttp3.Interceptor$Chain): okhttp3.Response;
 }
 automaton okhttp3.OkHttp : okhttp3.OkHttp {
-    var VERSION: java.lang.String;
-    var INSTANCE: okhttp3.OkHttp;
-    fun `<clinit>`(): void
-        assigns INSTANCE;
+    val VERSION: java.lang.String;
+    val INSTANCE: okhttp3.OkHttp;
+    fun `<clinit>`(): void;
 }
-automaton okhttp3.internal.cache.DiskLruCache (var arg0: okhttp3.internal.io.FileSystem, var arg1: `<UNRESOLVED_TYPE>`, var arg2: int, var arg3: int, var arg4: long, var arg5: okhttp3.internal.concurrent.TaskRunner) : okhttp3.internal.cache.DiskLruCache {
-    var maxSize: long;
-    var journalFile: `<UNRESOLVED_TYPE>`;
-    var journalFileTmp: `<UNRESOLVED_TYPE>`;
-    var journalFileBackup: `<UNRESOLVED_TYPE>`;
-    var size: long;
-    var journalWriter: okio.BufferedSink;
-    var lruEntries: `<UNRESOLVED_TYPE>`;
-    var redundantOpCount: int;
-    var hasJournalErrors: bool;
-    var civilizedFileSystem: bool;
-    var initialized: bool;
-    var closed: bool;
-    var mostRecentTrimFailed: bool;
-    var mostRecentRebuildFailed: bool;
-    var nextSequenceNumber: long;
-    var cleanupQueue: okhttp3.internal.concurrent.TaskQueue;
-    var cleanupTask: okhttp3.internal.cache.DiskLruCache$cleanupTask$1;
-    var fileSystem: okhttp3.internal.io.FileSystem;
-    var directory: `<UNRESOLVED_TYPE>`;
-    var appVersion: int;
-    var valueCount: int;
-    var JOURNAL_FILE: java.lang.String;
-    var JOURNAL_FILE_TEMP: java.lang.String;
-    var JOURNAL_FILE_BACKUP: java.lang.String;
-    var MAGIC: java.lang.String;
-    var VERSION_1: java.lang.String;
-    var ANY_SEQUENCE_NUMBER: long;
-    var LEGAL_KEY_PATTERN: `<UNRESOLVED_TYPE>`;
-    var CLEAN: java.lang.String;
-    var DIRTY: java.lang.String;
-    var REMOVE: java.lang.String;
-    var READ: java.lang.String;
-    var Companion: okhttp3.internal.cache.DiskLruCache$Companion;
+automaton okhttp3.internal.cache.DiskLruCache (val arg0: okhttp3.internal.io.FileSystem, val arg1: `<UNRESOLVED_TYPE>`, val arg2: int, val arg3: int, val arg4: long, val arg5: okhttp3.internal.concurrent.TaskRunner) : okhttp3.internal.cache.DiskLruCache {
+    val maxSize: long;
+    val journalFile: `<UNRESOLVED_TYPE>`;
+    val journalFileTmp: `<UNRESOLVED_TYPE>`;
+    val journalFileBackup: `<UNRESOLVED_TYPE>`;
+    val size: long;
+    val journalWriter: okio.BufferedSink;
+    val lruEntries: `<UNRESOLVED_TYPE>`;
+    val redundantOpCount: int;
+    val hasJournalErrors: bool;
+    val civilizedFileSystem: bool;
+    val initialized: bool;
+    val closed: bool;
+    val mostRecentTrimFailed: bool;
+    val mostRecentRebuildFailed: bool;
+    val nextSequenceNumber: long;
+    val cleanupQueue: okhttp3.internal.concurrent.TaskQueue;
+    val cleanupTask: okhttp3.internal.cache.DiskLruCache$cleanupTask$1;
+    val fileSystem: okhttp3.internal.io.FileSystem;
+    val directory: `<UNRESOLVED_TYPE>`;
+    val appVersion: int;
+    val valueCount: int;
+    val JOURNAL_FILE: java.lang.String;
+    val JOURNAL_FILE_TEMP: java.lang.String;
+    val JOURNAL_FILE_BACKUP: java.lang.String;
+    val MAGIC: java.lang.String;
+    val VERSION_1: java.lang.String;
+    val ANY_SEQUENCE_NUMBER: long;
+    val LEGAL_KEY_PATTERN: `<UNRESOLVED_TYPE>`;
+    val CLEAN: java.lang.String;
+    val DIRTY: java.lang.String;
+    val REMOVE: java.lang.String;
+    val READ: java.lang.String;
+    val Companion: okhttp3.internal.cache.DiskLruCache$Companion;
     fun getMaxSize(): long;
 
-    fun setMaxSize(arg0: long): void
-        assigns maxSize;
+    fun setMaxSize(arg0: long): void;
 
     fun getLruEntries$okhttp(): `<UNRESOLVED_TYPE>`;
 
     fun getClosed$okhttp(): bool;
 
-    fun setClosed$okhttp(arg0: bool): void
-        assigns closed;
+    fun setClosed$okhttp(arg0: bool): void;
 
-    fun initialize(): void
-        assigns civilizedFileSystem;
-        assigns initialized;
-        assigns closed;
-        assigns redundantOpCount;
-        assigns journalWriter;
-        assigns hasJournalErrors;
-        assigns mostRecentRebuildFailed;
-        assigns size;
-        assigns mostRecentTrimFailed;
+    fun initialize(): void;
 
-    fun readJournal(): void
-        assigns redundantOpCount;
-        assigns journalWriter;
-        assigns hasJournalErrors;
-        assigns mostRecentRebuildFailed;
+    fun readJournal(): void;
 
     fun newJournalWriter(): okio.BufferedSink;
 
     fun readJournalLine(arg0: java.lang.String): void;
 
-    fun processJournal(): void
-        assigns size;
+    fun processJournal(): void;
 
-    fun rebuildJournal$okhttp(): void
-        assigns journalWriter;
-        assigns hasJournalErrors;
-        assigns mostRecentRebuildFailed;
+    fun rebuildJournal$okhttp(): void;
 
-    fun get(arg0: java.lang.String): okhttp3.internal.cache.DiskLruCache$Snapshot
-        assigns redundantOpCount;
-        assigns civilizedFileSystem;
-        assigns initialized;
-        assigns closed;
-        assigns journalWriter;
-        assigns hasJournalErrors;
-        assigns mostRecentRebuildFailed;
-        assigns size;
-        assigns mostRecentTrimFailed;
+    fun get(arg0: java.lang.String): okhttp3.internal.cache.DiskLruCache$Snapshot;
 
-    fun edit(arg0: java.lang.String, arg1: long): okhttp3.internal.cache.DiskLruCache$Editor
-        assigns civilizedFileSystem;
-        assigns initialized;
-        assigns closed;
-        assigns redundantOpCount;
-        assigns journalWriter;
-        assigns hasJournalErrors;
-        assigns mostRecentRebuildFailed;
-        assigns size;
-        assigns mostRecentTrimFailed;
+    fun edit(arg0: java.lang.String, arg1: long): okhttp3.internal.cache.DiskLruCache$Editor;
 
-    fun edit$default(arg0: okhttp3.internal.cache.DiskLruCache, arg1: java.lang.String, arg2: long, arg3: int, arg4: java.lang.Object): okhttp3.internal.cache.DiskLruCache$Editor
-        assigns arg0.civilizedFileSystem;
-        assigns arg0.initialized;
-        assigns arg0.closed;
-        assigns arg0.redundantOpCount;
-        assigns arg0.journalWriter;
-        assigns arg0.hasJournalErrors;
-        assigns arg0.mostRecentRebuildFailed;
-        assigns arg0.size;
-        assigns arg0.mostRecentTrimFailed;
+    fun edit$default(arg0: okhttp3.internal.cache.DiskLruCache, arg1: java.lang.String, arg2: long, arg3: int, arg4: java.lang.Object): okhttp3.internal.cache.DiskLruCache$Editor;
 
-    fun edit(arg0: java.lang.String): okhttp3.internal.cache.DiskLruCache$Editor
-        assigns civilizedFileSystem;
-        assigns initialized;
-        assigns closed;
-        assigns redundantOpCount;
-        assigns journalWriter;
-        assigns hasJournalErrors;
-        assigns mostRecentRebuildFailed;
-        assigns size;
-        assigns mostRecentTrimFailed;
+    fun edit(arg0: java.lang.String): okhttp3.internal.cache.DiskLruCache$Editor;
 
-    fun size(): long
-        assigns civilizedFileSystem;
-        assigns initialized;
-        assigns closed;
-        assigns redundantOpCount;
-        assigns journalWriter;
-        assigns hasJournalErrors;
-        assigns mostRecentRebuildFailed;
-        assigns size;
-        assigns mostRecentTrimFailed;
+    fun size(): long;
 
-    fun completeEdit$okhttp(arg0: okhttp3.internal.cache.DiskLruCache$Editor, arg1: bool): void
-        assigns size;
-        assigns redundantOpCount;
-        assigns nextSequenceNumber;
-        assigns arg0.done;
+    fun completeEdit$okhttp(arg0: okhttp3.internal.cache.DiskLruCache$Editor, arg1: bool): void;
 
     fun journalRebuildRequired(): bool;
 
-    fun remove(arg0: java.lang.String): bool
-        assigns mostRecentTrimFailed;
-        assigns civilizedFileSystem;
-        assigns initialized;
-        assigns closed;
-        assigns redundantOpCount;
-        assigns journalWriter;
-        assigns hasJournalErrors;
-        assigns mostRecentRebuildFailed;
-        assigns size;
+    fun remove(arg0: java.lang.String): bool;
 
-    fun removeEntry$okhttp(arg0: okhttp3.internal.cache.DiskLruCache$Entry): bool
-        assigns size;
-        assigns redundantOpCount;
-        assigns arg0.zombie;
+    fun removeEntry$okhttp(arg0: okhttp3.internal.cache.DiskLruCache$Entry): bool;
 
     fun checkNotClosed(): void;
 
-    fun flush(): void
-        assigns mostRecentTrimFailed;
-        assigns size;
-        assigns redundantOpCount;
+    fun flush(): void;
 
     fun isClosed(): bool;
 
-    fun close(): void
-        assigns closed;
-        assigns journalWriter;
-        assigns mostRecentTrimFailed;
-        assigns size;
-        assigns redundantOpCount;
+    fun close(): void;
 
-    fun trimToSize(): void
-        assigns mostRecentTrimFailed;
-        assigns size;
-        assigns redundantOpCount;
+    fun trimToSize(): void;
 
-    fun removeOldestEntry(): bool
-        assigns size;
-        assigns redundantOpCount;
+    fun removeOldestEntry(): bool;
 
-    fun delete(): void
-        assigns closed;
-        assigns journalWriter;
-        assigns mostRecentTrimFailed;
-        assigns size;
-        assigns redundantOpCount;
+    fun delete(): void;
 
-    fun evictAll(): void
-        assigns mostRecentTrimFailed;
-        assigns civilizedFileSystem;
-        assigns initialized;
-        assigns closed;
-        assigns redundantOpCount;
-        assigns journalWriter;
-        assigns hasJournalErrors;
-        assigns mostRecentRebuildFailed;
-        assigns size;
+    fun evictAll(): void;
 
     fun validateKey(arg0: java.lang.String): void;
 
-    fun snapshots(): `<UNRESOLVED_TYPE>`
-        assigns civilizedFileSystem;
-        assigns initialized;
-        assigns closed;
-        assigns redundantOpCount;
-        assigns journalWriter;
-        assigns hasJournalErrors;
-        assigns mostRecentRebuildFailed;
-        assigns size;
-        assigns mostRecentTrimFailed;
+    fun snapshots(): `<UNRESOLVED_TYPE>`;
 
     fun getFileSystem$okhttp(): okhttp3.internal.io.FileSystem;
 
@@ -5485,86 +5050,60 @@ automaton okhttp3.internal.cache.DiskLruCache (var arg0: okhttp3.internal.io.Fil
 
     fun getValueCount$okhttp(): int;
 
-    fun `<clinit>`(): void
-        assigns Companion;
-        assigns JOURNAL_FILE;
-        assigns JOURNAL_FILE_TEMP;
-        assigns JOURNAL_FILE_BACKUP;
-        assigns MAGIC;
-        assigns VERSION_1;
-        assigns ANY_SEQUENCE_NUMBER;
-        assigns CLEAN;
-        assigns DIRTY;
-        assigns REMOVE;
-        assigns READ;
+    fun `<clinit>`(): void;
 
     fun access$getCivilizedFileSystem$p(arg0: okhttp3.internal.cache.DiskLruCache): bool;
 
-    fun access$setCivilizedFileSystem$p(arg0: okhttp3.internal.cache.DiskLruCache, arg1: bool): void
-        assigns arg0.civilizedFileSystem;
+    fun access$setCivilizedFileSystem$p(arg0: okhttp3.internal.cache.DiskLruCache, arg1: bool): void;
 
     fun access$getHasJournalErrors$p(arg0: okhttp3.internal.cache.DiskLruCache): bool;
 
-    fun access$setHasJournalErrors$p(arg0: okhttp3.internal.cache.DiskLruCache, arg1: bool): void
-        assigns arg0.hasJournalErrors;
+    fun access$setHasJournalErrors$p(arg0: okhttp3.internal.cache.DiskLruCache, arg1: bool): void;
 
     fun access$getInitialized$p(arg0: okhttp3.internal.cache.DiskLruCache): bool;
 
-    fun access$setInitialized$p(arg0: okhttp3.internal.cache.DiskLruCache, arg1: bool): void
-        assigns arg0.initialized;
+    fun access$setInitialized$p(arg0: okhttp3.internal.cache.DiskLruCache, arg1: bool): void;
 
     fun access$getMostRecentTrimFailed$p(arg0: okhttp3.internal.cache.DiskLruCache): bool;
 
-    fun access$setMostRecentTrimFailed$p(arg0: okhttp3.internal.cache.DiskLruCache, arg1: bool): void
-        assigns arg0.mostRecentTrimFailed;
+    fun access$setMostRecentTrimFailed$p(arg0: okhttp3.internal.cache.DiskLruCache, arg1: bool): void;
 
     fun access$journalRebuildRequired(arg0: okhttp3.internal.cache.DiskLruCache): bool;
 
     fun access$getRedundantOpCount$p(arg0: okhttp3.internal.cache.DiskLruCache): int;
 
-    fun access$setRedundantOpCount$p(arg0: okhttp3.internal.cache.DiskLruCache, arg1: int): void
-        assigns arg0.redundantOpCount;
+    fun access$setRedundantOpCount$p(arg0: okhttp3.internal.cache.DiskLruCache, arg1: int): void;
 
     fun access$getMostRecentRebuildFailed$p(arg0: okhttp3.internal.cache.DiskLruCache): bool;
 
-    fun access$setMostRecentRebuildFailed$p(arg0: okhttp3.internal.cache.DiskLruCache, arg1: bool): void
-        assigns arg0.mostRecentRebuildFailed;
+    fun access$setMostRecentRebuildFailed$p(arg0: okhttp3.internal.cache.DiskLruCache, arg1: bool): void;
 
     fun access$getJournalWriter$p(arg0: okhttp3.internal.cache.DiskLruCache): okio.BufferedSink;
 
-    fun access$setJournalWriter$p(arg0: okhttp3.internal.cache.DiskLruCache, arg1: okio.BufferedSink): void
-        assigns arg0.journalWriter;
+    fun access$setJournalWriter$p(arg0: okhttp3.internal.cache.DiskLruCache, arg1: okio.BufferedSink): void;
 }
-automaton okhttp3.internal.concurrent.TaskRunner (var arg0: okhttp3.internal.concurrent.TaskRunner$Backend) : okhttp3.internal.concurrent.TaskRunner {
-    var nextQueueName: int;
-    var coordinatorWaiting: bool;
-    var coordinatorWakeUpAt: long;
-    var busyQueues: `<UNRESOLVED_TYPE>`;
-    var readyQueues: `<UNRESOLVED_TYPE>`;
-    var runnable: `<UNRESOLVED_TYPE>`;
-    var backend: okhttp3.internal.concurrent.TaskRunner$Backend;
-    var INSTANCE: okhttp3.internal.concurrent.TaskRunner;
-    var logger: `<UNRESOLVED_TYPE>`;
-    var Companion: okhttp3.internal.concurrent.TaskRunner$Companion;
+automaton okhttp3.internal.concurrent.TaskRunner (val arg0: okhttp3.internal.concurrent.TaskRunner$Backend) : okhttp3.internal.concurrent.TaskRunner {
+    val nextQueueName: int;
+    val coordinatorWaiting: bool;
+    val coordinatorWakeUpAt: long;
+    val busyQueues: `<UNRESOLVED_TYPE>`;
+    val readyQueues: `<UNRESOLVED_TYPE>`;
+    val runnable: `<UNRESOLVED_TYPE>`;
+    val backend: okhttp3.internal.concurrent.TaskRunner$Backend;
+    val INSTANCE: okhttp3.internal.concurrent.TaskRunner;
+    val logger: `<UNRESOLVED_TYPE>`;
+    val Companion: okhttp3.internal.concurrent.TaskRunner$Companion;
     fun kickCoordinator$okhttp(arg0: okhttp3.internal.concurrent.TaskQueue): void;
 
-    fun beforeRun(arg0: okhttp3.internal.concurrent.Task): void
-        assigns arg0.nextExecuteNanoTime;
+    fun beforeRun(arg0: okhttp3.internal.concurrent.Task): void;
 
-    fun runTask(arg0: okhttp3.internal.concurrent.Task): void
-        assigns arg0.queue;
-        assigns arg0.nextExecuteNanoTime;
+    fun runTask(arg0: okhttp3.internal.concurrent.Task): void;
 
-    fun afterRun(arg0: okhttp3.internal.concurrent.Task, arg1: long): void
-        assigns arg0.queue;
-        assigns arg0.nextExecuteNanoTime;
+    fun afterRun(arg0: okhttp3.internal.concurrent.Task, arg1: long): void;
 
-    fun awaitTaskToRun(): okhttp3.internal.concurrent.Task
-        assigns coordinatorWaiting;
-        assigns coordinatorWakeUpAt;
+    fun awaitTaskToRun(): okhttp3.internal.concurrent.Task;
 
-    fun newQueue(): okhttp3.internal.concurrent.TaskQueue
-        assigns nextQueueName;
+    fun newQueue(): okhttp3.internal.concurrent.TaskQueue;
 
     fun activeQueues(): `<UNRESOLVED_TYPE>`;
 
@@ -5572,84 +5111,72 @@ automaton okhttp3.internal.concurrent.TaskRunner (var arg0: okhttp3.internal.con
 
     fun getBackend(): okhttp3.internal.concurrent.TaskRunner$Backend;
 
-    fun `<clinit>`(): void
-        assigns Companion;
-        assigns INSTANCE;
+    fun `<clinit>`(): void;
 
-    fun access$runTask(arg0: okhttp3.internal.concurrent.TaskRunner, arg1: okhttp3.internal.concurrent.Task): void
-        assigns arg1.queue;
-        assigns arg1.nextExecuteNanoTime;
+    fun access$runTask(arg0: okhttp3.internal.concurrent.TaskRunner, arg1: okhttp3.internal.concurrent.Task): void;
 
     fun access$getLogger$cp(): `<UNRESOLVED_TYPE>`;
 }
 automaton okhttp3.internal.tls.CertificateChainCleaner : okhttp3.internal.tls.CertificateChainCleaner {
-    var Companion: okhttp3.internal.tls.CertificateChainCleaner$Companion;
+    val Companion: okhttp3.internal.tls.CertificateChainCleaner$Companion;
     fun clean(arg0: java.util.List, arg1: java.lang.String): `<UNRESOLVED_TYPE>`;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 }
 automaton okhttp3.internal.http2.PushObserver$Companion : okhttp3.internal.http2.PushObserver$Companion {
-    var $$INSTANCE: okhttp3.internal.http2.PushObserver$Companion;
+    val $$INSTANCE: okhttp3.internal.http2.PushObserver$Companion;
 }
 automaton okhttp3.Dns$Companion : okhttp3.Dns$Companion {
-    var $$INSTANCE: okhttp3.Dns$Companion;
+    val $$INSTANCE: okhttp3.Dns$Companion;
 }
-automaton okhttp3.internal.platform.android.CloseGuard (var arg0: `<UNRESOLVED_TYPE>`, var arg1: `<UNRESOLVED_TYPE>`, var arg2: `<UNRESOLVED_TYPE>`) : okhttp3.internal.platform.android.CloseGuard {
-    var getMethod: `<UNRESOLVED_TYPE>`;
-    var openMethod: `<UNRESOLVED_TYPE>`;
-    var warnIfOpenMethod: `<UNRESOLVED_TYPE>`;
-    var Companion: okhttp3.internal.platform.android.CloseGuard$Companion;
+automaton okhttp3.internal.platform.android.CloseGuard (val arg0: `<UNRESOLVED_TYPE>`, val arg1: `<UNRESOLVED_TYPE>`, val arg2: `<UNRESOLVED_TYPE>`) : okhttp3.internal.platform.android.CloseGuard {
+    val getMethod: `<UNRESOLVED_TYPE>`;
+    val openMethod: `<UNRESOLVED_TYPE>`;
+    val warnIfOpenMethod: `<UNRESOLVED_TYPE>`;
+    val Companion: okhttp3.internal.platform.android.CloseGuard$Companion;
     fun createAndOpen(arg0: java.lang.String): java.lang.Object;
 
     fun warnIfOpen(arg0: java.lang.Object): bool;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 }
-automaton okhttp3.internal.http2.Http2Connection$Builder (var arg0: bool, var arg1: okhttp3.internal.concurrent.TaskRunner) : okhttp3.internal.http2.Http2Connection$Builder {
-    var socket: `<UNRESOLVED_TYPE>`;
-    var connectionName: java.lang.String;
-    var source: okio.BufferedSource;
-    var sink: okio.BufferedSink;
-    var listener: okhttp3.internal.http2.Http2Connection$Listener;
-    var pushObserver: okhttp3.internal.http2.PushObserver;
-    var pingIntervalMillis: int;
-    var client: bool;
-    var taskRunner: okhttp3.internal.concurrent.TaskRunner;
+automaton okhttp3.internal.http2.Http2Connection$Builder (val arg0: bool, val arg1: okhttp3.internal.concurrent.TaskRunner) : okhttp3.internal.http2.Http2Connection$Builder {
+    val socket: `<UNRESOLVED_TYPE>`;
+    val connectionName: java.lang.String;
+    val source: okio.BufferedSource;
+    val sink: okio.BufferedSink;
+    val listener: okhttp3.internal.http2.Http2Connection$Listener;
+    val pushObserver: okhttp3.internal.http2.PushObserver;
+    val pingIntervalMillis: int;
+    val client: bool;
+    val taskRunner: okhttp3.internal.concurrent.TaskRunner;
     fun getSocket$okhttp(): `<UNRESOLVED_TYPE>`;
 
     fun setSocket$okhttp(arg0: java.net.Socket): void;
 
     fun getConnectionName$okhttp(): java.lang.String;
 
-    fun setConnectionName$okhttp(arg0: java.lang.String): void
-        assigns connectionName;
+    fun setConnectionName$okhttp(arg0: java.lang.String): void;
 
     fun getSource$okhttp(): okio.BufferedSource;
 
-    fun setSource$okhttp(arg0: okio.BufferedSource): void
-        assigns source;
+    fun setSource$okhttp(arg0: okio.BufferedSource): void;
 
     fun getSink$okhttp(): okio.BufferedSink;
 
-    fun setSink$okhttp(arg0: okio.BufferedSink): void
-        assigns sink;
+    fun setSink$okhttp(arg0: okio.BufferedSink): void;
 
     fun getListener$okhttp(): okhttp3.internal.http2.Http2Connection$Listener;
 
-    fun setListener$okhttp(arg0: okhttp3.internal.http2.Http2Connection$Listener): void
-        assigns listener;
+    fun setListener$okhttp(arg0: okhttp3.internal.http2.Http2Connection$Listener): void;
 
     fun getPushObserver$okhttp(): okhttp3.internal.http2.PushObserver;
 
-    fun setPushObserver$okhttp(arg0: okhttp3.internal.http2.PushObserver): void
-        assigns pushObserver;
+    fun setPushObserver$okhttp(arg0: okhttp3.internal.http2.PushObserver): void;
 
     fun getPingIntervalMillis$okhttp(): int;
 
-    fun setPingIntervalMillis$okhttp(arg0: int): void
-        assigns pingIntervalMillis;
+    fun setPingIntervalMillis$okhttp(arg0: int): void;
 
     fun socket(arg0: java.net.Socket, arg1: java.lang.String, arg2: okio.BufferedSource, arg3: okio.BufferedSink): okhttp3.internal.http2.Http2Connection$Builder;
 
@@ -5671,16 +5198,15 @@ automaton okhttp3.internal.http2.Http2Connection$Builder (var arg0: bool, var ar
 
     fun getClient$okhttp(): bool;
 
-    fun setClient$okhttp(arg0: bool): void
-        assigns client;
+    fun setClient$okhttp(arg0: bool): void;
 
     fun getTaskRunner$okhttp(): okhttp3.internal.concurrent.TaskRunner;
 }
 automaton okhttp3.FormBody$Companion : okhttp3.FormBody$Companion {
 }
 automaton okhttp3.internal.io.FileSystem : okhttp3.internal.io.FileSystem {
-    var SYSTEM: okhttp3.internal.io.FileSystem;
-    var Companion: okhttp3.internal.io.FileSystem$Companion;
+    val SYSTEM: okhttp3.internal.io.FileSystem;
+    val Companion: okhttp3.internal.io.FileSystem$Companion;
     fun source(arg0: java.io.File): okio.Source;
 
     fun sink(arg0: java.io.File): okio.Sink;
@@ -5697,34 +5223,29 @@ automaton okhttp3.internal.io.FileSystem : okhttp3.internal.io.FileSystem {
 
     fun deleteContents(arg0: java.io.File): void;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 }
 automaton okhttp3.Request$Builder : okhttp3.Request$Builder {
-    var `url`: okhttp3.HttpUrl;
-    var method: java.lang.String;
-    var headers: okhttp3.Headers$Builder;
-    var body: okhttp3.RequestBody;
-    var tags: `<UNRESOLVED_TYPE>`;
+    val `url`: okhttp3.HttpUrl;
+    val method: java.lang.String;
+    val headers: okhttp3.Headers$Builder;
+    val body: okhttp3.RequestBody;
+    val tags: `<UNRESOLVED_TYPE>`;
     fun getUrl$okhttp(): okhttp3.HttpUrl;
 
-    fun setUrl$okhttp(arg0: okhttp3.HttpUrl): void
-        assigns url;
+    fun setUrl$okhttp(arg0: okhttp3.HttpUrl): void;
 
     fun getMethod$okhttp(): java.lang.String;
 
-    fun setMethod$okhttp(arg0: java.lang.String): void
-        assigns method;
+    fun setMethod$okhttp(arg0: java.lang.String): void;
 
     fun getHeaders$okhttp(): okhttp3.Headers$Builder;
 
-    fun setHeaders$okhttp(arg0: okhttp3.Headers$Builder): void
-        assigns headers;
+    fun setHeaders$okhttp(arg0: okhttp3.Headers$Builder): void;
 
     fun getBody$okhttp(): okhttp3.RequestBody;
 
-    fun setBody$okhttp(arg0: okhttp3.RequestBody): void
-        assigns body;
+    fun setBody$okhttp(arg0: okhttp3.RequestBody): void;
 
     fun getTags$okhttp(): `<UNRESOLVED_TYPE>`;
 
@@ -5744,8 +5265,7 @@ automaton okhttp3.Request$Builder : okhttp3.Request$Builder {
 
     fun headers(arg0: okhttp3.Headers): okhttp3.Request$Builder;
 
-    fun cacheControl(arg0: okhttp3.CacheControl): okhttp3.Request$Builder
-        assigns arg0.headerValue;
+    fun cacheControl(arg0: okhttp3.CacheControl): okhttp3.Request$Builder;
 
     fun get(): okhttp3.Request$Builder;
 
@@ -5771,10 +5291,10 @@ automaton okhttp3.Request$Builder : okhttp3.Request$Builder {
 
     fun build(): okhttp3.Request;
 }
-automaton okhttp3.internal.http.RealResponseBody (var arg0: java.lang.String, var arg1: long, var arg2: okio.BufferedSource) : okhttp3.internal.http.RealResponseBody {
-    var contentTypeString: java.lang.String;
-    var contentLength: long;
-    var source: okio.BufferedSource;
+automaton okhttp3.internal.http.RealResponseBody (val arg0: java.lang.String, val arg1: long, val arg2: okio.BufferedSource) : okhttp3.internal.http.RealResponseBody {
+    val contentTypeString: java.lang.String;
+    val contentLength: long;
+    val source: okio.BufferedSource;
     fun contentLength(): long;
 
     fun contentType(): okhttp3.MediaType;
@@ -5782,33 +5302,30 @@ automaton okhttp3.internal.http.RealResponseBody (var arg0: java.lang.String, va
     fun source(): okio.BufferedSource;
 }
 automaton okhttp3.internal.connection.RealConnection$WhenMappings : okhttp3.internal.connection.RealConnection$WhenMappings {
-    var $EnumSwitchMapping$0: array<int>;
-    fun `<clinit>`(): void
-        assigns $EnumSwitchMapping$0;
+    val $EnumSwitchMapping$0: array<int>;
+    fun `<clinit>`(): void;
 }
-automaton okhttp3.RequestBody$Companion$toRequestBody$1 (var arg0: okio.ByteString, var arg1: okhttp3.MediaType) : okhttp3.RequestBody$Companion$toRequestBody$1 {
-    var $this_toRequestBody: okio.ByteString;
-    var $contentType: okhttp3.MediaType;
+automaton okhttp3.RequestBody$Companion$toRequestBody$1 (val arg0: okio.ByteString, val arg1: okhttp3.MediaType) : okhttp3.RequestBody$Companion$toRequestBody$1 {
+    val $this_toRequestBody: okio.ByteString;
+    val $contentType: okhttp3.MediaType;
     fun contentType(): okhttp3.MediaType;
 
     fun contentLength(): long;
 
-    fun writeTo(arg0: okio.BufferedSink): void
-        assigns arg0;
+    fun writeTo(arg0: okio.BufferedSink): void;
 }
-automaton okhttp3.RequestBody$Companion$toRequestBody$2 (var arg0: array<byte>, var arg1: okhttp3.MediaType, var arg2: int, var arg3: int) : okhttp3.RequestBody$Companion$toRequestBody$2 {
-    var $this_toRequestBody: array<byte>;
-    var $contentType: okhttp3.MediaType;
-    var $byteCount: int;
-    var $offset: int;
+automaton okhttp3.RequestBody$Companion$toRequestBody$2 (val arg0: array<byte>, val arg1: okhttp3.MediaType, val arg2: int, val arg3: int) : okhttp3.RequestBody$Companion$toRequestBody$2 {
+    val $this_toRequestBody: array<byte>;
+    val $contentType: okhttp3.MediaType;
+    val $byteCount: int;
+    val $offset: int;
     fun contentType(): okhttp3.MediaType;
 
     fun contentLength(): long;
 
-    fun writeTo(arg0: okio.BufferedSink): void
-        assigns arg0;
+    fun writeTo(arg0: okio.BufferedSink): void;
 }
-automaton okhttp3.internal.publicsuffix.PublicSuffixDatabase$findMatchingRule$1 (var arg0: okhttp3.internal.publicsuffix.PublicSuffixDatabase) : okhttp3.internal.publicsuffix.PublicSuffixDatabase$findMatchingRule$1 {
+automaton okhttp3.internal.publicsuffix.PublicSuffixDatabase$findMatchingRule$1 (val arg0: okhttp3.internal.publicsuffix.PublicSuffixDatabase) : okhttp3.internal.publicsuffix.PublicSuffixDatabase$findMatchingRule$1 {
     fun getName(): java.lang.String;
 
     fun getSignature(): java.lang.String;
@@ -5833,22 +5350,21 @@ automaton okhttp3.CacheControl$Companion : okhttp3.CacheControl$Companion {
 
     fun indexOfElement$default(arg0: okhttp3.CacheControl$Companion, arg1: java.lang.String, arg2: java.lang.String, arg3: int, arg4: int, arg5: java.lang.Object): int;
 }
-automaton okhttp3.RequestBody$Companion$asRequestBody$1 (var arg0: `<UNRESOLVED_TYPE>`, var arg1: okhttp3.MediaType) : okhttp3.RequestBody$Companion$asRequestBody$1 {
-    var $this_asRequestBody: `<UNRESOLVED_TYPE>`;
-    var $contentType: okhttp3.MediaType;
+automaton okhttp3.RequestBody$Companion$asRequestBody$1 (val arg0: `<UNRESOLVED_TYPE>`, val arg1: okhttp3.MediaType) : okhttp3.RequestBody$Companion$asRequestBody$1 {
+    val $this_asRequestBody: `<UNRESOLVED_TYPE>`;
+    val $contentType: okhttp3.MediaType;
     fun contentType(): okhttp3.MediaType;
 
     fun contentLength(): long;
 
-    fun writeTo(arg0: okio.BufferedSink): void
-        assigns arg0;
+    fun writeTo(arg0: okio.BufferedSink): void;
 }
-automaton okhttp3.internal.cache.DiskLruCache$Snapshot (var arg0: okhttp3.internal.cache.DiskLruCache, var arg1: java.lang.String, var arg2: long, var arg3: `<UNRESOLVED_TYPE>`, var arg4: array<long>) : okhttp3.internal.cache.DiskLruCache$Snapshot {
-    var key: java.lang.String;
-    var sequenceNumber: long;
-    var sources: `<UNRESOLVED_TYPE>`;
-    var lengths: array<long>;
-    var this$0: okhttp3.internal.cache.DiskLruCache;
+automaton okhttp3.internal.cache.DiskLruCache$Snapshot (val arg0: okhttp3.internal.cache.DiskLruCache, val arg1: java.lang.String, val arg2: long, val arg3: `<UNRESOLVED_TYPE>`, val arg4: array<long>) : okhttp3.internal.cache.DiskLruCache$Snapshot {
+    val key: java.lang.String;
+    val sequenceNumber: long;
+    val sources: `<UNRESOLVED_TYPE>`;
+    val lengths: array<long>;
+    val this$0: okhttp3.internal.cache.DiskLruCache;
     fun key(): java.lang.String;
 
     fun edit(): okhttp3.internal.cache.DiskLruCache$Editor;
@@ -5859,8 +5375,8 @@ automaton okhttp3.internal.cache.DiskLruCache$Snapshot (var arg0: okhttp3.intern
 
     fun close(): void;
 }
-automaton okhttp3.internal.concurrent.TaskRunner$RealBackend (var arg0: `<UNRESOLVED_TYPE>`) : okhttp3.internal.concurrent.TaskRunner$RealBackend {
-    var executor: `<UNRESOLVED_TYPE>`;
+automaton okhttp3.internal.concurrent.TaskRunner$RealBackend (val arg0: `<UNRESOLVED_TYPE>`) : okhttp3.internal.concurrent.TaskRunner$RealBackend {
+    val executor: `<UNRESOLVED_TYPE>`;
     fun beforeTask(arg0: okhttp3.internal.concurrent.TaskRunner): void;
 
     fun nanoTime(): long;
@@ -5880,16 +5396,16 @@ automaton okhttp3.EventListener$Factory : okhttp3.EventListener$Factory {
     fun create(arg0: okhttp3.Call): okhttp3.EventListener;
 }
 automaton okhttp3.internal.Util : okhttp3.internal.Util {
-    var EMPTY_BYTE_ARRAY: array<byte>;
-    var EMPTY_HEADERS: okhttp3.Headers;
-    var EMPTY_RESPONSE: okhttp3.ResponseBody;
-    var EMPTY_REQUEST: okhttp3.RequestBody;
-    var UNICODE_BOMS: okio.Options;
-    var UTC: `<UNRESOLVED_TYPE>`;
-    var VERIFY_AS_IP_ADDRESS: `<UNRESOLVED_TYPE>`;
-    var assertionsEnabled: bool;
-    var okHttpName: java.lang.String;
-    var userAgent: java.lang.String;
+    val EMPTY_BYTE_ARRAY: array<byte>;
+    val EMPTY_HEADERS: okhttp3.Headers;
+    val EMPTY_RESPONSE: okhttp3.ResponseBody;
+    val EMPTY_REQUEST: okhttp3.RequestBody;
+    val UNICODE_BOMS: okio.Options;
+    val UTC: `<UNRESOLVED_TYPE>`;
+    val VERIFY_AS_IP_ADDRESS: `<UNRESOLVED_TYPE>`;
+    val assertionsEnabled: bool;
+    val okHttpName: java.lang.String;
+    val userAgent: java.lang.String;
     fun checkOffsetAndCount(arg0: long, arg1: long, arg2: long): void;
 
     fun threadFactory(arg0: java.lang.String, arg1: bool): `<UNRESOLVED_TYPE>`;
@@ -5932,8 +5448,7 @@ automaton okhttp3.internal.Util : okhttp3.internal.Util {
 
     fun format(arg0: java.lang.String, arg1: array): java.lang.String;
 
-    fun readBomAsCharset(arg0: okio.BufferedSource, arg1: java.nio.charset.Charset): `<UNRESOLVED_TYPE>`
-        assigns arg0;
+    fun readBomAsCharset(arg0: okio.BufferedSource, arg1: java.nio.charset.Charset): `<UNRESOLVED_TYPE>`;
 
     fun checkDuration(arg0: java.lang.String, arg1: long, arg2: java.util.concurrent.TimeUnit): int;
 
@@ -5953,17 +5468,13 @@ automaton okhttp3.internal.Util : okhttp3.internal.Util {
 
     fun and(arg0: int, arg1: long): long;
 
-    fun writeMedium(arg0: okio.BufferedSink, arg1: int): void
-        assigns arg0;
+    fun writeMedium(arg0: okio.BufferedSink, arg1: int): void;
 
-    fun readMedium(arg0: okio.BufferedSource): int
-        assigns arg0;
+    fun readMedium(arg0: okio.BufferedSource): int;
 
-    fun skipAll(arg0: okio.Source, arg1: int, arg2: java.util.concurrent.TimeUnit): bool
-        assigns arg0;
+    fun skipAll(arg0: okio.Source, arg1: int, arg2: java.util.concurrent.TimeUnit): bool;
 
-    fun discard(arg0: okio.Source, arg1: int, arg2: java.util.concurrent.TimeUnit): bool
-        assigns arg0;
+    fun discard(arg0: okio.Source, arg1: int, arg2: java.util.concurrent.TimeUnit): bool;
 
     fun peerName(arg0: java.net.Socket): java.lang.String;
 
@@ -5973,10 +5484,7 @@ automaton okhttp3.internal.Util : okhttp3.internal.Util {
 
     fun threadName(arg0: java.lang.String, arg1: kotlin.jvm.functions.Function0): void;
 
-    fun skipAll(arg0: okio.Buffer, arg1: byte): int
-        assigns arg0.head;
-        assigns arg0.head.pos;
-        assigns arg0.size;
+    fun skipAll(arg0: okio.Buffer, arg1: byte): int;
 
     fun indexOfNonWhitespace(arg0: java.lang.String, arg1: int): int;
 
@@ -6024,17 +5532,10 @@ automaton okhttp3.internal.Util : okhttp3.internal.Util {
 
     fun filterList(arg0: java.lang.Iterable, arg1: kotlin.jvm.functions.Function1): `<UNRESOLVED_TYPE>`;
 
-    fun `<clinit>`(): void
-        assigns EMPTY_BYTE_ARRAY;
-        assigns EMPTY_HEADERS;
-        assigns EMPTY_RESPONSE;
-        assigns EMPTY_REQUEST;
-        assigns UNICODE_BOMS;
-        assigns assertionsEnabled;
-        assigns okHttpName;
+    fun `<clinit>`(): void;
 }
-automaton okhttp3.internal.concurrent.TaskRunner$runnable$1 (var arg0: okhttp3.internal.concurrent.TaskRunner) : okhttp3.internal.concurrent.TaskRunner$runnable$1 {
-    var this$0: okhttp3.internal.concurrent.TaskRunner;
+automaton okhttp3.internal.concurrent.TaskRunner$runnable$1 (val arg0: okhttp3.internal.concurrent.TaskRunner) : okhttp3.internal.concurrent.TaskRunner$runnable$1 {
+    val this$0: okhttp3.internal.concurrent.TaskRunner;
     fun run(): void;
 }
 automaton okhttp3.internal.http.StatusLine$Companion : okhttp3.internal.http.StatusLine$Companion {
@@ -6042,77 +5543,64 @@ automaton okhttp3.internal.http.StatusLine$Companion : okhttp3.internal.http.Sta
 
     fun parse(arg0: java.lang.String): okhttp3.internal.http.StatusLine;
 }
-automaton okhttp3.internal.ws.RealWebSocket$Message (var arg0: int, var arg1: okio.ByteString) : okhttp3.internal.ws.RealWebSocket$Message {
-    var formatOpcode: int;
-    var data: okio.ByteString;
+automaton okhttp3.internal.ws.RealWebSocket$Message (val arg0: int, val arg1: okio.ByteString) : okhttp3.internal.ws.RealWebSocket$Message {
+    val formatOpcode: int;
+    val data: okio.ByteString;
     fun getFormatOpcode(): int;
 
     fun getData(): okio.ByteString;
 }
-automaton okhttp3.internal.http1.Http1ExchangeCodec$ChunkedSource (var arg0: okhttp3.internal.http1.Http1ExchangeCodec, var arg1: okhttp3.HttpUrl) : okhttp3.internal.http1.Http1ExchangeCodec$ChunkedSource {
-    var bytesRemainingInChunk: long;
-    var hasMoreChunks: bool;
-    var `url`: okhttp3.HttpUrl;
-    var this$0: okhttp3.internal.http1.Http1ExchangeCodec;
-    fun read(arg0: okio.Buffer, arg1: long): long
-        assigns bytesRemainingInChunk;
-        assigns hasMoreChunks;
-        assigns arg0.head;
-        assigns arg0.size;
+automaton okhttp3.internal.http1.Http1ExchangeCodec$ChunkedSource (val arg0: okhttp3.internal.http1.Http1ExchangeCodec, val arg1: okhttp3.HttpUrl) : okhttp3.internal.http1.Http1ExchangeCodec$ChunkedSource {
+    val bytesRemainingInChunk: long;
+    val hasMoreChunks: bool;
+    val `url`: okhttp3.HttpUrl;
+    val this$0: okhttp3.internal.http1.Http1ExchangeCodec;
+    fun read(arg0: okio.Buffer, arg1: long): long;
 
-    fun readChunkSize(): void
-        assigns bytesRemainingInChunk;
-        assigns hasMoreChunks;
-        assigns this$0.trailers;
+    fun readChunkSize(): void;
 
-    fun close(): void
-        assigns bytesRemainingInChunk;
-        assigns hasMoreChunks;
+    fun close(): void;
 }
 automaton okhttp3.Callback : okhttp3.Callback {
     fun onFailure(arg0: okhttp3.Call, arg1: java.io.IOException): void;
 
     fun onResponse(arg0: okhttp3.Call, arg1: okhttp3.Response): void;
 }
-automaton okhttp3.internal.http2.StreamResetException (var arg0: okhttp3.internal.http2.ErrorCode) : okhttp3.internal.http2.StreamResetException {
-    var errorCode: okhttp3.internal.http2.ErrorCode;
+automaton okhttp3.internal.http2.StreamResetException (val arg0: okhttp3.internal.http2.ErrorCode) : okhttp3.internal.http2.StreamResetException {
+    val errorCode: okhttp3.internal.http2.ErrorCode;
 }
-automaton okhttp3.internal.http2.Http2Stream (var arg0: int, var arg1: okhttp3.internal.http2.Http2Connection, var arg2: bool, var arg3: bool, var arg4: okhttp3.Headers) : okhttp3.internal.http2.Http2Stream {
-    var readBytesTotal: long;
-    var readBytesAcknowledged: long;
-    var writeBytesTotal: long;
-    var writeBytesMaximum: long;
-    var headersQueue: `<UNRESOLVED_TYPE>`;
-    var hasResponseHeaders: bool;
-    var source: okhttp3.internal.http2.Http2Stream$FramingSource;
-    var sink: okhttp3.internal.http2.Http2Stream$FramingSink;
-    var readTimeout: okhttp3.internal.http2.Http2Stream$StreamTimeout;
-    var writeTimeout: okhttp3.internal.http2.Http2Stream$StreamTimeout;
-    var errorCode: okhttp3.internal.http2.ErrorCode;
-    var errorException: `<UNRESOLVED_TYPE>`;
-    var id: int;
-    var connection: okhttp3.internal.http2.Http2Connection;
-    var EMIT_BUFFER_SIZE: long;
-    var Companion: okhttp3.internal.http2.Http2Stream$Companion;
+automaton okhttp3.internal.http2.Http2Stream (val arg0: int, val arg1: okhttp3.internal.http2.Http2Connection, val arg2: bool, val arg3: bool, val arg4: okhttp3.Headers) : okhttp3.internal.http2.Http2Stream {
+    val readBytesTotal: long;
+    val readBytesAcknowledged: long;
+    val writeBytesTotal: long;
+    val writeBytesMaximum: long;
+    val headersQueue: `<UNRESOLVED_TYPE>`;
+    val hasResponseHeaders: bool;
+    val source: okhttp3.internal.http2.Http2Stream$FramingSource;
+    val sink: okhttp3.internal.http2.Http2Stream$FramingSink;
+    val readTimeout: okhttp3.internal.http2.Http2Stream$StreamTimeout;
+    val writeTimeout: okhttp3.internal.http2.Http2Stream$StreamTimeout;
+    val errorCode: okhttp3.internal.http2.ErrorCode;
+    val errorException: `<UNRESOLVED_TYPE>`;
+    val id: int;
+    val connection: okhttp3.internal.http2.Http2Connection;
+    val EMIT_BUFFER_SIZE: long;
+    val Companion: okhttp3.internal.http2.Http2Stream$Companion;
     fun getReadBytesTotal(): long;
 
-    fun setReadBytesTotal$okhttp(arg0: long): void
-        assigns readBytesTotal;
+    fun setReadBytesTotal$okhttp(arg0: long): void;
 
     fun getReadBytesAcknowledged(): long;
 
-    fun setReadBytesAcknowledged$okhttp(arg0: long): void
-        assigns readBytesAcknowledged;
+    fun setReadBytesAcknowledged$okhttp(arg0: long): void;
 
     fun getWriteBytesTotal(): long;
 
-    fun setWriteBytesTotal$okhttp(arg0: long): void
-        assigns writeBytesTotal;
+    fun setWriteBytesTotal$okhttp(arg0: long): void;
 
     fun getWriteBytesMaximum(): long;
 
-    fun setWriteBytesMaximum$okhttp(arg0: long): void
-        assigns writeBytesMaximum;
+    fun setWriteBytesMaximum$okhttp(arg0: long): void;
 
     fun getSource$okhttp(): okhttp3.internal.http2.Http2Stream$FramingSource;
 
@@ -6124,8 +5612,7 @@ automaton okhttp3.internal.http2.Http2Stream (var arg0: int, var arg1: okhttp3.i
 
     fun getErrorCode$okhttp(): okhttp3.internal.http2.ErrorCode;
 
-    fun setErrorCode$okhttp(arg0: okhttp3.internal.http2.ErrorCode): void
-        assigns errorCode;
+    fun setErrorCode$okhttp(arg0: okhttp3.internal.http2.ErrorCode): void;
 
     fun getErrorException$okhttp(): `<UNRESOLVED_TYPE>`;
 
@@ -6139,8 +5626,7 @@ automaton okhttp3.internal.http2.Http2Stream (var arg0: int, var arg1: okhttp3.i
 
     fun trailers(): okhttp3.Headers;
 
-    fun writeHeaders(arg0: java.util.List, arg1: bool, arg2: bool): void
-        assigns hasResponseHeaders;
+    fun writeHeaders(arg0: java.util.List, arg1: bool, arg2: bool): void;
 
     fun enqueueTrailers(arg0: okhttp3.Headers): void;
 
@@ -6152,30 +5638,26 @@ automaton okhttp3.internal.http2.Http2Stream (var arg0: int, var arg1: okhttp3.i
 
     fun getSink(): okio.Sink;
 
-    fun close(arg0: okhttp3.internal.http2.ErrorCode, arg1: java.io.IOException): void
-        assigns errorCode;
+    fun close(arg0: okhttp3.internal.http2.ErrorCode, arg1: java.io.IOException): void;
 
-    fun closeLater(arg0: okhttp3.internal.http2.ErrorCode): void
-        assigns errorCode;
+    fun closeLater(arg0: okhttp3.internal.http2.ErrorCode): void;
 
-    fun closeInternal(arg0: okhttp3.internal.http2.ErrorCode, arg1: java.io.IOException): bool
-        assigns errorCode;
+    fun closeInternal(arg0: okhttp3.internal.http2.ErrorCode, arg1: java.io.IOException): bool;
 
-    fun receiveData(arg0: okio.BufferedSource, arg1: int): void
-        assigns arg0;
+    fun receiveData(arg0: okio.BufferedSource, arg1: int): void;
 
-    fun receiveHeaders(arg0: okhttp3.Headers, arg1: bool): void
-        assigns hasResponseHeaders;
+    fun receiveHeaders(arg0: okhttp3.Headers, arg1: bool): void;
 
-    fun receiveRstStream(arg0: okhttp3.internal.http2.ErrorCode): void
-        assigns errorCode;
+    fun receiveRstStream(arg0: okhttp3.internal.http2.ErrorCode): void;
 
-    fun cancelStreamIfNecessary$okhttp(): void
-        assigns errorCode;
+    fun cancelStreamIfNecessary$okhttp(): void;
 
-    fun addBytesToWriteWindow(arg0: long): void
-        assigns writeBytesMaximum;
+    fun addBytesToWriteWindow(arg0: long): void;
 
+    @Throws("java.io.IOException", closed)
+    @Throws("java.io.IOException", finished)
+    @Throws("java.io.IOException", (closed & !finished))
+    @Throws("java.io.IOException", (finished & !closed))
     fun checkOutNotClosed$okhttp(): void;
 
     fun waitForIo$okhttp(): void;
@@ -6184,27 +5666,23 @@ automaton okhttp3.internal.http2.Http2Stream (var arg0: int, var arg1: okhttp3.i
 
     fun getConnection(): okhttp3.internal.http2.Http2Connection;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 }
-automaton okhttp3.ResponseBody$BomAwareReader (var arg0: okio.BufferedSource, var arg1: `<UNRESOLVED_TYPE>`) : okhttp3.ResponseBody$BomAwareReader {
-    var closed: bool;
-    var delegate: `<UNRESOLVED_TYPE>`;
-    var source: okio.BufferedSource;
-    var charset: `<UNRESOLVED_TYPE>`;
-    fun read(arg0: array, arg1: int, arg2: int): int
-        assigns source;
+automaton okhttp3.ResponseBody$BomAwareReader (val arg0: okio.BufferedSource, val arg1: `<UNRESOLVED_TYPE>`) : okhttp3.ResponseBody$BomAwareReader {
+    val closed: bool;
+    val delegate: `<UNRESOLVED_TYPE>`;
+    val source: okio.BufferedSource;
+    val charset: `<UNRESOLVED_TYPE>`;
+    fun read(arg0: array, arg1: int, arg2: int): int;
 
-    fun close(): void
-        assigns closed;
+    fun close(): void;
 }
 automaton okhttp3.internal.http.RetryAndFollowUpInterceptor$Companion : okhttp3.internal.http.RetryAndFollowUpInterceptor$Companion {
 }
 automaton okhttp3.Cache$Companion : okhttp3.Cache$Companion {
     fun key(arg0: okhttp3.HttpUrl): java.lang.String;
 
-    fun readInt$okhttp(arg0: okio.BufferedSource): int
-        assigns arg0;
+    fun readInt$okhttp(arg0: okio.BufferedSource): int;
 
     fun varyMatches(arg0: okhttp3.Response, arg1: okhttp3.Headers, arg2: okhttp3.Request): bool;
 
@@ -6217,14 +5695,13 @@ automaton okhttp3.Cache$Companion : okhttp3.Cache$Companion {
     fun varyHeaders(arg0: okhttp3.Headers, arg1: okhttp3.Headers): okhttp3.Headers;
 }
 automaton okhttp3.internal.platform.ConscryptPlatform$platformTrustManager$2 : okhttp3.internal.platform.ConscryptPlatform$platformTrustManager$2 {
-    var INSTANCE: okhttp3.internal.platform.ConscryptPlatform$platformTrustManager$2;
+    val INSTANCE: okhttp3.internal.platform.ConscryptPlatform$platformTrustManager$2;
     fun verify(arg0: java.lang.String, arg1: javax.net.ssl.SSLSession): bool;
 
-    fun `<clinit>`(): void
-        assigns INSTANCE;
+    fun `<clinit>`(): void;
 }
 automaton okhttp3.RequestBody : okhttp3.RequestBody {
-    var Companion: okhttp3.RequestBody$Companion;
+    val Companion: okhttp3.RequestBody$Companion;
     fun contentType(): okhttp3.MediaType;
 
     fun contentLength(): long;
@@ -6235,8 +5712,7 @@ automaton okhttp3.RequestBody : okhttp3.RequestBody {
 
     fun isOneShot(): bool;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 
     fun create(arg0: java.lang.String, arg1: okhttp3.MediaType): okhttp3.RequestBody;
 
@@ -6264,71 +5740,59 @@ automaton okhttp3.RequestBody : okhttp3.RequestBody {
 
     fun create(arg0: okhttp3.MediaType, arg1: java.io.File): okhttp3.RequestBody;
 }
-automaton okhttp3.internal.cache2.Relay$RelaySource (var arg0: okhttp3.internal.cache2.Relay) : okhttp3.internal.cache2.Relay$RelaySource {
-    var timeout: okio.Timeout;
-    var fileOperator: okhttp3.internal.cache2.FileOperator;
-    var sourcePos: long;
-    var this$0: okhttp3.internal.cache2.Relay;
-    fun read(arg0: okio.Buffer, arg1: long): long
-        assigns sourcePos;
-        assigns arg0.head;
-        assigns arg0.size;
+automaton okhttp3.internal.cache2.Relay$RelaySource (val arg0: okhttp3.internal.cache2.Relay) : okhttp3.internal.cache2.Relay$RelaySource {
+    val timeout: okio.Timeout;
+    val fileOperator: okhttp3.internal.cache2.FileOperator;
+    val sourcePos: long;
+    val this$0: okhttp3.internal.cache2.Relay;
+    fun read(arg0: okio.Buffer, arg1: long): long;
 
     fun timeout(): okio.Timeout;
 
-    fun close(): void
-        assigns fileOperator;
+    fun close(): void;
 }
-automaton okhttp3.internal.http2.Http2Stream$FramingSource (var arg0: okhttp3.internal.http2.Http2Stream, var arg1: long, var arg2: bool) : okhttp3.internal.http2.Http2Stream$FramingSource {
-    var receiveBuffer: okio.Buffer;
-    var readBuffer: okio.Buffer;
-    var trailers: okhttp3.Headers;
-    var closed: bool;
-    var maxByteCount: long;
-    var finished: bool;
-    var this$0: okhttp3.internal.http2.Http2Stream;
+automaton okhttp3.internal.http2.Http2Stream$FramingSource (val arg0: okhttp3.internal.http2.Http2Stream, val arg1: long, val arg2: bool) : okhttp3.internal.http2.Http2Stream$FramingSource {
+    val receiveBuffer: okio.Buffer;
+    val readBuffer: okio.Buffer;
+    val trailers: okhttp3.Headers;
+    val closed: bool;
+    val maxByteCount: long;
+    val finished: bool;
+    val this$0: okhttp3.internal.http2.Http2Stream;
     fun getReceiveBuffer(): okio.Buffer;
 
     fun getReadBuffer(): okio.Buffer;
 
     fun getTrailers(): okhttp3.Headers;
 
-    fun setTrailers(arg0: okhttp3.Headers): void
-        assigns trailers;
+    fun setTrailers(arg0: okhttp3.Headers): void;
 
     fun getClosed$okhttp(): bool;
 
-    fun setClosed$okhttp(arg0: bool): void
-        assigns closed;
+    fun setClosed$okhttp(arg0: bool): void;
 
-    fun read(arg0: okio.Buffer, arg1: long): long
-        assigns arg0.head;
-        assigns arg0.size;
+    fun read(arg0: okio.Buffer, arg1: long): long;
 
     fun updateConnectionFlowControl(arg0: long): void;
 
-    fun receive$okhttp(arg0: okio.BufferedSource, arg1: long): void
-        assigns arg0;
+    fun receive$okhttp(arg0: okio.BufferedSource, arg1: long): void;
 
     fun timeout(): okio.Timeout;
 
-    fun close(): void
-        assigns closed;
+    fun close(): void;
 
     fun getFinished$okhttp(): bool;
 
-    fun setFinished$okhttp(arg0: bool): void
-        assigns finished;
+    fun setFinished$okhttp(arg0: bool): void;
 }
-automaton okhttp3.internal.http2.Http2Connection$ReaderRunnable (var arg0: okhttp3.internal.http2.Http2Connection, var arg1: okhttp3.internal.http2.Http2Reader) : okhttp3.internal.http2.Http2Connection$ReaderRunnable {
-    var reader: okhttp3.internal.http2.Http2Reader;
-    var this$0: okhttp3.internal.http2.Http2Connection;
+automaton okhttp3.internal.http2.Http2Connection$ReaderRunnable (val arg0: okhttp3.internal.http2.Http2Connection, val arg1: okhttp3.internal.http2.Http2Reader) : okhttp3.internal.http2.Http2Connection$ReaderRunnable {
+    val reader: okhttp3.internal.http2.Http2Reader;
+    val this$0: okhttp3.internal.http2.Http2Connection;
     fun invoke(): void;
 
     fun invoke(): java.lang.Object;
 
-    fun data(arg0: bool, arg1: int, arg2: okio.BufferedSource, arg3: int): void
-        assigns arg2;
+    fun data(arg0: bool, arg1: int, arg2: okio.BufferedSource, arg3: int): void;
 
     fun headers(arg0: bool, arg1: int, arg2: int, arg3: java.util.List): void;
 
@@ -6336,21 +5800,15 @@ automaton okhttp3.internal.http2.Http2Connection$ReaderRunnable (var arg0: okhtt
 
     fun settings(arg0: bool, arg1: okhttp3.internal.http2.Settings): void;
 
-    fun applyAndAckSettings(arg0: bool, arg1: okhttp3.internal.http2.Settings): void
-        assigns this$0.isShutdown;
+    fun applyAndAckSettings(arg0: bool, arg1: okhttp3.internal.http2.Settings): void;
 
     fun ackSettings(): void;
 
-    fun ping(arg0: bool, arg1: int, arg2: int): void
-        assigns this$0.intervalPongsReceived;
-        assigns this$0.degradedPongsReceived;
-        assigns this$0.awaitPongsReceived;
+    fun ping(arg0: bool, arg1: int, arg2: int): void;
 
-    fun goAway(arg0: int, arg1: okhttp3.internal.http2.ErrorCode, arg2: okio.ByteString): void
-        assigns this$0.isShutdown;
+    fun goAway(arg0: int, arg1: okhttp3.internal.http2.ErrorCode, arg2: okio.ByteString): void;
 
-    fun windowUpdate(arg0: int, arg1: long): void
-        assigns this$0.writeBytesMaximum;
+    fun windowUpdate(arg0: int, arg1: long): void;
 
     fun priority(arg0: int, arg1: int, arg2: int, arg3: bool): void;
 
@@ -6361,26 +5819,22 @@ automaton okhttp3.internal.http2.Http2Connection$ReaderRunnable (var arg0: okhtt
     fun getReader$okhttp(): okhttp3.internal.http2.Http2Reader;
 }
 automaton okhttp3.internal.proxy.NullProxySelector : okhttp3.internal.proxy.NullProxySelector {
-    var INSTANCE: okhttp3.internal.proxy.NullProxySelector;
+    val INSTANCE: okhttp3.internal.proxy.NullProxySelector;
     fun select(arg0: java.net.URI): `<UNRESOLVED_TYPE>`;
 
     fun connectFailed(arg0: java.net.URI, arg1: java.net.SocketAddress, arg2: java.io.IOException): void;
 
-    fun `<clinit>`(): void
-        assigns INSTANCE;
+    fun `<clinit>`(): void;
 }
-automaton okhttp3.internal.http1.Http1ExchangeCodec$UnknownLengthSource (var arg0: okhttp3.internal.http1.Http1ExchangeCodec) : okhttp3.internal.http1.Http1ExchangeCodec$UnknownLengthSource {
-    var inputExhausted: bool;
-    var this$0: okhttp3.internal.http1.Http1ExchangeCodec;
-    fun read(arg0: okio.Buffer, arg1: long): long
-        assigns inputExhausted;
-        assigns arg0.head;
-        assigns arg0.size;
+automaton okhttp3.internal.http1.Http1ExchangeCodec$UnknownLengthSource (val arg0: okhttp3.internal.http1.Http1ExchangeCodec) : okhttp3.internal.http1.Http1ExchangeCodec$UnknownLengthSource {
+    val inputExhausted: bool;
+    val this$0: okhttp3.internal.http1.Http1ExchangeCodec;
+    fun read(arg0: okio.Buffer, arg1: long): long;
 
     fun close(): void;
 }
 automaton okhttp3.internal.platform.android.Android10SocketAdapter : okhttp3.internal.platform.android.Android10SocketAdapter {
-    var Companion: okhttp3.internal.platform.android.Android10SocketAdapter$Companion;
+    val Companion: okhttp3.internal.platform.android.Android10SocketAdapter$Companion;
     fun trustManager(arg0: javax.net.ssl.SSLSocketFactory): `<UNRESOLVED_TYPE>`;
 
     fun matchesSocket(arg0: javax.net.ssl.SSLSocket): bool;
@@ -6391,20 +5845,19 @@ automaton okhttp3.internal.platform.android.Android10SocketAdapter : okhttp3.int
 
     fun configureTlsExtensions(arg0: javax.net.ssl.SSLSocket, arg1: java.lang.String, arg2: java.util.List): void;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 
     fun matchesSocketFactory(arg0: javax.net.ssl.SSLSocketFactory): bool;
 }
-automaton okhttp3.internal.http2.Http2Connection$ReaderRunnable$applyAndAckSettings$$inlined$synchronized$lambda$1 (var arg0: java.lang.String, var arg1: bool, var arg2: java.lang.String, var arg3: bool, var arg4: okhttp3.internal.http2.Http2Connection$ReaderRunnable, var arg5: bool, var arg6: `<UNRESOLVED_TYPE>`, var arg7: okhttp3.internal.http2.Settings, var arg8: `<UNRESOLVED_TYPE>`, var arg9: `<UNRESOLVED_TYPE>`) : okhttp3.internal.http2.Http2Connection$ReaderRunnable$applyAndAckSettings$$inlined$synchronized$lambda$1 {
-    var $name: java.lang.String;
-    var $cancelable: bool;
-    var this$0: okhttp3.internal.http2.Http2Connection$ReaderRunnable;
-    var $clearPrevious$inlined: bool;
-    var $newPeerSettings$inlined: `<UNRESOLVED_TYPE>`;
-    var $settings$inlined: okhttp3.internal.http2.Settings;
-    var $delta$inlined: `<UNRESOLVED_TYPE>`;
-    var $streamsToNotify$inlined: `<UNRESOLVED_TYPE>`;
+automaton okhttp3.internal.http2.Http2Connection$ReaderRunnable$applyAndAckSettings$$inlined$synchronized$lambda$1 (val arg0: java.lang.String, val arg1: bool, val arg2: java.lang.String, val arg3: bool, val arg4: okhttp3.internal.http2.Http2Connection$ReaderRunnable, val arg5: bool, val arg6: `<UNRESOLVED_TYPE>`, val arg7: okhttp3.internal.http2.Settings, val arg8: `<UNRESOLVED_TYPE>`, val arg9: `<UNRESOLVED_TYPE>`) : okhttp3.internal.http2.Http2Connection$ReaderRunnable$applyAndAckSettings$$inlined$synchronized$lambda$1 {
+    val $name: java.lang.String;
+    val $cancelable: bool;
+    val this$0: okhttp3.internal.http2.Http2Connection$ReaderRunnable;
+    val $clearPrevious$inlined: bool;
+    val $newPeerSettings$inlined: `<UNRESOLVED_TYPE>`;
+    val $settings$inlined: okhttp3.internal.http2.Settings;
+    val $delta$inlined: `<UNRESOLVED_TYPE>`;
+    val $streamsToNotify$inlined: `<UNRESOLVED_TYPE>`;
     fun runOnce(): long;
 }
 automaton okhttp3.internal.http2.PushObserver$Companion$PushObserverCancel : okhttp3.internal.http2.PushObserver$Companion$PushObserverCancel {
@@ -6412,56 +5865,43 @@ automaton okhttp3.internal.http2.PushObserver$Companion$PushObserverCancel : okh
 
     fun onHeaders(arg0: int, arg1: java.util.List, arg2: bool): bool;
 
-    fun onData(arg0: int, arg1: okio.BufferedSource, arg2: int, arg3: bool): bool
-        assigns arg1;
+    fun onData(arg0: int, arg1: okio.BufferedSource, arg2: int, arg3: bool): bool;
 
     fun onReset(arg0: int, arg1: okhttp3.internal.http2.ErrorCode): void;
 }
-automaton okhttp3.Cache (var arg0: `<UNRESOLVED_TYPE>`, var arg1: long, var arg2: okhttp3.internal.io.FileSystem) : okhttp3.Cache {
-    var cache: okhttp3.internal.cache.DiskLruCache;
-    var writeSuccessCount: int;
-    var writeAbortCount: int;
-    var networkCount: int;
-    var hitCount: int;
-    var requestCount: int;
-    var VERSION: int;
-    var ENTRY_METADATA: int;
-    var ENTRY_BODY: int;
-    var ENTRY_COUNT: int;
-    var Companion: okhttp3.Cache$Companion;
+automaton okhttp3.Cache (val arg0: `<UNRESOLVED_TYPE>`, val arg1: long, val arg2: okhttp3.internal.io.FileSystem) : okhttp3.Cache {
+    val cache: okhttp3.internal.cache.DiskLruCache;
+    val writeSuccessCount: int;
+    val writeAbortCount: int;
+    val networkCount: int;
+    val hitCount: int;
+    val requestCount: int;
+    val VERSION: int;
+    val ENTRY_METADATA: int;
+    val ENTRY_BODY: int;
+    val ENTRY_COUNT: int;
+    val Companion: okhttp3.Cache$Companion;
     fun getCache$okhttp(): okhttp3.internal.cache.DiskLruCache;
 
     fun getWriteSuccessCount$okhttp(): int;
 
-    fun setWriteSuccessCount$okhttp(arg0: int): void
-        assigns writeSuccessCount;
+    fun setWriteSuccessCount$okhttp(arg0: int): void;
 
     fun getWriteAbortCount$okhttp(): int;
 
-    fun setWriteAbortCount$okhttp(arg0: int): void
-        assigns writeAbortCount;
+    fun setWriteAbortCount$okhttp(arg0: int): void;
 
     fun isClosed(): bool;
 
     fun get$okhttp(arg0: okhttp3.Request): okhttp3.Response;
 
-    fun put$okhttp(arg0: okhttp3.Response): okhttp3.internal.cache.CacheRequest
-        assigns cache.civilizedFileSystem;
-        assigns cache.initialized;
-        assigns cache.closed;
-        assigns cache.redundantOpCount;
-        assigns cache.journalWriter;
-        assigns cache.hasJournalErrors;
-        assigns cache.mostRecentRebuildFailed;
-        assigns cache.size;
-        assigns cache.mostRecentTrimFailed;
+    fun put$okhttp(arg0: okhttp3.Response): okhttp3.internal.cache.CacheRequest;
 
     fun remove$okhttp(arg0: okhttp3.Request): void;
 
     fun update$okhttp(arg0: okhttp3.Response, arg1: okhttp3.Response): void;
 
-    fun abortQuietly(arg0: okhttp3.internal.cache.DiskLruCache$Editor): void
-        assigns arg0.done;
+    fun abortQuietly(arg0: okhttp3.internal.cache.DiskLruCache$Editor): void;
 
     fun initialize(): void;
 
@@ -6487,13 +5927,9 @@ automaton okhttp3.Cache (var arg0: `<UNRESOLVED_TYPE>`, var arg1: long, var arg2
 
     fun `-deprecated_directory`(): `<UNRESOLVED_TYPE>`;
 
-    fun trackResponse$okhttp(arg0: okhttp3.internal.cache.CacheStrategy): void
-        assigns requestCount;
-        assigns networkCount;
-        assigns hitCount;
+    fun trackResponse$okhttp(arg0: okhttp3.internal.cache.CacheStrategy): void;
 
-    fun trackConditionalCacheHit$okhttp(): void
-        assigns hitCount;
+    fun trackConditionalCacheHit$okhttp(): void;
 
     fun networkCount(): int;
 
@@ -6501,83 +5937,76 @@ automaton okhttp3.Cache (var arg0: `<UNRESOLVED_TYPE>`, var arg1: long, var arg2
 
     fun requestCount(): int;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 
     fun key(arg0: okhttp3.HttpUrl): java.lang.String;
 }
-automaton okhttp3.internal.ws.RealWebSocket$writeOneFrame$$inlined$synchronized$lambda$1 (var arg0: java.lang.String, var arg1: bool, var arg2: java.lang.String, var arg3: bool, var arg4: okhttp3.internal.ws.RealWebSocket, var arg5: okhttp3.internal.ws.WebSocketWriter, var arg6: okio.ByteString, var arg7: `<UNRESOLVED_TYPE>`, var arg8: `<UNRESOLVED_TYPE>`, var arg9: `<UNRESOLVED_TYPE>`, var arg10: `<UNRESOLVED_TYPE>`, var arg11: `<UNRESOLVED_TYPE>`, var arg12: `<UNRESOLVED_TYPE>`) : okhttp3.internal.ws.RealWebSocket$writeOneFrame$$inlined$synchronized$lambda$1 {
-    var $name: java.lang.String;
-    var $cancelable: bool;
-    var this$0: okhttp3.internal.ws.RealWebSocket;
-    var $writer$inlined: okhttp3.internal.ws.WebSocketWriter;
-    var $pong$inlined: okio.ByteString;
-    var $messageOrClose$inlined: `<UNRESOLVED_TYPE>`;
-    var $receivedCloseCode$inlined: `<UNRESOLVED_TYPE>`;
-    var $receivedCloseReason$inlined: `<UNRESOLVED_TYPE>`;
-    var $streamsToClose$inlined: `<UNRESOLVED_TYPE>`;
-    var $readerToClose$inlined: `<UNRESOLVED_TYPE>`;
-    var $writerToClose$inlined: `<UNRESOLVED_TYPE>`;
+automaton okhttp3.internal.ws.RealWebSocket$writeOneFrame$$inlined$synchronized$lambda$1 (val arg0: java.lang.String, val arg1: bool, val arg2: java.lang.String, val arg3: bool, val arg4: okhttp3.internal.ws.RealWebSocket, val arg5: okhttp3.internal.ws.WebSocketWriter, val arg6: okio.ByteString, val arg7: `<UNRESOLVED_TYPE>`, val arg8: `<UNRESOLVED_TYPE>`, val arg9: `<UNRESOLVED_TYPE>`, val arg10: `<UNRESOLVED_TYPE>`, val arg11: `<UNRESOLVED_TYPE>`, val arg12: `<UNRESOLVED_TYPE>`) : okhttp3.internal.ws.RealWebSocket$writeOneFrame$$inlined$synchronized$lambda$1 {
+    val $name: java.lang.String;
+    val $cancelable: bool;
+    val this$0: okhttp3.internal.ws.RealWebSocket;
+    val $writer$inlined: okhttp3.internal.ws.WebSocketWriter;
+    val $pong$inlined: okio.ByteString;
+    val $messageOrClose$inlined: `<UNRESOLVED_TYPE>`;
+    val $receivedCloseCode$inlined: `<UNRESOLVED_TYPE>`;
+    val $receivedCloseReason$inlined: `<UNRESOLVED_TYPE>`;
+    val $streamsToClose$inlined: `<UNRESOLVED_TYPE>`;
+    val $readerToClose$inlined: `<UNRESOLVED_TYPE>`;
+    val $writerToClose$inlined: `<UNRESOLVED_TYPE>`;
     fun runOnce(): long;
 }
-automaton okhttp3.internal.http.CallServerInterceptor (var arg0: bool) : okhttp3.internal.http.CallServerInterceptor {
-    var forWebSocket: bool;
+automaton okhttp3.internal.http.CallServerInterceptor (val arg0: bool) : okhttp3.internal.http.CallServerInterceptor {
+    val forWebSocket: bool;
     fun intercept(arg0: okhttp3.Interceptor$Chain): okhttp3.Response;
 }
-automaton okhttp3.internal.cache.DiskLruCache$Entry$newSource$1 (var arg0: okhttp3.internal.cache.DiskLruCache$Entry, var arg1: okio.Source, var arg2: okio.Source) : okhttp3.internal.cache.DiskLruCache$Entry$newSource$1 {
-    var closed: bool;
-    var this$0: okhttp3.internal.cache.DiskLruCache$Entry;
-    var $fileSource: okio.Source;
+automaton okhttp3.internal.cache.DiskLruCache$Entry$newSource$1 (val arg0: okhttp3.internal.cache.DiskLruCache$Entry, val arg1: okio.Source, val arg2: okio.Source) : okhttp3.internal.cache.DiskLruCache$Entry$newSource$1 {
+    val closed: bool;
+    val this$0: okhttp3.internal.cache.DiskLruCache$Entry;
+    val $fileSource: okio.Source;
     fun getClosed(): bool;
 
-    fun setClosed(arg0: bool): void
-        assigns closed;
+    fun setClosed(arg0: bool): void;
 
-    fun close(): void
-        assigns closed;
+    fun close(): void;
 }
 automaton okhttp3.internal.http2.Http2Connection$Listener$Companion$REFUSE_INCOMING_STREAMS$1 : okhttp3.internal.http2.Http2Connection$Listener$Companion$REFUSE_INCOMING_STREAMS$1 {
-    fun onStream(arg0: okhttp3.internal.http2.Http2Stream): void
-        assigns arg0.errorCode;
-        assigns arg0;
+    fun onStream(arg0: okhttp3.internal.http2.Http2Stream): void;
 }
-automaton okhttp3.internal.concurrent.TaskQueue$schedule$2 (var arg0: `<UNRESOLVED_TYPE>`, var arg1: java.lang.String, var arg2: java.lang.String) : okhttp3.internal.concurrent.TaskQueue$schedule$2 {
-    var $block: `<UNRESOLVED_TYPE>`;
-    var $name: java.lang.String;
+automaton okhttp3.internal.concurrent.TaskQueue$schedule$2 (val arg0: `<UNRESOLVED_TYPE>`, val arg1: java.lang.String, val arg2: java.lang.String) : okhttp3.internal.concurrent.TaskQueue$schedule$2 {
+    val $block: `<UNRESOLVED_TYPE>`;
+    val $name: java.lang.String;
     fun runOnce(): long;
 }
-automaton okhttp3.internal.http2.Http2Connection$pushResetLater$$inlined$execute$1 (var arg0: java.lang.String, var arg1: bool, var arg2: java.lang.String, var arg3: bool, var arg4: okhttp3.internal.http2.Http2Connection, var arg5: int, var arg6: okhttp3.internal.http2.ErrorCode) : okhttp3.internal.http2.Http2Connection$pushResetLater$$inlined$execute$1 {
-    var $name: java.lang.String;
-    var $cancelable: bool;
-    var this$0: okhttp3.internal.http2.Http2Connection;
-    var $streamId$inlined: int;
-    var $errorCode$inlined: okhttp3.internal.http2.ErrorCode;
+automaton okhttp3.internal.http2.Http2Connection$pushResetLater$$inlined$execute$1 (val arg0: java.lang.String, val arg1: bool, val arg2: java.lang.String, val arg3: bool, val arg4: okhttp3.internal.http2.Http2Connection, val arg5: int, val arg6: okhttp3.internal.http2.ErrorCode) : okhttp3.internal.http2.Http2Connection$pushResetLater$$inlined$execute$1 {
+    val $name: java.lang.String;
+    val $cancelable: bool;
+    val this$0: okhttp3.internal.http2.Http2Connection;
+    val $streamId$inlined: int;
+    val $errorCode$inlined: okhttp3.internal.http2.ErrorCode;
     fun runOnce(): long;
 }
 automaton okhttp3.internal.io.FileSystem$Companion : okhttp3.internal.io.FileSystem$Companion {
-    var $$INSTANCE: okhttp3.internal.io.FileSystem$Companion;
+    val $$INSTANCE: okhttp3.internal.io.FileSystem$Companion;
 }
 automaton okhttp3.internal.http2.Settings : okhttp3.internal.http2.Settings {
-    var set: int;
-    var values: array<int>;
-    var DEFAULT_INITIAL_WINDOW_SIZE: int;
-    var HEADER_TABLE_SIZE: int;
-    var ENABLE_PUSH: int;
-    var MAX_CONCURRENT_STREAMS: int;
-    var MAX_FRAME_SIZE: int;
-    var MAX_HEADER_LIST_SIZE: int;
-    var INITIAL_WINDOW_SIZE: int;
-    var COUNT: int;
-    var Companion: okhttp3.internal.http2.Settings$Companion;
+    val set: int;
+    val values: array<int>;
+    val DEFAULT_INITIAL_WINDOW_SIZE: int;
+    val HEADER_TABLE_SIZE: int;
+    val ENABLE_PUSH: int;
+    val MAX_CONCURRENT_STREAMS: int;
+    val MAX_FRAME_SIZE: int;
+    val MAX_HEADER_LIST_SIZE: int;
+    val INITIAL_WINDOW_SIZE: int;
+    val COUNT: int;
+    val Companion: okhttp3.internal.http2.Settings$Companion;
     fun getHeaderTableSize(): int;
 
     fun getInitialWindowSize(): int;
 
-    fun clear(): void
-        assigns set;
+    fun clear(): void;
 
-    fun set(arg0: int, arg1: int): okhttp3.internal.http2.Settings
-        assigns set;
+    fun set(arg0: int, arg1: int): okhttp3.internal.http2.Settings;
 
     fun isSet(arg0: int): bool;
 
@@ -6593,11 +6022,9 @@ automaton okhttp3.internal.http2.Settings : okhttp3.internal.http2.Settings {
 
     fun getMaxHeaderListSize(arg0: int): int;
 
-    fun merge(arg0: okhttp3.internal.http2.Settings): void
-        assigns set;
+    fun merge(arg0: okhttp3.internal.http2.Settings): void;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 }
 automaton okhttp3.internal.HostnamesKt : okhttp3.internal.HostnamesKt {
     fun toCanonicalHost(arg0: java.lang.String): java.lang.String;
@@ -6611,32 +6038,26 @@ automaton okhttp3.internal.HostnamesKt : okhttp3.internal.HostnamesKt {
     fun inet6AddressToAscii(arg0: array): java.lang.String;
 }
 automaton okhttp3.Authenticator$Companion : okhttp3.Authenticator$Companion {
-    var $$INSTANCE: okhttp3.Authenticator$Companion;
+    val $$INSTANCE: okhttp3.Authenticator$Companion;
 }
 automaton okhttp3.MultipartBody$Companion : okhttp3.MultipartBody$Companion {
     fun appendQuotedString$okhttp(arg0: java.lang.StringBuilder, arg1: java.lang.String): void;
 }
-automaton okhttp3.internal.http2.Http2Stream$FramingSink (var arg0: okhttp3.internal.http2.Http2Stream, var arg1: bool) : okhttp3.internal.http2.Http2Stream$FramingSink {
-    var sendBuffer: okio.Buffer;
-    var trailers: okhttp3.Headers;
-    var closed: bool;
-    var finished: bool;
-    var this$0: okhttp3.internal.http2.Http2Stream;
+automaton okhttp3.internal.http2.Http2Stream$FramingSink (val arg0: okhttp3.internal.http2.Http2Stream, val arg1: bool) : okhttp3.internal.http2.Http2Stream$FramingSink {
+    val sendBuffer: okio.Buffer;
+    val trailers: okhttp3.Headers;
+    val closed: bool;
+    val finished: bool;
+    val this$0: okhttp3.internal.http2.Http2Stream;
     fun getTrailers(): okhttp3.Headers;
 
-    fun setTrailers(arg0: okhttp3.Headers): void
-        assigns trailers;
+    fun setTrailers(arg0: okhttp3.Headers): void;
 
     fun getClosed(): bool;
 
-    fun setClosed(arg0: bool): void
-        assigns closed;
+    fun setClosed(arg0: bool): void;
 
-    fun write(arg0: okio.Buffer, arg1: long): void
-        assigns arg0.head;
-        assigns arg0.head.prev;
-        assigns arg0.head.next;
-        assigns arg0.size;
+    fun write(arg0: okio.Buffer, arg1: long): void;
 
     fun emitFrame(arg0: bool): void;
 
@@ -6644,13 +6065,11 @@ automaton okhttp3.internal.http2.Http2Stream$FramingSink (var arg0: okhttp3.inte
 
     fun timeout(): okio.Timeout;
 
-    fun close(): void
-        assigns closed;
+    fun close(): void;
 
     fun getFinished(): bool;
 
-    fun setFinished(arg0: bool): void
-        assigns finished;
+    fun setFinished(arg0: bool): void;
 }
 automaton okhttp3.internal.platform.android.StandardAndroidSocketAdapter$Companion : okhttp3.internal.platform.android.StandardAndroidSocketAdapter$Companion {
     fun buildIfSupported(arg0: java.lang.String): okhttp3.internal.platform.android.SocketAdapter;
@@ -6658,55 +6077,42 @@ automaton okhttp3.internal.platform.android.StandardAndroidSocketAdapter$Compani
     fun buildIfSupported$default(arg0: okhttp3.internal.platform.android.StandardAndroidSocketAdapter$Companion, arg1: java.lang.String, arg2: int, arg3: java.lang.Object): okhttp3.internal.platform.android.SocketAdapter;
 }
 automaton okhttp3.internal.publicsuffix.PublicSuffixDatabase : okhttp3.internal.publicsuffix.PublicSuffixDatabase {
-    var listRead: `<UNRESOLVED_TYPE>`;
-    var readCompleteLatch: `<UNRESOLVED_TYPE>`;
-    var publicSuffixListBytes: array<byte>;
-    var publicSuffixExceptionListBytes: array<byte>;
-    var PUBLIC_SUFFIX_RESOURCE: java.lang.String;
-    var WILDCARD_LABEL: array<byte>;
-    var PREVAILING_RULE: `<UNRESOLVED_TYPE>`;
-    var EXCEPTION_MARKER: char;
-    var instance: okhttp3.internal.publicsuffix.PublicSuffixDatabase;
-    var Companion: okhttp3.internal.publicsuffix.PublicSuffixDatabase$Companion;
-    fun getEffectiveTldPlusOne(arg0: java.lang.String): java.lang.String
-        assigns publicSuffixListBytes;
-        assigns publicSuffixExceptionListBytes;
+    val listRead: `<UNRESOLVED_TYPE>`;
+    val readCompleteLatch: `<UNRESOLVED_TYPE>`;
+    val publicSuffixListBytes: array<byte>;
+    val publicSuffixExceptionListBytes: array<byte>;
+    val PUBLIC_SUFFIX_RESOURCE: java.lang.String;
+    val WILDCARD_LABEL: array<byte>;
+    val PREVAILING_RULE: `<UNRESOLVED_TYPE>`;
+    val EXCEPTION_MARKER: char;
+    val instance: okhttp3.internal.publicsuffix.PublicSuffixDatabase;
+    val Companion: okhttp3.internal.publicsuffix.PublicSuffixDatabase$Companion;
+    fun getEffectiveTldPlusOne(arg0: java.lang.String): java.lang.String;
 
-    fun findMatchingRule(arg0: java.util.List): `<UNRESOLVED_TYPE>`
-        assigns publicSuffixListBytes;
-        assigns publicSuffixExceptionListBytes;
+    @Throws("java.lang.IllegalStateException", ((arg0 != "'null-const'") & (publicSuffixListBytes == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (publicSuffixListBytes == "'null-const'"))
+    fun findMatchingRule(arg0: java.util.List): `<UNRESOLVED_TYPE>`;
 
-    fun readTheListUninterruptibly(): void
-        assigns publicSuffixListBytes;
-        assigns publicSuffixExceptionListBytes;
+    fun readTheListUninterruptibly(): void;
 
-    fun readTheList(): void
-        assigns publicSuffixListBytes;
-        assigns publicSuffixExceptionListBytes;
+    fun readTheList(): void;
 
-    fun setListBytes(arg0: array, arg1: array): void
-        assigns publicSuffixListBytes;
-        assigns publicSuffixExceptionListBytes;
+    fun setListBytes(arg0: array, arg1: array): void;
 
-    fun `<clinit>`(): void
-        assigns Companion;
-        assigns WILDCARD_LABEL;
-        assigns instance;
+    fun `<clinit>`(): void;
 
     fun access$getPublicSuffixListBytes$p(arg0: okhttp3.internal.publicsuffix.PublicSuffixDatabase): array<byte>;
 
-    fun access$setPublicSuffixListBytes$p(arg0: okhttp3.internal.publicsuffix.PublicSuffixDatabase, arg1: array): void
-        assigns arg0.publicSuffixListBytes;
+    fun access$setPublicSuffixListBytes$p(arg0: okhttp3.internal.publicsuffix.PublicSuffixDatabase, arg1: array): void;
 
     fun access$getInstance$cp(): okhttp3.internal.publicsuffix.PublicSuffixDatabase;
 }
-automaton okhttp3.internal.connection.RouteSelector$Selection (var arg0: `<UNRESOLVED_TYPE>`) : okhttp3.internal.connection.RouteSelector$Selection {
-    var nextRouteIndex: int;
-    var routes: `<UNRESOLVED_TYPE>`;
+automaton okhttp3.internal.connection.RouteSelector$Selection (val arg0: `<UNRESOLVED_TYPE>`) : okhttp3.internal.connection.RouteSelector$Selection {
+    val nextRouteIndex: int;
+    val routes: `<UNRESOLVED_TYPE>`;
     fun hasNext(): bool;
 
-    fun next(): okhttp3.Route
-        assigns nextRouteIndex;
+    fun next(): okhttp3.Route;
 
     fun getRoutes(): `<UNRESOLVED_TYPE>`;
 }
@@ -6716,42 +6122,34 @@ automaton okhttp3.Call$Factory : okhttp3.Call$Factory {
 automaton okhttp3.Authenticator$Companion$AuthenticatorNone : okhttp3.Authenticator$Companion$AuthenticatorNone {
     fun authenticate(arg0: okhttp3.Route, arg1: okhttp3.Response): okhttp3.Request;
 }
-automaton okhttp3.internal.cache.FaultHidingSink (var arg0: okio.Sink, var arg1: `<UNRESOLVED_TYPE>`) : okhttp3.internal.cache.FaultHidingSink {
-    var hasErrors: bool;
-    var onException: `<UNRESOLVED_TYPE>`;
-    fun write(arg0: okio.Buffer, arg1: long): void
-        assigns hasErrors;
-        assigns arg0.head.pos;
-        assigns arg0.head;
-        assigns arg0.size;
-        assigns arg0.head.prev;
-        assigns arg0.head.next;
+automaton okhttp3.internal.cache.FaultHidingSink (val arg0: okio.Sink, val arg1: `<UNRESOLVED_TYPE>`) : okhttp3.internal.cache.FaultHidingSink {
+    val hasErrors: bool;
+    val onException: `<UNRESOLVED_TYPE>`;
+    fun write(arg0: okio.Buffer, arg1: long): void;
 
-    fun flush(): void
-        assigns hasErrors;
+    fun flush(): void;
 
-    fun close(): void
-        assigns hasErrors;
+    fun close(): void;
 
     fun getOnException(): `<UNRESOLVED_TYPE>`;
 }
-automaton okhttp3.CacheControl (var arg0: bool, var arg1: bool, var arg2: int, var arg3: int, var arg4: bool, var arg5: bool, var arg6: bool, var arg7: int, var arg8: int, var arg9: bool, var arg10: bool, var arg11: bool, var arg12: java.lang.String) : okhttp3.CacheControl {
-    var noCache: bool;
-    var noStore: bool;
-    var maxAgeSeconds: int;
-    var sMaxAgeSeconds: int;
-    var isPrivate: bool;
-    var isPublic: bool;
-    var mustRevalidate: bool;
-    var maxStaleSeconds: int;
-    var minFreshSeconds: int;
-    var onlyIfCached: bool;
-    var noTransform: bool;
-    var immutable: bool;
-    var headerValue: java.lang.String;
-    var FORCE_NETWORK: okhttp3.CacheControl;
-    var FORCE_CACHE: okhttp3.CacheControl;
-    var Companion: okhttp3.CacheControl$Companion;
+automaton okhttp3.CacheControl (val arg0: bool, val arg1: bool, val arg2: int, val arg3: int, val arg4: bool, val arg5: bool, val arg6: bool, val arg7: int, val arg8: int, val arg9: bool, val arg10: bool, val arg11: bool, val arg12: java.lang.String) : okhttp3.CacheControl {
+    val noCache: bool;
+    val noStore: bool;
+    val maxAgeSeconds: int;
+    val sMaxAgeSeconds: int;
+    val isPrivate: bool;
+    val isPublic: bool;
+    val mustRevalidate: bool;
+    val maxStaleSeconds: int;
+    val minFreshSeconds: int;
+    val onlyIfCached: bool;
+    val noTransform: bool;
+    val immutable: bool;
+    val headerValue: java.lang.String;
+    val FORCE_NETWORK: okhttp3.CacheControl;
+    val FORCE_CACHE: okhttp3.CacheControl;
+    val Companion: okhttp3.CacheControl$Companion;
     fun `-deprecated_noCache`(): bool;
 
     fun `-deprecated_noStore`(): bool;
@@ -6772,8 +6170,7 @@ automaton okhttp3.CacheControl (var arg0: bool, var arg1: bool, var arg2: int, v
 
     fun `-deprecated_immutable`(): bool;
 
-    fun toString(): java.lang.String
-        assigns headerValue;
+    fun toString(): java.lang.String;
 
     fun noCache(): bool;
 
@@ -6799,10 +6196,7 @@ automaton okhttp3.CacheControl (var arg0: bool, var arg1: bool, var arg2: int, v
 
     fun immutable(): bool;
 
-    fun `<clinit>`(): void
-        assigns Companion;
-        assigns FORCE_NETWORK;
-        assigns FORCE_CACHE;
+    fun `<clinit>`(): void;
 
     fun parse(arg0: okhttp3.Headers): okhttp3.CacheControl;
 }
@@ -6829,13 +6223,13 @@ automaton okhttp3.internal.http2.Http2Reader$Handler : okhttp3.internal.http2.Ht
 
     fun alternateService(arg0: int, arg1: java.lang.String, arg2: okio.ByteString, arg3: java.lang.String, arg4: int, arg5: long): void;
 }
-automaton okhttp3.internal.connection.Exchange (var arg0: okhttp3.internal.connection.RealCall, var arg1: okhttp3.EventListener, var arg2: okhttp3.internal.connection.ExchangeFinder, var arg3: okhttp3.internal.http.ExchangeCodec) : okhttp3.internal.connection.Exchange {
-    var isDuplex: bool;
-    var connection: okhttp3.internal.connection.RealConnection;
-    var call: okhttp3.internal.connection.RealCall;
-    var eventListener: okhttp3.EventListener;
-    var finder: okhttp3.internal.connection.ExchangeFinder;
-    var codec: okhttp3.internal.http.ExchangeCodec;
+automaton okhttp3.internal.connection.Exchange (val arg0: okhttp3.internal.connection.RealCall, val arg1: okhttp3.EventListener, val arg2: okhttp3.internal.connection.ExchangeFinder, val arg3: okhttp3.internal.http.ExchangeCodec) : okhttp3.internal.connection.Exchange {
+    val isDuplex: bool;
+    val connection: okhttp3.internal.connection.RealConnection;
+    val call: okhttp3.internal.connection.RealCall;
+    val eventListener: okhttp3.EventListener;
+    val finder: okhttp3.internal.connection.ExchangeFinder;
+    val codec: okhttp3.internal.http.ExchangeCodec;
     fun isDuplex$okhttp(): bool;
 
     fun getConnection$okhttp(): okhttp3.internal.connection.RealConnection;
@@ -6844,8 +6238,7 @@ automaton okhttp3.internal.connection.Exchange (var arg0: okhttp3.internal.conne
 
     fun writeRequestHeaders(arg0: okhttp3.Request): void;
 
-    fun createRequestBody(arg0: okhttp3.Request, arg1: bool): okio.Sink
-        assigns isDuplex;
+    fun createRequestBody(arg0: okhttp3.Request, arg1: bool): okio.Sink;
 
     fun flushRequest(): void;
 
@@ -6859,6 +6252,9 @@ automaton okhttp3.internal.connection.Exchange (var arg0: okhttp3.internal.conne
 
     fun openResponseBody(arg0: okhttp3.Response): okhttp3.ResponseBody;
 
+    @Throws("java.lang.IllegalStateException", (state <= 6))
+    @Throws("java.lang.IllegalStateException", (state <= 6))
+    @Throws("java.lang.IllegalStateException", (errorCode == "'null-const'"))
     fun trailers(): okhttp3.Headers;
 
     fun newWebSocketStreams(): okhttp3.internal.ws.RealWebSocket$Streams;
@@ -6909,15 +6305,13 @@ automaton okhttp3.ResponseBody$Companion : okhttp3.ResponseBody$Companion {
     fun create(arg0: okhttp3.MediaType, arg1: long, arg2: okio.BufferedSource): okhttp3.ResponseBody;
 }
 automaton okhttp3.internal.authenticator.JavaNetAuthenticator$WhenMappings : okhttp3.internal.authenticator.JavaNetAuthenticator$WhenMappings {
-    var $EnumSwitchMapping$0: array<int>;
-    fun `<clinit>`(): void
-        assigns $EnumSwitchMapping$0;
+    val $EnumSwitchMapping$0: array<int>;
+    fun `<clinit>`(): void;
 }
 automaton okhttp3.internal.platform.Platform$Companion : okhttp3.internal.platform.Platform$Companion {
     fun get(): okhttp3.internal.platform.Platform;
 
-    fun resetForTests(arg0: okhttp3.internal.platform.Platform): void
-        assigns arg0.platform;
+    fun resetForTests(arg0: okhttp3.internal.platform.Platform): void;
 
     fun resetForTests$default(arg0: okhttp3.internal.platform.Platform$Companion, arg1: okhttp3.internal.platform.Platform, arg2: int, arg3: java.lang.Object): void;
 
@@ -6941,32 +6335,25 @@ automaton okhttp3.internal.platform.Platform$Companion : okhttp3.internal.platfo
 
     fun access$findPlatform(arg0: okhttp3.internal.platform.Platform$Companion): okhttp3.internal.platform.Platform;
 }
-automaton okhttp3.internal.http2.Header (var arg0: okio.ByteString, var arg1: okio.ByteString) : okhttp3.internal.http2.Header {
-    var hpackSize: int;
-    var name: okio.ByteString;
-    var value: okio.ByteString;
-    var PSEUDO_PREFIX: okio.ByteString;
-    var RESPONSE_STATUS_UTF8: java.lang.String;
-    var TARGET_METHOD_UTF8: java.lang.String;
-    var TARGET_PATH_UTF8: java.lang.String;
-    var TARGET_SCHEME_UTF8: java.lang.String;
-    var TARGET_AUTHORITY_UTF8: java.lang.String;
-    var RESPONSE_STATUS: okio.ByteString;
-    var TARGET_METHOD: okio.ByteString;
-    var TARGET_PATH: okio.ByteString;
-    var TARGET_SCHEME: okio.ByteString;
-    var TARGET_AUTHORITY: okio.ByteString;
-    var Companion: okhttp3.internal.http2.Header$Companion;
+automaton okhttp3.internal.http2.Header (val arg0: okio.ByteString, val arg1: okio.ByteString) : okhttp3.internal.http2.Header {
+    val hpackSize: int;
+    val name: okio.ByteString;
+    val value: okio.ByteString;
+    val PSEUDO_PREFIX: okio.ByteString;
+    val RESPONSE_STATUS_UTF8: java.lang.String;
+    val TARGET_METHOD_UTF8: java.lang.String;
+    val TARGET_PATH_UTF8: java.lang.String;
+    val TARGET_SCHEME_UTF8: java.lang.String;
+    val TARGET_AUTHORITY_UTF8: java.lang.String;
+    val RESPONSE_STATUS: okio.ByteString;
+    val TARGET_METHOD: okio.ByteString;
+    val TARGET_PATH: okio.ByteString;
+    val TARGET_SCHEME: okio.ByteString;
+    val TARGET_AUTHORITY: okio.ByteString;
+    val Companion: okhttp3.internal.http2.Header$Companion;
     fun toString(): java.lang.String;
 
-    fun `<clinit>`(): void
-        assigns Companion;
-        assigns PSEUDO_PREFIX;
-        assigns RESPONSE_STATUS;
-        assigns TARGET_METHOD;
-        assigns TARGET_PATH;
-        assigns TARGET_SCHEME;
-        assigns TARGET_AUTHORITY;
+    fun `<clinit>`(): void;
 
     fun component1(): okio.ByteString;
 
@@ -6986,10 +6373,10 @@ automaton okhttp3.CookieJar$Companion$NoCookies : okhttp3.CookieJar$Companion$No
     fun loadForRequest(arg0: okhttp3.HttpUrl): `<UNRESOLVED_TYPE>`;
 }
 automaton okhttp3.internal.platform.AndroidPlatform : okhttp3.internal.platform.AndroidPlatform {
-    var socketAdapters: `<UNRESOLVED_TYPE>`;
-    var closeGuard: okhttp3.internal.platform.android.CloseGuard;
-    var isSupported: bool;
-    var Companion: okhttp3.internal.platform.AndroidPlatform$Companion;
+    val socketAdapters: `<UNRESOLVED_TYPE>`;
+    val closeGuard: okhttp3.internal.platform.android.CloseGuard;
+    val isSupported: bool;
+    val Companion: okhttp3.internal.platform.AndroidPlatform$Companion;
     fun connectSocket(arg0: java.net.Socket, arg1: java.net.InetSocketAddress, arg2: int): void;
 
     fun trustManager(arg0: javax.net.ssl.SSLSocketFactory): `<UNRESOLVED_TYPE>`;
@@ -7008,42 +6395,35 @@ automaton okhttp3.internal.platform.AndroidPlatform : okhttp3.internal.platform.
 
     fun buildTrustRootIndex(arg0: javax.net.ssl.X509TrustManager): okhttp3.internal.tls.TrustRootIndex;
 
-    fun `<clinit>`(): void
-        assigns Companion;
-        assigns isSupported;
+    fun `<clinit>`(): void;
 
     fun access$isSupported$cp(): bool;
 }
 automaton okhttp3.WebSocket$Factory : okhttp3.WebSocket$Factory {
     fun newWebSocket(arg0: okhttp3.Request, arg1: okhttp3.WebSocketListener): okhttp3.WebSocket;
 }
-automaton okhttp3.internal.http1.Http1ExchangeCodec$AbstractSource (var arg0: okhttp3.internal.http1.Http1ExchangeCodec) : okhttp3.internal.http1.Http1ExchangeCodec$AbstractSource {
-    var timeout: okio.ForwardingTimeout;
-    var closed: bool;
-    var this$0: okhttp3.internal.http1.Http1ExchangeCodec;
+automaton okhttp3.internal.http1.Http1ExchangeCodec$AbstractSource (val arg0: okhttp3.internal.http1.Http1ExchangeCodec) : okhttp3.internal.http1.Http1ExchangeCodec$AbstractSource {
+    val timeout: okio.ForwardingTimeout;
+    val closed: bool;
+    val this$0: okhttp3.internal.http1.Http1ExchangeCodec;
     fun getTimeout(): okio.ForwardingTimeout;
 
     fun getClosed(): bool;
 
-    fun setClosed(arg0: bool): void
-        assigns closed;
+    fun setClosed(arg0: bool): void;
 
     fun timeout(): okio.Timeout;
 
-    fun read(arg0: okio.Buffer, arg1: long): long
-        assigns arg0.head;
-        assigns arg0.size;
+    fun read(arg0: okio.Buffer, arg1: long): long;
 
-    fun responseBodyComplete$okhttp(): void
-        assigns timeout.delegate;
-        assigns this$0.state;
+    fun responseBodyComplete$okhttp(): void;
 }
-automaton okhttp3.internal.http2.Http2Connection$pushRequestLater$$inlined$execute$1 (var arg0: java.lang.String, var arg1: bool, var arg2: java.lang.String, var arg3: bool, var arg4: okhttp3.internal.http2.Http2Connection, var arg5: int, var arg6: `<UNRESOLVED_TYPE>`) : okhttp3.internal.http2.Http2Connection$pushRequestLater$$inlined$execute$1 {
-    var $name: java.lang.String;
-    var $cancelable: bool;
-    var this$0: okhttp3.internal.http2.Http2Connection;
-    var $streamId$inlined: int;
-    var $requestHeaders$inlined: `<UNRESOLVED_TYPE>`;
+automaton okhttp3.internal.http2.Http2Connection$pushRequestLater$$inlined$execute$1 (val arg0: java.lang.String, val arg1: bool, val arg2: java.lang.String, val arg3: bool, val arg4: okhttp3.internal.http2.Http2Connection, val arg5: int, val arg6: `<UNRESOLVED_TYPE>`) : okhttp3.internal.http2.Http2Connection$pushRequestLater$$inlined$execute$1 {
+    val $name: java.lang.String;
+    val $cancelable: bool;
+    val this$0: okhttp3.internal.http2.Http2Connection;
+    val $streamId$inlined: int;
+    val $requestHeaders$inlined: `<UNRESOLVED_TYPE>`;
     fun runOnce(): long;
 }
 automaton okhttp3.internal.platform.android.AndroidLogKt : okhttp3.internal.platform.android.AndroidLogKt {
@@ -7052,39 +6432,28 @@ automaton okhttp3.internal.platform.android.AndroidLogKt : okhttp3.internal.plat
     fun access$getAndroidLevel$p(arg0: java.util.logging.LogRecord): int;
 }
 automaton okhttp3.Interceptor$Companion : okhttp3.Interceptor$Companion {
-    var $$INSTANCE: okhttp3.Interceptor$Companion;
+    val $$INSTANCE: okhttp3.Interceptor$Companion;
     fun invoke(arg0: kotlin.jvm.functions.Function1): okhttp3.Interceptor;
 
-    fun `<clinit>`(): void
-        assigns $$INSTANCE;
+    fun `<clinit>`(): void;
 }
-automaton okhttp3.internal.connection.Exchange$ResponseBodySource (var arg0: okhttp3.internal.connection.Exchange, var arg1: okio.Source, var arg2: long) : okhttp3.internal.connection.Exchange$ResponseBodySource {
-    var bytesReceived: long;
-    var invokeStartEvent: bool;
-    var completed: bool;
-    var closed: bool;
-    var contentLength: long;
-    var this$0: okhttp3.internal.connection.Exchange;
-    fun read(arg0: okio.Buffer, arg1: long): long
-        assigns invokeStartEvent;
-        assigns bytesReceived;
-        assigns arg0.head;
-        assigns arg0.size;
-        assigns completed;
+automaton okhttp3.internal.connection.Exchange$ResponseBodySource (val arg0: okhttp3.internal.connection.Exchange, val arg1: okio.Source, val arg2: long) : okhttp3.internal.connection.Exchange$ResponseBodySource {
+    val bytesReceived: long;
+    val invokeStartEvent: bool;
+    val completed: bool;
+    val closed: bool;
+    val contentLength: long;
+    val this$0: okhttp3.internal.connection.Exchange;
+    fun read(arg0: okio.Buffer, arg1: long): long;
 
-    fun close(): void
-        assigns closed;
-        assigns completed;
-        assigns invokeStartEvent;
+    fun close(): void;
 
-    fun complete(arg0: java.io.IOException): `<UNRESOLVED_TYPE>`
-        assigns completed;
-        assigns invokeStartEvent;
+    fun complete(arg0: java.io.IOException): `<UNRESOLVED_TYPE>`;
 }
 automaton okhttp3.internal.tls.OkHostnameVerifier : okhttp3.internal.tls.OkHostnameVerifier {
-    var ALT_DNS_NAME: int;
-    var ALT_IPA_NAME: int;
-    var INSTANCE: okhttp3.internal.tls.OkHostnameVerifier;
+    val ALT_DNS_NAME: int;
+    val ALT_IPA_NAME: int;
+    val INSTANCE: okhttp3.internal.tls.OkHostnameVerifier;
     fun verify(arg0: java.lang.String, arg1: javax.net.ssl.SSLSession): bool;
 
     fun verify(arg0: java.lang.String, arg1: java.security.cert.X509Certificate): bool;
@@ -7099,8 +6468,7 @@ automaton okhttp3.internal.tls.OkHostnameVerifier : okhttp3.internal.tls.OkHostn
 
     fun getSubjectAltNames(arg0: java.security.cert.X509Certificate, arg1: int): `<UNRESOLVED_TYPE>`;
 
-    fun `<clinit>`(): void
-        assigns INSTANCE;
+    fun `<clinit>`(): void;
 }
 automaton okhttp3.internal.cache2.Relay$Companion : okhttp3.internal.cache2.Relay$Companion {
     fun edit(arg0: java.io.File, arg1: okio.Source, arg2: okio.ByteString, arg3: long): okhttp3.internal.cache2.Relay;
@@ -7108,55 +6476,49 @@ automaton okhttp3.internal.cache2.Relay$Companion : okhttp3.internal.cache2.Rela
     fun read(arg0: java.io.File): okhttp3.internal.cache2.Relay;
 }
 automaton okhttp3.internal.platform.android.AndroidLogHandler : okhttp3.internal.platform.android.AndroidLogHandler {
-    var INSTANCE: okhttp3.internal.platform.android.AndroidLogHandler;
+    val INSTANCE: okhttp3.internal.platform.android.AndroidLogHandler;
     fun publish(arg0: java.util.logging.LogRecord): void;
 
     fun flush(): void;
 
     fun close(): void;
 
-    fun `<clinit>`(): void
-        assigns INSTANCE;
+    fun `<clinit>`(): void;
 }
-automaton okhttp3.internal.authenticator.JavaNetAuthenticator (var arg0: okhttp3.Dns) : okhttp3.internal.authenticator.JavaNetAuthenticator {
-    var defaultDns: okhttp3.Dns;
+automaton okhttp3.internal.authenticator.JavaNetAuthenticator (val arg0: okhttp3.Dns) : okhttp3.internal.authenticator.JavaNetAuthenticator {
+    val defaultDns: okhttp3.Dns;
     fun authenticate(arg0: okhttp3.Route, arg1: okhttp3.Response): okhttp3.Request;
 
     fun connectToInetAddress(arg0: java.net.Proxy, arg1: okhttp3.HttpUrl, arg2: okhttp3.Dns): `<UNRESOLVED_TYPE>`;
 }
-automaton okhttp3.internal.http2.Http2Connection$$special$$inlined$schedule$1 (var arg0: java.lang.String, var arg1: java.lang.String, var arg2: okhttp3.internal.http2.Http2Connection, var arg3: long) : okhttp3.internal.http2.Http2Connection$$special$$inlined$schedule$1 {
-    var $name: java.lang.String;
-    var this$0: okhttp3.internal.http2.Http2Connection;
-    var $pingIntervalNanos$inlined: long;
-    fun runOnce(): long
-        assigns this$0.intervalPingsSent;
-        assigns this$0.isShutdown;
+automaton okhttp3.internal.http2.Http2Connection$$special$$inlined$schedule$1 (val arg0: java.lang.String, val arg1: java.lang.String, val arg2: okhttp3.internal.http2.Http2Connection, val arg3: long) : okhttp3.internal.http2.Http2Connection$$special$$inlined$schedule$1 {
+    val $name: java.lang.String;
+    val this$0: okhttp3.internal.http2.Http2Connection;
+    val $pingIntervalNanos$inlined: long;
+    fun runOnce(): long;
 }
 automaton okhttp3.internal.http2.Hpack : okhttp3.internal.http2.Hpack {
-    var PREFIX_4_BITS: int;
-    var PREFIX_5_BITS: int;
-    var PREFIX_6_BITS: int;
-    var PREFIX_7_BITS: int;
-    var SETTINGS_HEADER_TABLE_SIZE: int;
-    var SETTINGS_HEADER_TABLE_SIZE_LIMIT: int;
-    var STATIC_HEADER_TABLE: array<okhttp3.internal.http2.Header>;
-    var NAME_TO_FIRST_INDEX: `<UNRESOLVED_TYPE>`;
-    var INSTANCE: okhttp3.internal.http2.Hpack;
+    val PREFIX_4_BITS: int;
+    val PREFIX_5_BITS: int;
+    val PREFIX_6_BITS: int;
+    val PREFIX_7_BITS: int;
+    val SETTINGS_HEADER_TABLE_SIZE: int;
+    val SETTINGS_HEADER_TABLE_SIZE_LIMIT: int;
+    val STATIC_HEADER_TABLE: array<okhttp3.internal.http2.Header>;
+    val NAME_TO_FIRST_INDEX: `<UNRESOLVED_TYPE>`;
+    val INSTANCE: okhttp3.internal.http2.Hpack;
     fun getSTATIC_HEADER_TABLE(): array<okhttp3.internal.http2.Header>;
 
     fun getNAME_TO_FIRST_INDEX(): `<UNRESOLVED_TYPE>`;
 
     fun nameToFirstIndex(): `<UNRESOLVED_TYPE>`;
 
-    fun checkLowercase(arg0: okio.ByteString): okio.ByteString
-        assigns arg0.utf8;
+    fun checkLowercase(arg0: okio.ByteString): okio.ByteString;
 
-    fun `<clinit>`(): void
-        assigns INSTANCE;
-        assigns STATIC_HEADER_TABLE;
+    fun `<clinit>`(): void;
 }
 automaton okhttp3.internal.concurrent.TaskQueue$AwaitIdleTask : okhttp3.internal.concurrent.TaskQueue$AwaitIdleTask {
-    var latch: `<UNRESOLVED_TYPE>`;
+    val latch: `<UNRESOLVED_TYPE>`;
     fun getLatch(): `<UNRESOLVED_TYPE>`;
 
     fun runOnce(): long;
@@ -7182,70 +6544,60 @@ automaton okhttp3.Interceptor$Chain : okhttp3.Interceptor$Chain {
 
     fun withWriteTimeout(arg0: int, arg1: java.util.concurrent.TimeUnit): okhttp3.Interceptor$Chain;
 }
-automaton okhttp3.internal.platform.android.AndroidCertificateChainCleaner (var arg0: `<UNRESOLVED_TYPE>`, var arg1: `<UNRESOLVED_TYPE>`) : okhttp3.internal.platform.android.AndroidCertificateChainCleaner {
-    var trustManager: `<UNRESOLVED_TYPE>`;
-    var x509TrustManagerExtensions: `<UNRESOLVED_TYPE>`;
-    var Companion: okhttp3.internal.platform.android.AndroidCertificateChainCleaner$Companion;
+automaton okhttp3.internal.platform.android.AndroidCertificateChainCleaner (val arg0: `<UNRESOLVED_TYPE>`, val arg1: `<UNRESOLVED_TYPE>`) : okhttp3.internal.platform.android.AndroidCertificateChainCleaner {
+    val trustManager: `<UNRESOLVED_TYPE>`;
+    val x509TrustManagerExtensions: `<UNRESOLVED_TYPE>`;
+    val Companion: okhttp3.internal.platform.android.AndroidCertificateChainCleaner$Companion;
     fun clean(arg0: java.util.List, arg1: java.lang.String): `<UNRESOLVED_TYPE>`;
 
     fun equals(arg0: java.lang.Object): bool;
 
     fun hashCode(): int;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 }
-automaton okhttp3.internal.http2.Http2Connection$ReaderRunnable$ping$$inlined$execute$1 (var arg0: java.lang.String, var arg1: bool, var arg2: java.lang.String, var arg3: bool, var arg4: okhttp3.internal.http2.Http2Connection$ReaderRunnable, var arg5: int, var arg6: int) : okhttp3.internal.http2.Http2Connection$ReaderRunnable$ping$$inlined$execute$1 {
-    var $name: java.lang.String;
-    var $cancelable: bool;
-    var this$0: okhttp3.internal.http2.Http2Connection$ReaderRunnable;
-    var $payload1$inlined: int;
-    var $payload2$inlined: int;
+automaton okhttp3.internal.http2.Http2Connection$ReaderRunnable$ping$$inlined$execute$1 (val arg0: java.lang.String, val arg1: bool, val arg2: java.lang.String, val arg3: bool, val arg4: okhttp3.internal.http2.Http2Connection$ReaderRunnable, val arg5: int, val arg6: int) : okhttp3.internal.http2.Http2Connection$ReaderRunnable$ping$$inlined$execute$1 {
+    val $name: java.lang.String;
+    val $cancelable: bool;
+    val this$0: okhttp3.internal.http2.Http2Connection$ReaderRunnable;
+    val $payload1$inlined: int;
+    val $payload2$inlined: int;
     fun runOnce(): long;
 }
 automaton okhttp3.TlsVersion$Companion : okhttp3.TlsVersion$Companion {
     fun forJavaName(arg0: java.lang.String): okhttp3.TlsVersion;
 }
-automaton okhttp3.MultipartReader$PartSource (var arg0: okhttp3.MultipartReader) : okhttp3.MultipartReader$PartSource {
-    var timeout: okio.Timeout;
-    var this$0: okhttp3.MultipartReader;
-    fun close(): void
-        assigns this$0.currentPart;
+automaton okhttp3.MultipartReader$PartSource (val arg0: okhttp3.MultipartReader) : okhttp3.MultipartReader$PartSource {
+    val timeout: okio.Timeout;
+    val this$0: okhttp3.MultipartReader;
+    fun close(): void;
 
-    fun read(arg0: okio.Buffer, arg1: long): long
-        assigns arg0.head;
-        assigns arg0.size;
+    fun read(arg0: okio.Buffer, arg1: long): long;
 
     fun timeout(): okio.Timeout;
 }
-automaton okhttp3.internal.cache.DiskLruCache$snapshots$1 (var arg0: okhttp3.internal.cache.DiskLruCache) : okhttp3.internal.cache.DiskLruCache$snapshots$1 {
-    var delegate: `<UNRESOLVED_TYPE>`;
-    var nextSnapshot: okhttp3.internal.cache.DiskLruCache$Snapshot;
-    var removeSnapshot: okhttp3.internal.cache.DiskLruCache$Snapshot;
-    var this$0: okhttp3.internal.cache.DiskLruCache;
+automaton okhttp3.internal.cache.DiskLruCache$snapshots$1 (val arg0: okhttp3.internal.cache.DiskLruCache) : okhttp3.internal.cache.DiskLruCache$snapshots$1 {
+    val delegate: `<UNRESOLVED_TYPE>`;
+    val nextSnapshot: okhttp3.internal.cache.DiskLruCache$Snapshot;
+    val removeSnapshot: okhttp3.internal.cache.DiskLruCache$Snapshot;
+    val this$0: okhttp3.internal.cache.DiskLruCache;
     fun getDelegate(): `<UNRESOLVED_TYPE>`;
 
     fun getNextSnapshot(): okhttp3.internal.cache.DiskLruCache$Snapshot;
 
-    fun setNextSnapshot(arg0: okhttp3.internal.cache.DiskLruCache$Snapshot): void
-        assigns nextSnapshot;
+    fun setNextSnapshot(arg0: okhttp3.internal.cache.DiskLruCache$Snapshot): void;
 
     fun getRemoveSnapshot(): okhttp3.internal.cache.DiskLruCache$Snapshot;
 
-    fun setRemoveSnapshot(arg0: okhttp3.internal.cache.DiskLruCache$Snapshot): void
-        assigns removeSnapshot;
+    fun setRemoveSnapshot(arg0: okhttp3.internal.cache.DiskLruCache$Snapshot): void;
 
-    fun hasNext(): bool
-        assigns nextSnapshot;
+    fun hasNext(): bool;
 
-    fun next(): okhttp3.internal.cache.DiskLruCache$Snapshot
-        assigns removeSnapshot;
-        assigns nextSnapshot;
+    fun next(): okhttp3.internal.cache.DiskLruCache$Snapshot;
 
     fun next(): java.lang.Object;
 
-    fun remove(): void
-        assigns removeSnapshot;
+    fun remove(): void;
 }
 automaton okhttp3.internal.concurrent.TaskRunner$Backend : okhttp3.internal.concurrent.TaskRunner$Backend {
     fun beforeTask(arg0: okhttp3.internal.concurrent.TaskRunner): void;
@@ -7258,8 +6610,8 @@ automaton okhttp3.internal.concurrent.TaskRunner$Backend : okhttp3.internal.conc
 
     fun execute(arg0: java.lang.Runnable): void;
 }
-automaton okhttp3.internal.ws.RealWebSocket$WriterTask (var arg0: okhttp3.internal.ws.RealWebSocket) : okhttp3.internal.ws.RealWebSocket$WriterTask {
-    var this$0: okhttp3.internal.ws.RealWebSocket;
+automaton okhttp3.internal.ws.RealWebSocket$WriterTask (val arg0: okhttp3.internal.ws.RealWebSocket) : okhttp3.internal.ws.RealWebSocket$WriterTask {
+    val this$0: okhttp3.internal.ws.RealWebSocket;
     fun runOnce(): long;
 }
 automaton okhttp3.internal.platform.android.Android10SocketAdapter$Companion : okhttp3.internal.platform.android.Android10SocketAdapter$Companion {
@@ -7268,9 +6620,9 @@ automaton okhttp3.internal.platform.android.Android10SocketAdapter$Companion : o
     fun isSupported(): bool;
 }
 automaton okhttp3.internal.platform.Android10Platform : okhttp3.internal.platform.Android10Platform {
-    var socketAdapters: `<UNRESOLVED_TYPE>`;
-    var isSupported: bool;
-    var Companion: okhttp3.internal.platform.Android10Platform$Companion;
+    val socketAdapters: `<UNRESOLVED_TYPE>`;
+    val isSupported: bool;
+    val Companion: okhttp3.internal.platform.Android10Platform$Companion;
     fun trustManager(arg0: javax.net.ssl.SSLSocketFactory): `<UNRESOLVED_TYPE>`;
 
     fun configureTlsExtensions(arg0: javax.net.ssl.SSLSocket, arg1: java.lang.String, arg2: java.util.List): void;
@@ -7281,29 +6633,24 @@ automaton okhttp3.internal.platform.Android10Platform : okhttp3.internal.platfor
 
     fun buildCertificateChainCleaner(arg0: javax.net.ssl.X509TrustManager): okhttp3.internal.tls.CertificateChainCleaner;
 
-    fun `<clinit>`(): void
-        assigns Companion;
-        assigns isSupported;
+    fun `<clinit>`(): void;
 
     fun access$isSupported$cp(): bool;
 }
 automaton okhttp3.internal.http1.HeadersReader$Companion : okhttp3.internal.http1.HeadersReader$Companion {
 }
-automaton okhttp3.internal.http1.HeadersReader (var arg0: okio.BufferedSource) : okhttp3.internal.http1.HeadersReader {
-    var headerLimit: long;
-    var source: okio.BufferedSource;
-    var HEADER_LIMIT: int;
-    var Companion: okhttp3.internal.http1.HeadersReader$Companion;
-    fun readLine(): java.lang.String
-        assigns headerLimit;
+automaton okhttp3.internal.http1.HeadersReader (val arg0: okio.BufferedSource) : okhttp3.internal.http1.HeadersReader {
+    val headerLimit: long;
+    val source: okio.BufferedSource;
+    val HEADER_LIMIT: int;
+    val Companion: okhttp3.internal.http1.HeadersReader$Companion;
+    fun readLine(): java.lang.String;
 
-    fun readHeaders(): okhttp3.Headers
-        assigns headerLimit;
+    fun readHeaders(): okhttp3.Headers;
 
     fun getSource(): okio.BufferedSource;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 }
 automaton okhttp3.internal.platform.Jdk8WithJettyBootPlatform$Companion : okhttp3.internal.platform.Jdk8WithJettyBootPlatform$Companion {
     fun buildIfSupported(): okhttp3.internal.platform.Platform;
@@ -7325,28 +6672,20 @@ automaton okhttp3.Call : okhttp3.Call {
 
     fun clone(): okhttp3.Call;
 }
-automaton okhttp3.internal.http1.Http1ExchangeCodec$KnownLengthSink (var arg0: okhttp3.internal.http1.Http1ExchangeCodec) : okhttp3.internal.http1.Http1ExchangeCodec$KnownLengthSink {
-    var timeout: okio.ForwardingTimeout;
-    var closed: bool;
-    var this$0: okhttp3.internal.http1.Http1ExchangeCodec;
+automaton okhttp3.internal.http1.Http1ExchangeCodec$KnownLengthSink (val arg0: okhttp3.internal.http1.Http1ExchangeCodec) : okhttp3.internal.http1.Http1ExchangeCodec$KnownLengthSink {
+    val timeout: okio.ForwardingTimeout;
+    val closed: bool;
+    val this$0: okhttp3.internal.http1.Http1ExchangeCodec;
     fun timeout(): okio.Timeout;
 
-    fun write(arg0: okio.Buffer, arg1: long): void
-        assigns arg0.head;
-        assigns arg0.head.prev;
-        assigns arg0.head.next;
-        assigns arg0.size;
-        assigns arg0.head.pos;
+    fun write(arg0: okio.Buffer, arg1: long): void;
 
     fun flush(): void;
 
-    fun close(): void
-        assigns closed;
-        assigns timeout.delegate;
-        assigns this$0.state;
+    fun close(): void;
 }
 automaton okhttp3.internal.platform.android.ConscryptSocketAdapter : okhttp3.internal.platform.android.ConscryptSocketAdapter {
-    var Companion: okhttp3.internal.platform.android.ConscryptSocketAdapter$Companion;
+    val Companion: okhttp3.internal.platform.android.ConscryptSocketAdapter$Companion;
     fun trustManager(arg0: javax.net.ssl.SSLSocketFactory): `<UNRESOLVED_TYPE>`;
 
     fun matchesSocket(arg0: javax.net.ssl.SSLSocket): bool;
@@ -7357,104 +6696,100 @@ automaton okhttp3.internal.platform.android.ConscryptSocketAdapter : okhttp3.int
 
     fun configureTlsExtensions(arg0: javax.net.ssl.SSLSocket, arg1: java.lang.String, arg2: java.util.List): void;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 
     fun matchesSocketFactory(arg0: javax.net.ssl.SSLSocketFactory): bool;
 }
 automaton okhttp3.internal.http2.ConnectionShutdownException : okhttp3.internal.http2.ConnectionShutdownException {
 }
 automaton okhttp3.internal.ws.MessageDeflaterKt : okhttp3.internal.ws.MessageDeflaterKt {
-    var EMPTY_DEFLATE_BLOCK: okio.ByteString;
-    var LAST_OCTETS_COUNT_TO_REMOVE_AFTER_DEFLATION: int;
-    fun `<clinit>`(): void
-        assigns EMPTY_DEFLATE_BLOCK;
+    val EMPTY_DEFLATE_BLOCK: okio.ByteString;
+    val LAST_OCTETS_COUNT_TO_REMOVE_AFTER_DEFLATION: int;
+    fun `<clinit>`(): void;
 
     fun access$getEMPTY_DEFLATE_BLOCK$p(): okio.ByteString;
 }
-automaton okhttp3.internal.connection.RouteException (var arg0: `<UNRESOLVED_TYPE>`) : okhttp3.internal.connection.RouteException {
-    var lastConnectException: `<UNRESOLVED_TYPE>`;
-    var firstConnectException: `<UNRESOLVED_TYPE>`;
+automaton okhttp3.internal.connection.RouteException (val arg0: `<UNRESOLVED_TYPE>`) : okhttp3.internal.connection.RouteException {
+    val lastConnectException: `<UNRESOLVED_TYPE>`;
+    val firstConnectException: `<UNRESOLVED_TYPE>`;
     fun getLastConnectException(): `<UNRESOLVED_TYPE>`;
 
     fun addConnectException(arg0: java.io.IOException): void;
 
     fun getFirstConnectException(): `<UNRESOLVED_TYPE>`;
 }
-automaton okhttp3.MultipartReader$Part (var arg0: okhttp3.Headers, var arg1: okio.BufferedSource) : okhttp3.MultipartReader$Part {
-    var headers: okhttp3.Headers;
-    var body: okio.BufferedSource;
+automaton okhttp3.MultipartReader$Part (val arg0: okhttp3.Headers, val arg1: okio.BufferedSource) : okhttp3.MultipartReader$Part {
+    val headers: okhttp3.Headers;
+    val body: okio.BufferedSource;
     fun headers(): okhttp3.Headers;
 
     fun body(): okio.BufferedSource;
 
     fun close(): void;
 }
-automaton okhttp3.CertificatePinner$check$1 (var arg0: okhttp3.CertificatePinner, var arg1: `<UNRESOLVED_TYPE>`, var arg2: java.lang.String) : okhttp3.CertificatePinner$check$1 {
-    var this$0: okhttp3.CertificatePinner;
-    var $peerCertificates: `<UNRESOLVED_TYPE>`;
-    var $hostname: java.lang.String;
+automaton okhttp3.CertificatePinner$check$1 (val arg0: okhttp3.CertificatePinner, val arg1: `<UNRESOLVED_TYPE>`, val arg2: java.lang.String) : okhttp3.CertificatePinner$check$1 {
+    val this$0: okhttp3.CertificatePinner;
+    val $peerCertificates: `<UNRESOLVED_TYPE>`;
+    val $hostname: java.lang.String;
     fun invoke(): java.lang.Object;
 
     fun invoke(): `<UNRESOLVED_TYPE>`;
 }
 automaton okhttp3.Authenticator : okhttp3.Authenticator {
-    var NONE: okhttp3.Authenticator;
-    var JAVA_NET_AUTHENTICATOR: okhttp3.Authenticator;
-    var Companion: okhttp3.Authenticator$Companion;
+    val NONE: okhttp3.Authenticator;
+    val JAVA_NET_AUTHENTICATOR: okhttp3.Authenticator;
+    val Companion: okhttp3.Authenticator$Companion;
     fun authenticate(arg0: okhttp3.Route, arg1: okhttp3.Response): okhttp3.Request;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 }
 automaton okhttp3.Credentials : okhttp3.Credentials {
-    var INSTANCE: okhttp3.Credentials;
+    val INSTANCE: okhttp3.Credentials;
     fun basic(arg0: java.lang.String, arg1: java.lang.String, arg2: java.nio.charset.Charset): java.lang.String;
 
     fun basic$default(arg0: java.lang.String, arg1: java.lang.String, arg2: java.nio.charset.Charset, arg3: int, arg4: java.lang.Object): java.lang.String;
 
     fun basic(arg0: java.lang.String, arg1: java.lang.String): java.lang.String;
 
-    fun `<clinit>`(): void
-        assigns INSTANCE;
+    fun `<clinit>`(): void;
 }
-automaton okhttp3.internal.http2.Http2Connection (var arg0: okhttp3.internal.http2.Http2Connection$Builder) : okhttp3.internal.http2.Http2Connection {
-    var client: bool;
-    var listener: okhttp3.internal.http2.Http2Connection$Listener;
-    var streams: `<UNRESOLVED_TYPE>`;
-    var connectionName: java.lang.String;
-    var lastGoodStreamId: int;
-    var nextStreamId: int;
-    var isShutdown: bool;
-    var taskRunner: okhttp3.internal.concurrent.TaskRunner;
-    var writerQueue: okhttp3.internal.concurrent.TaskQueue;
-    var pushQueue: okhttp3.internal.concurrent.TaskQueue;
-    var settingsListenerQueue: okhttp3.internal.concurrent.TaskQueue;
-    var pushObserver: okhttp3.internal.http2.PushObserver;
-    var intervalPingsSent: long;
-    var intervalPongsReceived: long;
-    var degradedPingsSent: long;
-    var degradedPongsReceived: long;
-    var awaitPingsSent: long;
-    var awaitPongsReceived: long;
-    var degradedPongDeadlineNs: long;
-    var okHttpSettings: okhttp3.internal.http2.Settings;
-    var peerSettings: okhttp3.internal.http2.Settings;
-    var readBytesTotal: long;
-    var readBytesAcknowledged: long;
-    var writeBytesTotal: long;
-    var writeBytesMaximum: long;
-    var socket: `<UNRESOLVED_TYPE>`;
-    var writer: okhttp3.internal.http2.Http2Writer;
-    var readerRunnable: okhttp3.internal.http2.Http2Connection$ReaderRunnable;
-    var currentPushRequests: `<UNRESOLVED_TYPE>`;
-    var OKHTTP_CLIENT_WINDOW_SIZE: int;
-    var DEFAULT_SETTINGS: okhttp3.internal.http2.Settings;
-    var INTERVAL_PING: int;
-    var DEGRADED_PING: int;
-    var AWAIT_PING: int;
-    var DEGRADED_PONG_TIMEOUT_NS: int;
-    var Companion: okhttp3.internal.http2.Http2Connection$Companion;
+automaton okhttp3.internal.http2.Http2Connection (val arg0: okhttp3.internal.http2.Http2Connection$Builder) : okhttp3.internal.http2.Http2Connection {
+    val client: bool;
+    val listener: okhttp3.internal.http2.Http2Connection$Listener;
+    val streams: `<UNRESOLVED_TYPE>`;
+    val connectionName: java.lang.String;
+    val lastGoodStreamId: int;
+    val nextStreamId: int;
+    val isShutdown: bool;
+    val taskRunner: okhttp3.internal.concurrent.TaskRunner;
+    val writerQueue: okhttp3.internal.concurrent.TaskQueue;
+    val pushQueue: okhttp3.internal.concurrent.TaskQueue;
+    val settingsListenerQueue: okhttp3.internal.concurrent.TaskQueue;
+    val pushObserver: okhttp3.internal.http2.PushObserver;
+    val intervalPingsSent: long;
+    val intervalPongsReceived: long;
+    val degradedPingsSent: long;
+    val degradedPongsReceived: long;
+    val awaitPingsSent: long;
+    val awaitPongsReceived: long;
+    val degradedPongDeadlineNs: long;
+    val okHttpSettings: okhttp3.internal.http2.Settings;
+    val peerSettings: okhttp3.internal.http2.Settings;
+    val readBytesTotal: long;
+    val readBytesAcknowledged: long;
+    val writeBytesTotal: long;
+    val writeBytesMaximum: long;
+    val socket: `<UNRESOLVED_TYPE>`;
+    val writer: okhttp3.internal.http2.Http2Writer;
+    val readerRunnable: okhttp3.internal.http2.Http2Connection$ReaderRunnable;
+    val currentPushRequests: `<UNRESOLVED_TYPE>`;
+    val OKHTTP_CLIENT_WINDOW_SIZE: int;
+    val DEFAULT_SETTINGS: okhttp3.internal.http2.Settings;
+    val INTERVAL_PING: int;
+    val DEGRADED_PING: int;
+    val AWAIT_PING: int;
+    val DEGRADED_PONG_TIMEOUT_NS: int;
+    val Companion: okhttp3.internal.http2.Http2Connection$Companion;
     fun getClient$okhttp(): bool;
 
     fun getListener$okhttp(): okhttp3.internal.http2.Http2Connection$Listener;
@@ -7465,20 +6800,17 @@ automaton okhttp3.internal.http2.Http2Connection (var arg0: okhttp3.internal.htt
 
     fun getLastGoodStreamId$okhttp(): int;
 
-    fun setLastGoodStreamId$okhttp(arg0: int): void
-        assigns lastGoodStreamId;
+    fun setLastGoodStreamId$okhttp(arg0: int): void;
 
     fun getNextStreamId$okhttp(): int;
 
-    fun setNextStreamId$okhttp(arg0: int): void
-        assigns nextStreamId;
+    fun setNextStreamId$okhttp(arg0: int): void;
 
     fun getOkHttpSettings(): okhttp3.internal.http2.Settings;
 
     fun getPeerSettings(): okhttp3.internal.http2.Settings;
 
-    fun setPeerSettings(arg0: okhttp3.internal.http2.Settings): void
-        assigns peerSettings;
+    fun setPeerSettings(arg0: okhttp3.internal.http2.Settings): void;
 
     fun getReadBytesTotal(): long;
 
@@ -7500,31 +6832,17 @@ automaton okhttp3.internal.http2.Http2Connection (var arg0: okhttp3.internal.htt
 
     fun removeStream$okhttp(arg0: int): okhttp3.internal.http2.Http2Stream;
 
-    fun updateConnectionFlowControl$okhttp(arg0: long): void
-        assigns readBytesTotal;
-        assigns readBytesAcknowledged;
+    fun updateConnectionFlowControl$okhttp(arg0: long): void;
 
-    fun pushStream(arg0: int, arg1: java.util.List, arg2: bool): okhttp3.internal.http2.Http2Stream
-        assigns nextStreamId;
-        assigns isShutdown;
+    fun pushStream(arg0: int, arg1: java.util.List, arg2: bool): okhttp3.internal.http2.Http2Stream;
 
-    fun newStream(arg0: java.util.List, arg1: bool): okhttp3.internal.http2.Http2Stream
-        assigns nextStreamId;
-        assigns isShutdown;
+    fun newStream(arg0: java.util.List, arg1: bool): okhttp3.internal.http2.Http2Stream;
 
-    fun newStream(arg0: int, arg1: java.util.List, arg2: bool): okhttp3.internal.http2.Http2Stream
-        assigns nextStreamId;
-        assigns isShutdown;
+    fun newStream(arg0: int, arg1: java.util.List, arg2: bool): okhttp3.internal.http2.Http2Stream;
 
     fun writeHeaders$okhttp(arg0: int, arg1: bool, arg2: java.util.List): void;
 
-    fun writeData(arg0: int, arg1: bool, arg2: okio.Buffer, arg3: long): void
-        assigns writeBytesTotal;
-        assigns arg2.head;
-        assigns arg2.head.prev;
-        assigns arg2.head.next;
-        assigns arg2.size;
-        assigns arg2.head.pos;
+    fun writeData(arg0: int, arg1: bool, arg2: okio.Buffer, arg3: long): void;
 
     fun writeSynResetLater$okhttp(arg0: int, arg1: okhttp3.internal.http2.ErrorCode): void;
 
@@ -7532,35 +6850,25 @@ automaton okhttp3.internal.http2.Http2Connection (var arg0: okhttp3.internal.htt
 
     fun writeWindowUpdateLater$okhttp(arg0: int, arg1: long): void;
 
-    fun writePing(arg0: bool, arg1: int, arg2: int): void
-        assigns isShutdown;
+    fun writePing(arg0: bool, arg1: int, arg2: int): void;
 
-    fun writePingAndAwaitPong(): void
-        assigns awaitPingsSent;
-        assigns isShutdown;
+    fun writePingAndAwaitPong(): void;
 
-    fun writePing(): void
-        assigns awaitPingsSent;
-        assigns isShutdown;
+    fun writePing(): void;
 
     fun awaitPong(): void;
 
     fun flush(): void;
 
-    fun shutdown(arg0: okhttp3.internal.http2.ErrorCode): void
-        assigns isShutdown;
+    fun shutdown(arg0: okhttp3.internal.http2.ErrorCode): void;
 
-    fun close(): void
-        assigns isShutdown;
+    fun close(): void;
 
-    fun close$okhttp(arg0: okhttp3.internal.http2.ErrorCode, arg1: okhttp3.internal.http2.ErrorCode, arg2: java.io.IOException): void
-        assigns isShutdown;
+    fun close$okhttp(arg0: okhttp3.internal.http2.ErrorCode, arg1: okhttp3.internal.http2.ErrorCode, arg2: java.io.IOException): void;
 
-    fun failConnection(arg0: java.io.IOException): void
-        assigns isShutdown;
+    fun failConnection(arg0: java.io.IOException): void;
 
-    fun start(arg0: bool, arg1: okhttp3.internal.concurrent.TaskRunner): void
-        assigns arg1.nextQueueName;
+    fun start(arg0: bool, arg1: okhttp3.internal.concurrent.TaskRunner): void;
 
     fun start$default(arg0: okhttp3.internal.http2.Http2Connection, arg1: bool, arg2: okhttp3.internal.concurrent.TaskRunner, arg3: int, arg4: java.lang.Object): void;
 
@@ -7572,9 +6880,7 @@ automaton okhttp3.internal.http2.Http2Connection (var arg0: okhttp3.internal.htt
 
     fun isHealthy(arg0: long): bool;
 
-    fun sendDegradedPingLater$okhttp(): void
-        assigns degradedPingsSent;
-        assigns degradedPongDeadlineNs;
+    fun sendDegradedPingLater$okhttp(): void;
 
     fun pushedStream$okhttp(arg0: int): bool;
 
@@ -7582,19 +6888,15 @@ automaton okhttp3.internal.http2.Http2Connection (var arg0: okhttp3.internal.htt
 
     fun pushHeadersLater$okhttp(arg0: int, arg1: java.util.List, arg2: bool): void;
 
-    fun pushDataLater$okhttp(arg0: int, arg1: okio.BufferedSource, arg2: int, arg3: bool): void
-        assigns arg1;
+    fun pushDataLater$okhttp(arg0: int, arg1: okio.BufferedSource, arg2: int, arg3: bool): void;
 
     fun pushResetLater$okhttp(arg0: int, arg1: okhttp3.internal.http2.ErrorCode): void;
 
-    fun `<clinit>`(): void
-        assigns Companion;
-        assigns DEFAULT_SETTINGS;
+    fun `<clinit>`(): void;
 
     fun access$isShutdown$p(arg0: okhttp3.internal.http2.Http2Connection): bool;
 
-    fun access$setShutdown$p(arg0: okhttp3.internal.http2.Http2Connection, arg1: bool): void
-        assigns arg0.isShutdown;
+    fun access$setShutdown$p(arg0: okhttp3.internal.http2.Http2Connection, arg1: bool): void;
 
     fun access$getTaskRunner$p(arg0: okhttp3.internal.http2.Http2Connection): okhttp3.internal.concurrent.TaskRunner;
 
@@ -7602,28 +6904,23 @@ automaton okhttp3.internal.http2.Http2Connection (var arg0: okhttp3.internal.htt
 
     fun access$getSettingsListenerQueue$p(arg0: okhttp3.internal.http2.Http2Connection): okhttp3.internal.concurrent.TaskQueue;
 
-    fun access$failConnection(arg0: okhttp3.internal.http2.Http2Connection, arg1: java.io.IOException): void
-        assigns arg0.isShutdown;
+    fun access$failConnection(arg0: okhttp3.internal.http2.Http2Connection, arg1: java.io.IOException): void;
 
     fun access$getIntervalPongsReceived$p(arg0: okhttp3.internal.http2.Http2Connection): long;
 
-    fun access$setIntervalPongsReceived$p(arg0: okhttp3.internal.http2.Http2Connection, arg1: long): void
-        assigns arg0.intervalPongsReceived;
+    fun access$setIntervalPongsReceived$p(arg0: okhttp3.internal.http2.Http2Connection, arg1: long): void;
 
     fun access$getDegradedPongsReceived$p(arg0: okhttp3.internal.http2.Http2Connection): long;
 
-    fun access$setDegradedPongsReceived$p(arg0: okhttp3.internal.http2.Http2Connection, arg1: long): void
-        assigns arg0.degradedPongsReceived;
+    fun access$setDegradedPongsReceived$p(arg0: okhttp3.internal.http2.Http2Connection, arg1: long): void;
 
     fun access$getAwaitPongsReceived$p(arg0: okhttp3.internal.http2.Http2Connection): long;
 
-    fun access$setAwaitPongsReceived$p(arg0: okhttp3.internal.http2.Http2Connection, arg1: long): void
-        assigns arg0.awaitPongsReceived;
+    fun access$setAwaitPongsReceived$p(arg0: okhttp3.internal.http2.Http2Connection, arg1: long): void;
 
     fun access$getWriteBytesMaximum$p(arg0: okhttp3.internal.http2.Http2Connection): long;
 
-    fun access$setWriteBytesMaximum$p(arg0: okhttp3.internal.http2.Http2Connection, arg1: long): void
-        assigns arg0.writeBytesMaximum;
+    fun access$setWriteBytesMaximum$p(arg0: okhttp3.internal.http2.Http2Connection, arg1: long): void;
 
     fun access$getPushObserver$p(arg0: okhttp3.internal.http2.Http2Connection): okhttp3.internal.http2.PushObserver;
 
@@ -7631,8 +6928,7 @@ automaton okhttp3.internal.http2.Http2Connection (var arg0: okhttp3.internal.htt
 
     fun access$getIntervalPingsSent$p(arg0: okhttp3.internal.http2.Http2Connection): long;
 
-    fun access$setIntervalPingsSent$p(arg0: okhttp3.internal.http2.Http2Connection, arg1: long): void
-        assigns arg0.intervalPingsSent;
+    fun access$setIntervalPingsSent$p(arg0: okhttp3.internal.http2.Http2Connection, arg1: long): void;
 
     fun access$getDEFAULT_SETTINGS$cp(): okhttp3.internal.http2.Settings;
 }
@@ -7642,7 +6938,7 @@ automaton okhttp3.OkHttpClient$Companion : okhttp3.OkHttpClient$Companion {
     fun getDEFAULT_CONNECTION_SPECS$okhttp(): `<UNRESOLVED_TYPE>`;
 }
 automaton okhttp3.internal.http.HttpMethod : okhttp3.internal.http.HttpMethod {
-    var INSTANCE: okhttp3.internal.http.HttpMethod;
+    val INSTANCE: okhttp3.internal.http.HttpMethod;
     fun invalidatesCache(arg0: java.lang.String): bool;
 
     fun requiresRequestBody(arg0: java.lang.String): bool;
@@ -7653,133 +6949,115 @@ automaton okhttp3.internal.http.HttpMethod : okhttp3.internal.http.HttpMethod {
 
     fun redirectsToGet(arg0: java.lang.String): bool;
 
-    fun `<clinit>`(): void
-        assigns INSTANCE;
+    fun `<clinit>`(): void;
 }
-automaton okhttp3.internal.cache.DiskLruCache$cleanupTask$1 (var arg0: okhttp3.internal.cache.DiskLruCache, var arg1: java.lang.String) : okhttp3.internal.cache.DiskLruCache$cleanupTask$1 {
-    var this$0: okhttp3.internal.cache.DiskLruCache;
-    fun runOnce(): long
-        assigns this$0.mostRecentTrimFailed;
-        assigns this$0.redundantOpCount;
-        assigns this$0.mostRecentRebuildFailed;
-        assigns this$0.journalWriter;
+automaton okhttp3.internal.cache.DiskLruCache$cleanupTask$1 (val arg0: okhttp3.internal.cache.DiskLruCache, val arg1: java.lang.String) : okhttp3.internal.cache.DiskLruCache$cleanupTask$1 {
+    val this$0: okhttp3.internal.cache.DiskLruCache;
+    fun runOnce(): long;
 }
-automaton okhttp3.internal.connection.RealConnectionPool$cleanupTask$1 (var arg0: okhttp3.internal.connection.RealConnectionPool, var arg1: java.lang.String) : okhttp3.internal.connection.RealConnectionPool$cleanupTask$1 {
-    var this$0: okhttp3.internal.connection.RealConnectionPool;
+automaton okhttp3.internal.connection.RealConnectionPool$cleanupTask$1 (val arg0: okhttp3.internal.connection.RealConnectionPool, val arg1: java.lang.String) : okhttp3.internal.connection.RealConnectionPool$cleanupTask$1 {
+    val this$0: okhttp3.internal.connection.RealConnectionPool;
     fun runOnce(): long;
 }
 automaton okhttp3.internal.connection.RouteSelector$Companion : okhttp3.internal.connection.RouteSelector$Companion {
     fun getSocketHost(arg0: java.net.InetSocketAddress): java.lang.String;
 }
-automaton okhttp3.internal.connection.RealCall$timeout$1 (var arg0: okhttp3.internal.connection.RealCall) : okhttp3.internal.connection.RealCall$timeout$1 {
-    var this$0: okhttp3.internal.connection.RealCall;
+automaton okhttp3.internal.connection.RealCall$timeout$1 (val arg0: okhttp3.internal.connection.RealCall) : okhttp3.internal.connection.RealCall$timeout$1 {
+    val this$0: okhttp3.internal.connection.RealCall;
     fun timedOut(): void;
 }
-automaton okhttp3.internal.http1.Http1ExchangeCodec (var arg0: okhttp3.OkHttpClient, var arg1: okhttp3.internal.connection.RealConnection, var arg2: okio.BufferedSource, var arg3: okio.BufferedSink) : okhttp3.internal.http1.Http1ExchangeCodec {
-    var `state`: int;
-    var headersReader: okhttp3.internal.http1.HeadersReader;
-    var trailers: okhttp3.Headers;
-    var client: okhttp3.OkHttpClient;
-    var connection: okhttp3.internal.connection.RealConnection;
-    var source: okio.BufferedSource;
-    var sink: okio.BufferedSink;
-    var NO_CHUNK_YET: long;
-    var STATE_IDLE: int;
-    var STATE_OPEN_REQUEST_BODY: int;
-    var STATE_WRITING_REQUEST_BODY: int;
-    var STATE_READ_RESPONSE_HEADERS: int;
-    var STATE_OPEN_RESPONSE_BODY: int;
-    var STATE_READING_RESPONSE_BODY: int;
-    var STATE_CLOSED: int;
-    var Companion: okhttp3.internal.http1.Http1ExchangeCodec$Companion;
+automaton okhttp3.internal.http1.Http1ExchangeCodec (val arg0: okhttp3.OkHttpClient, val arg1: okhttp3.internal.connection.RealConnection, val arg2: okio.BufferedSource, val arg3: okio.BufferedSink) : okhttp3.internal.http1.Http1ExchangeCodec {
+    val `state`: int;
+    val headersReader: okhttp3.internal.http1.HeadersReader;
+    val trailers: okhttp3.Headers;
+    val client: okhttp3.OkHttpClient;
+    val connection: okhttp3.internal.connection.RealConnection;
+    val source: okio.BufferedSource;
+    val sink: okio.BufferedSink;
+    val NO_CHUNK_YET: long;
+    val STATE_IDLE: int;
+    val STATE_OPEN_REQUEST_BODY: int;
+    val STATE_WRITING_REQUEST_BODY: int;
+    val STATE_READ_RESPONSE_HEADERS: int;
+    val STATE_OPEN_RESPONSE_BODY: int;
+    val STATE_READING_RESPONSE_BODY: int;
+    val STATE_CLOSED: int;
+    val Companion: okhttp3.internal.http1.Http1ExchangeCodec$Companion;
     fun isChunked(arg0: okhttp3.Response): bool;
 
     fun isChunked(arg0: okhttp3.Request): bool;
 
     fun isClosed(): bool;
 
-    fun createRequestBody(arg0: okhttp3.Request, arg1: long): okio.Sink
-        assigns state;
+    fun createRequestBody(arg0: okhttp3.Request, arg1: long): okio.Sink;
 
     fun cancel(): void;
 
-    fun writeRequestHeaders(arg0: okhttp3.Request): void
-        assigns state;
+    fun writeRequestHeaders(arg0: okhttp3.Request): void;
 
     fun reportedContentLength(arg0: okhttp3.Response): long;
 
-    fun openResponseBodySource(arg0: okhttp3.Response): okio.Source
-        assigns state;
+    fun openResponseBodySource(arg0: okhttp3.Response): okio.Source;
 
+    @Throws("java.lang.IllegalStateException", !(state == 6))
+    @Throws("java.lang.IllegalStateException", (!(state == 6) & (state >= 6)))
+    @Throws("java.lang.IllegalStateException", (!(state == 6) & (state <= 6)))
     fun trailers(): okhttp3.Headers;
 
     fun flushRequest(): void;
 
     fun finishRequest(): void;
 
-    fun writeRequest(arg0: okhttp3.Headers, arg1: java.lang.String): void
-        assigns state;
+    fun writeRequest(arg0: okhttp3.Headers, arg1: java.lang.String): void;
 
-    fun readResponseHeaders(arg0: bool): okhttp3.Response$Builder
-        assigns state;
+    fun readResponseHeaders(arg0: bool): okhttp3.Response$Builder;
 
-    fun newChunkedSink(): okio.Sink
-        assigns state;
+    fun newChunkedSink(): okio.Sink;
 
-    fun newKnownLengthSink(): okio.Sink
-        assigns state;
+    fun newKnownLengthSink(): okio.Sink;
 
-    fun newFixedLengthSource(arg0: long): okio.Source
-        assigns state;
+    fun newFixedLengthSource(arg0: long): okio.Source;
 
-    fun newChunkedSource(arg0: okhttp3.HttpUrl): okio.Source
-        assigns state;
+    fun newChunkedSource(arg0: okhttp3.HttpUrl): okio.Source;
 
-    fun newUnknownLengthSource(): okio.Source
-        assigns state;
+    fun newUnknownLengthSource(): okio.Source;
 
-    fun detachTimeout(arg0: okio.ForwardingTimeout): void
-        assigns arg0.delegate;
+    fun detachTimeout(arg0: okio.ForwardingTimeout): void;
 
-    fun skipConnectBody(arg0: okhttp3.Response): void
-        assigns state;
+    fun skipConnectBody(arg0: okhttp3.Response): void;
 
     fun getConnection(): okhttp3.internal.connection.RealConnection;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 
     fun access$getSink$p(arg0: okhttp3.internal.http1.Http1ExchangeCodec): okio.BufferedSink;
 
-    fun access$detachTimeout(arg0: okhttp3.internal.http1.Http1ExchangeCodec, arg1: okio.ForwardingTimeout): void
-        assigns arg1.delegate;
+    fun access$detachTimeout(arg0: okhttp3.internal.http1.Http1ExchangeCodec, arg1: okio.ForwardingTimeout): void;
 
     fun access$getState$p(arg0: okhttp3.internal.http1.Http1ExchangeCodec): int;
 
-    fun access$setState$p(arg0: okhttp3.internal.http1.Http1ExchangeCodec, arg1: int): void
-        assigns arg0.state;
+    fun access$setState$p(arg0: okhttp3.internal.http1.Http1ExchangeCodec, arg1: int): void;
 
     fun access$getSource$p(arg0: okhttp3.internal.http1.Http1ExchangeCodec): okio.BufferedSource;
 
     fun access$getTrailers$p(arg0: okhttp3.internal.http1.Http1ExchangeCodec): okhttp3.Headers;
 
-    fun access$setTrailers$p(arg0: okhttp3.internal.http1.Http1ExchangeCodec, arg1: okhttp3.Headers): void
-        assigns arg0.trailers;
+    fun access$setTrailers$p(arg0: okhttp3.internal.http1.Http1ExchangeCodec, arg1: okhttp3.Headers): void;
 
     fun access$getHeadersReader$p(arg0: okhttp3.internal.http1.Http1ExchangeCodec): okhttp3.internal.http1.HeadersReader;
 
     fun access$getClient$p(arg0: okhttp3.internal.http1.Http1ExchangeCodec): okhttp3.OkHttpClient;
 }
 automaton okhttp3.Cookie$Builder : okhttp3.Cookie$Builder {
-    var name: java.lang.String;
-    var value: java.lang.String;
-    var expiresAt: long;
-    var domain: java.lang.String;
-    var path: java.lang.String;
-    var secure: bool;
-    var httpOnly: bool;
-    var persistent: bool;
-    var hostOnly: bool;
+    val name: java.lang.String;
+    val value: java.lang.String;
+    val expiresAt: long;
+    val domain: java.lang.String;
+    val path: java.lang.String;
+    val secure: bool;
+    val httpOnly: bool;
+    val persistent: bool;
+    val hostOnly: bool;
     fun name(arg0: java.lang.String): okhttp3.Cookie$Builder;
 
     fun value(arg0: java.lang.String): okhttp3.Cookie$Builder;
@@ -7798,42 +7076,51 @@ automaton okhttp3.Cookie$Builder : okhttp3.Cookie$Builder {
 
     fun httpOnly(): okhttp3.Cookie$Builder;
 
+    @Throws("java.lang.NullPointerException", (domain == "'null-const'"))
+    @Throws("java.lang.NullPointerException", (value == "'null-const'"))
+    @Throws("java.lang.NullPointerException", (name == "'null-const'"))
+    @Throws("java.lang.NullPointerException", ((value == "'null-const'") & (name != "'null-const'")))
+    @Throws("java.lang.NullPointerException", (((value == "'null-const'") & (name != "'null-const'")) & (domain != "'null-const'")))
+    @Throws("java.lang.NullPointerException", ((domain == "'null-const'") & (value != "'null-const'")))
+    @Throws("java.lang.NullPointerException", ((domain == "'null-const'") & (name != "'null-const'")))
+    @Throws("java.lang.NullPointerException", (((domain == "'null-const'") & (name != "'null-const'")) & (value != "'null-const'")))
+    @Throws("java.lang.NullPointerException", (((name == "'null-const'") & (value != "'null-const'")) & (domain != "'null-const'")))
+    @Throws("java.lang.NullPointerException", ((name == "'null-const'") & (domain != "'null-const'")))
+    @Throws("java.lang.NullPointerException", ((name == "'null-const'") & (value != "'null-const'")))
+    @Throws("java.lang.NullPointerException", ((value == "'null-const'") & (domain != "'null-const'")))
     fun build(): okhttp3.Cookie;
 }
-automaton okhttp3.internal.cache.DiskLruCache$Editor (var arg0: okhttp3.internal.cache.DiskLruCache, var arg1: okhttp3.internal.cache.DiskLruCache$Entry) : okhttp3.internal.cache.DiskLruCache$Editor {
-    var written: array<bool>;
-    var done: bool;
-    var entry: okhttp3.internal.cache.DiskLruCache$Entry;
-    var this$0: okhttp3.internal.cache.DiskLruCache;
+automaton okhttp3.internal.cache.DiskLruCache$Editor (val arg0: okhttp3.internal.cache.DiskLruCache, val arg1: okhttp3.internal.cache.DiskLruCache$Entry) : okhttp3.internal.cache.DiskLruCache$Editor {
+    val written: array<bool>;
+    val done: bool;
+    val entry: okhttp3.internal.cache.DiskLruCache$Entry;
+    val this$0: okhttp3.internal.cache.DiskLruCache;
     fun getWritten$okhttp(): array<bool>;
 
-    fun detach$okhttp(): void
-        assigns done;
+    fun detach$okhttp(): void;
 
     fun newSource(arg0: int): okio.Source;
 
     fun newSink(arg0: int): okio.Sink;
 
-    fun commit(): void
-        assigns done;
+    fun commit(): void;
 
-    fun abort(): void
-        assigns done;
+    fun abort(): void;
 
     fun getEntry$okhttp(): okhttp3.internal.cache.DiskLruCache$Entry;
 }
-automaton okhttp3.ConnectionSpec (var arg0: bool, var arg1: bool, var arg2: array<java.lang.String>, var arg3: array<java.lang.String>) : okhttp3.ConnectionSpec {
-    var isTls: bool;
-    var supportsTlsExtensions: bool;
-    var cipherSuitesAsString: array<java.lang.String>;
-    var tlsVersionsAsString: array<java.lang.String>;
-    var RESTRICTED_CIPHER_SUITES: array<okhttp3.CipherSuite>;
-    var APPROVED_CIPHER_SUITES: array<okhttp3.CipherSuite>;
-    var RESTRICTED_TLS: okhttp3.ConnectionSpec;
-    var MODERN_TLS: okhttp3.ConnectionSpec;
-    var COMPATIBLE_TLS: okhttp3.ConnectionSpec;
-    var CLEARTEXT: okhttp3.ConnectionSpec;
-    var Companion: okhttp3.ConnectionSpec$Companion;
+automaton okhttp3.ConnectionSpec (val arg0: bool, val arg1: bool, val arg2: array<java.lang.String>, val arg3: array<java.lang.String>) : okhttp3.ConnectionSpec {
+    val isTls: bool;
+    val supportsTlsExtensions: bool;
+    val cipherSuitesAsString: array<java.lang.String>;
+    val tlsVersionsAsString: array<java.lang.String>;
+    val RESTRICTED_CIPHER_SUITES: array<okhttp3.CipherSuite>;
+    val APPROVED_CIPHER_SUITES: array<okhttp3.CipherSuite>;
+    val RESTRICTED_TLS: okhttp3.ConnectionSpec;
+    val MODERN_TLS: okhttp3.ConnectionSpec;
+    val COMPATIBLE_TLS: okhttp3.ConnectionSpec;
+    val CLEARTEXT: okhttp3.ConnectionSpec;
+    val Companion: okhttp3.ConnectionSpec$Companion;
     fun cipherSuites(): `<UNRESOLVED_TYPE>`;
 
     fun `-deprecated_cipherSuites`(): `<UNRESOLVED_TYPE>`;
@@ -7844,8 +7131,12 @@ automaton okhttp3.ConnectionSpec (var arg0: bool, var arg1: bool, var arg2: arra
 
     fun `-deprecated_supportsTlsExtensions`(): bool;
 
+    @Throws("kotlin.TypeCastException", (cipherSuitesAsString != "'null-const'"))
+    @Throws("kotlin.TypeCastException", (tlsVersionsAsString != "'null-const'"))
     fun apply$okhttp(arg0: javax.net.ssl.SSLSocket, arg1: bool): void;
 
+    @Throws("kotlin.TypeCastException", (cipherSuitesAsString != "'null-const'"))
+    @Throws("kotlin.TypeCastException", (tlsVersionsAsString != "'null-const'"))
     fun supportedSpec(arg0: javax.net.ssl.SSLSocket, arg1: bool): okhttp3.ConnectionSpec;
 
     fun isCompatible(arg0: javax.net.ssl.SSLSocket): bool;
@@ -7860,31 +7151,22 @@ automaton okhttp3.ConnectionSpec (var arg0: bool, var arg1: bool, var arg2: arra
 
     fun supportsTlsExtensions(): bool;
 
-    fun `<clinit>`(): void
-        assigns Companion;
-        assigns RESTRICTED_CIPHER_SUITES;
-        assigns APPROVED_CIPHER_SUITES;
-        assigns RESTRICTED_TLS;
-        assigns MODERN_TLS;
-        assigns COMPATIBLE_TLS;
-        assigns CLEARTEXT;
+    fun `<clinit>`(): void;
 
     fun access$getCipherSuitesAsString$p(arg0: okhttp3.ConnectionSpec): array<java.lang.String>;
 
     fun access$getTlsVersionsAsString$p(arg0: okhttp3.ConnectionSpec): array<java.lang.String>;
 }
 automaton okhttp3.internal.platform.Jdk9Platform : okhttp3.internal.platform.Jdk9Platform {
-    var isAvailable: bool;
-    var Companion: okhttp3.internal.platform.Jdk9Platform$Companion;
+    val isAvailable: bool;
+    val Companion: okhttp3.internal.platform.Jdk9Platform$Companion;
     fun configureTlsExtensions(arg0: javax.net.ssl.SSLSocket, arg1: java.lang.String, arg2: java.util.List): void;
 
     fun getSelectedProtocol(arg0: javax.net.ssl.SSLSocket): java.lang.String;
 
     fun trustManager(arg0: javax.net.ssl.SSLSocketFactory): `<UNRESOLVED_TYPE>`;
 
-    fun `<clinit>`(): void
-        assigns Companion;
-        assigns isAvailable;
+    fun `<clinit>`(): void;
 
     fun access$isAvailable$cp(): bool;
 }
@@ -7914,96 +7196,63 @@ automaton okhttp3.Headers$Companion : okhttp3.Headers$Companion {
 
     fun access$get(arg0: okhttp3.Headers$Companion, arg1: array, arg2: java.lang.String): java.lang.String;
 }
-automaton okhttp3.internal.connection.RealConnection (var arg0: okhttp3.internal.connection.RealConnectionPool, var arg1: okhttp3.Route) : okhttp3.internal.connection.RealConnection {
-    var rawSocket: `<UNRESOLVED_TYPE>`;
-    var socket: `<UNRESOLVED_TYPE>`;
-    var handshake: okhttp3.Handshake;
-    var protocol: okhttp3.Protocol;
-    var http2Connection: okhttp3.internal.http2.Http2Connection;
-    var source: okio.BufferedSource;
-    var sink: okio.BufferedSink;
-    var noNewExchanges: bool;
-    var noCoalescedConnections: bool;
-    var routeFailureCount: int;
-    var successCount: int;
-    var refusedStreamCount: int;
-    var allocationLimit: int;
-    var calls: `<UNRESOLVED_TYPE>`;
-    var idleAtNs: long;
-    var connectionPool: okhttp3.internal.connection.RealConnectionPool;
-    var route: okhttp3.Route;
-    var NPE_THROW_WITH_NULL: java.lang.String;
-    var MAX_TUNNEL_ATTEMPTS: int;
-    var IDLE_CONNECTION_HEALTHY_NS: long;
-    var Companion: okhttp3.internal.connection.RealConnection$Companion;
+automaton okhttp3.internal.connection.RealConnection (val arg0: okhttp3.internal.connection.RealConnectionPool, val arg1: okhttp3.Route) : okhttp3.internal.connection.RealConnection {
+    val rawSocket: `<UNRESOLVED_TYPE>`;
+    val socket: `<UNRESOLVED_TYPE>`;
+    val handshake: okhttp3.Handshake;
+    val protocol: okhttp3.Protocol;
+    val http2Connection: okhttp3.internal.http2.Http2Connection;
+    val source: okio.BufferedSource;
+    val sink: okio.BufferedSink;
+    val noNewExchanges: bool;
+    val noCoalescedConnections: bool;
+    val routeFailureCount: int;
+    val successCount: int;
+    val refusedStreamCount: int;
+    val allocationLimit: int;
+    val calls: `<UNRESOLVED_TYPE>`;
+    val idleAtNs: long;
+    val connectionPool: okhttp3.internal.connection.RealConnectionPool;
+    val route: okhttp3.Route;
+    val NPE_THROW_WITH_NULL: java.lang.String;
+    val MAX_TUNNEL_ATTEMPTS: int;
+    val IDLE_CONNECTION_HEALTHY_NS: long;
+    val Companion: okhttp3.internal.connection.RealConnection$Companion;
     fun getNoNewExchanges(): bool;
 
-    fun setNoNewExchanges(arg0: bool): void
-        assigns noNewExchanges;
+    fun setNoNewExchanges(arg0: bool): void;
 
     fun getRouteFailureCount$okhttp(): int;
 
-    fun setRouteFailureCount$okhttp(arg0: int): void
-        assigns routeFailureCount;
+    fun setRouteFailureCount$okhttp(arg0: int): void;
 
     fun getSuccessCount$okhttp(): int;
 
-    fun setSuccessCount$okhttp(arg0: int): void
-        assigns successCount;
+    fun setSuccessCount$okhttp(arg0: int): void;
 
     fun getCalls(): `<UNRESOLVED_TYPE>`;
 
     fun getIdleAtNs$okhttp(): long;
 
-    fun setIdleAtNs$okhttp(arg0: long): void
-        assigns idleAtNs;
+    fun setIdleAtNs$okhttp(arg0: long): void;
 
     fun isMultiplexed(): bool;
 
-    fun noNewExchanges(): void
-        assigns noNewExchanges;
+    fun noNewExchanges(): void;
 
-    fun noCoalescedConnections(): void
-        assigns noCoalescedConnections;
+    fun noCoalescedConnections(): void;
 
-    fun connect(arg0: int, arg1: int, arg2: int, arg3: int, arg4: bool, arg5: okhttp3.Call, arg6: okhttp3.EventListener): void
-        assigns source;
-        assigns sink;
-        assigns handshake;
-        assigns protocol;
-        assigns http2Connection;
-        assigns allocationLimit;
-        assigns idleAtNs;
+    fun connect(arg0: int, arg1: int, arg2: int, arg3: int, arg4: bool, arg5: okhttp3.Call, arg6: okhttp3.EventListener): void;
 
-    fun connectTunnel(arg0: int, arg1: int, arg2: int, arg3: okhttp3.Call, arg4: okhttp3.EventListener): void
-        assigns sink;
-        assigns source;
+    fun connectTunnel(arg0: int, arg1: int, arg2: int, arg3: okhttp3.Call, arg4: okhttp3.EventListener): void;
 
-    fun connectSocket(arg0: int, arg1: int, arg2: okhttp3.Call, arg3: okhttp3.EventListener): void
-        assigns source;
-        assigns sink;
+    fun connectSocket(arg0: int, arg1: int, arg2: okhttp3.Call, arg3: okhttp3.EventListener): void;
 
-    fun establishProtocol(arg0: okhttp3.internal.connection.ConnectionSpecSelector, arg1: int, arg2: okhttp3.Call, arg3: okhttp3.EventListener): void
-        assigns protocol;
-        assigns http2Connection;
-        assigns allocationLimit;
-        assigns handshake;
-        assigns source;
-        assigns sink;
-        assigns arg0.nextModeIndex;
-        assigns arg0.isFallbackPossible;
+    fun establishProtocol(arg0: okhttp3.internal.connection.ConnectionSpecSelector, arg1: int, arg2: okhttp3.Call, arg3: okhttp3.EventListener): void;
 
-    fun startHttp2(arg0: int): void
-        assigns http2Connection;
-        assigns allocationLimit;
+    fun startHttp2(arg0: int): void;
 
-    fun connectTls(arg0: okhttp3.internal.connection.ConnectionSpecSelector): void
-        assigns handshake;
-        assigns source;
-        assigns sink;
-        assigns protocol;
-        assigns arg0.nextModeIndex;
-        assigns arg0.isFallbackPossible;
+    fun connectTls(arg0: okhttp3.internal.connection.ConnectionSpecSelector): void;
 
     fun createTunnel(arg0: int, arg1: int, arg2: okhttp3.Request, arg3: okhttp3.HttpUrl): okhttp3.Request;
 
@@ -8019,8 +7268,7 @@ automaton okhttp3.internal.connection.RealConnection (var arg0: okhttp3.internal
 
     fun newCodec$okhttp(arg0: okhttp3.OkHttpClient, arg1: okhttp3.internal.http.RealInterceptorChain): okhttp3.internal.http.ExchangeCodec;
 
-    fun newWebSocketStreams$okhttp(arg0: okhttp3.internal.connection.Exchange): okhttp3.internal.ws.RealWebSocket$Streams
-        assigns noNewExchanges;
+    fun newWebSocketStreams$okhttp(arg0: okhttp3.internal.connection.Exchange): okhttp3.internal.ws.RealWebSocket$Streams;
 
     fun route(): okhttp3.Route;
 
@@ -8030,21 +7278,15 @@ automaton okhttp3.internal.connection.RealConnection (var arg0: okhttp3.internal
 
     fun isHealthy(arg0: bool): bool;
 
-    fun onStream(arg0: okhttp3.internal.http2.Http2Stream): void
-        assigns arg0.errorCode;
-        assigns arg0;
+    fun onStream(arg0: okhttp3.internal.http2.Http2Stream): void;
 
-    fun onSettings(arg0: okhttp3.internal.http2.Http2Connection, arg1: okhttp3.internal.http2.Settings): void
-        assigns allocationLimit;
+    fun onSettings(arg0: okhttp3.internal.http2.Http2Connection, arg1: okhttp3.internal.http2.Settings): void;
 
     fun handshake(): okhttp3.Handshake;
 
     fun connectFailed$okhttp(arg0: okhttp3.OkHttpClient, arg1: okhttp3.Route, arg2: java.io.IOException): void;
 
-    fun trackFailure$okhttp(arg0: okhttp3.internal.connection.RealCall, arg1: java.io.IOException): void
-        assigns refusedStreamCount;
-        assigns noNewExchanges;
-        assigns routeFailureCount;
+    fun trackFailure$okhttp(arg0: okhttp3.internal.connection.RealCall, arg1: java.io.IOException): void;
 
     fun protocol(): okhttp3.Protocol;
 
@@ -8052,26 +7294,23 @@ automaton okhttp3.internal.connection.RealConnection (var arg0: okhttp3.internal
 
     fun getConnectionPool(): okhttp3.internal.connection.RealConnectionPool;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 
     fun access$getHandshake$p(arg0: okhttp3.internal.connection.RealConnection): okhttp3.Handshake;
 
-    fun access$setHandshake$p(arg0: okhttp3.internal.connection.RealConnection, arg1: okhttp3.Handshake): void
-        assigns arg0.handshake;
+    fun access$setHandshake$p(arg0: okhttp3.internal.connection.RealConnection, arg1: okhttp3.Handshake): void;
 
     fun access$getSocket$p(arg0: okhttp3.internal.connection.RealConnection): `<UNRESOLVED_TYPE>`;
 
-    fun access$setSocket$p(arg0: okhttp3.internal.connection.RealConnection, arg1: java.net.Socket): void
-        assigns arg0;
+    fun access$setSocket$p(arg0: okhttp3.internal.connection.RealConnection, arg1: java.net.Socket): void;
 }
 automaton okhttp3.Cache$Entry$Companion : okhttp3.Cache$Entry$Companion {
 }
-automaton okhttp3.CertificatePinner (var arg0: `<UNRESOLVED_TYPE>`, var arg1: okhttp3.internal.tls.CertificateChainCleaner) : okhttp3.CertificatePinner {
-    var pins: `<UNRESOLVED_TYPE>`;
-    var certificateChainCleaner: okhttp3.internal.tls.CertificateChainCleaner;
-    var DEFAULT: okhttp3.CertificatePinner;
-    var Companion: okhttp3.CertificatePinner$Companion;
+automaton okhttp3.CertificatePinner (val arg0: `<UNRESOLVED_TYPE>`, val arg1: okhttp3.internal.tls.CertificateChainCleaner) : okhttp3.CertificatePinner {
+    val pins: `<UNRESOLVED_TYPE>`;
+    val certificateChainCleaner: okhttp3.internal.tls.CertificateChainCleaner;
+    val DEFAULT: okhttp3.CertificatePinner;
+    val Companion: okhttp3.CertificatePinner$Companion;
     fun check(arg0: java.lang.String, arg1: java.util.List): void;
 
     fun check$okhttp(arg0: java.lang.String, arg1: kotlin.jvm.functions.Function0): void;
@@ -8090,9 +7329,7 @@ automaton okhttp3.CertificatePinner (var arg0: `<UNRESOLVED_TYPE>`, var arg1: ok
 
     fun getCertificateChainCleaner$okhttp(): okhttp3.internal.tls.CertificateChainCleaner;
 
-    fun `<clinit>`(): void
-        assigns Companion;
-        assigns DEFAULT;
+    fun `<clinit>`(): void;
 
     fun sha1Hash(arg0: java.security.cert.X509Certificate): okio.ByteString;
 
@@ -8103,15 +7340,15 @@ automaton okhttp3.CertificatePinner (var arg0: `<UNRESOLVED_TYPE>`, var arg1: ok
 automaton okhttp3.internal.SuppressSignatureCheck : okhttp3.internal.SuppressSignatureCheck {
 }
 automaton okhttp3.internal.ws.MessageInflaterKt : okhttp3.internal.ws.MessageInflaterKt {
-    var OCTETS_TO_ADD_BEFORE_INFLATION: int;
+    val OCTETS_TO_ADD_BEFORE_INFLATION: int;
 }
-automaton okhttp3.Interceptor$Companion$invoke$1 (var arg0: `<UNRESOLVED_TYPE>`) : okhttp3.Interceptor$Companion$invoke$1 {
-    var $block: `<UNRESOLVED_TYPE>`;
+automaton okhttp3.Interceptor$Companion$invoke$1 (val arg0: `<UNRESOLVED_TYPE>`) : okhttp3.Interceptor$Companion$invoke$1 {
+    val $block: `<UNRESOLVED_TYPE>`;
     fun intercept(arg0: okhttp3.Interceptor$Chain): okhttp3.Response;
 }
 automaton okhttp3.ResponseBody : okhttp3.ResponseBody {
-    var reader: `<UNRESOLVED_TYPE>`;
-    var Companion: okhttp3.ResponseBody$Companion;
+    val reader: `<UNRESOLVED_TYPE>`;
+    val Companion: okhttp3.ResponseBody$Companion;
     fun contentType(): okhttp3.MediaType;
 
     fun contentLength(): long;
@@ -8134,8 +7371,7 @@ automaton okhttp3.ResponseBody : okhttp3.ResponseBody {
 
     fun close(): void;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 
     fun create(arg0: java.lang.String, arg1: okhttp3.MediaType): okhttp3.ResponseBody;
 
@@ -8154,9 +7390,9 @@ automaton okhttp3.ResponseBody : okhttp3.ResponseBody {
     fun create(arg0: okhttp3.MediaType, arg1: long, arg2: okio.BufferedSource): okhttp3.ResponseBody;
 }
 automaton okhttp3.internal.platform.OpenJSSEPlatform : okhttp3.internal.platform.OpenJSSEPlatform {
-    var provider: `<UNRESOLVED_TYPE>`;
-    var isSupported: bool;
-    var Companion: okhttp3.internal.platform.OpenJSSEPlatform$Companion;
+    val provider: `<UNRESOLVED_TYPE>`;
+    val isSupported: bool;
+    val Companion: okhttp3.internal.platform.OpenJSSEPlatform$Companion;
     fun newSSLContext(): `<UNRESOLVED_TYPE>`;
 
     fun platformTrustManager(): `<UNRESOLVED_TYPE>`;
@@ -8167,9 +7403,7 @@ automaton okhttp3.internal.platform.OpenJSSEPlatform : okhttp3.internal.platform
 
     fun getSelectedProtocol(arg0: javax.net.ssl.SSLSocket): java.lang.String;
 
-    fun `<clinit>`(): void
-        assigns Companion;
-        assigns isSupported;
+    fun `<clinit>`(): void;
 
     fun access$isSupported$cp(): bool;
 }
@@ -8183,13 +7417,12 @@ automaton okhttp3.internal.platform.ConscryptPlatform$Companion : okhttp3.intern
     fun atLeastVersion$default(arg0: okhttp3.internal.platform.ConscryptPlatform$Companion, arg1: int, arg2: int, arg3: int, arg4: int, arg5: java.lang.Object): bool;
 }
 automaton okhttp3.internal.http.ExchangeCodec$Companion : okhttp3.internal.http.ExchangeCodec$Companion {
-    var DISCARD_STREAM_TIMEOUT_MILLIS: int;
-    var $$INSTANCE: okhttp3.internal.http.ExchangeCodec$Companion;
-    fun `<clinit>`(): void
-        assigns $$INSTANCE;
+    val DISCARD_STREAM_TIMEOUT_MILLIS: int;
+    val $$INSTANCE: okhttp3.internal.http.ExchangeCodec$Companion;
+    fun `<clinit>`(): void;
 }
 automaton okhttp3.CertificatePinner$Builder : okhttp3.CertificatePinner$Builder {
-    var pins: `<UNRESOLVED_TYPE>`;
+    val pins: `<UNRESOLVED_TYPE>`;
     fun getPins(): `<UNRESOLVED_TYPE>`;
 
     fun add(arg0: java.lang.String, arg1: array): okhttp3.CertificatePinner$Builder;
@@ -8200,22 +7433,20 @@ automaton okhttp3.internal.platform.android.ConscryptSocketAdapter$Companion : o
     fun buildIfSupported(): okhttp3.internal.platform.android.SocketAdapter;
 }
 automaton okhttp3.Dispatcher : okhttp3.Dispatcher {
-    var maxRequests: int;
-    var maxRequestsPerHost: int;
-    var idleCallback: `<UNRESOLVED_TYPE>`;
-    var executorServiceOrNull: `<UNRESOLVED_TYPE>`;
-    var readyAsyncCalls: `<UNRESOLVED_TYPE>`;
-    var runningAsyncCalls: `<UNRESOLVED_TYPE>`;
-    var runningSyncCalls: `<UNRESOLVED_TYPE>`;
+    val maxRequests: int;
+    val maxRequestsPerHost: int;
+    val idleCallback: `<UNRESOLVED_TYPE>`;
+    val executorServiceOrNull: `<UNRESOLVED_TYPE>`;
+    val readyAsyncCalls: `<UNRESOLVED_TYPE>`;
+    val runningAsyncCalls: `<UNRESOLVED_TYPE>`;
+    val runningSyncCalls: `<UNRESOLVED_TYPE>`;
     fun getMaxRequests(): int;
 
-    fun setMaxRequests(arg0: int): void
-        assigns maxRequests;
+    fun setMaxRequests(arg0: int): void;
 
     fun getMaxRequestsPerHost(): int;
 
-    fun setMaxRequestsPerHost(arg0: int): void
-        assigns maxRequestsPerHost;
+    fun setMaxRequestsPerHost(arg0: int): void;
 
     fun getIdleCallback(): `<UNRESOLVED_TYPE>`;
 
@@ -8223,8 +7454,7 @@ automaton okhttp3.Dispatcher : okhttp3.Dispatcher {
 
     fun executorService(): `<UNRESOLVED_TYPE>`;
 
-    fun enqueue$okhttp(arg0: okhttp3.internal.connection.RealCall$AsyncCall): void
-        assigns arg0;
+    fun enqueue$okhttp(arg0: okhttp3.internal.connection.RealCall$AsyncCall): void;
 
     fun findExistingCallWithHost(arg0: java.lang.String): okhttp3.internal.connection.RealCall$AsyncCall;
 
@@ -8251,8 +7481,8 @@ automaton okhttp3.Dispatcher : okhttp3.Dispatcher {
     fun `-deprecated_executorService`(): `<UNRESOLVED_TYPE>`;
 }
 automaton okhttp3.internal.http2.PushObserver : okhttp3.internal.http2.PushObserver {
-    var CANCEL: okhttp3.internal.http2.PushObserver;
-    var Companion: okhttp3.internal.http2.PushObserver$Companion;
+    val CANCEL: okhttp3.internal.http2.PushObserver;
+    val Companion: okhttp3.internal.http2.PushObserver$Companion;
     fun onRequest(arg0: int, arg1: java.util.List): bool;
 
     fun onHeaders(arg0: int, arg1: java.util.List, arg2: bool): bool;
@@ -8261,8 +7491,7 @@ automaton okhttp3.internal.http2.PushObserver : okhttp3.internal.http2.PushObser
 
     fun onReset(arg0: int, arg1: okhttp3.internal.http2.ErrorCode): void;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 }
 automaton okhttp3.internal.http2.Http2Writer$Companion : okhttp3.internal.http2.Http2Writer$Companion {
 }
@@ -8279,33 +7508,33 @@ automaton okhttp3.internal.platform.BouncyCastlePlatform$Companion : okhttp3.int
 
     fun buildIfSupported(): okhttp3.internal.platform.BouncyCastlePlatform;
 }
-automaton okhttp3.ResponseBody$Companion$asResponseBody$1 (var arg0: okio.BufferedSource, var arg1: okhttp3.MediaType, var arg2: long) : okhttp3.ResponseBody$Companion$asResponseBody$1 {
-    var $this_asResponseBody: okio.BufferedSource;
-    var $contentType: okhttp3.MediaType;
-    var $contentLength: long;
+automaton okhttp3.ResponseBody$Companion$asResponseBody$1 (val arg0: okio.BufferedSource, val arg1: okhttp3.MediaType, val arg2: long) : okhttp3.ResponseBody$Companion$asResponseBody$1 {
+    val $this_asResponseBody: okio.BufferedSource;
+    val $contentType: okhttp3.MediaType;
+    val $contentLength: long;
     fun contentType(): okhttp3.MediaType;
 
     fun contentLength(): long;
 
     fun source(): okio.BufferedSource;
 }
-automaton okhttp3.internal.Util$asFactory$1 (var arg0: okhttp3.EventListener) : okhttp3.internal.Util$asFactory$1 {
-    var $this_asFactory: okhttp3.EventListener;
+automaton okhttp3.internal.Util$asFactory$1 (val arg0: okhttp3.EventListener) : okhttp3.internal.Util$asFactory$1 {
+    val $this_asFactory: okhttp3.EventListener;
     fun create(arg0: okhttp3.Call): okhttp3.EventListener;
 }
-automaton okhttp3.internal.cache.CacheStrategy$Factory (var arg0: long, var arg1: okhttp3.Request, var arg2: okhttp3.Response) : okhttp3.internal.cache.CacheStrategy$Factory {
-    var servedDate: `<UNRESOLVED_TYPE>`;
-    var servedDateString: java.lang.String;
-    var lastModified: `<UNRESOLVED_TYPE>`;
-    var lastModifiedString: java.lang.String;
-    var expires: `<UNRESOLVED_TYPE>`;
-    var sentRequestMillis: long;
-    var receivedResponseMillis: long;
-    var etag: java.lang.String;
-    var ageSeconds: int;
-    var nowMillis: long;
-    var request: okhttp3.Request;
-    var cacheResponse: okhttp3.Response;
+automaton okhttp3.internal.cache.CacheStrategy$Factory (val arg0: long, val arg1: okhttp3.Request, val arg2: okhttp3.Response) : okhttp3.internal.cache.CacheStrategy$Factory {
+    val servedDate: `<UNRESOLVED_TYPE>`;
+    val servedDateString: java.lang.String;
+    val lastModified: `<UNRESOLVED_TYPE>`;
+    val lastModifiedString: java.lang.String;
+    val expires: `<UNRESOLVED_TYPE>`;
+    val sentRequestMillis: long;
+    val receivedResponseMillis: long;
+    val etag: java.lang.String;
+    val ageSeconds: int;
+    val nowMillis: long;
+    val request: okhttp3.Request;
+    val cacheResponse: okhttp3.Response;
     fun isFreshnessLifetimeHeuristic(): bool;
 
     fun compute(): okhttp3.internal.cache.CacheStrategy;
@@ -8321,40 +7550,35 @@ automaton okhttp3.internal.cache.CacheStrategy$Factory (var arg0: long, var arg1
     fun getRequest$okhttp(): okhttp3.Request;
 }
 automaton okhttp3.HttpUrl$Builder : okhttp3.HttpUrl$Builder {
-    var scheme: java.lang.String;
-    var encodedUsername: java.lang.String;
-    var encodedPassword: java.lang.String;
-    var host: java.lang.String;
-    var port: int;
-    var encodedPathSegments: `<UNRESOLVED_TYPE>`;
-    var encodedQueryNamesAndValues: `<UNRESOLVED_TYPE>`;
-    var encodedFragment: java.lang.String;
-    var INVALID_HOST: java.lang.String;
-    var Companion: okhttp3.HttpUrl$Builder$Companion;
+    val scheme: java.lang.String;
+    val encodedUsername: java.lang.String;
+    val encodedPassword: java.lang.String;
+    val host: java.lang.String;
+    val port: int;
+    val encodedPathSegments: `<UNRESOLVED_TYPE>`;
+    val encodedQueryNamesAndValues: `<UNRESOLVED_TYPE>`;
+    val encodedFragment: java.lang.String;
+    val INVALID_HOST: java.lang.String;
+    val Companion: okhttp3.HttpUrl$Builder$Companion;
     fun getScheme$okhttp(): java.lang.String;
 
-    fun setScheme$okhttp(arg0: java.lang.String): void
-        assigns scheme;
+    fun setScheme$okhttp(arg0: java.lang.String): void;
 
     fun getEncodedUsername$okhttp(): java.lang.String;
 
-    fun setEncodedUsername$okhttp(arg0: java.lang.String): void
-        assigns encodedUsername;
+    fun setEncodedUsername$okhttp(arg0: java.lang.String): void;
 
     fun getEncodedPassword$okhttp(): java.lang.String;
 
-    fun setEncodedPassword$okhttp(arg0: java.lang.String): void
-        assigns encodedPassword;
+    fun setEncodedPassword$okhttp(arg0: java.lang.String): void;
 
     fun getHost$okhttp(): java.lang.String;
 
-    fun setHost$okhttp(arg0: java.lang.String): void
-        assigns host;
+    fun setHost$okhttp(arg0: java.lang.String): void;
 
     fun getPort$okhttp(): int;
 
-    fun setPort$okhttp(arg0: int): void
-        assigns port;
+    fun setPort$okhttp(arg0: int): void;
 
     fun getEncodedPathSegments$okhttp(): `<UNRESOLVED_TYPE>`;
 
@@ -8364,8 +7588,7 @@ automaton okhttp3.HttpUrl$Builder : okhttp3.HttpUrl$Builder {
 
     fun getEncodedFragment$okhttp(): java.lang.String;
 
-    fun setEncodedFragment$okhttp(arg0: java.lang.String): void
-        assigns encodedFragment;
+    fun setEncodedFragment$okhttp(arg0: java.lang.String): void;
 
     fun scheme(arg0: java.lang.String): okhttp3.HttpUrl$Builder;
 
@@ -8425,17 +7648,15 @@ automaton okhttp3.HttpUrl$Builder : okhttp3.HttpUrl$Builder {
 
     fun reencodeForUri$okhttp(): okhttp3.HttpUrl$Builder;
 
+    @Throws("java.lang.IllegalStateException", ((scheme != "'null-const'") & (host == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((host != "'null-const'") & (scheme == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (host == "'null-const'"))
+    @Throws("java.lang.IllegalStateException", (scheme == "'null-const'"))
     fun build(): okhttp3.HttpUrl;
 
     fun toString(): java.lang.String;
 
-    fun parse$okhttp(arg0: okhttp3.HttpUrl, arg1: java.lang.String): okhttp3.HttpUrl$Builder
-        assigns scheme;
-        assigns encodedUsername;
-        assigns encodedPassword;
-        assigns host;
-        assigns port;
-        assigns encodedFragment;
+    fun parse$okhttp(arg0: okhttp3.HttpUrl, arg1: java.lang.String): okhttp3.HttpUrl$Builder;
 
     fun resolvePath(arg0: java.lang.String, arg1: int, arg2: int): void;
 
@@ -8447,20 +7668,18 @@ automaton okhttp3.HttpUrl$Builder : okhttp3.HttpUrl$Builder {
 
     fun pop(): void;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 }
-automaton okhttp3.internal.http2.Http2Reader (var arg0: okio.BufferedSource, var arg1: bool) : okhttp3.internal.http2.Http2Reader {
-    var continuation: okhttp3.internal.http2.Http2Reader$ContinuationSource;
-    var hpackReader: okhttp3.internal.http2.Hpack$Reader;
-    var source: okio.BufferedSource;
-    var client: bool;
-    var logger: `<UNRESOLVED_TYPE>`;
-    var Companion: okhttp3.internal.http2.Http2Reader$Companion;
+automaton okhttp3.internal.http2.Http2Reader (val arg0: okio.BufferedSource, val arg1: bool) : okhttp3.internal.http2.Http2Reader {
+    val continuation: okhttp3.internal.http2.Http2Reader$ContinuationSource;
+    val hpackReader: okhttp3.internal.http2.Hpack$Reader;
+    val source: okio.BufferedSource;
+    val client: bool;
+    val logger: `<UNRESOLVED_TYPE>`;
+    val Companion: okhttp3.internal.http2.Http2Reader$Companion;
     fun readConnectionPreface(arg0: okhttp3.internal.http2.Http2Reader$Handler): void;
 
-    fun nextFrame(arg0: bool, arg1: okhttp3.internal.http2.Http2Reader$Handler): bool
-        assigns source;
+    fun nextFrame(arg0: bool, arg1: okhttp3.internal.http2.Http2Reader$Handler): bool;
 
     fun readHeaders(arg0: okhttp3.internal.http2.Http2Reader$Handler, arg1: int, arg2: int, arg3: int): void;
 
@@ -8480,33 +7699,34 @@ automaton okhttp3.internal.http2.Http2Reader (var arg0: okio.BufferedSource, var
 
     fun readPing(arg0: okhttp3.internal.http2.Http2Reader$Handler, arg1: int, arg2: int, arg3: int): void;
 
+    @Throws("java.io.IOException", (!(arg3 == 0) & (arg3 <= 0)))
+    @Throws("java.io.IOException", (!(arg3 == 0) & (arg3 >= 0)))
+    @Throws("java.io.IOException", !(arg3 == 0))
     fun readGoAway(arg0: okhttp3.internal.http2.Http2Reader$Handler, arg1: int, arg2: int, arg3: int): void;
 
     fun readWindowUpdate(arg0: okhttp3.internal.http2.Http2Reader$Handler, arg1: int, arg2: int, arg3: int): void;
 
     fun close(): void;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 
     fun access$getLogger$cp(): `<UNRESOLVED_TYPE>`;
 }
 automaton okhttp3.internal.http2.Header$Companion : okhttp3.internal.http2.Header$Companion {
 }
-automaton okhttp3.internal.http2.Http2Connection$writeSynResetLater$$inlined$execute$1 (var arg0: java.lang.String, var arg1: bool, var arg2: java.lang.String, var arg3: bool, var arg4: okhttp3.internal.http2.Http2Connection, var arg5: int, var arg6: okhttp3.internal.http2.ErrorCode) : okhttp3.internal.http2.Http2Connection$writeSynResetLater$$inlined$execute$1 {
-    var $name: java.lang.String;
-    var $cancelable: bool;
-    var this$0: okhttp3.internal.http2.Http2Connection;
-    var $streamId$inlined: int;
-    var $errorCode$inlined: okhttp3.internal.http2.ErrorCode;
-    fun runOnce(): long
-        assigns this$0.isShutdown;
+automaton okhttp3.internal.http2.Http2Connection$writeSynResetLater$$inlined$execute$1 (val arg0: java.lang.String, val arg1: bool, val arg2: java.lang.String, val arg3: bool, val arg4: okhttp3.internal.http2.Http2Connection, val arg5: int, val arg6: okhttp3.internal.http2.ErrorCode) : okhttp3.internal.http2.Http2Connection$writeSynResetLater$$inlined$execute$1 {
+    val $name: java.lang.String;
+    val $cancelable: bool;
+    val this$0: okhttp3.internal.http2.Http2Connection;
+    val $streamId$inlined: int;
+    val $errorCode$inlined: okhttp3.internal.http2.ErrorCode;
+    fun runOnce(): long;
 }
 automaton okhttp3.internal.platform.android.AndroidLog : okhttp3.internal.platform.android.AndroidLog {
-    var MAX_LOG_LENGTH: int;
-    var configuredLoggers: `<UNRESOLVED_TYPE>`;
-    var knownLoggers: `<UNRESOLVED_TYPE>`;
-    var INSTANCE: okhttp3.internal.platform.android.AndroidLog;
+    val MAX_LOG_LENGTH: int;
+    val configuredLoggers: `<UNRESOLVED_TYPE>`;
+    val knownLoggers: `<UNRESOLVED_TYPE>`;
+    val INSTANCE: okhttp3.internal.platform.android.AndroidLog;
     fun androidLog$okhttp(arg0: java.lang.String, arg1: int, arg2: java.lang.String, arg3: java.lang.Throwable): void;
 
     fun loggerTag(arg0: java.lang.String): java.lang.String;
@@ -8515,11 +7735,10 @@ automaton okhttp3.internal.platform.android.AndroidLog : okhttp3.internal.platfo
 
     fun enableLogging(arg0: java.lang.String, arg1: java.lang.String): void;
 
-    fun `<clinit>`(): void
-        assigns INSTANCE;
+    fun `<clinit>`(): void;
 }
-automaton okhttp3.ConnectionPool (var arg0: okhttp3.internal.connection.RealConnectionPool) : okhttp3.ConnectionPool {
-    var delegate: okhttp3.internal.connection.RealConnectionPool;
+automaton okhttp3.ConnectionPool (val arg0: okhttp3.internal.connection.RealConnectionPool) : okhttp3.ConnectionPool {
+    val delegate: okhttp3.internal.connection.RealConnectionPool;
     fun idleConnectionCount(): int;
 
     fun connectionCount(): int;
@@ -8530,63 +7749,48 @@ automaton okhttp3.ConnectionPool (var arg0: okhttp3.internal.connection.RealConn
 }
 automaton okhttp3.internal.ws.RealWebSocket$Companion : okhttp3.internal.ws.RealWebSocket$Companion {
 }
-automaton okhttp3.internal.platform.android.DeferredSocketAdapter (var arg0: java.lang.String) : okhttp3.internal.platform.android.DeferredSocketAdapter {
-    var initialized: bool;
-    var delegate: okhttp3.internal.platform.android.SocketAdapter;
-    var socketPackage: java.lang.String;
+automaton okhttp3.internal.platform.android.DeferredSocketAdapter (val arg0: java.lang.String) : okhttp3.internal.platform.android.DeferredSocketAdapter {
+    val initialized: bool;
+    val delegate: okhttp3.internal.platform.android.SocketAdapter;
+    val socketPackage: java.lang.String;
     fun isSupported(): bool;
 
     fun matchesSocket(arg0: javax.net.ssl.SSLSocket): bool;
 
-    fun configureTlsExtensions(arg0: javax.net.ssl.SSLSocket, arg1: java.lang.String, arg2: java.util.List): void
-        assigns delegate;
-        assigns initialized;
+    fun configureTlsExtensions(arg0: javax.net.ssl.SSLSocket, arg1: java.lang.String, arg2: java.util.List): void;
 
-    fun getSelectedProtocol(arg0: javax.net.ssl.SSLSocket): java.lang.String
-        assigns delegate;
-        assigns initialized;
+    fun getSelectedProtocol(arg0: javax.net.ssl.SSLSocket): java.lang.String;
 
-    fun getDelegate(arg0: javax.net.ssl.SSLSocket): okhttp3.internal.platform.android.SocketAdapter
-        assigns delegate;
-        assigns initialized;
+    fun getDelegate(arg0: javax.net.ssl.SSLSocket): okhttp3.internal.platform.android.SocketAdapter;
 
     fun trustManager(arg0: javax.net.ssl.SSLSocketFactory): `<UNRESOLVED_TYPE>`;
 
     fun matchesSocketFactory(arg0: javax.net.ssl.SSLSocketFactory): bool;
 }
 automaton okhttp3.CookieJar : okhttp3.CookieJar {
-    var NO_COOKIES: okhttp3.CookieJar;
-    var Companion: okhttp3.CookieJar$Companion;
+    val NO_COOKIES: okhttp3.CookieJar;
+    val Companion: okhttp3.CookieJar$Companion;
     fun saveFromResponse(arg0: okhttp3.HttpUrl, arg1: java.util.List): void;
 
     fun loadForRequest(arg0: okhttp3.HttpUrl): `<UNRESOLVED_TYPE>`;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 }
-automaton okhttp3.OkHttpClient$Builder$addInterceptor$$inlined$invoke$1 (var arg0: `<UNRESOLVED_TYPE>`) : okhttp3.OkHttpClient$Builder$addInterceptor$$inlined$invoke$1 {
-    var $block$inlined: `<UNRESOLVED_TYPE>`;
+automaton okhttp3.OkHttpClient$Builder$addInterceptor$$inlined$invoke$1 (val arg0: `<UNRESOLVED_TYPE>`) : okhttp3.OkHttpClient$Builder$addInterceptor$$inlined$invoke$1 {
+    val $block$inlined: `<UNRESOLVED_TYPE>`;
     fun intercept(arg0: okhttp3.Interceptor$Chain): okhttp3.Response;
 }
-automaton okhttp3.Protocol (var arg0: java.lang.String, var arg1: int, var arg2: java.lang.String) : okhttp3.Protocol {
-    var HTTP_1_0: okhttp3.Protocol;
-    var HTTP_1_1: okhttp3.Protocol;
-    var SPDY_3: okhttp3.Protocol;
-    var HTTP_2: okhttp3.Protocol;
-    var H2_PRIOR_KNOWLEDGE: okhttp3.Protocol;
-    var QUIC: okhttp3.Protocol;
-    var $VALUES: array<okhttp3.Protocol>;
-    var protocol: java.lang.String;
-    var Companion: okhttp3.Protocol$Companion;
-    fun `<clinit>`(): void
-        assigns HTTP_1_0;
-        assigns HTTP_1_1;
-        assigns SPDY_3;
-        assigns HTTP_2;
-        assigns H2_PRIOR_KNOWLEDGE;
-        assigns QUIC;
-        assigns $VALUES;
-        assigns Companion;
+automaton okhttp3.Protocol (val arg0: java.lang.String, val arg1: int, val arg2: java.lang.String) : okhttp3.Protocol {
+    val HTTP_1_0: okhttp3.Protocol;
+    val HTTP_1_1: okhttp3.Protocol;
+    val SPDY_3: okhttp3.Protocol;
+    val HTTP_2: okhttp3.Protocol;
+    val H2_PRIOR_KNOWLEDGE: okhttp3.Protocol;
+    val QUIC: okhttp3.Protocol;
+    val $VALUES: array<okhttp3.Protocol>;
+    val protocol: java.lang.String;
+    val Companion: okhttp3.Protocol$Companion;
+    fun `<clinit>`(): void;
 
     fun toString(): java.lang.String;
 
@@ -8603,13 +7807,13 @@ automaton okhttp3.internal.concurrent.TaskRunner$Companion : okhttp3.internal.co
 }
 automaton okhttp3.internal.tls.BasicCertificateChainCleaner$Companion : okhttp3.internal.tls.BasicCertificateChainCleaner$Companion {
 }
-automaton okhttp3.Request (var arg0: okhttp3.HttpUrl, var arg1: java.lang.String, var arg2: okhttp3.Headers, var arg3: okhttp3.RequestBody, var arg4: `<UNRESOLVED_TYPE>`) : okhttp3.Request {
-    var lazyCacheControl: okhttp3.CacheControl;
-    var `url`: okhttp3.HttpUrl;
-    var method: java.lang.String;
-    var headers: okhttp3.Headers;
-    var body: okhttp3.RequestBody;
-    var tags: `<UNRESOLVED_TYPE>`;
+automaton okhttp3.Request (val arg0: okhttp3.HttpUrl, val arg1: java.lang.String, val arg2: okhttp3.Headers, val arg3: okhttp3.RequestBody, val arg4: `<UNRESOLVED_TYPE>`) : okhttp3.Request {
+    val lazyCacheControl: okhttp3.CacheControl;
+    val `url`: okhttp3.HttpUrl;
+    val method: java.lang.String;
+    val headers: okhttp3.Headers;
+    val body: okhttp3.RequestBody;
+    val tags: `<UNRESOLVED_TYPE>`;
     fun isHttps(): bool;
 
     fun header(arg0: java.lang.String): java.lang.String;
@@ -8622,8 +7826,7 @@ automaton okhttp3.Request (var arg0: okhttp3.HttpUrl, var arg1: java.lang.String
 
     fun newBuilder(): okhttp3.Request$Builder;
 
-    fun cacheControl(): okhttp3.CacheControl
-        assigns lazyCacheControl;
+    fun cacheControl(): okhttp3.CacheControl;
 
     fun `-deprecated_url`(): okhttp3.HttpUrl;
 
@@ -8633,8 +7836,7 @@ automaton okhttp3.Request (var arg0: okhttp3.HttpUrl, var arg1: java.lang.String
 
     fun `-deprecated_body`(): okhttp3.RequestBody;
 
-    fun `-deprecated_cacheControl`(): okhttp3.CacheControl
-        assigns lazyCacheControl;
+    fun `-deprecated_cacheControl`(): okhttp3.CacheControl;
 
     fun toString(): java.lang.String;
 
@@ -8651,44 +7853,38 @@ automaton okhttp3.Request (var arg0: okhttp3.HttpUrl, var arg1: java.lang.String
 automaton okhttp3.internal.connection.RealConnectionPool$Companion : okhttp3.internal.connection.RealConnectionPool$Companion {
     fun get(arg0: okhttp3.ConnectionPool): okhttp3.internal.connection.RealConnectionPool;
 }
-automaton okhttp3.internal.cache.DiskLruCache$Editor$newSink$$inlined$synchronized$lambda$1 (var arg0: okhttp3.internal.cache.DiskLruCache$Editor, var arg1: int) : okhttp3.internal.cache.DiskLruCache$Editor$newSink$$inlined$synchronized$lambda$1 {
-    var this$0: okhttp3.internal.cache.DiskLruCache$Editor;
-    var $index$inlined: int;
+automaton okhttp3.internal.cache.DiskLruCache$Editor$newSink$$inlined$synchronized$lambda$1 (val arg0: okhttp3.internal.cache.DiskLruCache$Editor, val arg1: int) : okhttp3.internal.cache.DiskLruCache$Editor$newSink$$inlined$synchronized$lambda$1 {
+    val this$0: okhttp3.internal.cache.DiskLruCache$Editor;
+    val $index$inlined: int;
     fun invoke(arg0: java.lang.Object): java.lang.Object;
 
     fun invoke(arg0: java.io.IOException): void;
 }
 automaton okhttp3.internal.ws.WebSocketProtocol : okhttp3.internal.ws.WebSocketProtocol {
-    var ACCEPT_MAGIC: java.lang.String;
-    var B0_FLAG_FIN: int;
-    var B0_FLAG_RSV1: int;
-    var B0_FLAG_RSV2: int;
-    var B0_FLAG_RSV3: int;
-    var B0_MASK_OPCODE: int;
-    var OPCODE_FLAG_CONTROL: int;
-    var B1_FLAG_MASK: int;
-    var B1_MASK_LENGTH: int;
-    var OPCODE_CONTINUATION: int;
-    var OPCODE_TEXT: int;
-    var OPCODE_BINARY: int;
-    var OPCODE_CONTROL_CLOSE: int;
-    var OPCODE_CONTROL_PING: int;
-    var OPCODE_CONTROL_PONG: int;
-    var PAYLOAD_BYTE_MAX: long;
-    var CLOSE_MESSAGE_MAX: long;
-    var PAYLOAD_SHORT: int;
-    var PAYLOAD_SHORT_MAX: long;
-    var PAYLOAD_LONG: int;
-    var CLOSE_CLIENT_GOING_AWAY: int;
-    var CLOSE_NO_STATUS_CODE: int;
-    var INSTANCE: okhttp3.internal.ws.WebSocketProtocol;
-    fun toggleMask(arg0: okio.Buffer$UnsafeCursor, arg1: array): void
-        assigns arg0.segment;
-        assigns arg0.offset;
-        assigns arg0.data;
-        assigns arg0.start;
-        assigns arg0.end;
-        assigns arg0.buffer.head;
+    val ACCEPT_MAGIC: java.lang.String;
+    val B0_FLAG_FIN: int;
+    val B0_FLAG_RSV1: int;
+    val B0_FLAG_RSV2: int;
+    val B0_FLAG_RSV3: int;
+    val B0_MASK_OPCODE: int;
+    val OPCODE_FLAG_CONTROL: int;
+    val B1_FLAG_MASK: int;
+    val B1_MASK_LENGTH: int;
+    val OPCODE_CONTINUATION: int;
+    val OPCODE_TEXT: int;
+    val OPCODE_BINARY: int;
+    val OPCODE_CONTROL_CLOSE: int;
+    val OPCODE_CONTROL_PING: int;
+    val OPCODE_CONTROL_PONG: int;
+    val PAYLOAD_BYTE_MAX: long;
+    val CLOSE_MESSAGE_MAX: long;
+    val PAYLOAD_SHORT: int;
+    val PAYLOAD_SHORT_MAX: long;
+    val PAYLOAD_LONG: int;
+    val CLOSE_CLIENT_GOING_AWAY: int;
+    val CLOSE_NO_STATUS_CODE: int;
+    val INSTANCE: okhttp3.internal.ws.WebSocketProtocol;
+    fun toggleMask(arg0: okio.Buffer$UnsafeCursor, arg1: array): void;
 
     fun closeCodeExceptionMessage(arg0: int): java.lang.String;
 
@@ -8696,28 +7892,26 @@ automaton okhttp3.internal.ws.WebSocketProtocol : okhttp3.internal.ws.WebSocketP
 
     fun acceptHeader(arg0: java.lang.String): java.lang.String;
 
-    fun `<clinit>`(): void
-        assigns INSTANCE;
+    fun `<clinit>`(): void;
 }
-automaton okhttp3.internal.concurrent.Task (var arg0: java.lang.String, var arg1: bool) : okhttp3.internal.concurrent.Task {
-    var queue: okhttp3.internal.concurrent.TaskQueue;
-    var nextExecuteNanoTime: long;
-    var name: java.lang.String;
-    var cancelable: bool;
+automaton okhttp3.internal.concurrent.Task (val arg0: java.lang.String, val arg1: bool) : okhttp3.internal.concurrent.Task {
+    val queue: okhttp3.internal.concurrent.TaskQueue;
+    val nextExecuteNanoTime: long;
+    val name: java.lang.String;
+    val cancelable: bool;
     fun getQueue$okhttp(): okhttp3.internal.concurrent.TaskQueue;
 
-    fun setQueue$okhttp(arg0: okhttp3.internal.concurrent.TaskQueue): void
-        assigns queue;
+    fun setQueue$okhttp(arg0: okhttp3.internal.concurrent.TaskQueue): void;
 
     fun getNextExecuteNanoTime$okhttp(): long;
 
-    fun setNextExecuteNanoTime$okhttp(arg0: long): void
-        assigns nextExecuteNanoTime;
+    fun setNextExecuteNanoTime$okhttp(arg0: long): void;
 
     fun runOnce(): long;
 
-    fun initQueue$okhttp(arg0: okhttp3.internal.concurrent.TaskQueue): void
-        assigns queue;
+    @Throws("java.lang.IllegalStateException", ((queue != "'null-const'") & false))
+    @Throws("java.lang.IllegalStateException", (arg0 >= 2))
+    fun initQueue$okhttp(arg0: okhttp3.internal.concurrent.TaskQueue): void;
 
     fun toString(): java.lang.String;
 
@@ -8725,21 +7919,21 @@ automaton okhttp3.internal.concurrent.Task (var arg0: java.lang.String, var arg1
 
     fun getCancelable(): bool;
 }
-automaton okhttp3.Response (var arg0: okhttp3.Request, var arg1: okhttp3.Protocol, var arg2: java.lang.String, var arg3: int, var arg4: okhttp3.Handshake, var arg5: okhttp3.Headers, var arg6: okhttp3.ResponseBody, var arg7: okhttp3.Response, var arg8: okhttp3.Response, var arg9: okhttp3.Response, var arg10: long, var arg11: long, var arg12: okhttp3.internal.connection.Exchange) : okhttp3.Response {
-    var lazyCacheControl: okhttp3.CacheControl;
-    var request: okhttp3.Request;
-    var protocol: okhttp3.Protocol;
-    var message: java.lang.String;
-    var code: int;
-    var handshake: okhttp3.Handshake;
-    var headers: okhttp3.Headers;
-    var body: okhttp3.ResponseBody;
-    var networkResponse: okhttp3.Response;
-    var cacheResponse: okhttp3.Response;
-    var priorResponse: okhttp3.Response;
-    var sentRequestAtMillis: long;
-    var receivedResponseAtMillis: long;
-    var exchange: okhttp3.internal.connection.Exchange;
+automaton okhttp3.Response (val arg0: okhttp3.Request, val arg1: okhttp3.Protocol, val arg2: java.lang.String, val arg3: int, val arg4: okhttp3.Handshake, val arg5: okhttp3.Headers, val arg6: okhttp3.ResponseBody, val arg7: okhttp3.Response, val arg8: okhttp3.Response, val arg9: okhttp3.Response, val arg10: long, val arg11: long, val arg12: okhttp3.internal.connection.Exchange) : okhttp3.Response {
+    val lazyCacheControl: okhttp3.CacheControl;
+    val request: okhttp3.Request;
+    val protocol: okhttp3.Protocol;
+    val message: java.lang.String;
+    val code: int;
+    val handshake: okhttp3.Handshake;
+    val headers: okhttp3.Headers;
+    val body: okhttp3.ResponseBody;
+    val networkResponse: okhttp3.Response;
+    val cacheResponse: okhttp3.Response;
+    val priorResponse: okhttp3.Response;
+    val sentRequestAtMillis: long;
+    val receivedResponseAtMillis: long;
+    val exchange: okhttp3.internal.connection.Exchange;
     fun `-deprecated_request`(): okhttp3.Request;
 
     fun `-deprecated_protocol`(): okhttp3.Protocol;
@@ -8762,6 +7956,145 @@ automaton okhttp3.Response (var arg0: okhttp3.Request, var arg1: okhttp3.Protoco
 
     fun `-deprecated_headers`(): okhttp3.Headers;
 
+    @Throws("java.lang.IllegalStateException", (exchange == "'null-const'"))
+    @Throws("java.lang.IllegalStateException", ((state <= 6) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (state <= 6))
+    @Throws("java.lang.IllegalStateException", (((state <= 6) & (errorCode != "'null-const'")) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((state <= 6) & (errorCode != "'null-const'")) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((state <= 6) & (errorCode != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (exchange == "'null-const'"))
+    @Throws("java.lang.IllegalStateException", (exchange == "'null-const'"))
+    @Throws("java.lang.IllegalStateException", ((errorCode != "'null-const'") & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((errorCode != "'null-const'") & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (exchange == "'null-const'"))
+    @Throws("java.lang.IllegalStateException", (exchange == "'null-const'"))
+    @Throws("java.lang.IllegalStateException", ((errorCode != "'null-const'") & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((errorCode != "'null-const'") & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (errorCode != "'null-const'"))
+    @Throws("java.lang.IllegalStateException", ((state == 6) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((state == 6) & (errorCode != "'null-const'")) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((state >= 6) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((state >= 6) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((state >= 6) & (errorCode != "'null-const'")) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((state >= 6) & (errorCode != "'null-const'")) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((state >= 6) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((state >= 6) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (state >= 6))
+    @Throws("java.lang.IllegalStateException", (((state >= 6) & (errorCode != "'null-const'")) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((state >= 6) & (errorCode != "'null-const'")) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((state >= 6) & (errorCode != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((state <= 6) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((state <= 6) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((state <= 6) & (errorCode != "'null-const'")) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((state <= 6) & (errorCode != "'null-const'")) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((state == 6) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((state == 6) & (errorCode != "'null-const'")) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((exchange != "'null-const'") & (state <= 6)))
+    @Throws("java.lang.IllegalStateException", (((exchange != "'null-const'") & (state <= 6)) & (errorCode != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (exchange != "'null-const'"))
+    @Throws("java.lang.IllegalStateException", ((exchange != "'null-const'") & (errorCode != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((exchange != "'null-const'") & (state >= 6)))
+    @Throws("java.lang.IllegalStateException", (((exchange != "'null-const'") & (state >= 6)) & (errorCode != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((exchange == "'null-const'") & (state <= 6)))
+    @Throws("java.lang.IllegalStateException", ((!(state == 6) & (exchange == "'null-const'")) & (state <= 6)))
+    @Throws("java.lang.IllegalStateException", (((exchange == "'null-const'") & (state <= 6)) & (errorCode != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((!(state == 6) & (exchange == "'null-const'")) & (state <= 6)) & (errorCode != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (errorCode != "'null-const'"))
+    @Throws("java.lang.IllegalStateException", (errorCode != "'null-const'"))
+    @Throws("java.lang.IllegalStateException", (errorCode != "'null-const'"))
+    @Throws("java.lang.IllegalStateException", (errorCode != "'null-const'"))
+    @Throws("java.lang.IllegalStateException", (errorCode != "'null-const'"))
+    @Throws("java.lang.IllegalStateException", (errorCode != "'null-const'"))
+    @Throws("java.lang.IllegalStateException", (!(state == 6) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((exchange == "'null-const'") & (errorCode != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((!(state == 6) & (exchange == "'null-const'")) & (errorCode != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((exchange == "'null-const'") & (state == 6)))
+    @Throws("java.lang.IllegalStateException", (errorCode != "'null-const'"))
+    @Throws("java.lang.IllegalStateException", (((exchange == "'null-const'") & (state == 6)) & (errorCode != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (errorCode != "'null-const'"))
+    @Throws("java.lang.IllegalStateException", ((state <= 6) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (errorCode != "'null-const'"))
+    @Throws("java.lang.IllegalStateException", (errorCode != "'null-const'"))
+    @Throws("java.lang.IllegalStateException", (errorCode != "'null-const'"))
+    @Throws("java.lang.IllegalStateException", (errorCode != "'null-const'"))
+    @Throws("java.lang.IllegalStateException", (errorCode != "'null-const'"))
+    @Throws("java.lang.IllegalStateException", ((exchange == "'null-const'") & (state >= 6)))
+    @Throws("java.lang.IllegalStateException", ((!(state == 6) & (exchange == "'null-const'")) & (state >= 6)))
+    @Throws("java.lang.IllegalStateException", (((exchange == "'null-const'") & (state >= 6)) & (errorCode != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((!(state == 6) & (exchange == "'null-const'")) & (state >= 6)) & (errorCode != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (errorCode != "'null-const'"))
+    @Throws("java.lang.IllegalStateException", (errorCode != "'null-const'"))
+    @Throws("java.lang.IllegalStateException", (state <= 6))
+    @Throws("java.lang.IllegalStateException", (state <= 6))
+    @Throws("java.lang.IllegalStateException", ((state <= 6) & (errorCode != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((state <= 6) & (errorCode != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (state <= 6))
+    @Throws("java.lang.IllegalStateException", (state <= 6))
+    @Throws("java.lang.IllegalStateException", ((state <= 6) & (errorCode != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((state <= 6) & (errorCode != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (state == 6))
+    @Throws("java.lang.IllegalStateException", ((state == 6) & (errorCode != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (state == 6))
+    @Throws("java.lang.IllegalStateException", ((state == 6) & (errorCode != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (state >= 6))
+    @Throws("java.lang.IllegalStateException", (state >= 6))
+    @Throws("java.lang.IllegalStateException", ((state >= 6) & (errorCode != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((state >= 6) & (errorCode != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (state >= 6))
+    @Throws("java.lang.IllegalStateException", (state >= 6))
+    @Throws("java.lang.IllegalStateException", ((state >= 6) & (errorCode != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((state >= 6) & (errorCode != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (exchange == "'null-const'"))
+    @Throws("java.lang.IllegalStateException", (((errorCode == "'null-const'") & (state <= 6)) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((!(state == 6) & (errorCode == "'null-const'")) & (state <= 6)) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (exchange == "'null-const'"))
+    @Throws("java.lang.IllegalStateException", (exchange == "'null-const'"))
+    @Throws("java.lang.IllegalStateException", (exchange == "'null-const'"))
+    @Throws("java.lang.IllegalStateException", (exchange == "'null-const'"))
+    @Throws("java.lang.IllegalStateException", (exchange == "'null-const'"))
+    @Throws("java.lang.IllegalStateException", (exchange == "'null-const'"))
+    @Throws("java.lang.IllegalStateException", ((errorCode == "'null-const'") & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((!(state == 6) & (errorCode == "'null-const'")) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (exchange == "'null-const'"))
+    @Throws("java.lang.IllegalStateException", (exchange == "'null-const'"))
+    @Throws("java.lang.IllegalStateException", (exchange == "'null-const'"))
+    @Throws("java.lang.IllegalStateException", (((errorCode == "'null-const'") & (state == 6)) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (exchange == "'null-const'"))
+    @Throws("java.lang.IllegalStateException", (exchange == "'null-const'"))
+    @Throws("java.lang.IllegalStateException", (exchange == "'null-const'"))
+    @Throws("java.lang.IllegalStateException", (exchange == "'null-const'"))
+    @Throws("java.lang.IllegalStateException", (exchange == "'null-const'"))
+    @Throws("java.lang.IllegalStateException", (((errorCode == "'null-const'") & (state >= 6)) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((!(state == 6) & (errorCode == "'null-const'")) & (state >= 6)) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (exchange == "'null-const'"))
+    @Throws("java.lang.IllegalStateException", (exchange == "'null-const'"))
+    @Throws("java.lang.IllegalStateException", (state <= 6))
+    @Throws("java.lang.IllegalStateException", ((state <= 6) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (state <= 6))
+    @Throws("java.lang.IllegalStateException", ((state <= 6) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((state <= 6) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((state <= 6) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (state == 6))
+    @Throws("java.lang.IllegalStateException", ((state == 6) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((state == 6) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (state >= 6))
+    @Throws("java.lang.IllegalStateException", ((state >= 6) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (state >= 6))
+    @Throws("java.lang.IllegalStateException", ((state >= 6) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((state >= 6) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((state >= 6) & (exchange == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (state <= 6))
+    @Throws("java.lang.IllegalStateException", (state <= 6))
+    @Throws("java.lang.IllegalStateException", (state == 6))
+    @Throws("java.lang.IllegalStateException", (state >= 6))
+    @Throws("java.lang.IllegalStateException", (state >= 6))
+    @Throws("java.lang.Throwable", (((state <= 6) & (errorCode != "'null-const'")) & (exchange != "'null-const'")))
+    @Throws("java.lang.Throwable", (((state >= 6) & (errorCode != "'null-const'")) & (exchange != "'null-const'")))
+    @Throws("java.lang.Throwable", (((state >= 6) & (errorCode != "'null-const'")) & (exchange != "'null-const'")))
+    @Throws("java.lang.Throwable", (((state == 6) & (errorCode != "'null-const'")) & (exchange != "'null-const'")))
+    @Throws("java.lang.Throwable", (((state <= 6) & (errorCode != "'null-const'")) & (exchange != "'null-const'")))
+    @Throws("java.lang.Throwable", ((errorCode != "'null-const'") & (exchange != "'null-const'")))
+    @Throws("java.lang.Throwable", ((errorCode != "'null-const'") & (exchange != "'null-const'")))
     fun trailers(): okhttp3.Headers;
 
     fun peekBody(arg0: long): okhttp3.ResponseBody;
@@ -8780,11 +8113,9 @@ automaton okhttp3.Response (var arg0: okhttp3.Request, var arg1: okhttp3.Protoco
 
     fun challenges(): `<UNRESOLVED_TYPE>`;
 
-    fun cacheControl(): okhttp3.CacheControl
-        assigns lazyCacheControl;
+    fun cacheControl(): okhttp3.CacheControl;
 
-    fun `-deprecated_cacheControl`(): okhttp3.CacheControl
-        assigns lazyCacheControl;
+    fun `-deprecated_cacheControl`(): okhttp3.CacheControl;
 
     fun `-deprecated_sentRequestAtMillis`(): long;
 
@@ -8824,83 +8155,70 @@ automaton okhttp3.Protocol$Companion : okhttp3.Protocol$Companion {
     fun get(arg0: java.lang.String): okhttp3.Protocol;
 }
 automaton okhttp3.Response$Builder : okhttp3.Response$Builder {
-    var request: okhttp3.Request;
-    var protocol: okhttp3.Protocol;
-    var code: int;
-    var message: java.lang.String;
-    var handshake: okhttp3.Handshake;
-    var headers: okhttp3.Headers$Builder;
-    var body: okhttp3.ResponseBody;
-    var networkResponse: okhttp3.Response;
-    var cacheResponse: okhttp3.Response;
-    var priorResponse: okhttp3.Response;
-    var sentRequestAtMillis: long;
-    var receivedResponseAtMillis: long;
-    var exchange: okhttp3.internal.connection.Exchange;
+    val request: okhttp3.Request;
+    val protocol: okhttp3.Protocol;
+    val code: int;
+    val message: java.lang.String;
+    val handshake: okhttp3.Handshake;
+    val headers: okhttp3.Headers$Builder;
+    val body: okhttp3.ResponseBody;
+    val networkResponse: okhttp3.Response;
+    val cacheResponse: okhttp3.Response;
+    val priorResponse: okhttp3.Response;
+    val sentRequestAtMillis: long;
+    val receivedResponseAtMillis: long;
+    val exchange: okhttp3.internal.connection.Exchange;
     fun getRequest$okhttp(): okhttp3.Request;
 
-    fun setRequest$okhttp(arg0: okhttp3.Request): void
-        assigns request;
+    fun setRequest$okhttp(arg0: okhttp3.Request): void;
 
     fun getProtocol$okhttp(): okhttp3.Protocol;
 
-    fun setProtocol$okhttp(arg0: okhttp3.Protocol): void
-        assigns protocol;
+    fun setProtocol$okhttp(arg0: okhttp3.Protocol): void;
 
     fun getCode$okhttp(): int;
 
-    fun setCode$okhttp(arg0: int): void
-        assigns code;
+    fun setCode$okhttp(arg0: int): void;
 
     fun getMessage$okhttp(): java.lang.String;
 
-    fun setMessage$okhttp(arg0: java.lang.String): void
-        assigns message;
+    fun setMessage$okhttp(arg0: java.lang.String): void;
 
     fun getHandshake$okhttp(): okhttp3.Handshake;
 
-    fun setHandshake$okhttp(arg0: okhttp3.Handshake): void
-        assigns handshake;
+    fun setHandshake$okhttp(arg0: okhttp3.Handshake): void;
 
     fun getHeaders$okhttp(): okhttp3.Headers$Builder;
 
-    fun setHeaders$okhttp(arg0: okhttp3.Headers$Builder): void
-        assigns headers;
+    fun setHeaders$okhttp(arg0: okhttp3.Headers$Builder): void;
 
     fun getBody$okhttp(): okhttp3.ResponseBody;
 
-    fun setBody$okhttp(arg0: okhttp3.ResponseBody): void
-        assigns body;
+    fun setBody$okhttp(arg0: okhttp3.ResponseBody): void;
 
     fun getNetworkResponse$okhttp(): okhttp3.Response;
 
-    fun setNetworkResponse$okhttp(arg0: okhttp3.Response): void
-        assigns networkResponse;
+    fun setNetworkResponse$okhttp(arg0: okhttp3.Response): void;
 
     fun getCacheResponse$okhttp(): okhttp3.Response;
 
-    fun setCacheResponse$okhttp(arg0: okhttp3.Response): void
-        assigns cacheResponse;
+    fun setCacheResponse$okhttp(arg0: okhttp3.Response): void;
 
     fun getPriorResponse$okhttp(): okhttp3.Response;
 
-    fun setPriorResponse$okhttp(arg0: okhttp3.Response): void
-        assigns priorResponse;
+    fun setPriorResponse$okhttp(arg0: okhttp3.Response): void;
 
     fun getSentRequestAtMillis$okhttp(): long;
 
-    fun setSentRequestAtMillis$okhttp(arg0: long): void
-        assigns sentRequestAtMillis;
+    fun setSentRequestAtMillis$okhttp(arg0: long): void;
 
     fun getReceivedResponseAtMillis$okhttp(): long;
 
-    fun setReceivedResponseAtMillis$okhttp(arg0: long): void
-        assigns receivedResponseAtMillis;
+    fun setReceivedResponseAtMillis$okhttp(arg0: long): void;
 
     fun getExchange$okhttp(): okhttp3.internal.connection.Exchange;
 
-    fun setExchange$okhttp(arg0: okhttp3.internal.connection.Exchange): void
-        assigns exchange;
+    fun setExchange$okhttp(arg0: okhttp3.internal.connection.Exchange): void;
 
     fun request(arg0: okhttp3.Request): okhttp3.Response$Builder;
 
@@ -8936,14 +8254,25 @@ automaton okhttp3.Response$Builder : okhttp3.Response$Builder {
 
     fun receivedResponseAtMillis(arg0: long): okhttp3.Response$Builder;
 
-    fun initExchange$okhttp(arg0: okhttp3.internal.connection.Exchange): void
-        assigns exchange;
+    fun initExchange$okhttp(arg0: okhttp3.internal.connection.Exchange): void;
 
+    @Throws("java.lang.IllegalStateException", (protocol == "'null-const'"))
+    @Throws("java.lang.IllegalStateException", ((message != "'null-const'") & (protocol == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((message != "'null-const'") & (request == "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((message == "'null-const'") & (request != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((message == "'null-const'") & (request != "'null-const'")) & (protocol != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((message != "'null-const'") & (request == "'null-const'")) & (protocol != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (request == "'null-const'"))
+    @Throws("java.lang.IllegalStateException", (((message != "'null-const'") & (protocol == "'null-const'")) & (request != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((protocol == "'null-const'") & (request != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((message == "'null-const'") & (protocol != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((request == "'null-const'") & (protocol != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (message == "'null-const'"))
     fun build(): okhttp3.Response;
 }
 automaton okhttp3.internal.http.ExchangeCodec : okhttp3.internal.http.ExchangeCodec {
-    var Companion: okhttp3.internal.http.ExchangeCodec$Companion;
-    var DISCARD_STREAM_TIMEOUT_MILLIS: int;
+    val Companion: okhttp3.internal.http.ExchangeCodec$Companion;
+    val DISCARD_STREAM_TIMEOUT_MILLIS: int;
     fun getConnection(): okhttp3.internal.connection.RealConnection;
 
     fun createRequestBody(arg0: okhttp3.Request, arg1: long): okio.Sink;
@@ -8960,22 +8289,43 @@ automaton okhttp3.internal.http.ExchangeCodec : okhttp3.internal.http.ExchangeCo
 
     fun openResponseBodySource(arg0: okhttp3.Response): okio.Source;
 
+    @Throws("java.lang.IllegalStateException", ((errorCode == "'null-const'") & (state >= 6)))
+    @Throws("java.lang.IllegalStateException", (state <= 6))
+    @Throws("java.lang.IllegalStateException", (state >= 6))
+    @Throws("java.lang.IllegalStateException", (state <= 6))
+    @Throws("java.lang.IllegalStateException", (state >= 6))
+    @Throws("java.lang.IllegalStateException", (state >= 6))
+    @Throws("java.lang.IllegalStateException", (state == 6))
+    @Throws("java.lang.IllegalStateException", (state <= 6))
+    @Throws("java.lang.IllegalStateException", (errorCode == "'null-const'"))
+    @Throws("java.lang.IllegalStateException", ((errorCode == "'null-const'") & (state <= 6)))
+    @Throws("java.lang.IllegalStateException", (state <= 6))
+    @Throws("java.lang.IllegalStateException", (state >= 6))
+    @Throws("java.lang.IllegalStateException", (errorCode != "'null-const'"))
+    @Throws("java.lang.IllegalStateException", ((errorCode != "'null-const'") & (state <= 6)))
+    @Throws("java.lang.IllegalStateException", ((errorCode != "'null-const'") & (state >= 6)))
+    @Throws("java.lang.Throwable", ((errorCode != "'null-const'") & (state <= 6)))
+    @Throws("java.lang.Throwable", ((errorCode != "'null-const'") & (state >= 6)))
+    @Throws("java.lang.Throwable", ((errorCode != "'null-const'") & (state >= 6)))
+    @Throws("java.lang.Throwable", ((errorCode != "'null-const'") & (state == 6)))
+    @Throws("java.lang.Throwable", (errorCode != "'null-const'"))
+    @Throws("java.lang.Throwable", (errorCode != "'null-const'"))
+    @Throws("java.lang.Throwable", ((errorCode != "'null-const'") & (state <= 6)))
     fun trailers(): okhttp3.Headers;
 
     fun cancel(): void;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 }
 automaton okhttp3.internal.tls.TrustRootIndex : okhttp3.internal.tls.TrustRootIndex {
     fun findByIssuerAndSignature(arg0: java.security.cert.X509Certificate): `<UNRESOLVED_TYPE>`;
 }
 automaton okhttp3.internal.http2.Http2Stream$Companion : okhttp3.internal.http2.Http2Stream$Companion {
 }
-automaton okhttp3.MultipartBody$Builder (var arg0: java.lang.String) : okhttp3.MultipartBody$Builder {
-    var boundary: okio.ByteString;
-    var `type`: okhttp3.MediaType;
-    var parts: `<UNRESOLVED_TYPE>`;
+automaton okhttp3.MultipartBody$Builder (val arg0: java.lang.String) : okhttp3.MultipartBody$Builder {
+    val boundary: okio.ByteString;
+    val `type`: okhttp3.MediaType;
+    val parts: `<UNRESOLVED_TYPE>`;
     fun setType(arg0: okhttp3.MediaType): okhttp3.MultipartBody$Builder;
 
     fun addPart(arg0: okhttp3.RequestBody): okhttp3.MultipartBody$Builder;
@@ -8990,27 +8340,26 @@ automaton okhttp3.MultipartBody$Builder (var arg0: java.lang.String) : okhttp3.M
 
     fun build(): okhttp3.MultipartBody;
 }
-automaton okhttp3.Handshake$Companion$get$1 (var arg0: `<UNRESOLVED_TYPE>`) : okhttp3.Handshake$Companion$get$1 {
-    var $peerCertificatesCopy: `<UNRESOLVED_TYPE>`;
+automaton okhttp3.Handshake$Companion$get$1 (val arg0: `<UNRESOLVED_TYPE>`) : okhttp3.Handshake$Companion$get$1 {
+    val $peerCertificatesCopy: `<UNRESOLVED_TYPE>`;
     fun invoke(): java.lang.Object;
 
     fun invoke(): `<UNRESOLVED_TYPE>`;
 }
-automaton okhttp3.internal.cache.CacheStrategy (var arg0: okhttp3.Request, var arg1: okhttp3.Response) : okhttp3.internal.cache.CacheStrategy {
-    var networkRequest: okhttp3.Request;
-    var cacheResponse: okhttp3.Response;
-    var Companion: okhttp3.internal.cache.CacheStrategy$Companion;
+automaton okhttp3.internal.cache.CacheStrategy (val arg0: okhttp3.Request, val arg1: okhttp3.Response) : okhttp3.internal.cache.CacheStrategy {
+    val networkRequest: okhttp3.Request;
+    val cacheResponse: okhttp3.Response;
+    val Companion: okhttp3.internal.cache.CacheStrategy$Companion;
     fun getNetworkRequest(): okhttp3.Request;
 
     fun getCacheResponse(): okhttp3.Response;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 }
 automaton okhttp3.internal.platform.ConscryptPlatform : okhttp3.internal.platform.ConscryptPlatform {
-    var provider: `<UNRESOLVED_TYPE>`;
-    var isSupported: bool;
-    var Companion: okhttp3.internal.platform.ConscryptPlatform$Companion;
+    val provider: `<UNRESOLVED_TYPE>`;
+    val isSupported: bool;
+    val Companion: okhttp3.internal.platform.ConscryptPlatform$Companion;
     fun newSSLContext(): `<UNRESOLVED_TYPE>`;
 
     fun platformTrustManager(): `<UNRESOLVED_TYPE>`;
@@ -9023,15 +8372,13 @@ automaton okhttp3.internal.platform.ConscryptPlatform : okhttp3.internal.platfor
 
     fun newSslSocketFactory(arg0: javax.net.ssl.X509TrustManager): `<UNRESOLVED_TYPE>`;
 
-    fun `<clinit>`(): void
-        assigns Companion;
-        assigns isSupported;
+    fun `<clinit>`(): void;
 
     fun access$isSupported$cp(): bool;
 }
-automaton okhttp3.internal.platform.AndroidPlatform$CustomTrustRootIndex (var arg0: `<UNRESOLVED_TYPE>`, var arg1: `<UNRESOLVED_TYPE>`) : okhttp3.internal.platform.AndroidPlatform$CustomTrustRootIndex {
-    var trustManager: `<UNRESOLVED_TYPE>`;
-    var findByIssuerAndSignatureMethod: `<UNRESOLVED_TYPE>`;
+automaton okhttp3.internal.platform.AndroidPlatform$CustomTrustRootIndex (val arg0: `<UNRESOLVED_TYPE>`, val arg1: `<UNRESOLVED_TYPE>`) : okhttp3.internal.platform.AndroidPlatform$CustomTrustRootIndex {
+    val trustManager: `<UNRESOLVED_TYPE>`;
+    val findByIssuerAndSignatureMethod: `<UNRESOLVED_TYPE>`;
     fun findByIssuerAndSignature(arg0: java.security.cert.X509Certificate): `<UNRESOLVED_TYPE>`;
 
     fun component1(): `<UNRESOLVED_TYPE>`;
@@ -9054,22 +8401,21 @@ automaton okhttp3.internal.http2.Http2ExchangeCodec$Companion : okhttp3.internal
     fun readHttp2HeadersList(arg0: okhttp3.Headers, arg1: okhttp3.Protocol): okhttp3.Response$Builder;
 }
 automaton okhttp3.CookieJar$Companion : okhttp3.CookieJar$Companion {
-    var $$INSTANCE: okhttp3.CookieJar$Companion;
+    val $$INSTANCE: okhttp3.CookieJar$Companion;
 }
 automaton okhttp3.internal.platform.android.AndroidSocketAdapter$Companion : okhttp3.internal.platform.android.AndroidSocketAdapter$Companion {
     fun buildIfSupported(arg0: java.lang.String): okhttp3.internal.platform.android.SocketAdapter;
 }
 automaton okhttp3.Interceptor : okhttp3.Interceptor {
-    var Companion: okhttp3.Interceptor$Companion;
+    val Companion: okhttp3.Interceptor$Companion;
     fun intercept(arg0: okhttp3.Interceptor$Chain): okhttp3.Response;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 }
-automaton okhttp3.internal.http.RetryAndFollowUpInterceptor (var arg0: okhttp3.OkHttpClient) : okhttp3.internal.http.RetryAndFollowUpInterceptor {
-    var client: okhttp3.OkHttpClient;
-    var MAX_FOLLOW_UPS: int;
-    var Companion: okhttp3.internal.http.RetryAndFollowUpInterceptor$Companion;
+automaton okhttp3.internal.http.RetryAndFollowUpInterceptor (val arg0: okhttp3.OkHttpClient) : okhttp3.internal.http.RetryAndFollowUpInterceptor {
+    val client: okhttp3.OkHttpClient;
+    val MAX_FOLLOW_UPS: int;
+    val Companion: okhttp3.internal.http.RetryAndFollowUpInterceptor$Companion;
     fun intercept(arg0: okhttp3.Interceptor$Chain): okhttp3.Response;
 
     fun recover(arg0: java.io.IOException, arg1: okhttp3.internal.connection.RealCall, arg2: okhttp3.Request, arg3: bool): bool;
@@ -9084,53 +8430,59 @@ automaton okhttp3.internal.http.RetryAndFollowUpInterceptor (var arg0: okhttp3.O
 
     fun retryAfter(arg0: okhttp3.Response, arg1: int): int;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 }
-automaton okhttp3.internal.connection.RouteSelector (var arg0: okhttp3.Address, var arg1: okhttp3.internal.connection.RouteDatabase, var arg2: okhttp3.Call, var arg3: okhttp3.EventListener) : okhttp3.internal.connection.RouteSelector {
-    var proxies: `<UNRESOLVED_TYPE>`;
-    var nextProxyIndex: int;
-    var inetSocketAddresses: `<UNRESOLVED_TYPE>`;
-    var postponedRoutes: `<UNRESOLVED_TYPE>`;
-    var address: okhttp3.Address;
-    var routeDatabase: okhttp3.internal.connection.RouteDatabase;
-    var call: okhttp3.Call;
-    var eventListener: okhttp3.EventListener;
-    var Companion: okhttp3.internal.connection.RouteSelector$Companion;
+automaton okhttp3.internal.connection.RouteSelector (val arg0: okhttp3.Address, val arg1: okhttp3.internal.connection.RouteDatabase, val arg2: okhttp3.Call, val arg3: okhttp3.EventListener) : okhttp3.internal.connection.RouteSelector {
+    val proxies: `<UNRESOLVED_TYPE>`;
+    val nextProxyIndex: int;
+    val inetSocketAddresses: `<UNRESOLVED_TYPE>`;
+    val postponedRoutes: `<UNRESOLVED_TYPE>`;
+    val address: okhttp3.Address;
+    val routeDatabase: okhttp3.internal.connection.RouteDatabase;
+    val call: okhttp3.Call;
+    val eventListener: okhttp3.EventListener;
+    val Companion: okhttp3.internal.connection.RouteSelector$Companion;
     fun hasNext(): bool;
 
-    fun next(): okhttp3.internal.connection.RouteSelector$Selection
-        assigns nextProxyIndex;
+    fun next(): okhttp3.internal.connection.RouteSelector$Selection;
 
-    fun resetNextProxy(arg0: okhttp3.HttpUrl, arg1: java.net.Proxy): void
-        assigns nextProxyIndex;
+    fun resetNextProxy(arg0: okhttp3.HttpUrl, arg1: java.net.Proxy): void;
 
     fun hasNextProxy(): bool;
 
-    fun nextProxy(): `<UNRESOLVED_TYPE>`
-        assigns nextProxyIndex;
+    fun nextProxy(): `<UNRESOLVED_TYPE>`;
 
     fun resetNextInetSocketAddress(arg0: java.net.Proxy): void;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 
     fun access$getAddress$p(arg0: okhttp3.internal.connection.RouteSelector): okhttp3.Address;
 }
 automaton okhttp3.internal.http.RequestLine : okhttp3.internal.http.RequestLine {
-    var INSTANCE: okhttp3.internal.http.RequestLine;
+    val INSTANCE: okhttp3.internal.http.RequestLine;
     fun get(arg0: okhttp3.Request, arg1: java.net.Proxy$Type): java.lang.String;
 
     fun includeAuthorityInRequestLine(arg0: okhttp3.Request, arg1: java.net.Proxy$Type): bool;
 
     fun requestPath(arg0: okhttp3.HttpUrl): java.lang.String;
 
-    fun `<clinit>`(): void
-        assigns INSTANCE;
+    fun `<clinit>`(): void;
 }
 automaton okhttp3.internal.http2.Settings$Companion : okhttp3.internal.http2.Settings$Companion {
 }
 automaton okhttp3.internal.cache.CacheInterceptor$Companion : okhttp3.internal.cache.CacheInterceptor$Companion {
+    @Throws("java.lang.IllegalStateException", (((((request == "'null-const'") & (message != "'null-const'")) & (body != "'null-const'")) & (protocol != "'null-const'")) & (arg0 != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((protocol == "'null-const'") & (body != "'null-const'")) & (arg0 != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((((protocol == "'null-const'") & (body != "'null-const'")) & (arg0 != "'null-const'")) & (request != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((((protocol == "'null-const'") & (message != "'null-const'")) & (body != "'null-const'")) & (arg0 != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((((protocol == "'null-const'") & (message != "'null-const'")) & (body != "'null-const'")) & (arg0 != "'null-const'")) & (request != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((message == "'null-const'") & (body != "'null-const'")) & (arg0 != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((((message == "'null-const'") & (body != "'null-const'")) & (arg0 != "'null-const'")) & (request != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((((message == "'null-const'") & (body != "'null-const'")) & (protocol != "'null-const'")) & (arg0 != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((((message == "'null-const'") & (body != "'null-const'")) & (protocol != "'null-const'")) & (arg0 != "'null-const'")) & (request != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((((request == "'null-const'") & (message != "'null-const'")) & (body != "'null-const'")) & (arg0 != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((request == "'null-const'") & (body != "'null-const'")) & (arg0 != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((((request == "'null-const'") & (body != "'null-const'")) & (protocol != "'null-const'")) & (arg0 != "'null-const'")))
     fun stripBody(arg0: okhttp3.Response): okhttp3.Response;
 
     fun combine(arg0: okhttp3.Headers, arg1: okhttp3.Headers): okhttp3.Headers;
@@ -9139,54 +8491,58 @@ automaton okhttp3.internal.cache.CacheInterceptor$Companion : okhttp3.internal.c
 
     fun isContentSpecificHeader(arg0: java.lang.String): bool;
 
+    @Throws("java.lang.IllegalStateException", (((((request == "'null-const'") & (message != "'null-const'")) & (protocol != "'null-const'")) & (body != "'null-const'")) & (arg1 != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((protocol == "'null-const'") & (body != "'null-const'")) & (arg1 != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((((protocol == "'null-const'") & (body != "'null-const'")) & (arg1 != "'null-const'")) & (request != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((((protocol == "'null-const'") & (message != "'null-const'")) & (body != "'null-const'")) & (arg1 != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((((protocol == "'null-const'") & (message != "'null-const'")) & (body != "'null-const'")) & (arg1 != "'null-const'")) & (request != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((message == "'null-const'") & (body != "'null-const'")) & (arg1 != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((((message == "'null-const'") & (body != "'null-const'")) & (arg1 != "'null-const'")) & (request != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((((message == "'null-const'") & (protocol != "'null-const'")) & (body != "'null-const'")) & (arg1 != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((((message == "'null-const'") & (protocol != "'null-const'")) & (body != "'null-const'")) & (arg1 != "'null-const'")) & (request != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((((request == "'null-const'") & (message != "'null-const'")) & (body != "'null-const'")) & (arg1 != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", (((request == "'null-const'") & (body != "'null-const'")) & (arg1 != "'null-const'")))
+    @Throws("java.lang.IllegalStateException", ((((request == "'null-const'") & (protocol != "'null-const'")) & (body != "'null-const'")) & (arg1 != "'null-const'")))
     fun access$stripBody(arg0: okhttp3.internal.cache.CacheInterceptor$Companion, arg1: okhttp3.Response): okhttp3.Response;
 
     fun access$combine(arg0: okhttp3.internal.cache.CacheInterceptor$Companion, arg1: okhttp3.Headers, arg2: okhttp3.Headers): okhttp3.Headers;
 }
-automaton okhttp3.internal.platform.android.StandardAndroidSocketAdapter (var arg0: `<UNRESOLVED_TYPE>`, var arg1: `<UNRESOLVED_TYPE>`, var arg2: `<UNRESOLVED_TYPE>`) : okhttp3.internal.platform.android.StandardAndroidSocketAdapter {
-    var sslSocketFactoryClass: `<UNRESOLVED_TYPE>`;
-    var paramClass: `<UNRESOLVED_TYPE>`;
-    var Companion: okhttp3.internal.platform.android.StandardAndroidSocketAdapter$Companion;
+automaton okhttp3.internal.platform.android.StandardAndroidSocketAdapter (val arg0: `<UNRESOLVED_TYPE>`, val arg1: `<UNRESOLVED_TYPE>`, val arg2: `<UNRESOLVED_TYPE>`) : okhttp3.internal.platform.android.StandardAndroidSocketAdapter {
+    val sslSocketFactoryClass: `<UNRESOLVED_TYPE>`;
+    val paramClass: `<UNRESOLVED_TYPE>`;
+    val Companion: okhttp3.internal.platform.android.StandardAndroidSocketAdapter$Companion;
     fun matchesSocketFactory(arg0: javax.net.ssl.SSLSocketFactory): bool;
 
     fun trustManager(arg0: javax.net.ssl.SSLSocketFactory): `<UNRESOLVED_TYPE>`;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 }
-automaton okhttp3.internal.concurrent.TaskQueue (var arg0: okhttp3.internal.concurrent.TaskRunner, var arg1: java.lang.String) : okhttp3.internal.concurrent.TaskQueue {
-    var shutdown: bool;
-    var activeTask: okhttp3.internal.concurrent.Task;
-    var futureTasks: `<UNRESOLVED_TYPE>`;
-    var cancelActiveTask: bool;
-    var taskRunner: okhttp3.internal.concurrent.TaskRunner;
-    var name: java.lang.String;
+automaton okhttp3.internal.concurrent.TaskQueue (val arg0: okhttp3.internal.concurrent.TaskRunner, val arg1: java.lang.String) : okhttp3.internal.concurrent.TaskQueue {
+    val shutdown: bool;
+    val activeTask: okhttp3.internal.concurrent.Task;
+    val futureTasks: `<UNRESOLVED_TYPE>`;
+    val cancelActiveTask: bool;
+    val taskRunner: okhttp3.internal.concurrent.TaskRunner;
+    val name: java.lang.String;
     fun getShutdown$okhttp(): bool;
 
-    fun setShutdown$okhttp(arg0: bool): void
-        assigns shutdown;
+    fun setShutdown$okhttp(arg0: bool): void;
 
     fun getActiveTask$okhttp(): okhttp3.internal.concurrent.Task;
 
-    fun setActiveTask$okhttp(arg0: okhttp3.internal.concurrent.Task): void
-        assigns activeTask;
+    fun setActiveTask$okhttp(arg0: okhttp3.internal.concurrent.Task): void;
 
     fun getFutureTasks$okhttp(): `<UNRESOLVED_TYPE>`;
 
     fun getCancelActiveTask$okhttp(): bool;
 
-    fun setCancelActiveTask$okhttp(arg0: bool): void
-        assigns cancelActiveTask;
+    fun setCancelActiveTask$okhttp(arg0: bool): void;
 
     fun getScheduledTasks(): `<UNRESOLVED_TYPE>`;
 
-    fun schedule(arg0: okhttp3.internal.concurrent.Task, arg1: long): void
-        assigns arg0.queue;
-        assigns arg0.nextExecuteNanoTime;
+    fun schedule(arg0: okhttp3.internal.concurrent.Task, arg1: long): void;
 
-    fun schedule$default(arg0: okhttp3.internal.concurrent.TaskQueue, arg1: okhttp3.internal.concurrent.Task, arg2: long, arg3: int, arg4: java.lang.Object): void
-        assigns arg1.queue;
-        assigns arg1.nextExecuteNanoTime;
+    fun schedule$default(arg0: okhttp3.internal.concurrent.TaskQueue, arg1: okhttp3.internal.concurrent.Task, arg2: long, arg3: int, arg4: java.lang.Object): void;
 
     fun schedule(arg0: java.lang.String, arg1: long, arg2: kotlin.jvm.functions.Function0): void;
 
@@ -9198,19 +8554,13 @@ automaton okhttp3.internal.concurrent.TaskQueue (var arg0: okhttp3.internal.conc
 
     fun idleLatch(): `<UNRESOLVED_TYPE>`;
 
-    fun scheduleAndDecide$okhttp(arg0: okhttp3.internal.concurrent.Task, arg1: long, arg2: bool): bool
-        assigns arg0.queue;
-        assigns arg0.nextExecuteNanoTime;
+    fun scheduleAndDecide$okhttp(arg0: okhttp3.internal.concurrent.Task, arg1: long, arg2: bool): bool;
 
-    fun cancelAll(): void
-        assigns cancelActiveTask;
+    fun cancelAll(): void;
 
-    fun shutdown(): void
-        assigns shutdown;
-        assigns cancelActiveTask;
+    fun shutdown(): void;
 
-    fun cancelAllAndDecide$okhttp(): bool
-        assigns cancelActiveTask;
+    fun cancelAllAndDecide$okhttp(): bool;
 
     fun toString(): java.lang.String;
 
@@ -9221,50 +8571,45 @@ automaton okhttp3.internal.concurrent.TaskQueue (var arg0: okhttp3.internal.conc
 automaton okhttp3.internal.platform.android.BouncyCastleSocketAdapter$Companion : okhttp3.internal.platform.android.BouncyCastleSocketAdapter$Companion {
     fun buildIfSupported(): okhttp3.internal.platform.android.SocketAdapter;
 }
-automaton okhttp3.Cache$Entry (var arg0: okio.Source) : okhttp3.Cache$Entry {
-    var `url`: java.lang.String;
-    var varyHeaders: okhttp3.Headers;
-    var requestMethod: java.lang.String;
-    var protocol: okhttp3.Protocol;
-    var code: int;
-    var message: java.lang.String;
-    var responseHeaders: okhttp3.Headers;
-    var handshake: okhttp3.Handshake;
-    var sentRequestMillis: long;
-    var receivedResponseMillis: long;
-    var SENT_MILLIS: java.lang.String;
-    var RECEIVED_MILLIS: java.lang.String;
-    var Companion: okhttp3.Cache$Entry$Companion;
+automaton okhttp3.Cache$Entry (val arg0: okio.Source) : okhttp3.Cache$Entry {
+    val `url`: java.lang.String;
+    val varyHeaders: okhttp3.Headers;
+    val requestMethod: java.lang.String;
+    val protocol: okhttp3.Protocol;
+    val code: int;
+    val message: java.lang.String;
+    val responseHeaders: okhttp3.Headers;
+    val handshake: okhttp3.Handshake;
+    val sentRequestMillis: long;
+    val receivedResponseMillis: long;
+    val SENT_MILLIS: java.lang.String;
+    val RECEIVED_MILLIS: java.lang.String;
+    val Companion: okhttp3.Cache$Entry$Companion;
     fun isHttps(): bool;
 
     fun writeTo(arg0: okhttp3.internal.cache.DiskLruCache$Editor): void;
 
-    fun readCertificateList(arg0: okio.BufferedSource): `<UNRESOLVED_TYPE>`
-        assigns arg0;
+    fun readCertificateList(arg0: okio.BufferedSource): `<UNRESOLVED_TYPE>`;
 
-    fun writeCertList(arg0: okio.BufferedSink, arg1: java.util.List): void
-        assigns arg0;
+    fun writeCertList(arg0: okio.BufferedSink, arg1: java.util.List): void;
 
     fun matches(arg0: okhttp3.Request, arg1: okhttp3.Response): bool;
 
     fun response(arg0: okhttp3.internal.cache.DiskLruCache$Snapshot): okhttp3.Response;
 
-    fun `<clinit>`(): void
-        assigns Companion;
-        assigns SENT_MILLIS;
-        assigns RECEIVED_MILLIS;
+    fun `<clinit>`(): void;
 }
-automaton okhttp3.internal.cache.DiskLruCache$Entry (var arg0: okhttp3.internal.cache.DiskLruCache, var arg1: java.lang.String) : okhttp3.internal.cache.DiskLruCache$Entry {
-    var lengths: array<long>;
-    var cleanFiles: `<UNRESOLVED_TYPE>`;
-    var dirtyFiles: `<UNRESOLVED_TYPE>`;
-    var readable: bool;
-    var zombie: bool;
-    var currentEditor: okhttp3.internal.cache.DiskLruCache$Editor;
-    var lockingSourceCount: int;
-    var sequenceNumber: long;
-    var key: java.lang.String;
-    var this$0: okhttp3.internal.cache.DiskLruCache;
+automaton okhttp3.internal.cache.DiskLruCache$Entry (val arg0: okhttp3.internal.cache.DiskLruCache, val arg1: java.lang.String) : okhttp3.internal.cache.DiskLruCache$Entry {
+    val lengths: array<long>;
+    val cleanFiles: `<UNRESOLVED_TYPE>`;
+    val dirtyFiles: `<UNRESOLVED_TYPE>`;
+    val readable: bool;
+    val zombie: bool;
+    val currentEditor: okhttp3.internal.cache.DiskLruCache$Editor;
+    val lockingSourceCount: int;
+    val sequenceNumber: long;
+    val key: java.lang.String;
+    val this$0: okhttp3.internal.cache.DiskLruCache;
     fun getLengths$okhttp(): array<long>;
 
     fun getCleanFiles$okhttp(): `<UNRESOLVED_TYPE>`;
@@ -9273,85 +8618,69 @@ automaton okhttp3.internal.cache.DiskLruCache$Entry (var arg0: okhttp3.internal.
 
     fun getReadable$okhttp(): bool;
 
-    fun setReadable$okhttp(arg0: bool): void
-        assigns readable;
+    fun setReadable$okhttp(arg0: bool): void;
 
     fun getZombie$okhttp(): bool;
 
-    fun setZombie$okhttp(arg0: bool): void
-        assigns zombie;
+    fun setZombie$okhttp(arg0: bool): void;
 
     fun getCurrentEditor$okhttp(): okhttp3.internal.cache.DiskLruCache$Editor;
 
-    fun setCurrentEditor$okhttp(arg0: okhttp3.internal.cache.DiskLruCache$Editor): void
-        assigns currentEditor;
+    fun setCurrentEditor$okhttp(arg0: okhttp3.internal.cache.DiskLruCache$Editor): void;
 
     fun getLockingSourceCount$okhttp(): int;
 
-    fun setLockingSourceCount$okhttp(arg0: int): void
-        assigns lockingSourceCount;
+    fun setLockingSourceCount$okhttp(arg0: int): void;
 
     fun getSequenceNumber$okhttp(): long;
 
-    fun setSequenceNumber$okhttp(arg0: long): void
-        assigns sequenceNumber;
+    fun setSequenceNumber$okhttp(arg0: long): void;
 
     fun setLengths$okhttp(arg0: java.util.List): void;
 
-    fun writeLengths$okhttp(arg0: okio.BufferedSink): void
-        assigns arg0;
+    fun writeLengths$okhttp(arg0: okio.BufferedSink): void;
 
     fun invalidLengths(arg0: java.util.List): `<UNRESOLVED_TYPE>`;
 
-    fun snapshot$okhttp(): okhttp3.internal.cache.DiskLruCache$Snapshot
-        assigns lockingSourceCount;
-        assigns zombie;
+    fun snapshot$okhttp(): okhttp3.internal.cache.DiskLruCache$Snapshot;
 
-    fun newSource(arg0: int): okio.Source
-        assigns lockingSourceCount;
+    fun newSource(arg0: int): okio.Source;
 
     fun getKey$okhttp(): java.lang.String;
 }
 automaton okhttp3.internal.cache.CacheStrategy$Companion : okhttp3.internal.cache.CacheStrategy$Companion {
-    fun isCacheable(arg0: okhttp3.Response, arg1: okhttp3.Request): bool
-        assigns arg0.lazyCacheControl;
-        assigns arg1.lazyCacheControl;
+    fun isCacheable(arg0: okhttp3.Response, arg1: okhttp3.Request): bool;
 }
-automaton okhttp3.internal.http2.Http2Stream$StreamTimeout (var arg0: okhttp3.internal.http2.Http2Stream) : okhttp3.internal.http2.Http2Stream$StreamTimeout {
-    var this$0: okhttp3.internal.http2.Http2Stream;
+automaton okhttp3.internal.http2.Http2Stream$StreamTimeout (val arg0: okhttp3.internal.http2.Http2Stream) : okhttp3.internal.http2.Http2Stream$StreamTimeout {
+    val this$0: okhttp3.internal.http2.Http2Stream;
     fun timedOut(): void;
 
     fun newTimeoutException(arg0: java.io.IOException): `<UNRESOLVED_TYPE>`;
 
     fun exitAndThrowIfTimedOut(): void;
 }
-automaton okhttp3.internal.platform.Jdk8WithJettyBootPlatform$AlpnProvider (var arg0: `<UNRESOLVED_TYPE>`) : okhttp3.internal.platform.Jdk8WithJettyBootPlatform$AlpnProvider {
-    var unsupported: bool;
-    var selected: java.lang.String;
-    var protocols: `<UNRESOLVED_TYPE>`;
+automaton okhttp3.internal.platform.Jdk8WithJettyBootPlatform$AlpnProvider (val arg0: `<UNRESOLVED_TYPE>`) : okhttp3.internal.platform.Jdk8WithJettyBootPlatform$AlpnProvider {
+    val unsupported: bool;
+    val selected: java.lang.String;
+    val protocols: `<UNRESOLVED_TYPE>`;
     fun getUnsupported$okhttp(): bool;
 
-    fun setUnsupported$okhttp(arg0: bool): void
-        assigns unsupported;
+    fun setUnsupported$okhttp(arg0: bool): void;
 
     fun getSelected$okhttp(): java.lang.String;
 
-    fun setSelected$okhttp(arg0: java.lang.String): void
-        assigns selected;
+    fun setSelected$okhttp(arg0: java.lang.String): void;
 
-    fun invoke(arg0: java.lang.Object, arg1: java.lang.reflect.Method, arg2: array): java.lang.Object
-        assigns unsupported;
-        assigns selected;
+    fun invoke(arg0: java.lang.Object, arg1: java.lang.reflect.Method, arg2: array): java.lang.Object;
 }
-automaton okhttp3.internal.cache.DiskLruCache$newJournalWriter$faultHidingSink$1 (var arg0: okhttp3.internal.cache.DiskLruCache) : okhttp3.internal.cache.DiskLruCache$newJournalWriter$faultHidingSink$1 {
-    var this$0: okhttp3.internal.cache.DiskLruCache;
-    fun invoke(arg0: java.lang.Object): java.lang.Object
-        assigns this$0.hasJournalErrors;
+automaton okhttp3.internal.cache.DiskLruCache$newJournalWriter$faultHidingSink$1 (val arg0: okhttp3.internal.cache.DiskLruCache) : okhttp3.internal.cache.DiskLruCache$newJournalWriter$faultHidingSink$1 {
+    val this$0: okhttp3.internal.cache.DiskLruCache;
+    fun invoke(arg0: java.lang.Object): java.lang.Object;
 
     fun invoke(arg0: java.io.IOException): void;
 }
-automaton okhttp3.internal.tls.BasicTrustRootIndex (var arg0: `<UNRESOLVED_TYPE>`) : okhttp3.internal.tls.BasicTrustRootIndex {
-    var subjectToCaCerts: `<UNRESOLVED_TYPE>`;
+automaton okhttp3.internal.tls.BasicTrustRootIndex (val arg0: `<UNRESOLVED_TYPE>`) : okhttp3.internal.tls.BasicTrustRootIndex {
+    val subjectToCaCerts: `<UNRESOLVED_TYPE>`;
     fun findByIssuerAndSignature(arg0: java.security.cert.X509Certificate): `<UNRESOLVED_TYPE>`;
 
     fun equals(arg0: java.lang.Object): bool;
@@ -9363,40 +8692,26 @@ automaton okhttp3.internal.cache.CacheRequest : okhttp3.internal.cache.CacheRequ
 
     fun abort(): void;
 }
-automaton okhttp3.internal.http2.Hpack$Reader (var arg0: okio.Source, var arg1: int, var arg2: int) : okhttp3.internal.http2.Hpack$Reader {
-    var headerList: `<UNRESOLVED_TYPE>`;
-    var source: okio.BufferedSource;
-    var dynamicTable: array<okhttp3.internal.http2.Header>;
-    var nextHeaderIndex: int;
-    var headerCount: int;
-    var dynamicTableByteCount: int;
-    var headerTableSizeSetting: int;
-    var maxDynamicTableByteCount: int;
+automaton okhttp3.internal.http2.Hpack$Reader (val arg0: okio.Source, val arg1: int, val arg2: int) : okhttp3.internal.http2.Hpack$Reader {
+    val headerList: `<UNRESOLVED_TYPE>`;
+    val source: okio.BufferedSource;
+    val dynamicTable: array<okhttp3.internal.http2.Header>;
+    val nextHeaderIndex: int;
+    val headerCount: int;
+    val dynamicTableByteCount: int;
+    val headerTableSizeSetting: int;
+    val maxDynamicTableByteCount: int;
     fun getAndResetHeaderList(): `<UNRESOLVED_TYPE>`;
 
     fun maxDynamicTableByteCount(): int;
 
-    fun adjustDynamicTableByteCount(): void
-        assigns nextHeaderIndex;
-        assigns headerCount;
-        assigns dynamicTableByteCount;
+    fun adjustDynamicTableByteCount(): void;
 
-    fun clearDynamicTable(): void
-        assigns nextHeaderIndex;
-        assigns headerCount;
-        assigns dynamicTableByteCount;
+    fun clearDynamicTable(): void;
 
-    fun evictToRecoverBytes(arg0: int): int
-        assigns dynamicTableByteCount;
-        assigns headerCount;
-        assigns nextHeaderIndex;
+    fun evictToRecoverBytes(arg0: int): int;
 
-    fun readHeaders(): void
-        assigns maxDynamicTableByteCount;
-        assigns nextHeaderIndex;
-        assigns dynamicTable;
-        assigns headerCount;
-        assigns dynamicTableByteCount;
+    fun readHeaders(): void;
 
     fun readIndexedHeader(arg0: int): void;
 
@@ -9406,27 +8721,15 @@ automaton okhttp3.internal.http2.Hpack$Reader (var arg0: okio.Source, var arg1: 
 
     fun readLiteralHeaderWithoutIndexingNewName(): void;
 
-    fun readLiteralHeaderWithIncrementalIndexingIndexedName(arg0: int): void
-        assigns nextHeaderIndex;
-        assigns dynamicTable;
-        assigns headerCount;
-        assigns dynamicTableByteCount;
+    fun readLiteralHeaderWithIncrementalIndexingIndexedName(arg0: int): void;
 
-    fun readLiteralHeaderWithIncrementalIndexingNewName(): void
-        assigns nextHeaderIndex;
-        assigns dynamicTable;
-        assigns headerCount;
-        assigns dynamicTableByteCount;
+    fun readLiteralHeaderWithIncrementalIndexingNewName(): void;
 
     fun getName(arg0: int): okio.ByteString;
 
     fun isStaticHeader(arg0: int): bool;
 
-    fun insertIntoDynamicTable(arg0: int, arg1: okhttp3.internal.http2.Header): void
-        assigns nextHeaderIndex;
-        assigns dynamicTable;
-        assigns headerCount;
-        assigns dynamicTableByteCount;
+    fun insertIntoDynamicTable(arg0: int, arg1: okhttp3.internal.http2.Header): void;
 
     fun readByte(): int;
 
@@ -9434,40 +8737,40 @@ automaton okhttp3.internal.http2.Hpack$Reader (var arg0: okio.Source, var arg1: 
 
     fun readByteString(): okio.ByteString;
 }
-automaton okhttp3.internal.ws.RealWebSocket$Close (var arg0: int, var arg1: okio.ByteString, var arg2: long) : okhttp3.internal.ws.RealWebSocket$Close {
-    var code: int;
-    var reason: okio.ByteString;
-    var cancelAfterCloseMillis: long;
+automaton okhttp3.internal.ws.RealWebSocket$Close (val arg0: int, val arg1: okio.ByteString, val arg2: long) : okhttp3.internal.ws.RealWebSocket$Close {
+    val code: int;
+    val reason: okio.ByteString;
+    val cancelAfterCloseMillis: long;
     fun getCode(): int;
 
     fun getReason(): okio.ByteString;
 
     fun getCancelAfterCloseMillis(): long;
 }
-automaton okhttp3.internal.ws.RealWebSocket$initReaderAndWriter$$inlined$synchronized$lambda$1 (var arg0: java.lang.String, var arg1: java.lang.String, var arg2: long, var arg3: okhttp3.internal.ws.RealWebSocket, var arg4: java.lang.String, var arg5: okhttp3.internal.ws.RealWebSocket$Streams, var arg6: okhttp3.internal.ws.WebSocketExtensions) : okhttp3.internal.ws.RealWebSocket$initReaderAndWriter$$inlined$synchronized$lambda$1 {
-    var $name: java.lang.String;
-    var $pingIntervalNanos$inlined: long;
-    var this$0: okhttp3.internal.ws.RealWebSocket;
-    var $name$inlined: java.lang.String;
-    var $streams$inlined: okhttp3.internal.ws.RealWebSocket$Streams;
-    var $extensions$inlined: okhttp3.internal.ws.WebSocketExtensions;
+automaton okhttp3.internal.ws.RealWebSocket$initReaderAndWriter$$inlined$synchronized$lambda$1 (val arg0: java.lang.String, val arg1: java.lang.String, val arg2: long, val arg3: okhttp3.internal.ws.RealWebSocket, val arg4: java.lang.String, val arg5: okhttp3.internal.ws.RealWebSocket$Streams, val arg6: okhttp3.internal.ws.WebSocketExtensions) : okhttp3.internal.ws.RealWebSocket$initReaderAndWriter$$inlined$synchronized$lambda$1 {
+    val $name: java.lang.String;
+    val $pingIntervalNanos$inlined: long;
+    val this$0: okhttp3.internal.ws.RealWebSocket;
+    val $name$inlined: java.lang.String;
+    val $streams$inlined: okhttp3.internal.ws.RealWebSocket$Streams;
+    val $extensions$inlined: okhttp3.internal.ws.WebSocketExtensions;
     fun runOnce(): long;
 }
-automaton okhttp3.Cookie (var arg0: java.lang.String, var arg1: java.lang.String, var arg2: long, var arg3: java.lang.String, var arg4: java.lang.String, var arg5: bool, var arg6: bool, var arg7: bool, var arg8: bool) : okhttp3.Cookie {
-    var name: java.lang.String;
-    var value: java.lang.String;
-    var expiresAt: long;
-    var domain: java.lang.String;
-    var path: java.lang.String;
-    var secure: bool;
-    var httpOnly: bool;
-    var persistent: bool;
-    var hostOnly: bool;
-    var YEAR_PATTERN: `<UNRESOLVED_TYPE>`;
-    var MONTH_PATTERN: `<UNRESOLVED_TYPE>`;
-    var DAY_OF_MONTH_PATTERN: `<UNRESOLVED_TYPE>`;
-    var TIME_PATTERN: `<UNRESOLVED_TYPE>`;
-    var Companion: okhttp3.Cookie$Companion;
+automaton okhttp3.Cookie (val arg0: java.lang.String, val arg1: java.lang.String, val arg2: long, val arg3: java.lang.String, val arg4: java.lang.String, val arg5: bool, val arg6: bool, val arg7: bool, val arg8: bool) : okhttp3.Cookie {
+    val name: java.lang.String;
+    val value: java.lang.String;
+    val expiresAt: long;
+    val domain: java.lang.String;
+    val path: java.lang.String;
+    val secure: bool;
+    val httpOnly: bool;
+    val persistent: bool;
+    val hostOnly: bool;
+    val YEAR_PATTERN: `<UNRESOLVED_TYPE>`;
+    val MONTH_PATTERN: `<UNRESOLVED_TYPE>`;
+    val DAY_OF_MONTH_PATTERN: `<UNRESOLVED_TYPE>`;
+    val TIME_PATTERN: `<UNRESOLVED_TYPE>`;
+    val Companion: okhttp3.Cookie$Companion;
     fun matches(arg0: okhttp3.HttpUrl): bool;
 
     fun equals(arg0: java.lang.Object): bool;
@@ -9514,8 +8817,7 @@ automaton okhttp3.Cookie (var arg0: java.lang.String, var arg1: java.lang.String
 
     fun hostOnly(): bool;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 
     fun access$getTIME_PATTERN$cp(): `<UNRESOLVED_TYPE>`;
 
@@ -9529,66 +8831,34 @@ automaton okhttp3.Cookie (var arg0: java.lang.String, var arg1: java.lang.String
 
     fun parseAll(arg0: okhttp3.HttpUrl, arg1: okhttp3.Headers): `<UNRESOLVED_TYPE>`;
 }
-automaton okhttp3.internal.ws.WebSocketReader (var arg0: bool, var arg1: okio.BufferedSource, var arg2: okhttp3.internal.ws.WebSocketReader$FrameCallback, var arg3: bool, var arg4: bool) : okhttp3.internal.ws.WebSocketReader {
-    var closed: bool;
-    var opcode: int;
-    var frameLength: long;
-    var isFinalFrame: bool;
-    var isControlFrame: bool;
-    var readingCompressedMessage: bool;
-    var controlFrameBuffer: okio.Buffer;
-    var messageFrameBuffer: okio.Buffer;
-    var messageInflater: okhttp3.internal.ws.MessageInflater;
-    var maskKey: array<byte>;
-    var maskCursor: okio.Buffer$UnsafeCursor;
-    var isClient: bool;
-    var source: okio.BufferedSource;
-    var frameCallback: okhttp3.internal.ws.WebSocketReader$FrameCallback;
-    var perMessageDeflate: bool;
-    var noContextTakeover: bool;
-    fun processNextFrame(): void
-        assigns opcode;
-        assigns isFinalFrame;
-        assigns isControlFrame;
-        assigns readingCompressedMessage;
-        assigns frameLength;
-        assigns closed;
-        assigns messageInflater;
+automaton okhttp3.internal.ws.WebSocketReader (val arg0: bool, val arg1: okio.BufferedSource, val arg2: okhttp3.internal.ws.WebSocketReader$FrameCallback, val arg3: bool, val arg4: bool) : okhttp3.internal.ws.WebSocketReader {
+    val closed: bool;
+    val opcode: int;
+    val frameLength: long;
+    val isFinalFrame: bool;
+    val isControlFrame: bool;
+    val readingCompressedMessage: bool;
+    val controlFrameBuffer: okio.Buffer;
+    val messageFrameBuffer: okio.Buffer;
+    val messageInflater: okhttp3.internal.ws.MessageInflater;
+    val maskKey: array<byte>;
+    val maskCursor: okio.Buffer$UnsafeCursor;
+    val isClient: bool;
+    val source: okio.BufferedSource;
+    val frameCallback: okhttp3.internal.ws.WebSocketReader$FrameCallback;
+    val perMessageDeflate: bool;
+    val noContextTakeover: bool;
+    fun processNextFrame(): void;
 
-    fun readHeader(): void
-        assigns opcode;
-        assigns isFinalFrame;
-        assigns isControlFrame;
-        assigns readingCompressedMessage;
-        assigns frameLength;
+    fun readHeader(): void;
 
-    fun readControlFrame(): void
-        assigns closed;
+    fun readControlFrame(): void;
 
-    fun readMessageFrame(): void
-        assigns messageInflater;
-        assigns opcode;
-        assigns isFinalFrame;
-        assigns isControlFrame;
-        assigns readingCompressedMessage;
-        assigns frameLength;
-        assigns closed;
+    fun readMessageFrame(): void;
 
-    fun readUntilNonControlFrame(): void
-        assigns opcode;
-        assigns isFinalFrame;
-        assigns isControlFrame;
-        assigns readingCompressedMessage;
-        assigns frameLength;
-        assigns closed;
+    fun readUntilNonControlFrame(): void;
 
-    fun readMessage(): void
-        assigns opcode;
-        assigns isFinalFrame;
-        assigns isControlFrame;
-        assigns readingCompressedMessage;
-        assigns frameLength;
-        assigns closed;
+    fun readMessage(): void;
 
     fun close(): void;
 
@@ -9610,68 +8880,54 @@ automaton okhttp3.internal.platform.Android10Platform$Companion : okhttp3.intern
 
     fun buildIfSupported(): okhttp3.internal.platform.Platform;
 }
-automaton okhttp3.internal.ws.RealWebSocket (var arg0: okhttp3.internal.concurrent.TaskRunner, var arg1: okhttp3.Request, var arg2: okhttp3.WebSocketListener, var arg3: `<UNRESOLVED_TYPE>`, var arg4: long, var arg5: okhttp3.internal.ws.WebSocketExtensions, var arg6: long) : okhttp3.internal.ws.RealWebSocket {
-    var key: java.lang.String;
-    var call: okhttp3.Call;
-    var writerTask: okhttp3.internal.concurrent.Task;
-    var reader: okhttp3.internal.ws.WebSocketReader;
-    var writer: okhttp3.internal.ws.WebSocketWriter;
-    var taskQueue: okhttp3.internal.concurrent.TaskQueue;
-    var name: java.lang.String;
-    var streams: okhttp3.internal.ws.RealWebSocket$Streams;
-    var pongQueue: `<UNRESOLVED_TYPE>`;
-    var messageAndCloseQueue: `<UNRESOLVED_TYPE>`;
-    var queueSize: long;
-    var enqueuedClose: bool;
-    var receivedCloseCode: int;
-    var receivedCloseReason: java.lang.String;
-    var failed: bool;
-    var sentPingCount: int;
-    var receivedPingCount: int;
-    var receivedPongCount: int;
-    var awaitingPong: bool;
-    var originalRequest: okhttp3.Request;
-    var listener: okhttp3.WebSocketListener;
-    var random: `<UNRESOLVED_TYPE>`;
-    var pingIntervalMillis: long;
-    var extensions: okhttp3.internal.ws.WebSocketExtensions;
-    var minimumDeflateSize: long;
-    var ONLY_HTTP1: `<UNRESOLVED_TYPE>`;
-    var MAX_QUEUE_SIZE: long;
-    var CANCEL_AFTER_CLOSE_MILLIS: long;
-    var DEFAULT_MINIMUM_DEFLATE_SIZE: long;
-    var Companion: okhttp3.internal.ws.RealWebSocket$Companion;
+automaton okhttp3.internal.ws.RealWebSocket (val arg0: okhttp3.internal.concurrent.TaskRunner, val arg1: okhttp3.Request, val arg2: okhttp3.WebSocketListener, val arg3: `<UNRESOLVED_TYPE>`, val arg4: long, val arg5: okhttp3.internal.ws.WebSocketExtensions, val arg6: long) : okhttp3.internal.ws.RealWebSocket {
+    val key: java.lang.String;
+    val call: okhttp3.Call;
+    val writerTask: okhttp3.internal.concurrent.Task;
+    val reader: okhttp3.internal.ws.WebSocketReader;
+    val writer: okhttp3.internal.ws.WebSocketWriter;
+    val taskQueue: okhttp3.internal.concurrent.TaskQueue;
+    val name: java.lang.String;
+    val streams: okhttp3.internal.ws.RealWebSocket$Streams;
+    val pongQueue: `<UNRESOLVED_TYPE>`;
+    val messageAndCloseQueue: `<UNRESOLVED_TYPE>`;
+    val queueSize: long;
+    val enqueuedClose: bool;
+    val receivedCloseCode: int;
+    val receivedCloseReason: java.lang.String;
+    val failed: bool;
+    val sentPingCount: int;
+    val receivedPingCount: int;
+    val receivedPongCount: int;
+    val awaitingPong: bool;
+    val originalRequest: okhttp3.Request;
+    val listener: okhttp3.WebSocketListener;
+    val random: `<UNRESOLVED_TYPE>`;
+    val pingIntervalMillis: long;
+    val extensions: okhttp3.internal.ws.WebSocketExtensions;
+    val minimumDeflateSize: long;
+    val ONLY_HTTP1: `<UNRESOLVED_TYPE>`;
+    val MAX_QUEUE_SIZE: long;
+    val CANCEL_AFTER_CLOSE_MILLIS: long;
+    val DEFAULT_MINIMUM_DEFLATE_SIZE: long;
+    val Companion: okhttp3.internal.ws.RealWebSocket$Companion;
     fun request(): okhttp3.Request;
 
     fun queueSize(): long;
 
     fun cancel(): void;
 
-    fun connect(arg0: okhttp3.OkHttpClient): void
-        assigns call;
-        assigns failed;
-        assigns streams;
-        assigns reader;
-        assigns writer;
+    fun connect(arg0: okhttp3.OkHttpClient): void;
 
     fun isValid(arg0: okhttp3.internal.ws.WebSocketExtensions): bool;
 
     fun checkUpgradeSuccess$okhttp(arg0: okhttp3.Response, arg1: okhttp3.internal.connection.Exchange): void;
 
-    fun initReaderAndWriter(arg0: java.lang.String, arg1: okhttp3.internal.ws.RealWebSocket$Streams): void
-        assigns name;
-        assigns streams;
-        assigns writer;
-        assigns writerTask;
-        assigns reader;
+    fun initReaderAndWriter(arg0: java.lang.String, arg1: okhttp3.internal.ws.RealWebSocket$Streams): void;
 
     fun loopReader(): void;
 
-    fun processNextFrame(): bool
-        assigns failed;
-        assigns streams;
-        assigns reader;
-        assigns writer;
+    fun processNextFrame(): bool;
 
     fun awaitTermination(arg0: long, arg1: java.util.concurrent.TimeUnit): void;
 
@@ -9687,85 +8943,52 @@ automaton okhttp3.internal.ws.RealWebSocket (var arg0: okhttp3.internal.concurre
 
     fun onReadMessage(arg0: okio.ByteString): void;
 
-    fun onReadPing(arg0: okio.ByteString): void
-        assigns receivedPingCount;
+    fun onReadPing(arg0: okio.ByteString): void;
 
-    fun onReadPong(arg0: okio.ByteString): void
-        assigns receivedPongCount;
-        assigns awaitingPong;
+    fun onReadPong(arg0: okio.ByteString): void;
 
-    fun onReadClose(arg0: int, arg1: java.lang.String): void
-        assigns receivedCloseCode;
-        assigns receivedCloseReason;
-        assigns streams;
-        assigns reader;
-        assigns writer;
+    fun onReadClose(arg0: int, arg1: java.lang.String): void;
 
-    fun send(arg0: java.lang.String): bool
-        assigns queueSize;
-        assigns enqueuedClose;
+    fun send(arg0: java.lang.String): bool;
 
     fun send(arg0: okio.ByteString): bool;
 
-    fun send(arg0: okio.ByteString, arg1: int): bool
-        assigns queueSize;
-        assigns enqueuedClose;
+    fun send(arg0: okio.ByteString, arg1: int): bool;
 
     fun pong(arg0: okio.ByteString): bool;
 
-    fun close(arg0: int, arg1: java.lang.String): bool
-        assigns enqueuedClose;
+    fun close(arg0: int, arg1: java.lang.String): bool;
 
-    fun close(arg0: int, arg1: java.lang.String, arg2: long): bool
-        assigns enqueuedClose;
+    fun close(arg0: int, arg1: java.lang.String, arg2: long): bool;
 
-    fun runWriter(): void
-        assigns writerTask.queue;
-        assigns writerTask.nextExecuteNanoTime;
+    fun runWriter(): void;
 
-    fun writeOneFrame$okhttp(): bool
-        assigns streams;
-        assigns reader;
-        assigns writer;
-        assigns queueSize;
+    fun writeOneFrame$okhttp(): bool;
 
-    fun writePingFrame$okhttp(): void
-        assigns sentPingCount;
-        assigns awaitingPong;
-        assigns failed;
-        assigns streams;
-        assigns reader;
-        assigns writer;
+    fun writePingFrame$okhttp(): void;
 
-    fun failWebSocket(arg0: java.lang.Exception, arg1: okhttp3.Response): void
-        assigns failed;
-        assigns streams;
-        assigns reader;
-        assigns writer;
+    fun failWebSocket(arg0: java.lang.Exception, arg1: okhttp3.Response): void;
 
     fun getListener$okhttp(): okhttp3.WebSocketListener;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 
     fun access$getName$p(arg0: okhttp3.internal.ws.RealWebSocket): java.lang.String;
 
-    fun access$setName$p(arg0: okhttp3.internal.ws.RealWebSocket, arg1: java.lang.String): void
-        assigns arg0.name;
+    fun access$setName$p(arg0: okhttp3.internal.ws.RealWebSocket, arg1: java.lang.String): void;
 
     fun access$getExtensions$p(arg0: okhttp3.internal.ws.RealWebSocket): okhttp3.internal.ws.WebSocketExtensions;
 
-    fun access$setExtensions$p(arg0: okhttp3.internal.ws.RealWebSocket, arg1: okhttp3.internal.ws.WebSocketExtensions): void
-        assigns arg0.extensions;
+    fun access$setExtensions$p(arg0: okhttp3.internal.ws.RealWebSocket, arg1: okhttp3.internal.ws.WebSocketExtensions): void;
 
     fun access$isValid(arg0: okhttp3.internal.ws.RealWebSocket, arg1: okhttp3.internal.ws.WebSocketExtensions): bool;
 
     fun access$getMessageAndCloseQueue$p(arg0: okhttp3.internal.ws.RealWebSocket): `<UNRESOLVED_TYPE>`;
 }
-automaton okhttp3.MultipartBody$Part (var arg0: okhttp3.Headers, var arg1: okhttp3.RequestBody) : okhttp3.MultipartBody$Part {
-    var headers: okhttp3.Headers;
-    var body: okhttp3.RequestBody;
-    var Companion: okhttp3.MultipartBody$Part$Companion;
+automaton okhttp3.MultipartBody$Part (val arg0: okhttp3.Headers, val arg1: okhttp3.RequestBody) : okhttp3.MultipartBody$Part {
+    val headers: okhttp3.Headers;
+    val body: okhttp3.RequestBody;
+    val Companion: okhttp3.MultipartBody$Part$Companion;
     fun `-deprecated_headers`(): okhttp3.Headers;
 
     fun `-deprecated_body`(): okhttp3.RequestBody;
@@ -9774,8 +8997,7 @@ automaton okhttp3.MultipartBody$Part (var arg0: okhttp3.Headers, var arg1: okhtt
 
     fun body(): okhttp3.RequestBody;
 
-    fun `<clinit>`(): void
-        assigns Companion;
+    fun `<clinit>`(): void;
 
     fun create(arg0: okhttp3.RequestBody): okhttp3.MultipartBody$Part;
 
@@ -9785,39 +9007,37 @@ automaton okhttp3.MultipartBody$Part (var arg0: okhttp3.Headers, var arg1: okhtt
 
     fun createFormData(arg0: java.lang.String, arg1: java.lang.String, arg2: okhttp3.RequestBody): okhttp3.MultipartBody$Part;
 }
-automaton okhttp3.ConnectionSpec$Builder (var arg0: bool) : okhttp3.ConnectionSpec$Builder {
-    var tls: bool;
-    var cipherSuites: array<java.lang.String>;
-    var tlsVersions: array<java.lang.String>;
-    var supportsTlsExtensions: bool;
+automaton okhttp3.ConnectionSpec$Builder (val arg0: bool) : okhttp3.ConnectionSpec$Builder {
+    val tls: bool;
+    val cipherSuites: array<java.lang.String>;
+    val tlsVersions: array<java.lang.String>;
+    val supportsTlsExtensions: bool;
     fun getTls$okhttp(): bool;
 
-    fun setTls$okhttp(arg0: bool): void
-        assigns tls;
+    fun setTls$okhttp(arg0: bool): void;
 
     fun getCipherSuites$okhttp(): array<java.lang.String>;
 
-    fun setCipherSuites$okhttp(arg0: array): void
-        assigns cipherSuites;
+    fun setCipherSuites$okhttp(arg0: array): void;
 
     fun getTlsVersions$okhttp(): array<java.lang.String>;
 
-    fun setTlsVersions$okhttp(arg0: array): void
-        assigns tlsVersions;
+    fun setTlsVersions$okhttp(arg0: array): void;
 
     fun getSupportsTlsExtensions$okhttp(): bool;
 
-    fun setSupportsTlsExtensions$okhttp(arg0: bool): void
-        assigns supportsTlsExtensions;
+    fun setSupportsTlsExtensions$okhttp(arg0: bool): void;
 
     fun allEnabledCipherSuites(): okhttp3.ConnectionSpec$Builder;
 
+    @Throws("java.lang.IllegalArgumentException", !tls)
     fun cipherSuites(arg0: array): okhttp3.ConnectionSpec$Builder;
 
     fun cipherSuites(arg0: array): okhttp3.ConnectionSpec$Builder;
 
     fun allEnabledTlsVersions(): okhttp3.ConnectionSpec$Builder;
 
+    @Throws("java.lang.IllegalArgumentException", !tls)
     fun tlsVersions(arg0: array): okhttp3.ConnectionSpec$Builder;
 
     fun tlsVersions(arg0: array): okhttp3.ConnectionSpec$Builder;

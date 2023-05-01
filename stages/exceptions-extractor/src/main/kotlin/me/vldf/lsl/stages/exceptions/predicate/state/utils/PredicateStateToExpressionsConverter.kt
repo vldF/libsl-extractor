@@ -1,4 +1,4 @@
-package me.vldf.lsl.stages.exceptions.optimization
+package me.vldf.lsl.stages.exceptions.predicate.state.utils
 
 import me.vldf.lsl.extractor.platform.platformLogger
 import org.jetbrains.research.kex.state.*
@@ -13,15 +13,11 @@ import org.jetbrains.research.libsl.nodes.*
 import org.jetbrains.research.libsl.nodes.references.builders.VariableReferenceBuilder
 import org.vorpal.research.kfg.ir.value.instruction.CmpOpcode
 
-class ExpressionBuilder(private val context: LslContextBase) {
+class PredicateStateToExpressionsConverter(private val context: LslContextBase) {
     private val logger by platformLogger()
     private val predicateStateCleaner = PredicateStateCleaner()
 
-    fun isTrivial(predicate: PredicateStateWithPath): Boolean {
-        return Optimizer.apply(predicate.toPredicateState()) !is ChainState
-    }
-
-    fun asLibslExpression(predicate: PredicateStateWithPath): List<Expression> {
+    fun convert(predicate: PredicateStateWithPath): List<Expression> {
         val inlinedPath = inline(predicate)
         return processInlinedPath(inlinedPath)
     }

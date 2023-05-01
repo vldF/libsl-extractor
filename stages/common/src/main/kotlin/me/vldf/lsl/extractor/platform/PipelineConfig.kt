@@ -16,12 +16,12 @@ class PipelineConfig (builder: PipelineConfig.() -> Unit) {
     var libraryVersion: String? = null
     var libraryUrl: String? = null
     var libraryLanguage: String? = null
-    var refinementsFileName: String? = null
+    var refinementsFileNames: List<String> = listOf()
 
     val stages: MutableList<AnalysisStage> = mutableListOf()
 
-    val refinementsFile: File?
-        get() = refinementsFileName?.let {
+    val refinementsFiles: List<File>
+        get() = refinementsFileNames.mapNotNull {
             this::class.java.getResource("/$it.json")?.file?.let { file -> File(file) }
         }
 
