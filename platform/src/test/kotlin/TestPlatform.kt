@@ -3,7 +3,6 @@ import me.vldf.lsl.extractor.platform.PipelineConfig
 import me.vldf.lsl.jvm.reader.JvmClassReader
 import me.vldf.lsl.stages.assign.AssignExtractor
 import me.vldf.lsl.stages.exceptions.ExceptionsExtractorStage
-import org.jetbrains.research.libsl.LibSL
 import org.junit.jupiter.api.Assertions
 import java.io.File
 
