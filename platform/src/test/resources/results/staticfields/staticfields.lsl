@@ -11,14 +11,10 @@ type me.vldf.lsl.test.staticfields.B {
 
 automaton me.vldf.lsl.test.staticfields.A : me.vldf.lsl.test.staticfields.A {
     fun foo(): void;
-
+    
     fun bar(arg0: me.vldf.lsl.test.staticfields.B): void
-        assigns arg0.state;
-
-    fun tar(arg0: me.vldf.lsl.test.staticfields.B): void
-        assigns arg0.state;
-}
+    fun tar(arg0: me.vldf.lsl.test.staticfields.B): void}
 automaton me.vldf.lsl.test.staticfields.B : me.vldf.lsl.test.staticfields.B {
-    var staticField: me.vldf.lsl.test.staticfields.B;
-    var `state`: int;
+    val staticField: me.vldf.lsl.test.staticfields.B;
+    val `state`: int;
 }

@@ -12,7 +12,7 @@ object TestPlatform {
     private val testDataJarsParentDir = File("../testData/build/jars/")
     private val resultDir = File("./src/test/resources/results")
     private val analysisStagesFactory = {
-        listOf(JvmClassReader(), ExceptionsExtractorStage())
+        listOf(JvmClassReader(), AssignExtractor(), ExceptionsExtractorStage())
     }
 
     init {

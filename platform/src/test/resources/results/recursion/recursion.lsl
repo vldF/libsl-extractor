@@ -9,9 +9,7 @@ type me.vldf.lsl.test.recursion.Recursion {
 }
 
 automaton me.vldf.lsl.test.recursion.A : me.vldf.lsl.test.recursion.A {
-    var field: int;
+    val field: int;
 }
 automaton me.vldf.lsl.test.recursion.Recursion : me.vldf.lsl.test.recursion.Recursion {
-    fun foo(arg0: me.vldf.lsl.test.recursion.A): void
-        assigns arg0.field;
-}
+    fun foo(arg0: me.vldf.lsl.test.recursion.A): void}

@@ -9,11 +9,7 @@ type me.vldf.lsl.test.phistatement.Data {
 }
 
 automaton me.vldf.lsl.test.phistatement.A : me.vldf.lsl.test.phistatement.A {
-    fun foo(arg0: me.vldf.lsl.test.phistatement.Data, arg1: me.vldf.lsl.test.phistatement.Data, arg2: me.vldf.lsl.test.phistatement.Data, arg3: int): void
-        assigns arg0.field;
-        assigns arg1.field;
-        assigns arg2.field;
-}
+    fun foo(arg0: me.vldf.lsl.test.phistatement.Data, arg1: me.vldf.lsl.test.phistatement.Data, arg2: me.vldf.lsl.test.phistatement.Data, arg3: int): void}
 automaton me.vldf.lsl.test.phistatement.Data : me.vldf.lsl.test.phistatement.Data {
-    var field: int;
+    val field: int;
 }

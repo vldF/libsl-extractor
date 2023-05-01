@@ -24,20 +24,14 @@ automaton me.vldf.lsl.test.virtualmethods.Interface : me.vldf.lsl.test.virtualme
     fun foo(arg0: me.vldf.lsl.test.virtualmethods.Data): void;
 }
 automaton me.vldf.lsl.test.virtualmethods.Data : me.vldf.lsl.test.virtualmethods.Data {
-    var stateField: int;
+    val stateField: int;
 }
 automaton me.vldf.lsl.test.virtualmethods.InvokeInterface : me.vldf.lsl.test.virtualmethods.InvokeInterface {
-    fun test(arg0: me.vldf.lsl.test.virtualmethods.Data): void
-        assigns arg0.stateField;
-}
+    fun test(arg0: me.vldf.lsl.test.virtualmethods.Data): void}
 automaton me.vldf.lsl.test.virtualmethods.InheritorA : me.vldf.lsl.test.virtualmethods.InheritorA {
     fun foo(arg0: me.vldf.lsl.test.virtualmethods.Data): void;
 }
 automaton me.vldf.lsl.test.virtualmethods.InvokeVirtual : me.vldf.lsl.test.virtualmethods.InvokeVirtual {
-    fun test(arg0: me.vldf.lsl.test.virtualmethods.Data): void
-        assigns arg0.stateField;
-}
+    fun test(arg0: me.vldf.lsl.test.virtualmethods.Data): void}
 automaton me.vldf.lsl.test.virtualmethods.InheritorB : me.vldf.lsl.test.virtualmethods.InheritorB {
-    fun foo(arg0: me.vldf.lsl.test.virtualmethods.Data): void
-        assigns arg0.stateField;
-}
+    fun foo(arg0: me.vldf.lsl.test.virtualmethods.Data): void}

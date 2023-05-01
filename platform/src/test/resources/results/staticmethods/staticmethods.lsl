@@ -6,13 +6,7 @@ type me.vldf.lsl.test.staticmethods.A {
 }
 
 automaton me.vldf.lsl.test.staticmethods.A : me.vldf.lsl.test.staticmethods.A {
-    var stateField: int;
+    val stateField: int;
     fun foo(): void
-        assigns stateField;
-
     fun bar(): void
-        assigns stateField;
-
-    fun `<clinit>`(): void
-        assigns stateField;
-}
+    fun `<clinit>`(): void}
