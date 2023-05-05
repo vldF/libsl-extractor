@@ -50,5 +50,13 @@ tasks.create("extractDeps") {
     }
 }
 
+sourceSets {
+    main {
+        resources {
+            srcDir("src/main/resources")
+        }
+    }
+}
+
 val File.isIgnored: Boolean
     get() = listOf("kotlin-").any { ignoreName -> this.name.contains(ignoreName) }
