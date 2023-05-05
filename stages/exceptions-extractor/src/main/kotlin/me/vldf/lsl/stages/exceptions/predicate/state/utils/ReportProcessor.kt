@@ -4,6 +4,7 @@ import me.vldf.lsl.extractor.platform.GlobalAnalysisContext
 import me.vldf.lsl.extractor.platform.KfgHelper.createAutomatonReference
 import me.vldf.lsl.extractor.platform.platformLogger
 import me.vldf.lsl.stages.exceptions.models.ResultModel
+import me.vldf.lsl.stages.exceptions.predicate.state.utils.ExpressionDuplicatesCleaner.clean
 import org.jetbrains.research.kex.refinements.report.MachineReadableReport
 import org.jetbrains.research.libsl.nodes.Automaton
 import org.jetbrains.research.libsl.nodes.Function
@@ -50,6 +51,7 @@ class ReportProcessor(private val globalAnalysisContext: GlobalAnalysisContext) 
                                 lslExpression = expression
                             )
                         }
+                        .clean()
                         .forEach(result::add)
                 }
             }
