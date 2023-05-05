@@ -16,13 +16,27 @@ type me.vldf.lsl.test.controlflow.ClassModifiedByInnerMethod {
 automaton me.vldf.lsl.test.controlflow.A : me.vldf.lsl.test.controlflow.A {
     fun foo(): void;
     
-    fun bar(arg0: me.vldf.lsl.test.controlflow.B): void
-    fun tar(arg0: int, arg1: me.vldf.lsl.test.controlflow.B): void}
+    fun bar(arg0: me.vldf.lsl.test.controlflow.B): void {
+        assigns arg0.field;
+        assigns arg0.anotherB.field;
+    }
+    
+    fun tar(arg0: int, arg1: me.vldf.lsl.test.controlflow.B): void {
+        assigns arg1.field;
+        assigns arg1.anotherB.field;
+    }
+}
 automaton me.vldf.lsl.test.controlflow.B : me.vldf.lsl.test.controlflow.B {
     val field: int;
     val anotherB: me.vldf.lsl.test.controlflow.B;
 }
 automaton me.vldf.lsl.test.controlflow.ClassModifiedByInnerMethod : me.vldf.lsl.test.controlflow.ClassModifiedByInnerMethod {
     val `state`: int;
-    fun impureMethod(): void
-    fun implicitImpureMethod(): void}
+    fun impureMethod(): void {
+        assigns `state`;
+    }
+    
+    fun implicitImpureMethod(): void {
+        assigns `state`;
+    }
+}

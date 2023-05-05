@@ -74,7 +74,7 @@ type org.intellij.lang.annotations.JdkConstants {
 type org.jetbrains.annotations.NonNls {
 }
 
-type module-info {
+type `module-info` {
 }
 
 type org.intellij.lang.annotations.JdkConstants$FlowLayoutAlignment {
@@ -199,7 +199,13 @@ automaton org.jetbrains.annotations.Nls$Capitalization (val arg0: java.lang.Stri
     
     fun valueOf(arg0: java.lang.String): org.jetbrains.annotations.Nls$Capitalization;
     
-    fun `<clinit>`(): void}
+    fun `<clinit>`(): void {
+        assigns NotSpecified;
+        assigns Title;
+        assigns Sentence;
+        assigns $VALUES;
+    }
+}
 automaton org.jetbrains.annotations.Range : org.jetbrains.annotations.Range {
     fun from(): long;
     
@@ -269,7 +275,7 @@ automaton org.intellij.lang.annotations.JdkConstants : org.intellij.lang.annotat
 }
 automaton org.jetbrains.annotations.NonNls : org.jetbrains.annotations.NonNls {
 }
-automaton module-info : module-info {
+automaton `module-info` : `module-info` {
 }
 automaton org.intellij.lang.annotations.JdkConstants$FlowLayoutAlignment : org.intellij.lang.annotations.JdkConstants$FlowLayoutAlignment {
 }

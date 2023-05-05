@@ -18,4 +18,10 @@ automaton me.vldf.lsl.test.enums.EnumClass (val arg0: java.lang.String, val arg1
     
     fun $values(): array<me.vldf.lsl.test.enums.EnumClass>;
     
-    fun `<clinit>`(): void}
+    fun `<clinit>`(): void {
+        assigns A;
+        assigns B;
+        assigns C;
+        assigns $VALUES;
+    }
+}
