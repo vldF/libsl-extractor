@@ -1,6 +1,8 @@
 libsl "1.0.0";
 library recursion;
 
+import "java.lsl";
+
 type me.vldf.lsl.test.recursion.A {
     field: int;
 }

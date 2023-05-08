@@ -19,7 +19,16 @@ configure(allprojects) {
     repositories {
         mavenCentral()
         gradlePluginPortal()
+        maven("https://jitpack.io")
+        maven("https://maven.vorpal-research.science")
     }
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven("https://jitpack.io")
+    maven("https://maven.vorpal-research.science")
 }
 
 subprojects {

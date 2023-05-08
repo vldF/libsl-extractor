@@ -1,5 +1,3 @@
-import org.gradle.internal.impldep.org.junit.runners.model.TestClass
-
 plugins {
     id("kotlin")
 }
@@ -33,4 +31,13 @@ tasks.getByName<Test>("test") {
 
 tasks.testClasses {
     dependsOn(":testData:extractDeps")
+}
+
+sourceSets {
+    main {
+        resources {
+            println(project.parent!!.projectDir.resolve("standard-specifications"))
+            srcDir(project.parent!!.projectDir.resolve("standard-specifications"))
+        }
+    }
 }

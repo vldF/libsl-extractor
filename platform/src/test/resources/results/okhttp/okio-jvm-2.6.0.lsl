@@ -1,6 +1,8 @@
 libsl "1.0.0";
 library `okio-jvm-2.6.0`;
 
+import "java.lsl";
+
 type `okio.-DeprecatedUpgrade` {
     Okio: `okio.-DeprecatedOkio`;
     Utf8: `okio.-DeprecatedUtf8`;
@@ -43,10 +45,10 @@ type okio.Throttler {
 
 type okio.GzipSink {
     sink: okio.RealBufferedSink;
-    deflater: `<UNRESOLVED_TYPE>`;
+    deflater: java.util.zip.Deflater;
     deflaterSink: okio.DeflaterSink;
     closed: bool;
-    crc: `<UNRESOLVED_TYPE>`;
+    crc: java.util.zip.CRC32;
 }
 
 type okio.Buffer$outputStream$1 {
@@ -103,9 +105,9 @@ type okio.Pipe {
 type okio.GzipSource {
     section: byte;
     source: okio.RealBufferedSource;
-    inflater: `<UNRESOLVED_TYPE>`;
+    inflater: java.util.zip.Inflater;
     inflaterSource: okio.InflaterSource;
-    crc: `<UNRESOLVED_TYPE>`;
+    crc: java.util.zip.CRC32;
 }
 
 type okio.Options {
@@ -118,7 +120,7 @@ type okio.InflaterSource {
     bufferBytesHeldByInflater: int;
     closed: bool;
     source: okio.BufferedSource;
-    inflater: `<UNRESOLVED_TYPE>`;
+    inflater: java.util.zip.Inflater;
 }
 
 type okio.Buffer {
@@ -129,7 +131,7 @@ type okio.Buffer {
 type okio.DeflaterSink {
     closed: bool;
     sink: okio.BufferedSink;
-    deflater: `<UNRESOLVED_TYPE>`;
+    deflater: java.util.zip.Deflater;
 }
 
 type okio.RealBufferedSink {
@@ -169,14 +171,14 @@ type okio.SegmentedByteString {
 }
 
 type okio.HashingSink {
-    messageDigest: `<UNRESOLVED_TYPE>`;
-    mac: `<UNRESOLVED_TYPE>`;
+    messageDigest: java.security.MessageDigest;
+    mac: javax.crypto.Mac;
     Companion: okio.HashingSink$Companion;
 }
 
 type okio.SocketAsyncTimeout {
-    logger: `<UNRESOLVED_TYPE>`;
-    socket: `<UNRESOLVED_TYPE>`;
+    logger: java.util.logging.Logger;
+    socket: java.net.Socket;
 }
 
 type okio.AsyncTimeout$source$1 {
@@ -185,8 +187,8 @@ type okio.AsyncTimeout$source$1 {
 }
 
 type okio.HashingSource {
-    messageDigest: `<UNRESOLVED_TYPE>`;
-    mac: `<UNRESOLVED_TYPE>`;
+    messageDigest: java.security.MessageDigest;
+    mac: javax.crypto.Mac;
     Companion: okio.HashingSource$Companion;
 }
 
@@ -242,7 +244,7 @@ type okio.ByteString {
 }
 
 type okio.OutputStreamSink {
-    out: `<UNRESOLVED_TYPE>`;
+    out: java.io.OutputStream;
     timeout: okio.Timeout;
 }
 
@@ -304,7 +306,7 @@ type `okio.-DeprecatedOkio` {
 }
 
 type okio.InputStreamSource {
-    input: `<UNRESOLVED_TYPE>`;
+    input: java.io.InputStream;
     timeout: okio.Timeout;
 }
 
@@ -494,7 +496,7 @@ automaton okio.RealBufferedSource (val arg0: okio.Source) : okio.RealBufferedSou
     
     fun peek(): okio.BufferedSource;
     
-    fun inputStream(): `<UNRESOLVED_TYPE>`;
+    fun inputStream(): java.io.InputStream;
     
     fun isOpen(): bool;
     
@@ -608,11 +610,11 @@ automaton okio.Throttler (val arg0: long) : okio.Throttler {
 }
 automaton okio.GzipSink (val arg0: okio.Sink) : okio.GzipSink {
     val sink: okio.RealBufferedSink;
-    val deflater: `<UNRESOLVED_TYPE>`;
+    val deflater: java.util.zip.Deflater;
     val deflaterSink: okio.DeflaterSink;
     val closed: bool;
-    val crc: `<UNRESOLVED_TYPE>`;
-    fun deflater(): `<UNRESOLVED_TYPE>`;
+    val crc: java.util.zip.CRC32;
+    fun deflater(): java.util.zip.Deflater;
     
     fun write(arg0: okio.Buffer, arg1: long): void {
         assigns arg0.head.pos;
@@ -632,7 +634,7 @@ automaton okio.GzipSink (val arg0: okio.Sink) : okio.GzipSink {
     
     fun updateCrc(arg0: okio.Buffer, arg1: long): void;
     
-    fun `-deprecated_deflater`(): `<UNRESOLVED_TYPE>`;
+    fun `-deprecated_deflater`(): java.util.zip.Deflater;
 }
 automaton okio.Buffer$outputStream$1 (val arg0: okio.Buffer) : okio.Buffer$outputStream$1 {
     val this$0: okio.Buffer;
@@ -733,7 +735,7 @@ automaton okio.BufferedSource : okio.BufferedSource {
     
     fun peek(): okio.BufferedSource;
     
-    fun inputStream(): `<UNRESOLVED_TYPE>`;
+    fun inputStream(): java.io.InputStream;
 }
 automaton okio.Timeout : okio.Timeout {
     val hasDeadline: bool;
@@ -926,9 +928,9 @@ automaton okio.Pipe (val arg0: long) : okio.Pipe {
 automaton okio.GzipSource (val arg0: okio.Source) : okio.GzipSource {
     val section: byte;
     val source: okio.RealBufferedSource;
-    val inflater: `<UNRESOLVED_TYPE>`;
+    val inflater: java.util.zip.Inflater;
     val inflaterSource: okio.InflaterSource;
-    val crc: `<UNRESOLVED_TYPE>`;
+    val crc: java.util.zip.CRC32;
     fun read(arg0: okio.Buffer, arg1: long): long {
         assigns section;
         assigns arg0.head;
@@ -979,11 +981,11 @@ automaton okio.Options (val arg0: array<okio.ByteString>, val arg1: array<int>) 
     
     fun of(arg0: array): okio.Options;
 }
-automaton okio.InflaterSource (val arg0: okio.BufferedSource, val arg1: `<UNRESOLVED_TYPE>`) : okio.InflaterSource {
+automaton okio.InflaterSource (val arg0: okio.BufferedSource, val arg1: java.util.zip.Inflater) : okio.InflaterSource {
     val bufferBytesHeldByInflater: int;
     val closed: bool;
     val source: okio.BufferedSource;
-    val inflater: `<UNRESOLVED_TYPE>`;
+    val inflater: java.util.zip.Inflater;
     fun read(arg0: okio.Buffer, arg1: long): long {
         assigns arg0.head;
         assigns bufferBytesHeldByInflater;
@@ -1023,7 +1025,7 @@ automaton okio.Buffer : okio.Buffer {
     
     fun getBuffer(): okio.Buffer;
     
-    fun outputStream(): `<UNRESOLVED_TYPE>`;
+    fun outputStream(): java.io.OutputStream;
     
     fun emitCompleteSegments(): okio.Buffer;
     
@@ -1041,13 +1043,19 @@ automaton okio.Buffer : okio.Buffer {
     
     fun peek(): okio.BufferedSource;
     
-    fun inputStream(): `<UNRESOLVED_TYPE>`;
+    fun inputStream(): java.io.InputStream;
     
-    fun copyTo(arg0: java.io.OutputStream, arg1: long, arg2: long): okio.Buffer;
+    fun copyTo(arg0: java.io.OutputStream, arg1: long, arg2: long): okio.Buffer {
+        assigns arg0;
+    }
     
-    fun copyTo$default(arg0: okio.Buffer, arg1: java.io.OutputStream, arg2: long, arg3: long, arg4: int, arg5: java.lang.Object): okio.Buffer;
+    fun copyTo$default(arg0: okio.Buffer, arg1: java.io.OutputStream, arg2: long, arg3: long, arg4: int, arg5: java.lang.Object): okio.Buffer {
+        assigns arg1;
+    }
     
-    fun copyTo(arg0: java.io.OutputStream, arg1: long): okio.Buffer;
+    fun copyTo(arg0: java.io.OutputStream, arg1: long): okio.Buffer {
+        assigns arg0;
+    }
     
     fun copyTo(arg0: java.io.OutputStream): okio.Buffer;
     
@@ -1522,10 +1530,10 @@ automaton okio.Buffer : okio.Buffer {
     
     fun `-deprecated_size`(): long;
 }
-automaton okio.DeflaterSink (val arg0: okio.BufferedSink, val arg1: `<UNRESOLVED_TYPE>`) : okio.DeflaterSink {
+automaton okio.DeflaterSink (val arg0: okio.BufferedSink, val arg1: java.util.zip.Deflater) : okio.DeflaterSink {
     val closed: bool;
     val sink: okio.BufferedSink;
-    val deflater: `<UNRESOLVED_TYPE>`;
+    val deflater: java.util.zip.Deflater;
     fun write(arg0: okio.Buffer, arg1: long): void {
         assigns arg0.head.pos;
         assigns arg0.head;
@@ -1612,7 +1620,7 @@ automaton okio.RealBufferedSink (val arg0: okio.Sink) : okio.RealBufferedSink {
     
     fun emit(): okio.BufferedSink;
     
-    fun outputStream(): `<UNRESOLVED_TYPE>`;
+    fun outputStream(): java.io.OutputStream;
     
     fun flush(): void;
     
@@ -1717,9 +1725,9 @@ automaton okio.AsyncTimeout : okio.AsyncTimeout {
         assigns next;
     }
     
-    fun access$newTimeoutException(arg0: java.io.IOException): `<UNRESOLVED_TYPE>`;
+    fun access$newTimeoutException(arg0: java.io.IOException): java.io.IOException;
     
-    fun newTimeoutException(arg0: java.io.IOException): `<UNRESOLVED_TYPE>`;
+    fun newTimeoutException(arg0: java.io.IOException): java.io.IOException;
     
     fun `<clinit>`(): void {
         assigns Companion;
@@ -1783,7 +1791,7 @@ automaton okio.SegmentedByteString (val arg0: array<array<byte>>, val arg1: arra
     
     fun toByteArray(): array<byte>;
     
-    fun asByteBuffer(): `<UNRESOLVED_TYPE>`;
+    fun asByteBuffer(): java.nio.ByteBuffer;
     
     fun write(arg0: java.io.OutputStream): void;
     
@@ -1817,8 +1825,8 @@ automaton okio.SegmentedByteString (val arg0: array<array<byte>>, val arg1: arra
     fun getDirectory$okio(): array<int>;
 }
 automaton okio.HashingSink (val arg0: okio.Sink, val arg1: java.lang.String) : okio.HashingSink {
-    val messageDigest: `<UNRESOLVED_TYPE>`;
-    val mac: `<UNRESOLVED_TYPE>`;
+    val messageDigest: java.security.MessageDigest;
+    val mac: javax.crypto.Mac;
     val Companion: okio.HashingSink$Companion;
     fun write(arg0: okio.Buffer, arg1: long): void {
         assigns arg0.head;
@@ -1850,10 +1858,10 @@ automaton okio.HashingSink (val arg0: okio.Sink, val arg1: java.lang.String) : o
     
     fun hmacSha512(arg0: okio.Sink, arg1: okio.ByteString): okio.HashingSink;
 }
-automaton okio.SocketAsyncTimeout (val arg0: `<UNRESOLVED_TYPE>`) : okio.SocketAsyncTimeout {
-    val logger: `<UNRESOLVED_TYPE>`;
-    val socket: `<UNRESOLVED_TYPE>`;
-    fun newTimeoutException(arg0: java.io.IOException): `<UNRESOLVED_TYPE>`;
+automaton okio.SocketAsyncTimeout (val arg0: java.net.Socket) : okio.SocketAsyncTimeout {
+    val logger: java.util.logging.Logger;
+    val socket: java.net.Socket;
+    fun newTimeoutException(arg0: java.io.IOException): java.io.IOException;
     
     fun timedOut(): void;
 }
@@ -1874,8 +1882,8 @@ automaton okio.AsyncTimeout$source$1 (val arg0: okio.AsyncTimeout, val arg1: oki
     fun toString(): java.lang.String;
 }
 automaton okio.HashingSource (val arg0: okio.Source, val arg1: java.lang.String) : okio.HashingSource {
-    val messageDigest: `<UNRESOLVED_TYPE>`;
-    val mac: `<UNRESOLVED_TYPE>`;
+    val messageDigest: java.security.MessageDigest;
+    val mac: javax.crypto.Mac;
     val Companion: okio.HashingSource$Companion;
     fun read(arg0: okio.Buffer, arg1: long): long {
         assigns arg0.head;
@@ -1962,7 +1970,7 @@ automaton okio.BufferedSink : okio.BufferedSink {
     
     fun emitCompleteSegments(): okio.BufferedSink;
     
-    fun outputStream(): `<UNRESOLVED_TYPE>`;
+    fun outputStream(): java.io.OutputStream;
 }
 automaton okio.AsyncTimeout$Companion : okio.AsyncTimeout$Companion {
     fun scheduleTimeout(arg0: okio.AsyncTimeout, arg1: long, arg2: bool): void {
@@ -2298,7 +2306,7 @@ automaton okio.ByteString (val arg0: array<byte>) : okio.ByteString {
     
     fun internalArray$okio(): array<byte>;
     
-    fun asByteBuffer(): `<UNRESOLVED_TYPE>`;
+    fun asByteBuffer(): java.nio.ByteBuffer;
     
     fun write(arg0: java.io.OutputStream): void;
     
@@ -2388,8 +2396,8 @@ automaton okio.ByteString (val arg0: array<byte>) : okio.ByteString {
     
     fun read(arg0: java.io.InputStream, arg1: int): okio.ByteString;
 }
-automaton okio.OutputStreamSink (val arg0: `<UNRESOLVED_TYPE>`, val arg1: okio.Timeout) : okio.OutputStreamSink {
-    val out: `<UNRESOLVED_TYPE>`;
+automaton okio.OutputStreamSink (val arg0: java.io.OutputStream, val arg1: okio.Timeout) : okio.OutputStreamSink {
+    val out: java.io.OutputStream;
     val timeout: okio.Timeout;
     fun write(arg0: okio.Buffer, arg1: long): void {
         assigns arg0.head.pos;
@@ -2913,8 +2921,8 @@ automaton `okio.-DeprecatedOkio` : `okio.-DeprecatedOkio` {
         assigns INSTANCE;
     }
 }
-automaton okio.InputStreamSource (val arg0: `<UNRESOLVED_TYPE>`, val arg1: okio.Timeout) : okio.InputStreamSource {
-    val input: `<UNRESOLVED_TYPE>`;
+automaton okio.InputStreamSource (val arg0: java.io.InputStream, val arg1: okio.Timeout) : okio.InputStreamSource {
+    val input: java.io.InputStream;
     val timeout: okio.Timeout;
     fun read(arg0: okio.Buffer, arg1: long): long {
         assigns arg0.head;
