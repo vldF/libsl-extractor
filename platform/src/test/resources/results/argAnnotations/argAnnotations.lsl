@@ -1,6 +1,8 @@
 libsl "1.0.0";
 library argAnnotations;
 
+import "java.lsl";
+
 type me.vldf.lsl.test.argAnnotations.Type {
 }
 

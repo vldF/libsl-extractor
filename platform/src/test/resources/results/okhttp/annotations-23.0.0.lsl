@@ -1,6 +1,8 @@
 libsl "1.0.0";
 library `annotations-23.0.0`;
 
+import "java.lsl";
+
 enum org.jetbrains.annotations.Nls$Capitalization {
     NotSpecified = 0;
     Title = 1;
@@ -241,7 +243,7 @@ automaton org.jetbrains.annotations.Async$Schedule : org.jetbrains.annotations.A
 automaton org.jetbrains.annotations.NotNull : org.jetbrains.annotations.NotNull {
     fun value(): java.lang.String;
     
-    fun exception(): `<UNRESOLVED_TYPE>`;
+    fun exception(): java.lang.Class;
 }
 automaton org.intellij.lang.annotations.JdkConstants$TitledBorderTitlePosition : org.intellij.lang.annotations.JdkConstants$TitledBorderTitlePosition {
 }
@@ -258,9 +260,9 @@ automaton org.intellij.lang.annotations.MagicConstant : org.intellij.lang.annota
     
     fun flags(): array<long>;
     
-    fun valuesFromClass(): `<UNRESOLVED_TYPE>`;
+    fun valuesFromClass(): java.lang.Class;
     
-    fun flagsFromClass(): `<UNRESOLVED_TYPE>`;
+    fun flagsFromClass(): java.lang.Class;
 }
 automaton org.intellij.lang.annotations.PrintFormatPattern : org.intellij.lang.annotations.PrintFormatPattern {
     val ARG_INDEX: java.lang.String;

@@ -1,6 +1,8 @@
 libsl "1.0.0";
 library testCase1;
 
+import "java.lsl";
+
 type me.vldf.lsl.test.testCase1.A {
 }
 

@@ -1,6 +1,8 @@
 libsl "1.0.0";
 library enums;
 
+import "java.lsl";
+
 enum me.vldf.lsl.test.enums.EnumClass {
     A = 0;
     B = 1;

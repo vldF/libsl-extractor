@@ -1,6 +1,8 @@
 package me.vldf.lsl.extractor.platform
 
 import java.io.File
+import java.nio.file.Path
+import kotlin.io.path.toPath
 
 class PipelineConfig (builder: PipelineConfig.() -> Unit) {
     var librariesPath: File = File("")
@@ -24,6 +26,10 @@ class PipelineConfig (builder: PipelineConfig.() -> Unit) {
         get() = refinementsFileNames.mapNotNull {
             this::class.java.getResource("/$it.json")?.file?.let { file -> File(file) }
         }
+
+    private val javaSpecPath = this::class.java.getResource("/java.lsl")!!.toURI().toPath()
+
+    val importSpecifications: MutableList<Path> = mutableListOf(javaSpecPath)
 
     init {
         builder()

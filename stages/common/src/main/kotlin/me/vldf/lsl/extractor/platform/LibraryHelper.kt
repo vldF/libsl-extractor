@@ -2,17 +2,13 @@ package me.vldf.lsl.extractor.platform
 
 import org.jetbrains.research.libsl.context.LslContextBase
 import org.jetbrains.research.libsl.context.LslGlobalContext
+import org.jetbrains.research.libsl.nodes.*
 import org.jetbrains.research.libsl.nodes.Annotation
-import org.jetbrains.research.libsl.nodes.AnnotationArgumentDescriptor
-import org.jetbrains.research.libsl.nodes.BoolLiteral
-import org.jetbrains.research.libsl.nodes.Library
 import org.jetbrains.research.libsl.nodes.references.builders.TypeReferenceBuilder
 import org.jetbrains.research.libsl.type.RealType
-import org.jetbrains.research.libsl.type.SimpleType
 import org.jetbrains.research.libsl.type.TypeAlias
 import org.vorpal.research.kfg.Package
 import org.vorpal.research.kfg.ir.Class
-import org.vorpal.research.kthelper.tryOrNull
 
 class LibraryHelper(private val lslHolder: GlobalAnalysisContext) {
     private val logger by platformLogger()
@@ -24,11 +20,10 @@ class LibraryHelper(private val lslHolder: GlobalAnalysisContext) {
         for ((_, context) in lslHolder.descriptorsToContexts) {
             lslContextBase.import(context)
             context.import(lslContextBase)
-
         }
 
         lslHolder.descriptorsToContexts[descriptor] = lslContextBase
-        lslHolder._descriptorsToLibraries[descriptor] = Library(libraryMeta)
+        lslHolder._descriptorsToLibraries[descriptor] = getLibraryNode(libraryMeta)
         lslHolder.packagesToLibraryDescriptors[pkg] = descriptor
         lslHolder.packages.add(pkg)
     }
@@ -37,6 +32,23 @@ class LibraryHelper(private val lslHolder: GlobalAnalysisContext) {
         return LslGlobalContext().apply {
             this.init()
             initJavaTypesForLslContextBase(this)
+            importExternalSpecifications()
+        }
+    }
+
+    private fun LslGlobalContext.importExternalSpecifications() {
+        lslHolder.importedSpecificationContexts.forEach { specContext -> this.import(specContext) }
+    }
+
+    private fun getLibraryNode(libraryMeta: MetaNode): Library {
+        return Library(libraryMeta).apply {
+            addExternalSpecificationImports()
+        }
+    }
+
+    private fun Library.addExternalSpecificationImports() {
+        lslHolder.importedSpecificationPaths.forEach { path ->
+            this.imports.add(path)
         }
     }
 
@@ -72,15 +84,16 @@ class LibraryHelper(private val lslHolder: GlobalAnalysisContext) {
 
     companion object {
         // todo
-        private fun initJavaTypesForLslContextBase(context: LslContextBase) {
+        fun initJavaTypesForLslContextBase(context: LslContextBase) {
             val int8TypeRef = TypeReferenceBuilder.build("int8", context = context)
             val int16TypeRef = TypeReferenceBuilder.build("int16", context = context)
             val int32TypeRef = TypeReferenceBuilder.build("int32", context = context)
             val int64TypeRef = TypeReferenceBuilder.build("int64", context = context)
+            val float32TypeRef = TypeReferenceBuilder.build("float32", context = context)
+            val float64TypeRef = TypeReferenceBuilder.build("float64", context = context)
             val boolTypeRef = TypeReferenceBuilder.build("bool", context = context)
             val stringTypeRef = TypeReferenceBuilder.build("string", context = context)
 
-            val objectType = RealType("java.lang.Object".split("."), context = context)
             val unresolvedType = RealType(listOf("<unresolved_type>"), context = context)
 
             val exceptionNameArgumentDescriptor = AnnotationArgumentDescriptor(
@@ -114,9 +127,14 @@ class LibraryHelper(private val lslHolder: GlobalAnalysisContext) {
                 TypeAlias("boolean", boolTypeRef, context)
             )
             context.storeType(
+                TypeAlias("float", float32TypeRef, context)
+            )
+            context.storeType(
+                TypeAlias("double", float64TypeRef, context)
+            )
+            context.storeType(
                 TypeAlias("java.lang.String", stringTypeRef, context)
             )
-            context.storeType(objectType)
             context.storeType(unresolvedType)
 
             context.storeAnnotation(throwsAnnotation)
