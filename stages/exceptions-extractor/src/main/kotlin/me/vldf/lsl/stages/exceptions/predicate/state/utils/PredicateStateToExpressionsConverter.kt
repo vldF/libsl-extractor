@@ -25,13 +25,20 @@ class PredicateStateToExpressionsConverter(private val context: LslContextBase) 
     private fun inline(predicate: PredicateStateWithPath): PredicateState {
         val predicateState = predicate.toPredicateState()
         val optimizedState = Optimizer.apply(predicateState)
-        check(optimizedState is ChainState)
 
         val mappings = getMappings(optimizedState)
         val termRemapper = TermRemapper(mappings)
 
-        val remappedPredicateState = termRemapper.apply(optimizedState.path)
+        val remappedPredicateState = termRemapper.apply(optimizedState)
         return cleanPredicateState(remappedPredicateState)
+    }
+
+    private fun getMappings(ps: PredicateState): Map<Term, Term> {
+        return when (ps) {
+            is BasicState -> getMappings(ps)
+            is ChainState -> getMappings(ps)
+            else -> throw IllegalStateException("unknown predicate state kind")
+        }
     }
 
     private fun cleanPredicateState(ps: PredicateState): PredicateState {
@@ -46,12 +53,8 @@ class PredicateStateToExpressionsConverter(private val context: LslContextBase) 
         val base = predicateChainState.base
         if (base is BasicState) {
             for (basePredicate in base.predicates) {
-                basePredicate as? EqualityPredicate ?: continue
-                val operands = basePredicate.operands
-                val left = operands[0]
-                val right = operands[1]
-
-                mappingsNew[left] = right
+                val basicMappings = getMappings(base)
+                mappingsNew.putAll(basicMappings)
             }
         }
 
@@ -59,6 +62,21 @@ class PredicateStateToExpressionsConverter(private val context: LslContextBase) 
             is ChainState -> getMappings(predicateChainState.curr as ChainState, mappingsNew)
             else -> mappingsNew
         }
+    }
+
+    private fun getMappings(predicateState: BasicState): Map<Term, Term> {
+        val mappings = mutableMapOf<Term, Term>()
+
+        for (basePredicate in predicateState.predicates) {
+            basePredicate as? EqualityPredicate ?: continue
+            val operands = basePredicate.operands
+            val left = operands[0]
+            val right = operands[1]
+
+            mappings[left] = right
+        }
+
+        return mappings
     }
 
     private fun processInlinedPath(path: PredicateState): List<Expression> {
@@ -142,6 +160,19 @@ class PredicateStateToExpressionsConverter(private val context: LslContextBase) 
     private fun acceptBinaryPredicate(lhv: Term, rhv: Term, op: ArithmeticBinaryOps): Expression? {
         val left = acceptTerm(lhv) ?: return null
         val right = acceptTerm(rhv) ?: return null
+
+        if (left is BoolLiteral && right is BoolLiteral) {
+            if (left.value != right.value) {
+                return null
+            }
+        }
+
+        if (left is BoolLiteral) {
+            return when {
+                left.value -> right
+                else -> UnaryOpExpression(right, ArithmeticUnaryOp.INVERSION)
+            }
+        }
 
         if (right is BoolLiteral) {
             return when {

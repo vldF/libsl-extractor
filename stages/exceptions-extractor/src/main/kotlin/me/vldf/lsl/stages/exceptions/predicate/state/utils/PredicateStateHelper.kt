@@ -9,7 +9,7 @@ object PredicateStateHelper {
     fun shouldPredicateStateBeInSpecification(predicate: PredicateStateWithPath): Boolean {
         return when(val optimizedState = Optimizer.apply(predicate.toPredicateState())) {
             is ChainState -> true
-            is BasicState -> optimizedState.evaluatesToTrue
+            is BasicState -> !optimizedState.evaluatesToFalse
             else -> false
         }
     }
