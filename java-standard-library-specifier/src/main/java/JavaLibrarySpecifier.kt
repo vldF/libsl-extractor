@@ -55,6 +55,7 @@ class JavaLibrarySpecifier {
 
     private val Class<*>.canAddToSpecification: Boolean
         get() = !(isAnonymousClass || isAnnotation || isLocalClass || isMemberClass || isSynthetic)
+                && this.`package`?.name?.startsWith("jdk.internal") != true
 
     private val Class<*>.typeReference: TypeReference
         get() {
