@@ -3,13 +3,12 @@ import me.vldf.lsl.extractor.platform.PipelineConfig
 import me.vldf.lsl.extractor.platform.platformLogger
 import me.vldf.lsl.jvm.reader.JvmClassReader
 import me.vldf.lsl.stages.assign.AssignExtractor
-import me.vldf.lsl.stages.exceptions.ExceptionsExtractorStage
+import me.vldf.lsl.stages.exceptions.ExceptionsExtractor
 import org.antlr.v4.runtime.*
 import org.jetbrains.research.libsl.LibSLLexer
 import org.jetbrains.research.libsl.LibSLParser
 import org.jetbrains.research.libsl.LibSLParserBaseVisitor
 import org.junit.jupiter.api.Assertions
-import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.fail
 import java.io.File
 
@@ -20,7 +19,7 @@ object TestPlatform {
     private val testDataJarsParentDir = File("../testData/build/jars/")
     private val resultDir = File("./src/test/resources/results")
     private val analysisStagesFactory = {
-        listOf(JvmClassReader(), AssignExtractor(), ExceptionsExtractorStage())
+        listOf(JvmClassReader(), AssignExtractor(), ExceptionsExtractor())
     }
 
     init {
@@ -32,7 +31,7 @@ object TestPlatform {
     fun runForClassesDir(testCase: String) {
         runTest(testCase) {
             PipelineConfig {
-                this.librariesPath = testDataClassesParentDir.resolve(testCase)
+                this.librariesDir = testDataClassesParentDir.resolve(testCase)
                 this.stages.addAll(analysisStagesFactory())
             }
         }
@@ -41,9 +40,13 @@ object TestPlatform {
     fun runForJarDir(testCase: String) {
         runTest(testCase) {
             PipelineConfig {
-                this.librariesPath = testDataJarsParentDir.resolve("$testCase/")
+                this.librariesDir = testDataJarsParentDir.resolve("$testCase/")
                 this.stages.addAll(analysisStagesFactory())
-                this.refinementsFileNames = listOf(testCase)
+                this.refinementsFiles.addAll(
+                    listOf(testCase).mapNotNull {
+                        this::class.java.getResource("/$it.json")?.file?.let { file -> File(file) }
+                    }
+                )
             }
         }
     }

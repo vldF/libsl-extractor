@@ -19,6 +19,8 @@ dependencies {
     implementation(project(":stages:common"))
     implementation(project(":stages:lsl-class-reader"))
     implementation(project(":stages:assign-analysis"))
+    implementation(project(":stages:exceptions-extractor"))
+    implementation("org.jetbrains.kotlinx:kotlinx-cli:0.3.5")
     testImplementation(project(":testData"))
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
     testImplementation(project(mapOf("path" to ":stages:exceptions-extractor")))

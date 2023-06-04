@@ -10,15 +10,13 @@ import me.vldf.lsl.stages.exceptions.predicate.state.utils.ReportProcessor
 import me.vldf.lsl.stages.exceptions.serialization.RefinementsJsonReader
 import org.jetbrains.research.kex.refinements.report.MachineReadableReport
 import org.jetbrains.research.libsl.context.LslGlobalContext
-import org.jetbrains.research.libsl.nodes.Expression
-import org.jetbrains.research.libsl.nodes.Function
 import org.jetbrains.research.libsl.nodes.Library
 import org.vorpal.research.kfg.ClassManager
 import java.io.File
 
 
 @OptIn(InternalSerializationApi::class, ExperimentalSerializationApi::class)
-class ExceptionsExtractorStage : AnalysisStage {
+class ExceptionsExtractor : AnalysisStage {
     override val name: String = "exceptions-extractor-stage"
 
     private val logger by platformLogger()
