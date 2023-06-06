@@ -47,7 +47,7 @@ class JvmClassReader : AnalysisStage {
         this.analysisContext = analysisContext
         this.analysisContext.kfgClassManager = classManager
 
-        val directoryContainer = analysisContext.pipelineConfig.librariesPath
+        val directoryContainer = analysisContext.pipelineConfig.analyzingLibrariesDir
         initializeKfg(directoryContainer)
 
         readLibraries()

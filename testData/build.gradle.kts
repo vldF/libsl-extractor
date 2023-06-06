@@ -50,6 +50,10 @@ tasks.create("extractDeps") {
     }
 }
 
+tasks.processResources {
+    this.duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}
+
 sourceSets {
     main {
         resources {

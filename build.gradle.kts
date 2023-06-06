@@ -16,7 +16,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.vldf:libsl:$libslVersion")
+    implementation("com.github.vpa-research:libsl-parser:$libslVersion")
     implementation(project(":stages:lsl-class-reader"))
     implementation(project(":stages:common"))
     implementation(project(":stages:assign-analysis"))

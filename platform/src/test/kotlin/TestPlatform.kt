@@ -9,7 +9,6 @@ import org.jetbrains.research.libsl.LibSLLexer
 import org.jetbrains.research.libsl.LibSLParser
 import org.jetbrains.research.libsl.LibSLParserBaseVisitor
 import org.junit.jupiter.api.Assertions
-import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.fail
 import java.io.File
 
@@ -32,7 +31,7 @@ object TestPlatform {
     fun runForClassesDir(testCase: String) {
         runTest(testCase) {
             PipelineConfig {
-                this.librariesPath = testDataClassesParentDir.resolve(testCase)
+                this.analyzingLibrariesDir = testDataClassesParentDir.resolve(testCase)
                 this.stages.addAll(analysisStagesFactory())
             }
         }
@@ -41,9 +40,15 @@ object TestPlatform {
     fun runForJarDir(testCase: String) {
         runTest(testCase) {
             PipelineConfig {
-                this.librariesPath = testDataJarsParentDir.resolve("$testCase/")
+                this.analyzingLibrariesDir = testDataJarsParentDir.resolve("$testCase/")
                 this.stages.addAll(analysisStagesFactory())
-                this.refinementsFileNames = listOf(testCase)
+
+                val refinementFile = this::class.java.getResource("/$$testCase.json")
+                    ?.file
+                    ?.let { file -> File(file) }
+                    ?: return@PipelineConfig
+
+                this.refinementsFiles.add(refinementFile)
             }
         }
     }

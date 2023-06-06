@@ -19,7 +19,7 @@ dependencies {
     implementation(rootProject.project(":platform"))
     implementation(rootProject.project(":stages:common"))
     implementation(rootProject.project(":stages:lsl-class-reader"))
-    implementation("com.github.vldf:libsl:$libslVersion")
+    implementation("com.github.vpa-research:libsl-parser:$libslVersion")
 }
 
 tasks.test {
