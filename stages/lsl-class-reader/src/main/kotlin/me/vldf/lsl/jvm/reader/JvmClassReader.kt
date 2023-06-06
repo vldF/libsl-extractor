@@ -116,7 +116,7 @@ class JvmClassReader : AnalysisStage {
     }
 
     private fun generateSemanticTypes() {
-        for (type in classManager.concreteClasses) {
+        for (type in classManager.concreteClasses.sortedBy { it.name }) {
             val lslContext = analysisContext.libraryHelper.getContext(type)
             val library = analysisContext.libraryHelper.getLibrary(type)
 
@@ -174,7 +174,7 @@ class JvmClassReader : AnalysisStage {
     }
 
     private fun generateAutomata() {
-        for (klass in classManager.concreteClasses) {
+        for (klass in classManager.concreteClasses.sortedBy { it.name }) {
             val globalContext = analysisContext.libraryHelper.getContext(klass)
             val library = analysisContext.libraryHelper.getLibrary(klass)
 
@@ -200,7 +200,10 @@ class JvmClassReader : AnalysisStage {
                 ConstructorArgument(VariableKeyword.VAL,"arg$index", argType)
             }.toMutableList()
 
-            val localFunctions = klass.methods.map { method -> getLocalFunction(method, automatonContext)}.toMutableList()
+            val localFunctions = klass.methods
+                .map { method -> getLocalFunction(method, automatonContext)}
+                .sortedBy { it.name }
+                .toMutableList()
 
             val internalVariables = getInternalVariables(klass, automatonContext)
             internalVariables.forEach { variable -> automatonContext.storeVariable(variable) }
