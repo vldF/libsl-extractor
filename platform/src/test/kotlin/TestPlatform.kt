@@ -1,5 +1,6 @@
-import me.vldf.lsl.extractor.platform.AnalysisPipeline
+import me.vldf.lsl.extractor.platform.pipeline.AnalysisPipeline
 import me.vldf.lsl.extractor.platform.PipelineConfig
+import me.vldf.lsl.extractor.platform.pipeline.PipelineFactory
 import me.vldf.lsl.extractor.platform.platformLogger
 import me.vldf.lsl.jvm.reader.JvmClassReaderStage
 import me.vldf.lsl.stages.assign.AssignExtractorStage
@@ -56,7 +57,7 @@ object TestPlatform {
     private fun runTest(testCaseName: String, pipelineConfigProvider: () -> PipelineConfig) {
         printSystemInfo()
 
-        val analysisPipeline = AnalysisPipeline(pipelineConfigProvider())
+        val analysisPipeline = PipelineFactory.create(pipelineConfigProvider())
         analysisPipeline.run()
 
         for ((descriptor, library) in analysisPipeline.getGlobalAnalysisContext().descriptorsToLibraries) {

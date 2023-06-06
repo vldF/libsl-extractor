@@ -3,12 +3,13 @@ package me.vldf.lsl.extractor.platform
 import kotlinx.cli.*
 import me.vldf.lsl.extractor.platform.cli.FileArgType
 import me.vldf.lsl.extractor.platform.cli.StagesEnum
+import me.vldf.lsl.extractor.platform.pipeline.PipelineFactory
 import java.io.File
 
 fun main(args: Array<String>) {
     val config = parsePipelineSettingsFromArgs(args)
 
-    AnalysisPipeline(config).run()
+    PipelineFactory.create(config).run()
 }
 
 private fun parsePipelineSettingsFromArgs(args: Array<String>): PipelineConfig {
