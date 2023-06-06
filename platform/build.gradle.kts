@@ -16,13 +16,18 @@ repositories {
 
 dependencies {
     implementation("com.github.vpa-research:libsl-parser:$libslVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-cli:0.3.5")
+
     implementation(project(":stages:common"))
     implementation(project(":stages:lsl-class-reader"))
     implementation(project(":stages:assign-analysis"))
-    testImplementation(project(":testData"))
+    implementation(project(":stages:exceptions-extractor"))
+
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
-    testImplementation(project(mapOf("path" to ":stages:exceptions-extractor")))
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
+
+    testImplementation(project(":stages:exceptions-extractor"))
+    testImplementation(project(":testData"))
 }
 
 tasks.getByName<Test>("test") {

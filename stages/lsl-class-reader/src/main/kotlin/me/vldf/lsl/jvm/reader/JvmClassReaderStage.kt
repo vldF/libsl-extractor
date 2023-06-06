@@ -32,7 +32,7 @@ import org.vorpal.research.kfg.util.isClass
 import org.vorpal.research.kfg.util.isJar
 import java.io.File
 
-class JvmClassReader : AnalysisStage {
+class JvmClassReaderStage : AnalysisStage {
     override val name: String = this::class.simpleName!!
 
     private val classManagerConfig = KfgConfigBuilder()

@@ -1,8 +1,8 @@
 import me.vldf.lsl.extractor.platform.AnalysisPipeline
 import me.vldf.lsl.extractor.platform.PipelineConfig
 import me.vldf.lsl.extractor.platform.platformLogger
-import me.vldf.lsl.jvm.reader.JvmClassReader
-import me.vldf.lsl.stages.assign.AssignExtractor
+import me.vldf.lsl.jvm.reader.JvmClassReaderStage
+import me.vldf.lsl.stages.assign.AssignExtractorStage
 import me.vldf.lsl.stages.exceptions.ExceptionsExtractorStage
 import org.antlr.v4.runtime.*
 import org.jetbrains.research.libsl.LibSLLexer
@@ -19,7 +19,7 @@ object TestPlatform {
     private val testDataJarsParentDir = File("../testData/build/jars/")
     private val resultDir = File("./src/test/resources/results")
     private val analysisStagesFactory = {
-        listOf(JvmClassReader(), AssignExtractor(), ExceptionsExtractorStage())
+        listOf(JvmClassReaderStage(), AssignExtractorStage(), ExceptionsExtractorStage())
     }
 
     init {
