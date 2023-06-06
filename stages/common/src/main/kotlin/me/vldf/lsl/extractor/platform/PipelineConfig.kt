@@ -6,18 +6,20 @@ import kotlin.io.path.toPath
 
 class PipelineConfig (builder: PipelineConfig.() -> Unit) {
     lateinit var analyzingLibrariesDir: File
-
-    val stages: MutableList<AnalysisStage> = mutableListOf()
-
     var workDir = File("./work")
 
+    val stages: MutableList<AnalysisStage> = mutableListOf()
     val refinementsFiles = mutableListOf<File>()
-
-    private val javaSpecPath = this::class.java.getResource("/java.lsl")!!.toURI().toPath()
-
-    val importSpecifications: MutableList<Path> = mutableListOf(javaSpecPath)
+    val importSpecifications: MutableList<Path> = mutableListOf()
 
     init {
+        val javaSpecificationPath = getJavaSpecificationFilePath()
+        importSpecifications.add(javaSpecificationPath)
+
         builder()
+    }
+
+    private fun getJavaSpecificationFilePath(): Path {
+        return this::class.java.getResource("/java.lsl")!!.toURI().toPath()
     }
 }
