@@ -5,7 +5,6 @@ import me.vldf.lsl.extractor.platform.GlobalAnalysisContext
 import me.vldf.lsl.extractor.platform.KfgHelper.createAutomatonReference
 import me.vldf.lsl.extractor.platform.KfgHelper.createLslTypeReference
 import me.vldf.lsl.extractor.platform.KfgHelper.lslName
-import me.vldf.lsl.extractor.platform.KfgHelper.lslNameParts
 import me.vldf.lsl.extractor.platform.KfgHelper.takeIfUnresolved
 import me.vldf.lsl.extractor.platform.platformLogger
 import org.jetbrains.research.libsl.context.AutomatonContext
@@ -18,7 +17,6 @@ import org.jetbrains.research.libsl.nodes.references.builders.AutomatonReference
 import org.jetbrains.research.libsl.nodes.references.builders.TypeReferenceBuilder
 import org.jetbrains.research.libsl.nodes.references.builders.TypeReferenceBuilder.getReference
 import org.jetbrains.research.libsl.type.EnumType
-import org.jetbrains.research.libsl.type.RealType
 import org.jetbrains.research.libsl.type.StructuredType
 import org.jetbrains.research.libsl.type.Type
 import org.vorpal.research.kfg.ClassManager
@@ -39,9 +37,10 @@ class JvmClassReaderStage : AnalysisStage {
 
     override fun run(analysisContext: GlobalAnalysisContext) {
         val directoryContainer = analysisContext.pipelineConfig.analyzingLibrariesDir
-        classManager = classManagerInitializer.createClassManager(directoryContainer)
 
         this.analysisContext = analysisContext
+        classManager = classManagerInitializer.createClassManager(directoryContainer)
+
         this.analysisContext.kfgClassManager = classManager
 
         readLibraries()
@@ -53,16 +52,14 @@ class JvmClassReaderStage : AnalysisStage {
     }
 
     private fun generateSemanticTypes() {
-        for (type in classManager.concreteClasses.sortedBy { it.name }) {
+        val classes = classManager.concreteClasses.sortedBy { it.name }
+        for (type in classes) {
             val lslContext = analysisContext.libraryHelper.getContext(type)
             val library = analysisContext.libraryHelper.getLibrary(type)
 
             val semanticType = when {
                 type.isEnum -> getEnumType(type, lslContext)
-                else -> {
-                    resolveRealType(type, lslContext)
-                    getStructuredType(type, lslContext)
-                }
+                else -> getStructuredType(type, lslContext)
             }
 
             lslContext.storeType(semanticType)
@@ -82,20 +79,13 @@ class JvmClassReaderStage : AnalysisStage {
         return EnumType(klass.lslName, entries, context)
     }
 
-    private fun resolveRealType(klass: ConcreteClass, lslContext: LslContextBase) {
-        val realType = RealType(klass.lslNameParts, context = lslContext)
-        lslContext.storeType(realType)
-    }
-
     private fun getStructuredType(klass: ConcreteClass, context: LslContextBase): StructuredType {
-        val realTypeRef = klass.createLslTypeReference(context)
         val type = StructuredType(
-            name = realTypeRef.name,
-            entries = mapOf(),
+            name = klass.lslName,
+            entries = getStructuredTypeEntries(klass, context),
             context = context
         )
         context.storeType(type)
-        type.entries = getStructuredTypeEntries(klass, context)
 
         return type
     }

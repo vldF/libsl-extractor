@@ -51,7 +51,7 @@ class ClassManagerInitializer(
     private fun initializeClassManagerByFile(file: File) {
         val container = file.asContainer()
         if (container == null) {
-            logger.warning("can't greate container for $file")
+            logger.warning("can't create container for $file")
             return
         }
 
@@ -63,7 +63,7 @@ class ClassManagerInitializer(
     private fun initializeClassManagerByClasses(dir: File) {
         val container = dir.asContainer()
         if (container == null) {
-            logger.warning("can't greate container for $dir")
+            logger.warning("can't create container for $dir")
             return
         }
 
