@@ -7,7 +7,6 @@ import me.vldf.lsl.extractor.platform.KfgHelper.createLslTypeReference
 import me.vldf.lsl.extractor.platform.KfgHelper.lslName
 import me.vldf.lsl.extractor.platform.KfgHelper.lslNameParts
 import me.vldf.lsl.extractor.platform.KfgHelper.takeIfUnresolved
-import me.vldf.lsl.extractor.platform.LibraryDescriptor
 import me.vldf.lsl.extractor.platform.platformLogger
 import org.jetbrains.research.libsl.context.AutomatonContext
 import org.jetbrains.research.libsl.context.FunctionContext
@@ -23,95 +22,33 @@ import org.jetbrains.research.libsl.type.RealType
 import org.jetbrains.research.libsl.type.StructuredType
 import org.jetbrains.research.libsl.type.Type
 import org.vorpal.research.kfg.ClassManager
-import org.vorpal.research.kfg.KfgConfigBuilder
-import org.vorpal.research.kfg.container.Container
-import org.vorpal.research.kfg.container.asContainer
 import org.vorpal.research.kfg.ir.ConcreteClass
 import org.vorpal.research.kfg.ir.Method
-import org.vorpal.research.kfg.util.isClass
-import org.vorpal.research.kfg.util.isJar
-import java.io.File
 
 class JvmClassReaderStage : AnalysisStage {
     override val name: String = this::class.simpleName!!
 
-    private val classManagerConfig = KfgConfigBuilder()
-        .failOnError(true)
-        .build()
-    private var classManager = ClassManager(classManagerConfig)
     private lateinit var analysisContext: GlobalAnalysisContext
+    private lateinit var classManager: ClassManager
+
+    private val classManagerInitializer by lazy {
+        ClassManagerInitializer(analysisContext)
+    }
 
     private val logger by platformLogger()
 
     override fun run(analysisContext: GlobalAnalysisContext) {
+        val directoryContainer = analysisContext.pipelineConfig.analyzingLibrariesDir
+        classManager = classManagerInitializer.createClassManager(directoryContainer)
+
         this.analysisContext = analysisContext
         this.analysisContext.kfgClassManager = classManager
-
-        val directoryContainer = analysisContext.pipelineConfig.analyzingLibrariesDir
-        initializeKfg(directoryContainer)
 
         readLibraries()
     }
 
-    // todo: split the code
-    private fun initializeKfg(file: File) {
-        when {
-            file.isDirectory -> initializeKfgByDir(file)
-            else -> initializeKfgByFile(file)
-        }
-    }
-
-    private fun initializeKfgByDir(dir: File) {
-        val containingFiles = dir.listFiles().orEmpty()
-
-        if (containingFiles.all { containingFile -> containingFile.isJar }) {
-            logger.info("target dir is a jars dir")
-
-            for (file in containingFiles) {
-                initializeKfgByFile(file)
-            }
-        } else if (containingFiles.all { containingFile -> containingFile.isClass }) {
-            logger.info("target dir is a classes dir")
-
-            initializeForClasses(dir)
-        } else {
-            logger.warning("skipped directory $dir")
-        }
-    }
-
-    private fun initializeKfgByFile(file: File) {
-        val container = file.asContainer()
-        if (container == null) {
-            logger.warning("can't greate container for $file")
-            return
-        }
-
-        val libraryName = file.nameWithoutExtension
-
-        initializeKfgByContainer(container, libraryName)
-    }
-
-    private fun initializeForClasses(dir: File) {
-        val container = dir.asContainer()
-        if (container == null) {
-            logger.warning("can't greate container for $dir")
-            return
-        }
-
-        val libraryName = dir.name
-        initializeKfgByContainer(container, libraryName)
-    }
-
-    private fun initializeKfgByContainer(container: Container, libraryName: String) {
-        val libraryDescriptor = LibraryDescriptor(libraryName)
-
-        analysisContext.libraryHelper.initNewLibrary(libraryDescriptor, container.pkg)
-        classManager.initialize(container)
-    }
-
     private fun readLibraries() {
         generateSemanticTypes()
-
         generateAutomata()
     }
 
