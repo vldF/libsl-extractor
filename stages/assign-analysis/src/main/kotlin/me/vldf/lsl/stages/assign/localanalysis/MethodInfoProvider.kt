@@ -10,7 +10,7 @@ import org.vorpal.research.kfg.ir.value.instruction.FieldStoreInst
 import org.vorpal.research.kfg.ir.value.instruction.Instruction
 import java.util.*
 
-class MethodInfoProviderService {
+class MethodInfoProvider {
     fun getMethodInfo(instr: Instruction, method: Method): List<MethodInfo> {
         return when (instr) {
             is FieldStoreInst -> {

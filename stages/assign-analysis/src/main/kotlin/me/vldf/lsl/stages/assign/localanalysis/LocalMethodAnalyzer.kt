@@ -6,14 +6,14 @@ import org.vorpal.research.kfg.ir.Method
 
 class LocalMethodAnalyzer {
     private val logger by platformLogger()
-    private val methodInfoProviderService = MethodInfoProviderService()
+    private val methodInfoProvider = MethodInfoProvider()
 
     fun analyze(method: Method): AnalysisInfosHolder {
         logger.info("analyzing method ${method.name} of class ${method.klass}")
         val analysisInfo = AnalysisInfosHolder()
 
         for (instruction in method.instructions) {
-            val infos = methodInfoProviderService.getMethodInfo(instruction, method)
+            val infos = methodInfoProvider.getMethodInfo(instruction, method)
 
             analysisInfo.addInfos(infos)
         }

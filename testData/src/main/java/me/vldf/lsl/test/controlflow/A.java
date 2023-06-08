@@ -8,7 +8,7 @@ public class A {
     }
 
     void bar(B b) {
-        b.field = 0;  // b.field from a foo's variable is assigned here
+        b.field = 0;  // b.field from a foo, variable is assigned here
         tar(0, b);
     }
 

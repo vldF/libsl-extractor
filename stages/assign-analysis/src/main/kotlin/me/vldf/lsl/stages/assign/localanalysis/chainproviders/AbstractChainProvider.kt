@@ -1,6 +1,5 @@
 package me.vldf.lsl.stages.assign.localanalysis.chainproviders
 
-import me.vldf.lsl.stages.assign.localanalysis.chainproviders.CurrentChainState.chainInstsStack
 import org.vorpal.research.kfg.ir.value.Argument
 import org.vorpal.research.kfg.ir.value.ThisRef
 import org.vorpal.research.kfg.ir.value.Value
@@ -14,10 +13,10 @@ abstract class AbstractChainProvider {
 
     companion object {
         fun getChain(value: Value): IChainElement {
-            if (value in chainInstsStack) {
+            if (value in CurrentChainState.chainInstsStack) {
                 return EmptyChainElement
             }
-            chainInstsStack.add(value)
+            CurrentChainState.chainInstsStack.add(value)
 
             return when (value) {
                 is FieldLoadInst -> {
@@ -41,7 +40,7 @@ abstract class AbstractChainProvider {
 
                 else -> EmptyChainElement
             }.also {
-                chainInstsStack.pop()
+                CurrentChainState.chainInstsStack.pop()
             }
         }
     }

@@ -29,32 +29,28 @@ class InterproceduralAnalyzer(private val cm: ClassManager) {
 
     fun runAnalysis() {
         for (klass in cm.concreteClasses) {
-            analyzeLocal(klass)
+            runLocalAnalisys(klass)
         }
 
         for (klass in cm.concreteClasses) {
-            runInterproceduralAnalyze(klass)
+            runInterproceduralAnalysis(klass)
         }
     }
 
-    private fun analyzeLocal(klass: Class) {
-        runLocalAnalyze(klass)
-    }
-
-    private fun runLocalAnalyze(klass: Class) {
+    private fun runLocalAnalisys(klass: Class) {
         for (method in klass.methods) {
             val localAnalysisInfo = localMethodAnalyzer.analyze(method)
             localAnalyzingInfos[method] = localAnalysisInfo
         }
     }
 
-    private fun runInterproceduralAnalyze(klass: Class) {
+    private fun runInterproceduralAnalysis(klass: Class) {
         for (method in klass.methods) {
-            runInterproceduralAnalyze(method)
+            runInterproceduralAnalysis(method)
         }
     }
 
-    private fun runInterproceduralAnalyze(
+    private fun runInterproceduralAnalysis(
         method: Method,
         callHistory: List<Method> = listOf()
     ) {
@@ -76,7 +72,7 @@ class InterproceduralAnalyzer(private val cm: ClassManager) {
 
             for (calleeMethod in possibleCalleeMethods) {
                 if (interproceduralMethodInfos[calleeMethod] == null) {
-                    runInterproceduralAnalyze(calleeMethod, callHistory + method)
+                    runInterproceduralAnalysis(calleeMethod, callHistory + method)
                 }
 
                 val previousAnalyzedInfos = interproceduralMethodInfos[calleeMethod]
