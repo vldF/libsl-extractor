@@ -25,7 +25,6 @@ class ReportProcessor(private val globalAnalysisContext: GlobalAnalysisContext) 
             }
 
             for ((method, methodReport) in classReport.methods) {
-                // todo: improve overloading support
                 val function = method.getLibslFunction(automaton) ?: continue
                 logger.info("method $function")
 
