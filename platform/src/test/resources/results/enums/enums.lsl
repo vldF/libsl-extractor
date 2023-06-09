@@ -16,7 +16,7 @@ automaton me.vldf.lsl.test.enums.EnumClass (val arg0: java.lang.String, val arg1
     val $VALUES: array<me.vldf.lsl.test.enums.EnumClass>;
     fun $values(): array<me.vldf.lsl.test.enums.EnumClass>;
     
-    fun `<clinit>`(): void {
+    fun `static-constructor`(): void {
         assigns A;
         assigns B;
         assigns C;

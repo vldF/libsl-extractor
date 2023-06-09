@@ -2352,11 +2352,6 @@ automaton okhttp3.internal.platform.Android10Platform : okhttp3.internal.platfor
     val socketAdapters: java.util.List;
     val isSupported: bool;
     val Companion: okhttp3.internal.platform.Android10Platform$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-        assigns isSupported;
-    }
-    
     fun access$isSupported$cp(): bool;
     
     fun buildCertificateChainCleaner(arg0: javax.net.ssl.X509TrustManager): okhttp3.internal.tls.CertificateChainCleaner;
@@ -2367,6 +2362,11 @@ automaton okhttp3.internal.platform.Android10Platform : okhttp3.internal.platfor
     
     fun isCleartextTrafficPermitted(arg0: java.lang.String): bool;
     
+    fun `static-constructor`(): void {
+        assigns Companion;
+        assigns isSupported;
+    }
+    
     fun trustManager(arg0: javax.net.ssl.SSLSocketFactory): javax.net.ssl.X509TrustManager;
 }
 automaton okhttp3.internal.platform.Android10Platform$Companion : okhttp3.internal.platform.Android10Platform$Companion {
@@ -2376,10 +2376,6 @@ automaton okhttp3.internal.platform.Android10Platform$Companion : okhttp3.intern
 }
 automaton okhttp3.internal.platform.android.Android10SocketAdapter : okhttp3.internal.platform.android.Android10SocketAdapter {
     val Companion: okhttp3.internal.platform.android.Android10SocketAdapter$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun configureTlsExtensions(arg0: javax.net.ssl.SSLSocket, arg1: java.lang.String, arg2: java.util.List): void;
     
     fun getSelectedProtocol(arg0: javax.net.ssl.SSLSocket): java.lang.String;
@@ -2389,6 +2385,10 @@ automaton okhttp3.internal.platform.android.Android10SocketAdapter : okhttp3.int
     fun matchesSocket(arg0: javax.net.ssl.SSLSocket): bool;
     
     fun matchesSocketFactory(arg0: javax.net.ssl.SSLSocketFactory): bool;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+    }
     
     fun trustManager(arg0: javax.net.ssl.SSLSocketFactory): javax.net.ssl.X509TrustManager;
 }
@@ -2401,15 +2401,15 @@ automaton okhttp3.internal.platform.android.AndroidCertificateChainCleaner (val 
     val trustManager: javax.net.ssl.X509TrustManager;
     val x509TrustManagerExtensions: `<UNRESOLVED_TYPE>`;
     val Companion: okhttp3.internal.platform.android.AndroidCertificateChainCleaner$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun clean(arg0: java.util.List, arg1: java.lang.String): java.util.List;
     
     fun equals(arg0: java.lang.Object): bool;
     
     fun hashCode(): int;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+    }
 }
 automaton okhttp3.internal.platform.android.AndroidCertificateChainCleaner$Companion : okhttp3.internal.platform.android.AndroidCertificateChainCleaner$Companion {
     fun buildIfSupported(arg0: javax.net.ssl.X509TrustManager): okhttp3.internal.platform.android.AndroidCertificateChainCleaner;
@@ -2419,12 +2419,6 @@ automaton okhttp3.internal.platform.android.AndroidLog : okhttp3.internal.platfo
     val configuredLoggers: java.util.concurrent.CopyOnWriteArraySet;
     val knownLoggers: java.util.Map;
     val INSTANCE: okhttp3.internal.platform.android.AndroidLog;
-    fun `<clinit>`(): void {
-        assigns INSTANCE;
-        assigns configuredLoggers;
-        assigns knownLoggers;
-    }
-    
     fun androidLog$okhttp(arg0: java.lang.String, arg1: int, arg2: java.lang.String, arg3: java.lang.Throwable): void;
     
     fun enable(): void;
@@ -2432,18 +2426,24 @@ automaton okhttp3.internal.platform.android.AndroidLog : okhttp3.internal.platfo
     fun enableLogging(arg0: java.lang.String, arg1: java.lang.String): void;
     
     fun loggerTag(arg0: java.lang.String): java.lang.String;
+    
+    fun `static-constructor`(): void {
+        assigns INSTANCE;
+        assigns configuredLoggers;
+        assigns knownLoggers;
+    }
 }
 automaton okhttp3.internal.platform.android.AndroidLogHandler : okhttp3.internal.platform.android.AndroidLogHandler {
     val INSTANCE: okhttp3.internal.platform.android.AndroidLogHandler;
-    fun `<clinit>`(): void {
-        assigns INSTANCE;
-    }
-    
     fun close(): void;
     
     fun flush(): void;
     
     fun publish(arg0: java.util.logging.LogRecord): void;
+    
+    fun `static-constructor`(): void {
+        assigns INSTANCE;
+    }
 }
 automaton okhttp3.internal.platform.android.AndroidLogKt : okhttp3.internal.platform.android.AndroidLogKt {
     fun access$getAndroidLevel$p(arg0: java.util.logging.LogRecord): int;
@@ -2455,11 +2455,6 @@ automaton okhttp3.internal.platform.AndroidPlatform : okhttp3.internal.platform.
     val closeGuard: okhttp3.internal.platform.android.CloseGuard;
     val isSupported: bool;
     val Companion: okhttp3.internal.platform.AndroidPlatform$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-        assigns isSupported;
-    }
-    
     fun access$isSupported$cp(): bool;
     
     fun buildCertificateChainCleaner(arg0: javax.net.ssl.X509TrustManager): okhttp3.internal.tls.CertificateChainCleaner;
@@ -2477,6 +2472,11 @@ automaton okhttp3.internal.platform.AndroidPlatform : okhttp3.internal.platform.
     fun isCleartextTrafficPermitted(arg0: java.lang.String): bool;
     
     fun logCloseableLeak(arg0: java.lang.String, arg1: java.lang.Object): void;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+        assigns isSupported;
+    }
     
     fun trustManager(arg0: javax.net.ssl.SSLSocketFactory): javax.net.ssl.X509TrustManager;
 }
@@ -2511,10 +2511,6 @@ automaton okhttp3.internal.platform.android.AndroidSocketAdapter (val arg0: java
     val setAlpnProtocols: java.lang.reflect.Method;
     val sslSocketClass: java.lang.Class;
     val Companion: okhttp3.internal.platform.android.AndroidSocketAdapter$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun configureTlsExtensions(arg0: javax.net.ssl.SSLSocket, arg1: java.lang.String, arg2: java.util.List): void;
     
     fun getSelectedProtocol(arg0: javax.net.ssl.SSLSocket): java.lang.String;
@@ -2525,6 +2521,10 @@ automaton okhttp3.internal.platform.android.AndroidSocketAdapter (val arg0: java
     
     fun matchesSocketFactory(arg0: javax.net.ssl.SSLSocketFactory): bool;
     
+    fun `static-constructor`(): void {
+        assigns Companion;
+    }
+    
     fun trustManager(arg0: javax.net.ssl.SSLSocketFactory): javax.net.ssl.X509TrustManager;
 }
 automaton okhttp3.internal.platform.android.AndroidSocketAdapter$Companion : okhttp3.internal.platform.android.AndroidSocketAdapter$Companion {
@@ -2534,11 +2534,11 @@ automaton okhttp3.Authenticator : okhttp3.Authenticator {
     val NONE: okhttp3.Authenticator;
     val JAVA_NET_AUTHENTICATOR: okhttp3.Authenticator;
     val Companion: okhttp3.Authenticator$Companion;
-    fun `<clinit>`(): void {
+    fun authenticate(arg0: okhttp3.Route, arg1: okhttp3.Response): okhttp3.Request;
+    
+    fun `static-constructor`(): void {
         assigns Companion;
     }
-    
-    fun authenticate(arg0: okhttp3.Route, arg1: okhttp3.Response): okhttp3.Request;
 }
 automaton okhttp3.Authenticator$Companion : okhttp3.Authenticator$Companion {
     val $$INSTANCE: okhttp3.Authenticator$Companion;
@@ -2550,15 +2550,15 @@ automaton okhttp3.internal.tls.BasicCertificateChainCleaner (val arg0: okhttp3.i
     val trustRootIndex: okhttp3.internal.tls.TrustRootIndex;
     val MAX_SIGNERS: int;
     val Companion: okhttp3.internal.tls.BasicCertificateChainCleaner$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun clean(arg0: java.util.List, arg1: java.lang.String): java.util.List;
     
     fun equals(arg0: java.lang.Object): bool;
     
     fun hashCode(): int;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+    }
     
     fun verifySignature(arg0: java.security.cert.X509Certificate, arg1: java.security.cert.X509Certificate): bool;
 }
@@ -2576,11 +2576,6 @@ automaton okhttp3.internal.platform.BouncyCastlePlatform : okhttp3.internal.plat
     val provider: java.security.Provider;
     val isSupported: bool;
     val Companion: okhttp3.internal.platform.BouncyCastlePlatform$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-        assigns isSupported;
-    }
-    
     fun access$isSupported$cp(): bool;
     
     fun configureTlsExtensions(arg0: javax.net.ssl.SSLSocket, arg1: java.lang.String, arg2: java.util.List): void;
@@ -2591,6 +2586,11 @@ automaton okhttp3.internal.platform.BouncyCastlePlatform : okhttp3.internal.plat
     
     fun platformTrustManager(): javax.net.ssl.X509TrustManager;
     
+    fun `static-constructor`(): void {
+        assigns Companion;
+        assigns isSupported;
+    }
+    
     fun trustManager(arg0: javax.net.ssl.SSLSocketFactory): javax.net.ssl.X509TrustManager;
 }
 automaton okhttp3.internal.platform.BouncyCastlePlatform$Companion : okhttp3.internal.platform.BouncyCastlePlatform$Companion {
@@ -2600,10 +2600,6 @@ automaton okhttp3.internal.platform.BouncyCastlePlatform$Companion : okhttp3.int
 }
 automaton okhttp3.internal.platform.android.BouncyCastleSocketAdapter : okhttp3.internal.platform.android.BouncyCastleSocketAdapter {
     val Companion: okhttp3.internal.platform.android.BouncyCastleSocketAdapter$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun configureTlsExtensions(arg0: javax.net.ssl.SSLSocket, arg1: java.lang.String, arg2: java.util.List): void;
     
     fun getSelectedProtocol(arg0: javax.net.ssl.SSLSocket): java.lang.String;
@@ -2613,6 +2609,10 @@ automaton okhttp3.internal.platform.android.BouncyCastleSocketAdapter : okhttp3.
     fun matchesSocket(arg0: javax.net.ssl.SSLSocket): bool;
     
     fun matchesSocketFactory(arg0: javax.net.ssl.SSLSocketFactory): bool;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+    }
     
     fun trustManager(arg0: javax.net.ssl.SSLSocketFactory): javax.net.ssl.X509TrustManager;
 }
@@ -2640,10 +2640,6 @@ automaton okhttp3.Cache (val arg0: java.io.File, val arg1: long, val arg2: okhtt
     val ENTRY_COUNT: int;
     val Companion: okhttp3.Cache$Companion;
     fun `-deprecated_directory`(): java.io.File;
-    
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
     
     fun abortQuietly(arg0: okhttp3.internal.cache.DiskLruCache$Editor): void {
         assigns arg0.done;
@@ -2704,6 +2700,10 @@ automaton okhttp3.Cache (val arg0: java.io.File, val arg1: long, val arg2: okhtt
     }
     
     fun size(): long;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+    }
     
     fun trackConditionalCacheHit$okhttp(): void {
         assigns hitCount;
@@ -2778,12 +2778,6 @@ automaton okhttp3.Cache$Entry (val arg0: okio.Source) : okhttp3.Cache$Entry {
     val SENT_MILLIS: java.lang.String;
     val RECEIVED_MILLIS: java.lang.String;
     val Companion: okhttp3.Cache$Entry$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-        assigns SENT_MILLIS;
-        assigns RECEIVED_MILLIS;
-    }
-    
     fun isHttps(): bool;
     
     fun matches(arg0: okhttp3.Request, arg1: okhttp3.Response): bool;
@@ -2795,6 +2789,12 @@ automaton okhttp3.Cache$Entry (val arg0: okio.Source) : okhttp3.Cache$Entry {
     fun readCertificateList(arg0: okio.BufferedSource): java.util.List;
     
     fun response(arg0: okhttp3.internal.cache.DiskLruCache$Snapshot): okhttp3.Response;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+        assigns SENT_MILLIS;
+        assigns RECEIVED_MILLIS;
+    }
     
     fun writeCertList(arg0: okio.BufferedSink, arg1: java.util.List): void {
         assigns arg0;
@@ -2904,12 +2904,6 @@ automaton okhttp3.CacheControl (val arg0: bool, val arg1: bool, val arg2: int, v
     
     fun `-deprecated_sMaxAgeSeconds`(): int;
     
-    fun `<clinit>`(): void {
-        assigns Companion;
-        assigns FORCE_NETWORK;
-        assigns FORCE_CACHE;
-    }
-    
     fun immutable(): bool;
     
     fun isPrivate(): bool;
@@ -2935,6 +2929,12 @@ automaton okhttp3.CacheControl (val arg0: bool, val arg1: bool, val arg2: int, v
     fun parse(arg0: okhttp3.Headers): okhttp3.CacheControl;
     
     fun sMaxAgeSeconds(): int;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+        assigns FORCE_NETWORK;
+        assigns FORCE_CACHE;
+    }
     
     fun toString(): java.lang.String {
         assigns headerValue;
@@ -2979,16 +2979,16 @@ automaton okhttp3.CacheControl$Companion : okhttp3.CacheControl$Companion {
 automaton okhttp3.internal.cache.CacheInterceptor (val arg0: okhttp3.Cache) : okhttp3.internal.cache.CacheInterceptor {
     val cache: okhttp3.Cache;
     val Companion: okhttp3.internal.cache.CacheInterceptor$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun cacheWritingResponse(arg0: okhttp3.internal.cache.CacheRequest, arg1: okhttp3.Response): okhttp3.Response;
     
     fun getCache$okhttp(): okhttp3.Cache;
     
     fun intercept(arg0: okhttp3.Interceptor$Chain): okhttp3.Response {
         assigns arg0;
+    }
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
     }
 }
 automaton okhttp3.internal.cache.CacheInterceptor$Companion : okhttp3.internal.cache.CacheInterceptor$Companion {
@@ -3044,13 +3044,13 @@ automaton okhttp3.internal.cache.CacheStrategy (val arg0: okhttp3.Request, val a
     val networkRequest: okhttp3.Request;
     val cacheResponse: okhttp3.Response;
     val Companion: okhttp3.internal.cache.CacheStrategy$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun getCacheResponse(): okhttp3.Response;
     
     fun getNetworkRequest(): okhttp3.Request;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+    }
 }
 automaton okhttp3.internal.cache.CacheStrategy$Companion : okhttp3.internal.cache.CacheStrategy$Companion {
     fun isCacheable(arg0: okhttp3.Response, arg1: okhttp3.Request): bool {
@@ -3118,11 +3118,11 @@ automaton okhttp3.Callback : okhttp3.Callback {
 }
 automaton okhttp3.internal.tls.CertificateChainCleaner : okhttp3.internal.tls.CertificateChainCleaner {
     val Companion: okhttp3.internal.tls.CertificateChainCleaner$Companion;
-    fun `<clinit>`(): void {
+    fun clean(arg0: java.util.List, arg1: java.lang.String): java.util.List;
+    
+    fun `static-constructor`(): void {
         assigns Companion;
     }
-    
-    fun clean(arg0: java.util.List, arg1: java.lang.String): java.util.List;
 }
 automaton okhttp3.internal.tls.CertificateChainCleaner$Companion : okhttp3.internal.tls.CertificateChainCleaner$Companion {
     fun get(arg0: javax.net.ssl.X509TrustManager): okhttp3.internal.tls.CertificateChainCleaner;
@@ -3134,11 +3134,6 @@ automaton okhttp3.CertificatePinner (val arg0: java.util.Set, val arg1: okhttp3.
     val certificateChainCleaner: okhttp3.internal.tls.CertificateChainCleaner;
     val DEFAULT: okhttp3.CertificatePinner;
     val Companion: okhttp3.CertificatePinner$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-        assigns DEFAULT;
-    }
-    
     fun check(arg0: java.lang.String, arg1: java.util.List): void;
     
     fun check(arg0: java.lang.String, arg1: array): void;
@@ -3164,6 +3159,11 @@ automaton okhttp3.CertificatePinner (val arg0: java.util.Set, val arg1: okhttp3.
     fun sha256Hash(arg0: java.security.cert.X509Certificate): okio.ByteString;
     
     fun sha256Hash(arg0: java.security.cert.X509Certificate): okio.ByteString;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+        assigns DEFAULT;
+    }
     
     fun withCertificateChainCleaner$okhttp(arg0: okhttp3.internal.tls.CertificateChainCleaner): okhttp3.CertificatePinner;
 }
@@ -3370,7 +3370,15 @@ automaton okhttp3.CipherSuite (val arg0: java.lang.String) : okhttp3.CipherSuite
     val Companion: okhttp3.CipherSuite$Companion;
     fun `-deprecated_javaName`(): java.lang.String;
     
-    fun `<clinit>`(): void {
+    fun access$getINSTANCES$cp(): java.util.Map;
+    
+    fun access$getORDER_BY_NAME$cp(): java.util.Comparator;
+    
+    fun forJavaName(arg0: java.lang.String): okhttp3.CipherSuite;
+    
+    fun javaName(): java.lang.String;
+    
+    fun `static-constructor`(): void {
         assigns Companion;
         assigns TLS_RSA_WITH_NULL_MD5;
         assigns TLS_RSA_WITH_NULL_SHA;
@@ -3493,14 +3501,6 @@ automaton okhttp3.CipherSuite (val arg0: java.lang.String) : okhttp3.CipherSuite
         assigns TLS_AES_128_CCM_8_SHA256;
     }
     
-    fun access$getINSTANCES$cp(): java.util.Map;
-    
-    fun access$getORDER_BY_NAME$cp(): java.util.Comparator;
-    
-    fun forJavaName(arg0: java.lang.String): okhttp3.CipherSuite;
-    
-    fun javaName(): java.lang.String;
-    
     fun toString(): java.lang.String;
 }
 automaton okhttp3.CipherSuite$Companion : okhttp3.CipherSuite$Companion {
@@ -3524,11 +3524,11 @@ automaton okhttp3.internal.platform.android.CloseGuard (val arg0: java.lang.refl
     val openMethod: java.lang.reflect.Method;
     val warnIfOpenMethod: java.lang.reflect.Method;
     val Companion: okhttp3.internal.platform.android.CloseGuard$Companion;
-    fun `<clinit>`(): void {
+    fun createAndOpen(arg0: java.lang.String): java.lang.Object;
+    
+    fun `static-constructor`(): void {
         assigns Companion;
     }
-    
-    fun createAndOpen(arg0: java.lang.String): java.lang.Object;
     
     fun warnIfOpen(arg0: java.lang.Object): bool;
 }
@@ -3537,11 +3537,11 @@ automaton okhttp3.internal.platform.android.CloseGuard$Companion : okhttp3.inter
 }
 automaton okhttp3.internal.connection.ConnectInterceptor : okhttp3.internal.connection.ConnectInterceptor {
     val INSTANCE: okhttp3.internal.connection.ConnectInterceptor;
-    fun `<clinit>`(): void {
+    fun intercept(arg0: okhttp3.Interceptor$Chain): okhttp3.Response;
+    
+    fun `static-constructor`(): void {
         assigns INSTANCE;
     }
-    
-    fun intercept(arg0: okhttp3.Interceptor$Chain): okhttp3.Response;
 }
 automaton okhttp3.Connection : okhttp3.Connection {
     fun handshake(): okhttp3.Handshake;
@@ -3582,16 +3582,6 @@ automaton okhttp3.ConnectionSpec (val arg0: bool, val arg1: bool, val arg2: arra
     
     fun `-deprecated_tlsVersions`(): java.util.List;
     
-    fun `<clinit>`(): void {
-        assigns Companion;
-        assigns RESTRICTED_CIPHER_SUITES;
-        assigns APPROVED_CIPHER_SUITES;
-        assigns RESTRICTED_TLS;
-        assigns MODERN_TLS;
-        assigns COMPATIBLE_TLS;
-        assigns CLEARTEXT;
-    }
-    
     fun access$getCipherSuitesAsString$p(arg0: okhttp3.ConnectionSpec): array<java.lang.String>;
     
     fun access$getTlsVersionsAsString$p(arg0: okhttp3.ConnectionSpec): array<java.lang.String>;
@@ -3607,6 +3597,16 @@ automaton okhttp3.ConnectionSpec (val arg0: bool, val arg1: bool, val arg2: arra
     fun isCompatible(arg0: javax.net.ssl.SSLSocket): bool;
     
     fun isTls(): bool;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+        assigns RESTRICTED_CIPHER_SUITES;
+        assigns APPROVED_CIPHER_SUITES;
+        assigns RESTRICTED_TLS;
+        assigns MODERN_TLS;
+        assigns COMPATIBLE_TLS;
+        assigns CLEARTEXT;
+    }
     
     fun supportedSpec(arg0: javax.net.ssl.SSLSocket, arg1: bool): okhttp3.ConnectionSpec;
     
@@ -3683,11 +3683,6 @@ automaton okhttp3.internal.platform.ConscryptPlatform : okhttp3.internal.platfor
     val provider: java.security.Provider;
     val isSupported: bool;
     val Companion: okhttp3.internal.platform.ConscryptPlatform$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-        assigns isSupported;
-    }
-    
     fun access$isSupported$cp(): bool;
     
     fun configureTlsExtensions(arg0: javax.net.ssl.SSLSocket, arg1: java.lang.String, arg2: java.util.List): void;
@@ -3699,6 +3694,11 @@ automaton okhttp3.internal.platform.ConscryptPlatform : okhttp3.internal.platfor
     fun newSslSocketFactory(arg0: javax.net.ssl.X509TrustManager): javax.net.ssl.SSLSocketFactory;
     
     fun platformTrustManager(): javax.net.ssl.X509TrustManager;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+        assigns isSupported;
+    }
     
     fun trustManager(arg0: javax.net.ssl.SSLSocketFactory): javax.net.ssl.X509TrustManager;
 }
@@ -3713,7 +3713,7 @@ automaton okhttp3.internal.platform.ConscryptPlatform$Companion : okhttp3.intern
 }
 automaton okhttp3.internal.platform.ConscryptPlatform$platformTrustManager$2 : okhttp3.internal.platform.ConscryptPlatform$platformTrustManager$2 {
     val INSTANCE: okhttp3.internal.platform.ConscryptPlatform$platformTrustManager$2;
-    fun `<clinit>`(): void {
+    fun `static-constructor`(): void {
         assigns INSTANCE;
     }
     
@@ -3721,10 +3721,6 @@ automaton okhttp3.internal.platform.ConscryptPlatform$platformTrustManager$2 : o
 }
 automaton okhttp3.internal.platform.android.ConscryptSocketAdapter : okhttp3.internal.platform.android.ConscryptSocketAdapter {
     val Companion: okhttp3.internal.platform.android.ConscryptSocketAdapter$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun configureTlsExtensions(arg0: javax.net.ssl.SSLSocket, arg1: java.lang.String, arg2: java.util.List): void;
     
     fun getSelectedProtocol(arg0: javax.net.ssl.SSLSocket): java.lang.String;
@@ -3734,6 +3730,10 @@ automaton okhttp3.internal.platform.android.ConscryptSocketAdapter : okhttp3.int
     fun matchesSocket(arg0: javax.net.ssl.SSLSocket): bool;
     
     fun matchesSocketFactory(arg0: javax.net.ssl.SSLSocketFactory): bool;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+    }
     
     fun trustManager(arg0: javax.net.ssl.SSLSocketFactory): javax.net.ssl.X509TrustManager;
 }
@@ -3773,14 +3773,6 @@ automaton okhttp3.Cookie (val arg0: java.lang.String, val arg1: java.lang.String
     
     fun `-deprecated_value`(): java.lang.String;
     
-    fun `<clinit>`(): void {
-        assigns Companion;
-        assigns YEAR_PATTERN;
-        assigns MONTH_PATTERN;
-        assigns DAY_OF_MONTH_PATTERN;
-        assigns TIME_PATTERN;
-    }
-    
     fun access$getDAY_OF_MONTH_PATTERN$cp(): java.util.regex.Pattern;
     
     fun access$getMONTH_PATTERN$cp(): java.util.regex.Pattern;
@@ -3814,6 +3806,14 @@ automaton okhttp3.Cookie (val arg0: java.lang.String, val arg1: java.lang.String
     fun persistent(): bool;
     
     fun secure(): bool;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+        assigns YEAR_PATTERN;
+        assigns MONTH_PATTERN;
+        assigns DAY_OF_MONTH_PATTERN;
+        assigns TIME_PATTERN;
+    }
     
     fun toString(): java.lang.String;
     
@@ -3877,13 +3877,13 @@ automaton okhttp3.Cookie$Companion : okhttp3.Cookie$Companion {
 automaton okhttp3.CookieJar : okhttp3.CookieJar {
     val NO_COOKIES: okhttp3.CookieJar;
     val Companion: okhttp3.CookieJar$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun loadForRequest(arg0: okhttp3.HttpUrl): java.util.List;
     
     fun saveFromResponse(arg0: okhttp3.HttpUrl, arg1: java.util.List): void;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+    }
 }
 automaton okhttp3.CookieJar$Companion : okhttp3.CookieJar$Companion {
     val $$INSTANCE: okhttp3.CookieJar$Companion;
@@ -3895,22 +3895,22 @@ automaton okhttp3.CookieJar$Companion$NoCookies : okhttp3.CookieJar$Companion$No
 }
 automaton okhttp3.Credentials : okhttp3.Credentials {
     val INSTANCE: okhttp3.Credentials;
-    fun `<clinit>`(): void {
-        assigns INSTANCE;
-    }
-    
     fun basic(arg0: java.lang.String, arg1: java.lang.String, arg2: java.nio.charset.Charset): java.lang.String;
     
     fun basic(arg0: java.lang.String, arg1: java.lang.String): java.lang.String;
     
     fun basic$default(arg0: java.lang.String, arg1: java.lang.String, arg2: java.nio.charset.Charset, arg3: int, arg4: java.lang.Object): java.lang.String;
+    
+    fun `static-constructor`(): void {
+        assigns INSTANCE;
+    }
 }
 automaton okhttp3.internal.http.DatesKt : okhttp3.internal.http.DatesKt {
     val MAX_DATE: long;
     val STANDARD_DATE_FORMAT: okhttp3.internal.http.DatesKt$STANDARD_DATE_FORMAT$1;
     val BROWSER_COMPATIBLE_DATE_FORMAT_STRINGS: array<java.lang.String>;
     val BROWSER_COMPATIBLE_DATE_FORMATS: array<java.text.DateFormat>;
-    fun `<clinit>`(): void {
+    fun `static-constructor`(): void {
         assigns STANDARD_DATE_FORMAT;
         assigns BROWSER_COMPATIBLE_DATE_FORMAT_STRINGS;
         assigns BROWSER_COMPATIBLE_DATE_FORMATS;
@@ -3987,20 +3987,6 @@ automaton okhttp3.internal.cache.DiskLruCache (val arg0: okhttp3.internal.io.Fil
     val READ: java.lang.String;
     val Companion: okhttp3.internal.cache.DiskLruCache$Companion;
     val journalWriter: okio.BufferedSink;
-    fun `<clinit>`(): void {
-        assigns Companion;
-        assigns JOURNAL_FILE;
-        assigns JOURNAL_FILE_TEMP;
-        assigns JOURNAL_FILE_BACKUP;
-        assigns MAGIC;
-        assigns VERSION_1;
-        assigns ANY_SEQUENCE_NUMBER;
-        assigns CLEAN;
-        assigns DIRTY;
-        assigns REMOVE;
-        assigns READ;
-    }
-    
     fun access$getCivilizedFileSystem$p(arg0: okhttp3.internal.cache.DiskLruCache): bool;
     
     fun access$getHasJournalErrors$p(arg0: okhttp3.internal.cache.DiskLruCache): bool;
@@ -4244,6 +4230,20 @@ automaton okhttp3.internal.cache.DiskLruCache (val arg0: okhttp3.internal.io.Fil
         assigns mostRecentRebuildFailed;
         assigns size;
         assigns mostRecentTrimFailed;
+    }
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+        assigns JOURNAL_FILE;
+        assigns JOURNAL_FILE_TEMP;
+        assigns JOURNAL_FILE_BACKUP;
+        assigns MAGIC;
+        assigns VERSION_1;
+        assigns ANY_SEQUENCE_NUMBER;
+        assigns CLEAN;
+        assigns DIRTY;
+        assigns REMOVE;
+        assigns READ;
     }
     
     fun trimToSize(): void {
@@ -4518,11 +4518,11 @@ automaton okhttp3.Dispatcher : okhttp3.Dispatcher {
 automaton okhttp3.Dns : okhttp3.Dns {
     val SYSTEM: okhttp3.Dns;
     val Companion: okhttp3.Dns$Companion;
-    fun `<clinit>`(): void {
+    fun lookup(arg0: java.lang.String): java.util.List;
+    
+    fun `static-constructor`(): void {
         assigns Companion;
     }
-    
-    fun lookup(arg0: java.lang.String): java.util.List;
 }
 automaton okhttp3.Dns$Companion : okhttp3.Dns$Companion {
     val $$INSTANCE: okhttp3.Dns$Companion;
@@ -4548,7 +4548,9 @@ automaton okhttp3.internal.http2.ErrorCode (val arg0: java.lang.String, val arg1
     val $VALUES: array<okhttp3.internal.http2.ErrorCode>;
     val httpCode: int;
     val Companion: okhttp3.internal.http2.ErrorCode$Companion;
-    fun `<clinit>`(): void {
+    fun getHttpCode(): int;
+    
+    fun `static-constructor`(): void {
         assigns NO_ERROR;
         assigns PROTOCOL_ERROR;
         assigns INTERNAL_ERROR;
@@ -4567,8 +4569,6 @@ automaton okhttp3.internal.http2.ErrorCode (val arg0: java.lang.String, val arg1
         assigns Companion;
     }
     
-    fun getHttpCode(): int;
-    
     fun valueOf(arg0: java.lang.String): okhttp3.internal.http2.ErrorCode;
     
     fun values(): array<okhttp3.internal.http2.ErrorCode>;
@@ -4579,10 +4579,6 @@ automaton okhttp3.internal.http2.ErrorCode$Companion : okhttp3.internal.http2.Er
 automaton okhttp3.EventListener : okhttp3.EventListener {
     val NONE: okhttp3.EventListener;
     val Companion: okhttp3.EventListener$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun cacheConditionalHit(arg0: okhttp3.Call, arg1: okhttp3.Response): void;
     
     fun cacheHit(arg0: okhttp3.Call, arg1: okhttp3.Response): void;
@@ -4640,6 +4636,10 @@ automaton okhttp3.EventListener : okhttp3.EventListener {
     fun secureConnectEnd(arg0: okhttp3.Call, arg1: okhttp3.Handshake): void;
     
     fun secureConnectStart(arg0: okhttp3.Call): void;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+    }
 }
 automaton okhttp3.EventListener$Companion : okhttp3.EventListener$Companion {
 }
@@ -4767,10 +4767,6 @@ automaton okhttp3.internal.connection.Exchange$ResponseBodySource (val arg0: okh
 automaton okhttp3.internal.http.ExchangeCodec : okhttp3.internal.http.ExchangeCodec {
     val Companion: okhttp3.internal.http.ExchangeCodec$Companion;
     val DISCARD_STREAM_TIMEOUT_MILLIS: int;
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun cancel(): void;
     
     fun createRequestBody(arg0: okhttp3.Request, arg1: long): okio.Sink;
@@ -4791,6 +4787,10 @@ automaton okhttp3.internal.http.ExchangeCodec : okhttp3.internal.http.ExchangeCo
     
     fun reportedContentLength(arg0: okhttp3.Response): long;
     
+    fun `static-constructor`(): void {
+        assigns Companion;
+    }
+    
     fun trailers(): okhttp3.Headers;
     
     fun writeRequestHeaders(arg0: okhttp3.Request): void;
@@ -4798,7 +4798,7 @@ automaton okhttp3.internal.http.ExchangeCodec : okhttp3.internal.http.ExchangeCo
 automaton okhttp3.internal.http.ExchangeCodec$Companion : okhttp3.internal.http.ExchangeCodec$Companion {
     val DISCARD_STREAM_TIMEOUT_MILLIS: int;
     val $$INSTANCE: okhttp3.internal.http.ExchangeCodec$Companion;
-    fun `<clinit>`(): void {
+    fun `static-constructor`(): void {
         assigns $$INSTANCE;
     }
 }
@@ -4900,10 +4900,6 @@ automaton okhttp3.internal.cache2.FileOperator (val arg0: java.nio.channels.File
 automaton okhttp3.internal.io.FileSystem : okhttp3.internal.io.FileSystem {
     val SYSTEM: okhttp3.internal.io.FileSystem;
     val Companion: okhttp3.internal.io.FileSystem$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun appendingSink(arg0: java.io.File): okio.Sink;
     
     fun appendingSink(arg0: java.io.File): okio.Sink;
@@ -4925,6 +4921,10 @@ automaton okhttp3.internal.io.FileSystem : okhttp3.internal.io.FileSystem {
     fun source(arg0: java.io.File): okio.Source;
     
     fun source(arg0: java.io.File): okio.Source;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+    }
 }
 automaton okhttp3.internal.io.FileSystem$Companion : okhttp3.internal.io.FileSystem$Companion {
     val $$INSTANCE: okhttp3.internal.io.FileSystem$Companion;
@@ -4961,11 +4961,6 @@ automaton okhttp3.FormBody (val arg0: java.util.List, val arg1: java.util.List) 
     val Companion: okhttp3.FormBody$Companion;
     fun `-deprecated_size`(): int;
     
-    fun `<clinit>`(): void {
-        assigns Companion;
-        assigns CONTENT_TYPE;
-    }
-    
     fun contentLength(): long;
     
     fun contentType(): okhttp3.MediaType;
@@ -4977,6 +4972,11 @@ automaton okhttp3.FormBody (val arg0: java.util.List, val arg1: java.util.List) 
     fun name(arg0: int): java.lang.String;
     
     fun size(): int;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+        assigns CONTENT_TYPE;
+    }
     
     fun value(arg0: int): java.lang.String;
     
@@ -5018,10 +5018,6 @@ automaton okhttp3.Handshake (val arg0: okhttp3.TlsVersion, val arg1: okhttp3.Cip
     
     fun `-deprecated_tlsVersion`(): okhttp3.TlsVersion;
     
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun cipherSuite(): okhttp3.CipherSuite;
     
     fun equals(arg0: java.lang.Object): bool;
@@ -5041,6 +5037,10 @@ automaton okhttp3.Handshake (val arg0: okhttp3.TlsVersion, val arg1: okhttp3.Cip
     fun peerCertificates(): java.util.List;
     
     fun peerPrincipal(): java.security.Principal;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+    }
     
     fun tlsVersion(): okhttp3.TlsVersion;
     
@@ -5097,16 +5097,6 @@ automaton okhttp3.internal.http2.Header (val arg0: okio.ByteString, val arg1: ok
     val TARGET_PATH: okio.ByteString;
     val TARGET_SCHEME: okio.ByteString;
     val TARGET_AUTHORITY: okio.ByteString;
-    fun `<clinit>`(): void {
-        assigns Companion;
-        assigns PSEUDO_PREFIX;
-        assigns RESPONSE_STATUS;
-        assigns TARGET_METHOD;
-        assigns TARGET_PATH;
-        assigns TARGET_SCHEME;
-        assigns TARGET_AUTHORITY;
-    }
-    
     fun component1(): okio.ByteString;
     
     fun component1(): okio.ByteString;
@@ -5127,6 +5117,16 @@ automaton okhttp3.internal.http2.Header (val arg0: okio.ByteString, val arg1: ok
     
     fun hashCode(): int;
     
+    fun `static-constructor`(): void {
+        assigns Companion;
+        assigns PSEUDO_PREFIX;
+        assigns RESPONSE_STATUS;
+        assigns TARGET_METHOD;
+        assigns TARGET_PATH;
+        assigns TARGET_SCHEME;
+        assigns TARGET_AUTHORITY;
+    }
+    
     fun toString(): java.lang.String;
 }
 automaton okhttp3.internal.http2.Header$Companion : okhttp3.internal.http2.Header$Companion {
@@ -5135,10 +5135,6 @@ automaton okhttp3.Headers (val arg0: array<java.lang.String>) : okhttp3.Headers 
     val namesAndValues: array<java.lang.String>;
     val Companion: okhttp3.Headers$Companion;
     fun `-deprecated_size`(): int;
-    
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
     
     fun byteCount(): long;
     
@@ -5165,6 +5161,10 @@ automaton okhttp3.Headers (val arg0: array<java.lang.String>) : okhttp3.Headers 
     fun of(arg0: java.util.Map): okhttp3.Headers;
     
     fun size(): int;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+    }
     
     fun toMultimap(): java.util.Map;
     
@@ -5233,10 +5233,6 @@ automaton okhttp3.internal.http1.HeadersReader (val arg0: okio.BufferedSource) :
     val HEADER_LIMIT: int;
     val Companion: okhttp3.internal.http1.HeadersReader$Companion;
     val source: okio.BufferedSource;
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun getSource(): okio.BufferedSource;
     
     fun getSource(): okio.BufferedSource;
@@ -5247,6 +5243,10 @@ automaton okhttp3.internal.http1.HeadersReader (val arg0: okio.BufferedSource) :
     
     fun readLine(): java.lang.String {
         assigns headerLimit;
+    }
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
     }
 }
 automaton okhttp3.internal.http1.HeadersReader$Companion : okhttp3.internal.http1.HeadersReader$Companion {
@@ -5272,12 +5272,6 @@ automaton okhttp3.internal.http2.Hpack : okhttp3.internal.http2.Hpack {
     val STATIC_HEADER_TABLE: array<okhttp3.internal.http2.Header>;
     val NAME_TO_FIRST_INDEX: java.util.Map;
     val INSTANCE: okhttp3.internal.http2.Hpack;
-    fun `<clinit>`(): void {
-        assigns INSTANCE;
-        assigns STATIC_HEADER_TABLE;
-        assigns NAME_TO_FIRST_INDEX;
-    }
-    
     fun checkLowercase(arg0: okio.ByteString): okio.ByteString {
         assigns arg0.utf8;
     }
@@ -5289,6 +5283,12 @@ automaton okhttp3.internal.http2.Hpack : okhttp3.internal.http2.Hpack {
     fun getSTATIC_HEADER_TABLE(): array<okhttp3.internal.http2.Header>;
     
     fun nameToFirstIndex(): java.util.Map;
+    
+    fun `static-constructor`(): void {
+        assigns INSTANCE;
+        assigns STATIC_HEADER_TABLE;
+        assigns NAME_TO_FIRST_INDEX;
+    }
 }
 automaton okhttp3.internal.http2.Hpack$Reader (val arg0: okio.Source, val arg1: int, val arg2: int) : okhttp3.internal.http2.Hpack$Reader {
     val headerList: java.util.List;
@@ -5454,10 +5454,6 @@ automaton okhttp3.internal.http1.Http1ExchangeCodec (val arg0: okhttp3.OkHttpCli
     val Companion: okhttp3.internal.http1.Http1ExchangeCodec$Companion;
     val source: okio.BufferedSource;
     val sink: okio.BufferedSink;
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun access$detachTimeout(arg0: okhttp3.internal.http1.Http1ExchangeCodec, arg1: okio.ForwardingTimeout): void {
         assigns arg1.delegate;
     }
@@ -5558,6 +5554,10 @@ automaton okhttp3.internal.http1.Http1ExchangeCodec (val arg0: okhttp3.OkHttpCli
     
     fun skipConnectBody(arg0: okhttp3.Response): void {
         assigns `state`;
+    }
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
     }
     
     fun trailers(): okhttp3.Headers;
@@ -5736,17 +5736,17 @@ automaton okhttp3.internal.http2.Http2 : okhttp3.internal.http2.Http2 {
     val BINARY: array<java.lang.String>;
     val INSTANCE: okhttp3.internal.http2.Http2;
     val CONNECTION_PREFACE: okio.ByteString;
-    fun `<clinit>`(): void {
+    fun formatFlags(arg0: int, arg1: int): java.lang.String;
+    
+    fun frameLog(arg0: bool, arg1: int, arg2: int, arg3: int, arg4: int): java.lang.String;
+    
+    fun `static-constructor`(): void {
         assigns INSTANCE;
         assigns CONNECTION_PREFACE;
         assigns FRAME_NAMES;
         assigns FLAGS;
         assigns BINARY;
     }
-    
-    fun formatFlags(arg0: int, arg1: int): java.lang.String;
-    
-    fun frameLog(arg0: bool, arg1: int, arg2: int, arg3: int, arg4: int): java.lang.String;
 }
 automaton okhttp3.internal.http2.Http2Connection (val arg0: okhttp3.internal.http2.Http2Connection$Builder) : okhttp3.internal.http2.Http2Connection {
     val client: bool;
@@ -5785,11 +5785,6 @@ automaton okhttp3.internal.http2.Http2Connection (val arg0: okhttp3.internal.htt
     val AWAIT_PING: int;
     val DEGRADED_PONG_TIMEOUT_NS: int;
     val Companion: okhttp3.internal.http2.Http2Connection$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-        assigns DEFAULT_SETTINGS;
-    }
-    
     fun access$failConnection(arg0: okhttp3.internal.http2.Http2Connection, arg1: java.io.IOException): void {
         assigns arg0.isShutdown;
     }
@@ -5958,6 +5953,11 @@ automaton okhttp3.internal.http2.Http2Connection (val arg0: okhttp3.internal.htt
     
     fun start$default(arg0: okhttp3.internal.http2.Http2Connection, arg1: bool, arg2: okhttp3.internal.concurrent.TaskRunner, arg3: int, arg4: java.lang.Object): void;
     
+    fun `static-constructor`(): void {
+        assigns Companion;
+        assigns DEFAULT_SETTINGS;
+    }
+    
     fun updateConnectionFlowControl$okhttp(arg0: long): void {
         assigns readBytesTotal;
         assigns readBytesAcknowledged;
@@ -6105,13 +6105,13 @@ automaton okhttp3.internal.http2.Http2Connection$Companion : okhttp3.internal.ht
 automaton okhttp3.internal.http2.Http2Connection$Listener : okhttp3.internal.http2.Http2Connection$Listener {
     val REFUSE_INCOMING_STREAMS: okhttp3.internal.http2.Http2Connection$Listener;
     val Companion: okhttp3.internal.http2.Http2Connection$Listener$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun onSettings(arg0: okhttp3.internal.http2.Http2Connection, arg1: okhttp3.internal.http2.Settings): void;
     
     fun onStream(arg0: okhttp3.internal.http2.Http2Stream): void;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+    }
 }
 automaton okhttp3.internal.http2.Http2Connection$Listener$Companion : okhttp3.internal.http2.Http2Connection$Listener$Companion {
 }
@@ -6290,12 +6290,6 @@ automaton okhttp3.internal.http2.Http2ExchangeCodec (val arg0: okhttp3.OkHttpCli
     val HTTP_2_SKIPPED_REQUEST_HEADERS: java.util.List;
     val HTTP_2_SKIPPED_RESPONSE_HEADERS: java.util.List;
     val Companion: okhttp3.internal.http2.Http2ExchangeCodec$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-        assigns HTTP_2_SKIPPED_REQUEST_HEADERS;
-        assigns HTTP_2_SKIPPED_RESPONSE_HEADERS;
-    }
-    
     fun access$getHTTP_2_SKIPPED_REQUEST_HEADERS$cp(): java.util.List;
     
     fun access$getHTTP_2_SKIPPED_RESPONSE_HEADERS$cp(): java.util.List;
@@ -6322,6 +6316,12 @@ automaton okhttp3.internal.http2.Http2ExchangeCodec (val arg0: okhttp3.OkHttpCli
     
     fun reportedContentLength(arg0: okhttp3.Response): long;
     
+    fun `static-constructor`(): void {
+        assigns Companion;
+        assigns HTTP_2_SKIPPED_REQUEST_HEADERS;
+        assigns HTTP_2_SKIPPED_RESPONSE_HEADERS;
+    }
+    
     fun trailers(): okhttp3.Headers;
     
     fun writeRequestHeaders(arg0: okhttp3.Request): void {
@@ -6341,11 +6341,6 @@ automaton okhttp3.internal.http2.Http2Reader (val arg0: okio.BufferedSource, val
     val logger: java.util.logging.Logger;
     val Companion: okhttp3.internal.http2.Http2Reader$Companion;
     val source: okio.BufferedSource;
-    fun `<clinit>`(): void {
-        assigns Companion;
-        assigns logger;
-    }
-    
     fun access$getLogger$cp(): java.util.logging.Logger;
     
     fun close(): void;
@@ -6377,6 +6372,11 @@ automaton okhttp3.internal.http2.Http2Reader (val arg0: okio.BufferedSource, val
     fun readSettings(arg0: okhttp3.internal.http2.Http2Reader$Handler, arg1: int, arg2: int, arg3: int): void;
     
     fun readWindowUpdate(arg0: okhttp3.internal.http2.Http2Reader$Handler, arg1: int, arg2: int, arg3: int): void;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+        assigns logger;
+    }
 }
 automaton okhttp3.internal.http2.Http2Reader$Companion : okhttp3.internal.http2.Http2Reader$Companion {
     fun getLogger(): java.util.logging.Logger;
@@ -6493,10 +6493,6 @@ automaton okhttp3.internal.http2.Http2Stream (val arg0: int, val arg1: okhttp3.i
     val connection: okhttp3.internal.http2.Http2Connection;
     val EMIT_BUFFER_SIZE: long;
     val Companion: okhttp3.internal.http2.Http2Stream$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun addBytesToWriteWindow(arg0: long): void {
         assigns writeBytesMaximum;
     }
@@ -6601,6 +6597,10 @@ automaton okhttp3.internal.http2.Http2Stream (val arg0: int, val arg1: okhttp3.i
     
     fun setWriteBytesTotal$okhttp(arg0: long): void {
         assigns writeBytesTotal;
+    }
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
     }
     
     fun takeHeaders(): okhttp3.Headers;
@@ -6743,11 +6743,6 @@ automaton okhttp3.internal.http2.Http2Writer (val arg0: okio.BufferedSink, val a
     val Companion: okhttp3.internal.http2.Http2Writer$Companion;
     val hpackBuffer: okio.Buffer;
     val sink: okio.BufferedSink;
-    fun `<clinit>`(): void {
-        assigns Companion;
-        assigns logger;
-    }
-    
     fun applyAndAckSettings(arg0: okhttp3.internal.http2.Settings): void {
         assigns maxFrameSize;
     }
@@ -6800,6 +6795,11 @@ automaton okhttp3.internal.http2.Http2Writer (val arg0: okio.BufferedSink, val a
     
     fun settings(arg0: okhttp3.internal.http2.Settings): void;
     
+    fun `static-constructor`(): void {
+        assigns Companion;
+        assigns logger;
+    }
+    
     fun windowUpdate(arg0: int, arg1: long): void;
     
     fun writeContinuationFrames(arg0: int, arg1: long): void;
@@ -6811,11 +6811,6 @@ automaton okhttp3.internal.http.HttpHeaders : okhttp3.internal.http.HttpHeaders 
     val TOKEN_DELIMITERS: okio.ByteString;
     val QUOTED_STRING_DELIMITERS: okio.ByteString;
     val TOKEN_DELIMITERS: okio.ByteString;
-    fun `<clinit>`(): void {
-        assigns QUOTED_STRING_DELIMITERS;
-        assigns TOKEN_DELIMITERS;
-    }
-    
     fun hasBody(arg0: okhttp3.Response): bool;
     
     fun parseChallenges(arg0: okhttp3.Headers, arg1: java.lang.String): java.util.List;
@@ -6863,13 +6858,14 @@ automaton okhttp3.internal.http.HttpHeaders : okhttp3.internal.http.HttpHeaders 
     fun startsWith(arg0: okio.Buffer, arg1: byte): bool;
     
     fun startsWith(arg0: okio.Buffer, arg1: byte): bool;
+    
+    fun `static-constructor`(): void {
+        assigns QUOTED_STRING_DELIMITERS;
+        assigns TOKEN_DELIMITERS;
+    }
 }
 automaton okhttp3.internal.http.HttpMethod : okhttp3.internal.http.HttpMethod {
     val INSTANCE: okhttp3.internal.http.HttpMethod;
-    fun `<clinit>`(): void {
-        assigns INSTANCE;
-    }
-    
     fun invalidatesCache(arg0: java.lang.String): bool;
     
     fun permitsRequestBody(arg0: java.lang.String): bool;
@@ -6879,6 +6875,10 @@ automaton okhttp3.internal.http.HttpMethod : okhttp3.internal.http.HttpMethod {
     fun redirectsWithBody(arg0: java.lang.String): bool;
     
     fun requiresRequestBody(arg0: java.lang.String): bool;
+    
+    fun `static-constructor`(): void {
+        assigns INSTANCE;
+    }
 }
 automaton okhttp3.HttpUrl (val arg0: java.lang.String, val arg1: java.lang.String, val arg2: java.lang.String, val arg3: java.lang.String, val arg4: int, val arg5: java.util.List, val arg6: java.util.List, val arg7: java.lang.String, val arg8: java.lang.String) : okhttp3.HttpUrl {
     val isHttps: bool;
@@ -6941,11 +6941,6 @@ automaton okhttp3.HttpUrl (val arg0: java.lang.String, val arg1: java.lang.Strin
     fun `-deprecated_url`(): java.net.URL;
     
     fun `-deprecated_username`(): java.lang.String;
-    
-    fun `<clinit>`(): void {
-        assigns Companion;
-        assigns HEX_DIGITS;
-    }
     
     fun access$getHEX_DIGITS$cp(): array<char>;
     
@@ -7013,6 +7008,11 @@ automaton okhttp3.HttpUrl (val arg0: java.lang.String, val arg1: java.lang.Strin
     
     fun scheme(): java.lang.String;
     
+    fun `static-constructor`(): void {
+        assigns Companion;
+        assigns HEX_DIGITS;
+    }
+    
     fun toString(): java.lang.String;
     
     fun topPrivateDomain(): java.lang.String;
@@ -7034,10 +7034,6 @@ automaton okhttp3.HttpUrl$Builder : okhttp3.HttpUrl$Builder {
     val encodedFragment: java.lang.String;
     val INVALID_HOST: java.lang.String;
     val Companion: okhttp3.HttpUrl$Builder$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun addEncodedPathSegment(arg0: java.lang.String): okhttp3.HttpUrl$Builder;
     
     fun addEncodedPathSegments(arg0: java.lang.String): okhttp3.HttpUrl$Builder;
@@ -7162,6 +7158,10 @@ automaton okhttp3.HttpUrl$Builder : okhttp3.HttpUrl$Builder {
         assigns scheme;
     }
     
+    fun `static-constructor`(): void {
+        assigns Companion;
+    }
+    
     fun toString(): java.lang.String;
     
     fun username(arg0: java.lang.String): okhttp3.HttpUrl$Builder;
@@ -7237,13 +7237,6 @@ automaton okhttp3.internal.http2.Huffman : okhttp3.internal.http2.Huffman {
     val CODE_BIT_COUNTS: array<byte>;
     val root: okhttp3.internal.http2.Huffman$Node;
     val INSTANCE: okhttp3.internal.http2.Huffman;
-    fun `<clinit>`(): void {
-        assigns INSTANCE;
-        assigns CODES;
-        assigns CODE_BIT_COUNTS;
-        assigns root;
-    }
-    
     fun addCode(arg0: int, arg1: int, arg2: int): void;
     
     fun decode(arg0: okio.BufferedSource, arg1: long, arg2: okio.BufferedSink): void {
@@ -7262,6 +7255,13 @@ automaton okhttp3.internal.http2.Huffman : okhttp3.internal.http2.Huffman {
     fun encodedLength(arg0: okio.ByteString): int;
     
     fun encodedLength(arg0: okio.ByteString): int;
+    
+    fun `static-constructor`(): void {
+        assigns INSTANCE;
+        assigns CODES;
+        assigns CODE_BIT_COUNTS;
+        assigns root;
+    }
 }
 automaton okhttp3.internal.http2.Huffman$Node : okhttp3.internal.http2.Huffman$Node {
     val children: array<okhttp3.internal.http2.Huffman$Node>;
@@ -7275,11 +7275,11 @@ automaton okhttp3.internal.http2.Huffman$Node : okhttp3.internal.http2.Huffman$N
 }
 automaton okhttp3.Interceptor : okhttp3.Interceptor {
     val Companion: okhttp3.Interceptor$Companion;
-    fun `<clinit>`(): void {
+    fun intercept(arg0: okhttp3.Interceptor$Chain): okhttp3.Response;
+    
+    fun `static-constructor`(): void {
         assigns Companion;
     }
-    
-    fun intercept(arg0: okhttp3.Interceptor$Chain): okhttp3.Response;
 }
 automaton okhttp3.Interceptor$Chain : okhttp3.Interceptor$Chain {
     fun call(): okhttp3.Call;
@@ -7304,11 +7304,11 @@ automaton okhttp3.Interceptor$Chain : okhttp3.Interceptor$Chain {
 }
 automaton okhttp3.Interceptor$Companion : okhttp3.Interceptor$Companion {
     val $$INSTANCE: okhttp3.Interceptor$Companion;
-    fun `<clinit>`(): void {
+    fun invoke(arg0: kotlin.jvm.functions.Function1): okhttp3.Interceptor;
+    
+    fun `static-constructor`(): void {
         assigns $$INSTANCE;
     }
-    
-    fun invoke(arg0: kotlin.jvm.functions.Function1): okhttp3.Interceptor;
 }
 automaton okhttp3.Interceptor$Companion$invoke$1 (val arg0: `<UNRESOLVED_TYPE>`) : okhttp3.Interceptor$Companion$invoke$1 {
     val $block: `<UNRESOLVED_TYPE>`;
@@ -7335,7 +7335,7 @@ automaton okhttp3.internal.authenticator.JavaNetAuthenticator (val arg0: okhttp3
 }
 automaton okhttp3.internal.authenticator.JavaNetAuthenticator$WhenMappings : okhttp3.internal.authenticator.JavaNetAuthenticator$WhenMappings {
     val $EnumSwitchMapping$0: array<int>;
-    fun `<clinit>`(): void {
+    fun `static-constructor`(): void {
         assigns $EnumSwitchMapping$0;
     }
 }
@@ -7346,15 +7346,15 @@ automaton okhttp3.internal.platform.Jdk8WithJettyBootPlatform (val arg0: java.la
     val clientProviderClass: java.lang.Class;
     val serverProviderClass: java.lang.Class;
     val Companion: okhttp3.internal.platform.Jdk8WithJettyBootPlatform$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun afterHandshake(arg0: javax.net.ssl.SSLSocket): void;
     
     fun configureTlsExtensions(arg0: javax.net.ssl.SSLSocket, arg1: java.lang.String, arg2: java.util.List): void;
     
     fun getSelectedProtocol(arg0: javax.net.ssl.SSLSocket): java.lang.String;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+    }
 }
 automaton okhttp3.internal.platform.Jdk8WithJettyBootPlatform$AlpnProvider (val arg0: java.util.List) : okhttp3.internal.platform.Jdk8WithJettyBootPlatform$AlpnProvider {
     val unsupported: bool;
@@ -7383,16 +7383,16 @@ automaton okhttp3.internal.platform.Jdk8WithJettyBootPlatform$Companion : okhttp
 automaton okhttp3.internal.platform.Jdk9Platform : okhttp3.internal.platform.Jdk9Platform {
     val isAvailable: bool;
     val Companion: okhttp3.internal.platform.Jdk9Platform$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-        assigns isAvailable;
-    }
-    
     fun access$isAvailable$cp(): bool;
     
     fun configureTlsExtensions(arg0: javax.net.ssl.SSLSocket, arg1: java.lang.String, arg2: java.util.List): void;
     
     fun getSelectedProtocol(arg0: javax.net.ssl.SSLSocket): java.lang.String;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+        assigns isAvailable;
+    }
     
     fun trustManager(arg0: javax.net.ssl.SSLSocketFactory): javax.net.ssl.X509TrustManager;
 }
@@ -7415,12 +7415,6 @@ automaton okhttp3.MediaType (val arg0: java.lang.String, val arg1: java.lang.Str
     
     fun `-deprecated_type`(): java.lang.String;
     
-    fun `<clinit>`(): void {
-        assigns Companion;
-        assigns TYPE_SUBTYPE;
-        assigns PARAMETER;
-    }
-    
     fun access$getPARAMETER$cp(): java.util.regex.Pattern;
     
     fun access$getTYPE_SUBTYPE$cp(): java.util.regex.Pattern;
@@ -7440,6 +7434,12 @@ automaton okhttp3.MediaType (val arg0: java.lang.String, val arg1: java.lang.Str
     fun parameter(arg0: java.lang.String): java.lang.String;
     
     fun parse(arg0: java.lang.String): okhttp3.MediaType;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+        assigns TYPE_SUBTYPE;
+        assigns PARAMETER;
+    }
     
     fun subtype(): java.lang.String;
     
@@ -7481,13 +7481,13 @@ automaton okhttp3.internal.ws.MessageDeflaterKt : okhttp3.internal.ws.MessageDef
     val EMPTY_DEFLATE_BLOCK: okio.ByteString;
     val LAST_OCTETS_COUNT_TO_REMOVE_AFTER_DEFLATION: int;
     val EMPTY_DEFLATE_BLOCK: okio.ByteString;
-    fun `<clinit>`(): void {
+    fun access$getEMPTY_DEFLATE_BLOCK$p(): okio.ByteString;
+    
+    fun access$getEMPTY_DEFLATE_BLOCK$p(): okio.ByteString;
+    
+    fun `static-constructor`(): void {
         assigns EMPTY_DEFLATE_BLOCK;
     }
-    
-    fun access$getEMPTY_DEFLATE_BLOCK$p(): okio.ByteString;
-    
-    fun access$getEMPTY_DEFLATE_BLOCK$p(): okio.ByteString;
 }
 automaton okhttp3.internal.ws.MessageInflater (val arg0: bool) : okhttp3.internal.ws.MessageInflater {
     val deflatedBytes: okio.Buffer;
@@ -7532,18 +7532,6 @@ automaton okhttp3.MultipartBody (val arg0: okio.ByteString, val arg1: okhttp3.Me
     
     fun `-deprecated_type`(): okhttp3.MediaType;
     
-    fun `<clinit>`(): void {
-        assigns Companion;
-        assigns MIXED;
-        assigns ALTERNATIVE;
-        assigns DIGEST;
-        assigns PARALLEL;
-        assigns FORM;
-        assigns COLONSPACE;
-        assigns CRLF;
-        assigns DASHDASH;
-    }
-    
     fun boundary(): java.lang.String;
     
     fun contentLength(): long {
@@ -7557,6 +7545,18 @@ automaton okhttp3.MultipartBody (val arg0: okio.ByteString, val arg1: okhttp3.Me
     fun parts(): java.util.List;
     
     fun size(): int;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+        assigns MIXED;
+        assigns ALTERNATIVE;
+        assigns DIGEST;
+        assigns PARALLEL;
+        assigns FORM;
+        assigns COLONSPACE;
+        assigns CRLF;
+        assigns DASHDASH;
+    }
     
     fun `type`(): okhttp3.MediaType;
     
@@ -7598,10 +7598,6 @@ automaton okhttp3.MultipartBody$Part (val arg0: okhttp3.Headers, val arg1: okhtt
     
     fun `-deprecated_headers`(): okhttp3.Headers;
     
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun body(): okhttp3.RequestBody;
     
     fun create(arg0: okhttp3.RequestBody): okhttp3.MultipartBody$Part;
@@ -7613,6 +7609,10 @@ automaton okhttp3.MultipartBody$Part (val arg0: okhttp3.Headers, val arg1: okhtt
     fun createFormData(arg0: java.lang.String, arg1: java.lang.String, arg2: okhttp3.RequestBody): okhttp3.MultipartBody$Part;
     
     fun headers(): okhttp3.Headers;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+    }
 }
 automaton okhttp3.MultipartBody$Part$Companion : okhttp3.MultipartBody$Part$Companion {
     fun create(arg0: okhttp3.RequestBody): okhttp3.MultipartBody$Part;
@@ -7638,11 +7638,6 @@ automaton okhttp3.MultipartReader (val arg0: okio.BufferedSource, val arg1: java
     val crlfDashDashBoundary: okio.ByteString;
     val source: okio.BufferedSource;
     val afterBoundaryOptions: okio.Options;
-    fun `<clinit>`(): void {
-        assigns Companion;
-        assigns afterBoundaryOptions;
-    }
-    
     fun access$currentPartBytesRemaining(arg0: okhttp3.MultipartReader, arg1: long): long;
     
     fun access$getAfterBoundaryOptions$cp(): okio.Options;
@@ -7672,6 +7667,11 @@ automaton okhttp3.MultipartReader (val arg0: okio.BufferedSource, val arg1: java
         assigns partCount;
         assigns noMoreParts;
         assigns currentPart;
+    }
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+        assigns afterBoundaryOptions;
     }
 }
 automaton okhttp3.MultipartReader$Companion : okhttp3.MultipartReader$Companion {
@@ -7712,25 +7712,25 @@ automaton okhttp3.MultipartReader$PartSource (val arg0: okhttp3.MultipartReader)
 }
 automaton okhttp3.internal.proxy.NullProxySelector : okhttp3.internal.proxy.NullProxySelector {
     val INSTANCE: okhttp3.internal.proxy.NullProxySelector;
-    fun `<clinit>`(): void {
-        assigns INSTANCE;
-    }
-    
     fun connectFailed(arg0: java.net.URI, arg1: java.net.SocketAddress, arg2: java.io.IOException): void;
     
     fun select(arg0: java.net.URI): java.util.List;
+    
+    fun `static-constructor`(): void {
+        assigns INSTANCE;
+    }
 }
 automaton okhttp3.internal.tls.OkHostnameVerifier : okhttp3.internal.tls.OkHostnameVerifier {
     val ALT_DNS_NAME: int;
     val ALT_IPA_NAME: int;
     val INSTANCE: okhttp3.internal.tls.OkHostnameVerifier;
-    fun `<clinit>`(): void {
-        assigns INSTANCE;
-    }
-    
     fun allSubjectAltNames(arg0: java.security.cert.X509Certificate): java.util.List;
     
     fun getSubjectAltNames(arg0: java.security.cert.X509Certificate, arg1: int): java.util.List;
+    
+    fun `static-constructor`(): void {
+        assigns INSTANCE;
+    }
     
     fun verify(arg0: java.lang.String, arg1: javax.net.ssl.SSLSession): bool;
     
@@ -7745,7 +7745,7 @@ automaton okhttp3.internal.tls.OkHostnameVerifier : okhttp3.internal.tls.OkHostn
 automaton okhttp3.OkHttp : okhttp3.OkHttp {
     val VERSION: java.lang.String;
     val INSTANCE: okhttp3.OkHttp;
-    fun `<clinit>`(): void {
+    fun `static-constructor`(): void {
         assigns INSTANCE;
     }
 }
@@ -7835,12 +7835,6 @@ automaton okhttp3.OkHttpClient (val arg0: okhttp3.OkHttpClient$Builder) : okhttp
     
     fun `-deprecated_writeTimeoutMillis`(): int;
     
-    fun `<clinit>`(): void {
-        assigns Companion;
-        assigns DEFAULT_PROTOCOLS;
-        assigns DEFAULT_CONNECTION_SPECS;
-    }
-    
     fun access$getDEFAULT_CONNECTION_SPECS$cp(): java.util.List;
     
     fun access$getDEFAULT_PROTOCOLS$cp(): java.util.List;
@@ -7910,6 +7904,12 @@ automaton okhttp3.OkHttpClient (val arg0: okhttp3.OkHttpClient$Builder) : okhttp
     fun socketFactory(): javax.net.SocketFactory;
     
     fun sslSocketFactory(): javax.net.ssl.SSLSocketFactory;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+        assigns DEFAULT_PROTOCOLS;
+        assigns DEFAULT_CONNECTION_SPECS;
+    }
     
     fun verifyClientState(): void;
     
@@ -8215,11 +8215,6 @@ automaton okhttp3.internal.platform.OpenJSSEPlatform : okhttp3.internal.platform
     val provider: java.security.Provider;
     val isSupported: bool;
     val Companion: okhttp3.internal.platform.OpenJSSEPlatform$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-        assigns isSupported;
-    }
-    
     fun access$isSupported$cp(): bool;
     
     fun configureTlsExtensions(arg0: javax.net.ssl.SSLSocket, arg1: java.lang.String, arg2: java.util.List): void;
@@ -8229,6 +8224,11 @@ automaton okhttp3.internal.platform.OpenJSSEPlatform : okhttp3.internal.platform
     fun newSSLContext(): javax.net.ssl.SSLContext;
     
     fun platformTrustManager(): javax.net.ssl.X509TrustManager;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+        assigns isSupported;
+    }
     
     fun trustManager(arg0: javax.net.ssl.SSLSocketFactory): javax.net.ssl.X509TrustManager;
 }
@@ -8243,12 +8243,6 @@ automaton okhttp3.internal.platform.Platform : okhttp3.internal.platform.Platfor
     val WARN: int;
     val logger: java.util.logging.Logger;
     val Companion: okhttp3.internal.platform.Platform$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-        assigns platform;
-        assigns logger;
-    }
-    
     fun access$getPlatform$cp(): okhttp3.internal.platform.Platform;
     
     fun access$setPlatform$cp(arg0: okhttp3.internal.platform.Platform): void {
@@ -8286,6 +8280,12 @@ automaton okhttp3.internal.platform.Platform : okhttp3.internal.platform.Platfor
     fun newSslSocketFactory(arg0: javax.net.ssl.X509TrustManager): javax.net.ssl.SSLSocketFactory;
     
     fun platformTrustManager(): javax.net.ssl.X509TrustManager;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+        assigns platform;
+        assigns logger;
+    }
     
     fun toString(): java.lang.String;
     
@@ -8330,7 +8330,11 @@ automaton okhttp3.Protocol (val arg0: java.lang.String, val arg1: int, val arg2:
     val $VALUES: array<okhttp3.Protocol>;
     val protocol: java.lang.String;
     val Companion: okhttp3.Protocol$Companion;
-    fun `<clinit>`(): void {
+    fun access$getProtocol$p(arg0: okhttp3.Protocol): java.lang.String;
+    
+    fun get(arg0: java.lang.String): okhttp3.Protocol;
+    
+    fun `static-constructor`(): void {
         assigns HTTP_1_0;
         assigns HTTP_1_1;
         assigns SPDY_3;
@@ -8340,10 +8344,6 @@ automaton okhttp3.Protocol (val arg0: java.lang.String, val arg1: int, val arg2:
         assigns $VALUES;
         assigns Companion;
     }
-    
-    fun access$getProtocol$p(arg0: okhttp3.Protocol): java.lang.String;
-    
-    fun get(arg0: java.lang.String): okhttp3.Protocol;
     
     fun toString(): java.lang.String;
     
@@ -8365,13 +8365,6 @@ automaton okhttp3.internal.publicsuffix.PublicSuffixDatabase : okhttp3.internal.
     val EXCEPTION_MARKER: char;
     val instance: okhttp3.internal.publicsuffix.PublicSuffixDatabase;
     val Companion: okhttp3.internal.publicsuffix.PublicSuffixDatabase$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-        assigns WILDCARD_LABEL;
-        assigns PREVAILING_RULE;
-        assigns instance;
-    }
-    
     fun access$getInstance$cp(): okhttp3.internal.publicsuffix.PublicSuffixDatabase;
     
     fun access$getPublicSuffixListBytes$p(arg0: okhttp3.internal.publicsuffix.PublicSuffixDatabase): array<byte>;
@@ -8404,6 +8397,13 @@ automaton okhttp3.internal.publicsuffix.PublicSuffixDatabase : okhttp3.internal.
         assigns publicSuffixListBytes;
         assigns publicSuffixExceptionListBytes;
     }
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+        assigns WILDCARD_LABEL;
+        assigns PREVAILING_RULE;
+        assigns instance;
+    }
 }
 automaton okhttp3.internal.publicsuffix.PublicSuffixDatabase$Companion : okhttp3.internal.publicsuffix.PublicSuffixDatabase$Companion {
     fun access$binarySearch(arg0: okhttp3.internal.publicsuffix.PublicSuffixDatabase$Companion, arg1: array, arg2: array, arg3: int): java.lang.String;
@@ -8426,10 +8426,6 @@ automaton okhttp3.internal.publicsuffix.PublicSuffixDatabase$findMatchingRule$1 
 automaton okhttp3.internal.http2.PushObserver : okhttp3.internal.http2.PushObserver {
     val CANCEL: okhttp3.internal.http2.PushObserver;
     val Companion: okhttp3.internal.http2.PushObserver$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun onData(arg0: int, arg1: okio.BufferedSource, arg2: int, arg3: bool): bool;
     
     fun onData(arg0: int, arg1: okio.BufferedSource, arg2: int, arg3: bool): bool;
@@ -8439,6 +8435,10 @@ automaton okhttp3.internal.http2.PushObserver : okhttp3.internal.http2.PushObser
     fun onRequest(arg0: int, arg1: java.util.List): bool;
     
     fun onReset(arg0: int, arg1: okhttp3.internal.http2.ErrorCode): void;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+    }
 }
 automaton okhttp3.internal.http2.PushObserver$Companion : okhttp3.internal.http2.PushObserver$Companion {
     val $$INSTANCE: okhttp3.internal.http2.PushObserver$Companion;
@@ -8644,10 +8644,6 @@ automaton okhttp3.internal.connection.RealConnection (val arg0: okhttp3.internal
     val Companion: okhttp3.internal.connection.RealConnection$Companion;
     val source: okio.BufferedSource;
     val sink: okio.BufferedSink;
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun access$getHandshake$p(arg0: okhttp3.internal.connection.RealConnection): okhttp3.Handshake;
     
     fun access$getSocket$p(arg0: okhttp3.internal.connection.RealConnection): java.net.Socket;
@@ -8788,6 +8784,10 @@ automaton okhttp3.internal.connection.RealConnection (val arg0: okhttp3.internal
         assigns allocationLimit;
     }
     
+    fun `static-constructor`(): void {
+        assigns Companion;
+    }
+    
     fun supportsUrl(arg0: okhttp3.HttpUrl): bool;
     
     fun toString(): java.lang.String;
@@ -8803,7 +8803,7 @@ automaton okhttp3.internal.connection.RealConnection$Companion : okhttp3.interna
 }
 automaton okhttp3.internal.connection.RealConnection$WhenMappings : okhttp3.internal.connection.RealConnection$WhenMappings {
     val $EnumSwitchMapping$0: array<int>;
-    fun `<clinit>`(): void {
+    fun `static-constructor`(): void {
         assigns $EnumSwitchMapping$0;
     }
 }
@@ -8836,10 +8836,6 @@ automaton okhttp3.internal.connection.RealConnectionPool (val arg0: okhttp3.inte
     val connections: java.util.ArrayDeque;
     val maxIdleConnections: int;
     val Companion: okhttp3.internal.connection.RealConnectionPool$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun callAcquirePooledConnection(arg0: okhttp3.Address, arg1: okhttp3.internal.connection.RealCall, arg2: java.util.List, arg3: bool): bool {
         assigns arg1.connection;
     }
@@ -8860,6 +8856,10 @@ automaton okhttp3.internal.connection.RealConnectionPool (val arg0: okhttp3.inte
     }
     
     fun put(arg0: okhttp3.internal.connection.RealConnection): void;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+    }
 }
 automaton okhttp3.internal.connection.RealConnectionPool$Companion : okhttp3.internal.connection.RealConnectionPool$Companion {
     fun get(arg0: okhttp3.ConnectionPool): okhttp3.internal.connection.RealConnectionPool;
@@ -8960,11 +8960,6 @@ automaton okhttp3.internal.ws.RealWebSocket (val arg0: okhttp3.internal.concurre
     val CANCEL_AFTER_CLOSE_MILLIS: long;
     val DEFAULT_MINIMUM_DEFLATE_SIZE: long;
     val Companion: okhttp3.internal.ws.RealWebSocket$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-        assigns ONLY_HTTP1;
-    }
-    
     fun access$getExtensions$p(arg0: okhttp3.internal.ws.RealWebSocket): okhttp3.internal.ws.WebSocketExtensions;
     
     fun access$getMessageAndCloseQueue$p(arg0: okhttp3.internal.ws.RealWebSocket): java.util.ArrayDeque;
@@ -9093,6 +9088,11 @@ automaton okhttp3.internal.ws.RealWebSocket (val arg0: okhttp3.internal.concurre
     
     fun sentPingCount(): int;
     
+    fun `static-constructor`(): void {
+        assigns Companion;
+        assigns ONLY_HTTP1;
+    }
+    
     fun tearDown(): void;
     
     fun writeOneFrame$okhttp(): bool {
@@ -9212,12 +9212,6 @@ automaton okhttp3.internal.cache2.Relay (val arg0: java.io.RandomAccessFile, val
     val metadata: okio.ByteString;
     val PREFIX_CLEAN: okio.ByteString;
     val PREFIX_DIRTY: okio.ByteString;
-    fun `<clinit>`(): void {
-        assigns Companion;
-        assigns PREFIX_CLEAN;
-        assigns PREFIX_DIRTY;
-    }
-    
     fun access$writeHeader(arg0: okhttp3.internal.cache2.Relay, arg1: okio.ByteString, arg2: long, arg3: long): void;
     
     fun access$writeHeader(arg0: okhttp3.internal.cache2.Relay, arg1: okio.ByteString, arg2: long, arg3: long): void;
@@ -9287,6 +9281,12 @@ automaton okhttp3.internal.cache2.Relay (val arg0: java.io.RandomAccessFile, val
     
     fun setUpstreamReader(arg0: java.lang.Thread): void {
         assigns upstreamReader;
+    }
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+        assigns PREFIX_CLEAN;
+        assigns PREFIX_DIRTY;
     }
     
     fun writeHeader(arg0: okio.ByteString, arg1: long, arg2: long): void;
@@ -9451,10 +9451,6 @@ automaton okhttp3.Request$Builder : okhttp3.Request$Builder {
 }
 automaton okhttp3.RequestBody : okhttp3.RequestBody {
     val Companion: okhttp3.RequestBody$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun contentLength(): long;
     
     fun contentType(): okhttp3.MediaType;
@@ -9492,6 +9488,10 @@ automaton okhttp3.RequestBody : okhttp3.RequestBody {
     fun isDuplex(): bool;
     
     fun isOneShot(): bool;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+    }
     
     fun writeTo(arg0: okio.BufferedSink): void;
     
@@ -9584,15 +9584,15 @@ automaton okhttp3.RequestBody$Companion$toRequestBody$2 (val arg0: array<byte>, 
 }
 automaton okhttp3.internal.http.RequestLine : okhttp3.internal.http.RequestLine {
     val INSTANCE: okhttp3.internal.http.RequestLine;
-    fun `<clinit>`(): void {
-        assigns INSTANCE;
-    }
-    
     fun get(arg0: okhttp3.Request, arg1: java.net.Proxy$Type): java.lang.String;
     
     fun includeAuthorityInRequestLine(arg0: okhttp3.Request, arg1: java.net.Proxy$Type): bool;
     
     fun requestPath(arg0: okhttp3.HttpUrl): java.lang.String;
+    
+    fun `static-constructor`(): void {
+        assigns INSTANCE;
+    }
 }
 automaton okhttp3.Response (val arg0: okhttp3.Request, val arg1: okhttp3.Protocol, val arg2: java.lang.String, val arg3: int, val arg4: okhttp3.Handshake, val arg5: okhttp3.Headers, val arg6: okhttp3.ResponseBody, val arg7: okhttp3.Response, val arg8: okhttp3.Response, val arg9: okhttp3.Response, val arg10: long, val arg11: long, val arg12: okhttp3.internal.connection.Exchange) : okhttp3.Response {
     val lazyCacheControl: okhttp3.CacheControl;
@@ -9826,10 +9826,6 @@ automaton okhttp3.Response$Builder : okhttp3.Response$Builder {
 automaton okhttp3.ResponseBody : okhttp3.ResponseBody {
     val reader: java.io.Reader;
     val Companion: okhttp3.ResponseBody$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun byteStream(): java.io.InputStream;
     
     fun byteString(): okio.ByteString;
@@ -9879,6 +9875,10 @@ automaton okhttp3.ResponseBody : okhttp3.ResponseBody {
     fun source(): okio.BufferedSource;
     
     fun source(): okio.BufferedSource;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+    }
     
     fun string(): java.lang.String;
 }
@@ -9951,10 +9951,6 @@ automaton okhttp3.internal.http.RetryAndFollowUpInterceptor (val arg0: okhttp3.O
     val client: okhttp3.OkHttpClient;
     val MAX_FOLLOW_UPS: int;
     val Companion: okhttp3.internal.http.RetryAndFollowUpInterceptor$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun buildRedirectRequest(arg0: okhttp3.Response, arg1: java.lang.String): okhttp3.Request;
     
     fun followUpRequest(arg0: okhttp3.Response, arg1: okhttp3.internal.connection.Exchange): okhttp3.Request;
@@ -9968,6 +9964,10 @@ automaton okhttp3.internal.http.RetryAndFollowUpInterceptor (val arg0: okhttp3.O
     fun requestIsOneShot(arg0: java.io.IOException, arg1: okhttp3.Request): bool;
     
     fun retryAfter(arg0: okhttp3.Response, arg1: int): int;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+    }
 }
 automaton okhttp3.internal.http.RetryAndFollowUpInterceptor$Companion : okhttp3.internal.http.RetryAndFollowUpInterceptor$Companion {
 }
@@ -10024,10 +10024,6 @@ automaton okhttp3.internal.connection.RouteSelector (val arg0: okhttp3.Address, 
     val call: okhttp3.Call;
     val eventListener: okhttp3.EventListener;
     val Companion: okhttp3.internal.connection.RouteSelector$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun access$getAddress$p(arg0: okhttp3.internal.connection.RouteSelector): okhttp3.Address;
     
     fun hasNext(): bool;
@@ -10051,6 +10047,10 @@ automaton okhttp3.internal.connection.RouteSelector (val arg0: okhttp3.Address, 
     fun resetNextProxy(arg0: okhttp3.HttpUrl, arg1: java.net.Proxy): void {
         assigns proxies;
         assigns nextProxyIndex;
+    }
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
     }
 }
 automaton okhttp3.internal.connection.RouteSelector$Companion : okhttp3.internal.connection.RouteSelector$Companion {
@@ -10087,10 +10087,6 @@ automaton okhttp3.internal.http2.Settings : okhttp3.internal.http2.Settings {
     val INITIAL_WINDOW_SIZE: int;
     val COUNT: int;
     val Companion: okhttp3.internal.http2.Settings$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun clear(): void {
         assigns set;
     }
@@ -10120,6 +10116,10 @@ automaton okhttp3.internal.http2.Settings : okhttp3.internal.http2.Settings {
     }
     
     fun size(): int;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+    }
 }
 automaton okhttp3.internal.http2.Settings$Companion : okhttp3.internal.http2.Settings$Companion {
 }
@@ -10143,11 +10143,11 @@ automaton okhttp3.internal.platform.android.StandardAndroidSocketAdapter (val ar
     val sslSocketFactoryClass: java.lang.Class;
     val paramClass: java.lang.Class;
     val Companion: okhttp3.internal.platform.android.StandardAndroidSocketAdapter$Companion;
-    fun `<clinit>`(): void {
+    fun matchesSocketFactory(arg0: javax.net.ssl.SSLSocketFactory): bool;
+    
+    fun `static-constructor`(): void {
         assigns Companion;
     }
-    
-    fun matchesSocketFactory(arg0: javax.net.ssl.SSLSocketFactory): bool;
     
     fun trustManager(arg0: javax.net.ssl.SSLSocketFactory): javax.net.ssl.X509TrustManager;
 }
@@ -10165,7 +10165,7 @@ automaton okhttp3.internal.http.StatusLine (val arg0: okhttp3.Protocol, val arg1
     val HTTP_MISDIRECTED_REQUEST: int;
     val HTTP_CONTINUE: int;
     val Companion: okhttp3.internal.http.StatusLine$Companion;
-    fun `<clinit>`(): void {
+    fun `static-constructor`(): void {
         assigns Companion;
     }
     
@@ -10322,12 +10322,6 @@ automaton okhttp3.internal.concurrent.TaskRunner (val arg0: okhttp3.internal.con
     val INSTANCE: okhttp3.internal.concurrent.TaskRunner;
     val logger: java.util.logging.Logger;
     val Companion: okhttp3.internal.concurrent.TaskRunner$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-        assigns INSTANCE;
-        assigns logger;
-    }
-    
     fun access$getLogger$cp(): java.util.logging.Logger;
     
     fun access$runTask(arg0: okhttp3.internal.concurrent.TaskRunner, arg1: okhttp3.internal.concurrent.Task): void {
@@ -10364,6 +10358,12 @@ automaton okhttp3.internal.concurrent.TaskRunner (val arg0: okhttp3.internal.con
     fun runTask(arg0: okhttp3.internal.concurrent.Task): void {
         assigns arg0.queue;
         assigns arg0.nextExecuteNanoTime;
+    }
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+        assigns INSTANCE;
+        assigns logger;
     }
 }
 automaton okhttp3.internal.concurrent.TaskRunner$Backend : okhttp3.internal.concurrent.TaskRunner$Backend {
@@ -10409,7 +10409,11 @@ automaton okhttp3.TlsVersion (val arg0: java.lang.String, val arg1: int, val arg
     val Companion: okhttp3.TlsVersion$Companion;
     fun `-deprecated_javaName`(): java.lang.String;
     
-    fun `<clinit>`(): void {
+    fun forJavaName(arg0: java.lang.String): okhttp3.TlsVersion;
+    
+    fun javaName(): java.lang.String;
+    
+    fun `static-constructor`(): void {
         assigns TLS_1_3;
         assigns TLS_1_2;
         assigns TLS_1_1;
@@ -10418,10 +10422,6 @@ automaton okhttp3.TlsVersion (val arg0: java.lang.String, val arg1: int, val arg
         assigns $VALUES;
         assigns Companion;
     }
-    
-    fun forJavaName(arg0: java.lang.String): okhttp3.TlsVersion;
-    
-    fun javaName(): java.lang.String;
     
     fun valueOf(arg0: java.lang.String): okhttp3.TlsVersion;
     
@@ -10445,17 +10445,6 @@ automaton okhttp3.internal.Util : okhttp3.internal.Util {
     val okHttpName: java.lang.String;
     val userAgent: java.lang.String;
     val UNICODE_BOMS: okio.Options;
-    fun `<clinit>`(): void {
-        assigns EMPTY_BYTE_ARRAY;
-        assigns EMPTY_HEADERS;
-        assigns EMPTY_RESPONSE;
-        assigns EMPTY_REQUEST;
-        assigns UNICODE_BOMS;
-        assigns UTC;
-        assigns assertionsEnabled;
-        assigns okHttpName;
-    }
-    
     fun addIfAbsent(arg0: java.util.List, arg1: java.lang.Object): void;
     
     fun and(arg0: byte, arg1: int): int;
@@ -10574,6 +10563,17 @@ automaton okhttp3.internal.Util : okhttp3.internal.Util {
     
     fun skipAll(arg0: okio.Buffer, arg1: byte): int;
     
+    fun `static-constructor`(): void {
+        assigns EMPTY_BYTE_ARRAY;
+        assigns EMPTY_HEADERS;
+        assigns EMPTY_RESPONSE;
+        assigns EMPTY_REQUEST;
+        assigns UNICODE_BOMS;
+        assigns UTC;
+        assigns assertionsEnabled;
+        assigns okHttpName;
+    }
+    
     fun threadFactory(arg0: java.lang.String, arg1: bool): java.util.concurrent.ThreadFactory;
     
     fun threadName(arg0: java.lang.String, arg1: kotlin.jvm.functions.Function0): void;
@@ -10648,10 +10648,6 @@ automaton okhttp3.internal.ws.WebSocketExtensions (val arg0: bool, val arg1: int
     val unknownValues: bool;
     val HEADER_WEB_SOCKET_EXTENSION: java.lang.String;
     val Companion: okhttp3.internal.ws.WebSocketExtensions$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun component1(): bool;
     
     fun component2(): int;
@@ -10673,6 +10669,10 @@ automaton okhttp3.internal.ws.WebSocketExtensions (val arg0: bool, val arg1: int
     fun hashCode(): int;
     
     fun noContextTakeover(arg0: bool): bool;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+    }
     
     fun toString(): java.lang.String;
 }
@@ -10718,13 +10718,13 @@ automaton okhttp3.internal.ws.WebSocketProtocol : okhttp3.internal.ws.WebSocketP
     val CLOSE_CLIENT_GOING_AWAY: int;
     val CLOSE_NO_STATUS_CODE: int;
     val INSTANCE: okhttp3.internal.ws.WebSocketProtocol;
-    fun `<clinit>`(): void {
-        assigns INSTANCE;
-    }
-    
     fun acceptHeader(arg0: java.lang.String): java.lang.String;
     
     fun closeCodeExceptionMessage(arg0: int): java.lang.String;
+    
+    fun `static-constructor`(): void {
+        assigns INSTANCE;
+    }
     
     fun toggleMask(arg0: okio.Buffer$UnsafeCursor, arg1: array): void {
         assigns arg0.segment;

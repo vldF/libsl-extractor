@@ -9,15 +9,15 @@ type me.vldf.lsl.test.staticmethods.A {
 
 automaton me.vldf.lsl.test.staticmethods.A : me.vldf.lsl.test.staticmethods.A {
     val stateField: int;
-    fun `<clinit>`(): void {
-        assigns stateField;
-    }
-    
     fun bar(): void {
         assigns stateField;
     }
     
     fun foo(): void {
+        assigns stateField;
+    }
+    
+    fun `static-constructor`(): void {
         assigns stateField;
     }
 }

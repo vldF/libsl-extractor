@@ -50,4 +50,9 @@ class Tests {
     fun staticFieldsTest() {
         TestPlatform.runForClassesDir("staticfields")
     }
+
+    @Test
+    fun staticMethodsAndFieldsTest() {
+        TestPlatform.runForClassesDir("staticMethodsAndFields")
+    }
 }

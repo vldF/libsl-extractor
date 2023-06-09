@@ -6,6 +6,7 @@ import me.vldf.lsl.extractor.platform.KfgHelper.createAutomatonReference
 import me.vldf.lsl.extractor.platform.KfgHelper.createLslTypeReference
 import me.vldf.lsl.extractor.platform.KfgHelper.lslName
 import me.vldf.lsl.extractor.platform.KfgHelper.takeIfUnresolved
+import me.vldf.lsl.extractor.platform.getFunctionName
 import me.vldf.lsl.extractor.platform.platformLogger
 import org.jetbrains.research.libsl.context.AutomatonContext
 import org.jetbrains.research.libsl.context.FunctionContext
@@ -153,6 +154,7 @@ class JvmClassReaderStage : AnalysisStage {
     private fun getLocalFunction(method: Method, automatonContext: AutomatonContext): Function {
         val functionContext = FunctionContext(automatonContext)
 
+        val functionName = method.getFunctionName()
         val methodArgs = method.argTypes.mapIndexed { index, argType ->
             val argTypeRef = argType.createLslTypeReference(functionContext)
 
@@ -163,11 +165,12 @@ class JvmClassReaderStage : AnalysisStage {
         val automatonRef = method.klass.createAutomatonReference(functionContext)
 
         val function = Function(
-            name = method.name,
+            name = functionName,
             automatonReference = automatonRef,
             args = methodArgs,
             returnType = returnTypeRef,
-            context = functionContext
+            context = functionContext,
+
         )
 
         automatonContext.storeFunction(function)

@@ -361,11 +361,6 @@ type okio.internal._Utf8Kt {
 automaton `okio.-Base64` : `okio.-Base64` {
     val BASE64: array<byte>;
     val BASE64_URL_SAFE: array<byte>;
-    fun `<clinit>`(): void {
-        assigns BASE64;
-        assigns BASE64_URL_SAFE;
-    }
-    
     fun decodeBase64ToArray(arg0: java.lang.String): array<byte>;
     
     fun encodeBase64(arg0: array, arg1: array): java.lang.String;
@@ -375,6 +370,11 @@ automaton `okio.-Base64` : `okio.-Base64` {
     fun getBASE64(): array<byte>;
     
     fun getBASE64_URL_SAFE(): array<byte>;
+    
+    fun `static-constructor`(): void {
+        assigns BASE64;
+        assigns BASE64_URL_SAFE;
+    }
 }
 automaton `okio.-DeflaterSinkExtensions` : `okio.-DeflaterSinkExtensions` {
     fun deflate(arg0: okio.Sink, arg1: java.util.zip.Deflater): okio.DeflaterSink;
@@ -383,10 +383,6 @@ automaton `okio.-DeflaterSinkExtensions` : `okio.-DeflaterSinkExtensions` {
 }
 automaton `okio.-DeprecatedOkio` : `okio.-DeprecatedOkio` {
     val INSTANCE: `okio.-DeprecatedOkio`;
-    fun `<clinit>`(): void {
-        assigns INSTANCE;
-    }
-    
     fun appendingSink(arg0: java.io.File): okio.Sink;
     
     fun blackhole(): okio.Sink;
@@ -410,28 +406,32 @@ automaton `okio.-DeprecatedOkio` : `okio.-DeprecatedOkio` {
     fun source(arg0: java.nio.file.Path, arg1: array): okio.Source;
     
     fun source(arg0: java.net.Socket): okio.Source;
+    
+    fun `static-constructor`(): void {
+        assigns INSTANCE;
+    }
 }
 automaton `okio.-DeprecatedUpgrade` : `okio.-DeprecatedUpgrade` {
     val Okio: `okio.-DeprecatedOkio`;
     val Utf8: `okio.-DeprecatedUtf8`;
-    fun `<clinit>`(): void {
-        assigns Okio;
-        assigns Utf8;
-    }
-    
     fun getOkio(): `okio.-DeprecatedOkio`;
     
     fun getUtf8(): `okio.-DeprecatedUtf8`;
+    
+    fun `static-constructor`(): void {
+        assigns Okio;
+        assigns Utf8;
+    }
 }
 automaton `okio.-DeprecatedUtf8` : `okio.-DeprecatedUtf8` {
     val INSTANCE: `okio.-DeprecatedUtf8`;
-    fun `<clinit>`(): void {
-        assigns INSTANCE;
-    }
-    
     fun size(arg0: java.lang.String): long;
     
     fun size(arg0: java.lang.String, arg1: int, arg2: int): long;
+    
+    fun `static-constructor`(): void {
+        assigns INSTANCE;
+    }
 }
 automaton `okio.-GzipSinkExtensions` : `okio.-GzipSinkExtensions` {
     fun gzip(arg0: okio.Sink): okio.GzipSink;
@@ -503,12 +503,6 @@ automaton okio.AsyncTimeout : okio.AsyncTimeout {
     val IDLE_TIMEOUT_NANOS: long;
     val head: okio.AsyncTimeout;
     val Companion: okio.AsyncTimeout$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-        assigns IDLE_TIMEOUT_MILLIS;
-        assigns IDLE_TIMEOUT_NANOS;
-    }
-    
     fun access$getHead$cp(): okio.AsyncTimeout;
     
     fun access$getIDLE_TIMEOUT_MILLIS$cp(): long;
@@ -553,6 +547,12 @@ automaton okio.AsyncTimeout : okio.AsyncTimeout {
     fun sink(arg0: okio.Sink): okio.Sink;
     
     fun source(arg0: okio.Source): okio.Source;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+        assigns IDLE_TIMEOUT_MILLIS;
+        assigns IDLE_TIMEOUT_NANOS;
+    }
     
     fun timedOut(): void;
     
@@ -1236,10 +1236,6 @@ automaton okio.internal.BufferKt : okio.internal.BufferKt {
     val SEGMENTING_THRESHOLD: int;
     val OVERFLOW_ZONE: long;
     val OVERFLOW_DIGIT_START: long;
-    fun `<clinit>`(): void {
-        assigns HEX_DIGIT_BYTES;
-    }
-    
     fun commonClear(arg0: okio.Buffer): void {
         assigns arg0.head.pos;
         assigns arg0.head;
@@ -1510,6 +1506,10 @@ automaton okio.internal.BufferKt : okio.internal.BufferKt {
     fun selectPrefix(arg0: okio.Buffer, arg1: okio.Options, arg2: bool): int;
     
     fun selectPrefix$default(arg0: okio.Buffer, arg1: okio.Options, arg2: bool, arg3: int, arg4: java.lang.Object): int;
+    
+    fun `static-constructor`(): void {
+        assigns HEX_DIGIT_BYTES;
+    }
 }
 automaton okio.BufferedSink : okio.BufferedSink {
     fun buffer(): okio.Buffer;
@@ -1664,11 +1664,6 @@ automaton okio.ByteString (val arg0: array<byte>) : okio.ByteString {
     
     fun `-deprecated_size`(): int;
     
-    fun `<clinit>`(): void {
-        assigns Companion;
-        assigns EMPTY;
-    }
-    
     fun asByteBuffer(): java.nio.ByteBuffer;
     
     fun base64(): java.lang.String;
@@ -1783,6 +1778,11 @@ automaton okio.ByteString (val arg0: array<byte>) : okio.ByteString {
     
     fun startsWith(arg0: array): bool;
     
+    fun `static-constructor`(): void {
+        assigns Companion;
+        assigns EMPTY;
+    }
+    
     fun string(arg0: java.nio.charset.Charset): java.lang.String;
     
     fun substring(arg0: int, arg1: int): okio.ByteString;
@@ -1853,10 +1853,6 @@ automaton okio.ByteString$Companion : okio.ByteString$Companion {
 }
 automaton okio.internal.ByteStringKt : okio.internal.ByteStringKt {
     val HEX_DIGIT_CHARS: array<char>;
-    fun `<clinit>`(): void {
-        assigns HEX_DIGIT_CHARS;
-    }
-    
     fun access$codePointIndexToCharIndex(arg0: array, arg1: int): int;
     
     fun access$decodeHexDigit(arg0: char): int;
@@ -1935,6 +1931,10 @@ automaton okio.internal.ByteStringKt : okio.internal.ByteStringKt {
     fun decodeHexDigit(arg0: char): int;
     
     fun getHEX_DIGIT_CHARS(): array<char>;
+    
+    fun `static-constructor`(): void {
+        assigns HEX_DIGIT_CHARS;
+    }
 }
 automaton okio.DeflaterSink (val arg0: okio.BufferedSink, val arg1: java.util.zip.Deflater) : okio.DeflaterSink {
     val closed: bool;
@@ -2083,10 +2083,6 @@ automaton okio.HashingSink (val arg0: okio.Sink, val arg1: java.lang.String) : o
     val Companion: okio.HashingSink$Companion;
     fun `-deprecated_hash`(): okio.ByteString;
     
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun hash(): okio.ByteString;
     
     fun hmacSha1(arg0: okio.Sink, arg1: okio.ByteString): okio.HashingSink;
@@ -2102,6 +2098,10 @@ automaton okio.HashingSink (val arg0: okio.Sink, val arg1: java.lang.String) : o
     fun sha256(arg0: okio.Sink): okio.HashingSink;
     
     fun sha512(arg0: okio.Sink): okio.HashingSink;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+    }
     
     fun write(arg0: okio.Buffer, arg1: long): void {
         assigns arg0.head;
@@ -2132,10 +2132,6 @@ automaton okio.HashingSource (val arg0: okio.Source, val arg1: java.lang.String)
     val Companion: okio.HashingSource$Companion;
     fun `-deprecated_hash`(): okio.ByteString;
     
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun hash(): okio.ByteString;
     
     fun hmacSha1(arg0: okio.Source, arg1: okio.ByteString): okio.HashingSource;
@@ -2156,6 +2152,10 @@ automaton okio.HashingSource (val arg0: okio.Source, val arg1: java.lang.String)
     fun sha256(arg0: okio.Source): okio.HashingSource;
     
     fun sha512(arg0: okio.Source): okio.HashingSource;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+    }
 }
 automaton okio.HashingSource$Companion : okio.HashingSource$Companion {
     fun hmacSha1(arg0: okio.Source, arg1: okio.ByteString): okio.HashingSource;
@@ -2284,10 +2284,6 @@ automaton okio.Options (val arg0: array<okio.ByteString>, val arg1: array<int>) 
     val byteStrings: array<okio.ByteString>;
     val trie: array<int>;
     val Companion: okio.Options$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun contains(arg0: okio.ByteString): bool;
     
     fun contains(arg0: java.lang.Object): bool;
@@ -2311,6 +2307,10 @@ automaton okio.Options (val arg0: array<okio.ByteString>, val arg1: array<int>) 
     fun lastIndexOf(arg0: java.lang.Object): int;
     
     fun of(arg0: array): okio.Options;
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
+    }
 }
 automaton okio.Options$Companion : okio.Options$Companion {
     fun buildTrieRecursive(arg0: long, arg1: okio.Buffer, arg2: int, arg3: java.util.List, arg4: int, arg5: int, arg6: java.util.List): void {
@@ -2825,10 +2825,6 @@ automaton okio.Segment : okio.Segment {
     val SIZE: int;
     val SHARE_MINIMUM: int;
     val Companion: okio.Segment$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun compact(): void {
         assigns pos;
         assigns prev.next;
@@ -2861,6 +2857,10 @@ automaton okio.Segment : okio.Segment {
         assigns shared;
     }
     
+    fun `static-constructor`(): void {
+        assigns Companion;
+    }
+    
     fun unsharedCopy(): okio.Segment;
     
     fun writeTo(arg0: okio.Segment, arg1: int): void {
@@ -2876,10 +2876,6 @@ automaton okio.SegmentPool : okio.SegmentPool {
     val next: okio.Segment;
     val byteCount: long;
     val INSTANCE: okio.SegmentPool;
-    fun `<clinit>`(): void {
-        assigns INSTANCE;
-    }
-    
     fun getByteCount(): long;
     
     fun getNext(): okio.Segment;
@@ -2897,6 +2893,10 @@ automaton okio.SegmentPool : okio.SegmentPool {
     
     fun setNext(arg0: okio.Segment): void {
         assigns arg0.next;
+    }
+    
+    fun `static-constructor`(): void {
+        assigns INSTANCE;
     }
     
     fun take(): okio.Segment {
@@ -3092,10 +3092,6 @@ automaton okio.Timeout : okio.Timeout {
     val timeoutNanos: long;
     val NONE: okio.Timeout;
     val Companion: okio.Timeout$Companion;
-    fun `<clinit>`(): void {
-        assigns Companion;
-    }
-    
     fun clearDeadline(): okio.Timeout {
         assigns hasDeadline;
     }
@@ -3122,6 +3118,10 @@ automaton okio.Timeout : okio.Timeout {
         assigns timeoutNanos;
         assigns hasDeadline;
         assigns deadlineNanoTime;
+    }
+    
+    fun `static-constructor`(): void {
+        assigns Companion;
     }
     
     fun throwIfReached(): void;

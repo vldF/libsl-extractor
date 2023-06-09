@@ -314,7 +314,7 @@ automaton org.jetbrains.annotations.Nls$Capitalization (val arg0: java.lang.Stri
     val Title: org.jetbrains.annotations.Nls$Capitalization;
     val Sentence: org.jetbrains.annotations.Nls$Capitalization;
     val $VALUES: array<org.jetbrains.annotations.Nls$Capitalization>;
-    fun `<clinit>`(): void {
+    fun `static-constructor`(): void {
         assigns NotSpecified;
         assigns Title;
         assigns Sentence;

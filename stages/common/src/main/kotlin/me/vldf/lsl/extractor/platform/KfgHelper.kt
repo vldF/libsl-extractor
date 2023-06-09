@@ -1,7 +1,5 @@
 package me.vldf.lsl.extractor.platform
 
-import me.vldf.lsl.extractor.platform.KfgHelper.createAutomatonReference
-import me.vldf.lsl.extractor.platform.KfgHelper.createMethodReference
 import org.jetbrains.research.libsl.context.AutomatonContext
 import org.jetbrains.research.libsl.context.FunctionContext
 import org.jetbrains.research.libsl.context.LslContextBase
@@ -81,7 +79,7 @@ object KfgHelper {
         }
 
         val argTypes = this.argTypes.map { it.createLslTypeReference(contextToSearch) }
-        return FunctionReferenceBuilder.build(this.name, argTypes, contextToSearch)
+        return FunctionReferenceBuilder.build(this.getFunctionName(), argTypes, contextToSearch)
     }
 
     fun Method.getLslFunctionContext(baseContextBase: LslGlobalContext): FunctionContext? {
