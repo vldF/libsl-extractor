@@ -1,4 +1,3 @@
-import me.vldf.lsl.extractor.platform.pipeline.AnalysisPipeline
 import me.vldf.lsl.extractor.platform.PipelineConfig
 import me.vldf.lsl.extractor.platform.pipeline.PipelineFactory
 import me.vldf.lsl.extractor.platform.platformLogger
@@ -44,7 +43,7 @@ object TestPlatform {
                 this.analyzingLibrariesDir = testDataJarsParentDir.resolve("$testCase/")
                 this.stages.addAll(analysisStagesFactory())
 
-                val refinementFile = this::class.java.getResource("/$$testCase.json")
+                val refinementFile = this::class.java.getResource("/$testCase.json")
                     ?.file
                     ?.let { file -> File(file) }
                     ?: return@PipelineConfig

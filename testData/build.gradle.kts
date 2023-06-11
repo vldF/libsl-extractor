@@ -20,6 +20,7 @@ dependencies {
     implementation("org.jetbrains:annotations:23.0.0")
 
     testdata("com.squareup.okhttp3:okhttp:4.7.2")
+    testdata("org.yaml:snakeyaml:2.0")
 }
 
 tasks.getByName<Test>("test") {

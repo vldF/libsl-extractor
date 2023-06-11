@@ -2284,6 +2284,10 @@ type okhttp3.internal.ws.WebSocketWriter {
     minimumDeflateSize: long;
 }
 
+annotation Throws(
+    exception: string,
+    predicate: bool = true
+);
 automaton okhttp3.Address (val arg0: java.lang.String, val arg1: int, val arg2: okhttp3.Dns, val arg3: javax.net.SocketFactory, val arg4: javax.net.ssl.SSLSocketFactory, val arg5: javax.net.ssl.HostnameVerifier, val arg6: okhttp3.CertificatePinner, val arg7: okhttp3.Authenticator, val arg8: java.net.Proxy, val arg9: java.util.List, val arg10: java.util.List, val arg11: java.net.ProxySelector) : okhttp3.Address {
     val `url`: okhttp3.HttpUrl;
     val protocols: java.util.List;
@@ -2857,6 +2861,7 @@ automaton okhttp3.Cache$urls$1 (val arg0: okhttp3.Cache) : okhttp3.Cache$urls$1 
     
     fun next(): java.lang.Object;
     
+    @Throws("java.lang.IllegalStateException", !canRemove)
     fun remove(): void;
     
     fun setCanRemove(arg0: bool): void {
@@ -2994,6 +2999,19 @@ automaton okhttp3.internal.cache.CacheInterceptor (val arg0: okhttp3.Cache) : ok
 automaton okhttp3.internal.cache.CacheInterceptor$Companion : okhttp3.internal.cache.CacheInterceptor$Companion {
     fun access$combine(arg0: okhttp3.internal.cache.CacheInterceptor$Companion, arg1: okhttp3.Headers, arg2: okhttp3.Headers): okhttp3.Headers;
     
+    @Throws("java.lang.IllegalStateException", request == "'null-const'" & message != "'null-const'" & protocol != "'null-const'" & body != "'null-const'" & arg1 != "'null-const'")
+    @Throws("java.lang.IllegalStateException", protocol == "'null-const'" & body != "'null-const'" & arg1 != "'null-const'")
+    @Throws("java.lang.IllegalStateException", protocol == "'null-const'" & body != "'null-const'" & arg1 != "'null-const'" & request != "'null-const'")
+    @Throws("java.lang.IllegalStateException", protocol == "'null-const'" & message != "'null-const'" & body != "'null-const'" & arg1 != "'null-const'")
+    @Throws("java.lang.IllegalStateException", protocol == "'null-const'" & message != "'null-const'" & body != "'null-const'" & arg1 != "'null-const'" & request != "'null-const'")
+    @Throws("java.lang.IllegalStateException", message == "'null-const'" & body != "'null-const'" & arg1 != "'null-const'")
+    @Throws("java.lang.IllegalStateException", message == "'null-const'" & body != "'null-const'" & arg1 != "'null-const'" & request != "'null-const'")
+    @Throws("java.lang.IllegalStateException", message == "'null-const'" & protocol != "'null-const'" & body != "'null-const'" & arg1 != "'null-const'")
+    @Throws("java.lang.IllegalStateException", message == "'null-const'" & protocol != "'null-const'" & body != "'null-const'" & arg1 != "'null-const'" & request != "'null-const'")
+    @Throws("java.lang.IllegalStateException", request == "'null-const'" & message != "'null-const'" & body != "'null-const'" & arg1 != "'null-const'")
+    @Throws("java.lang.IllegalStateException", request == "'null-const'" & body != "'null-const'" & arg1 != "'null-const'")
+    @Throws("java.lang.IllegalStateException", request == "'null-const'" & protocol != "'null-const'" & body != "'null-const'" & arg1 != "'null-const'")
+    @Throws("kotlin.TypeCastException", body != "'null-const'" & message != "'null-const'" & protocol != "'null-const'" & request != "'null-const'" & arg1 != "'null-const'")
     fun access$stripBody(arg0: okhttp3.internal.cache.CacheInterceptor$Companion, arg1: okhttp3.Response): okhttp3.Response;
     
     fun combine(arg0: okhttp3.Headers, arg1: okhttp3.Headers): okhttp3.Headers;
@@ -3002,6 +3020,19 @@ automaton okhttp3.internal.cache.CacheInterceptor$Companion : okhttp3.internal.c
     
     fun isEndToEnd(arg0: java.lang.String): bool;
     
+    @Throws("java.lang.IllegalStateException", request == "'null-const'" & message != "'null-const'" & body != "'null-const'" & protocol != "'null-const'" & arg0 != "'null-const'")
+    @Throws("java.lang.IllegalStateException", protocol == "'null-const'" & body != "'null-const'" & arg0 != "'null-const'")
+    @Throws("java.lang.IllegalStateException", protocol == "'null-const'" & body != "'null-const'" & arg0 != "'null-const'" & request != "'null-const'")
+    @Throws("java.lang.IllegalStateException", protocol == "'null-const'" & message != "'null-const'" & body != "'null-const'" & arg0 != "'null-const'")
+    @Throws("java.lang.IllegalStateException", protocol == "'null-const'" & message != "'null-const'" & body != "'null-const'" & arg0 != "'null-const'" & request != "'null-const'")
+    @Throws("java.lang.IllegalStateException", message == "'null-const'" & body != "'null-const'" & arg0 != "'null-const'")
+    @Throws("java.lang.IllegalStateException", message == "'null-const'" & body != "'null-const'" & arg0 != "'null-const'" & request != "'null-const'")
+    @Throws("java.lang.IllegalStateException", message == "'null-const'" & body != "'null-const'" & protocol != "'null-const'" & arg0 != "'null-const'")
+    @Throws("java.lang.IllegalStateException", message == "'null-const'" & body != "'null-const'" & protocol != "'null-const'" & arg0 != "'null-const'" & request != "'null-const'")
+    @Throws("java.lang.IllegalStateException", request == "'null-const'" & message != "'null-const'" & body != "'null-const'" & arg0 != "'null-const'")
+    @Throws("java.lang.IllegalStateException", request == "'null-const'" & body != "'null-const'" & arg0 != "'null-const'")
+    @Throws("java.lang.IllegalStateException", request == "'null-const'" & body != "'null-const'" & protocol != "'null-const'" & arg0 != "'null-const'")
+    @Throws("kotlin.TypeCastException", message != "'null-const'" & protocol != "'null-const'" & request != "'null-const'" & arg0 != "'null-const'" & body != "'null-const'")
     fun stripBody(arg0: okhttp3.Response): okhttp3.Response;
 }
 automaton okhttp3.internal.cache.CacheInterceptor$cacheWritingResponse$cacheWritingSource$1 (val arg0: okio.BufferedSource, val arg1: okhttp3.internal.cache.CacheRequest, val arg2: okio.BufferedSink) : okhttp3.internal.cache.CacheInterceptor$cacheWritingResponse$cacheWritingSource$1 {
@@ -3586,6 +3617,8 @@ automaton okhttp3.ConnectionSpec (val arg0: bool, val arg1: bool, val arg2: arra
     
     fun access$getTlsVersionsAsString$p(arg0: okhttp3.ConnectionSpec): array<java.lang.String>;
     
+    @Throws("kotlin.TypeCastException", cipherSuitesAsString != "'null-const'")
+    @Throws("kotlin.TypeCastException", tlsVersionsAsString != "'null-const'")
     fun apply$okhttp(arg0: javax.net.ssl.SSLSocket, arg1: bool): void;
     
     fun cipherSuites(): java.util.List;
@@ -3608,6 +3641,8 @@ automaton okhttp3.ConnectionSpec (val arg0: bool, val arg1: bool, val arg2: arra
         assigns CLEARTEXT;
     }
     
+    @Throws("kotlin.TypeCastException", cipherSuitesAsString != "'null-const'")
+    @Throws("kotlin.TypeCastException", tlsVersionsAsString != "'null-const'")
     fun supportedSpec(arg0: javax.net.ssl.SSLSocket, arg1: bool): okhttp3.ConnectionSpec;
     
     fun supportsTlsExtensions(): bool;
@@ -3621,12 +3656,17 @@ automaton okhttp3.ConnectionSpec$Builder (val arg0: bool) : okhttp3.ConnectionSp
     val cipherSuites: array<java.lang.String>;
     val tlsVersions: array<java.lang.String>;
     val supportsTlsExtensions: bool;
+    @Throws("java.lang.IllegalArgumentException", !tls)
     fun allEnabledCipherSuites(): okhttp3.ConnectionSpec$Builder;
     
+    @Throws("java.lang.IllegalArgumentException", !tls)
     fun allEnabledTlsVersions(): okhttp3.ConnectionSpec$Builder;
     
     fun build(): okhttp3.ConnectionSpec;
     
+    @Throws("java.lang.IllegalArgumentException", !tls)
+    @Throws("kotlin.TypeCastException", tls)
+    @Throws("java.lang.IllegalArgumentException", !tls)
     fun cipherSuites(arg0: array): okhttp3.ConnectionSpec$Builder;
     
     fun cipherSuites(arg0: array): okhttp3.ConnectionSpec$Builder;
@@ -3655,8 +3695,12 @@ automaton okhttp3.ConnectionSpec$Builder (val arg0: bool) : okhttp3.ConnectionSp
         assigns tlsVersions;
     }
     
+    @Throws("java.lang.IllegalArgumentException", !tls)
     fun supportsTlsExtensions(arg0: bool): okhttp3.ConnectionSpec$Builder;
     
+    @Throws("java.lang.IllegalArgumentException", !tls)
+    @Throws("kotlin.TypeCastException", tls)
+    @Throws("java.lang.IllegalArgumentException", !tls)
     fun tlsVersions(arg0: array): okhttp3.ConnectionSpec$Builder;
     
     fun tlsVersions(arg0: array): okhttp3.ConnectionSpec$Builder;
@@ -3831,6 +3875,18 @@ automaton okhttp3.Cookie$Builder : okhttp3.Cookie$Builder {
     val httpOnly: bool;
     val persistent: bool;
     val hostOnly: bool;
+    @Throws("java.lang.NullPointerException", domain == "'null-const'")
+    @Throws("java.lang.NullPointerException", value == "'null-const'")
+    @Throws("java.lang.NullPointerException", name == "'null-const'")
+    @Throws("java.lang.NullPointerException", value == "'null-const'" & name != "'null-const'")
+    @Throws("java.lang.NullPointerException", value == "'null-const'" & name != "'null-const'" & domain != "'null-const'")
+    @Throws("java.lang.NullPointerException", domain == "'null-const'" & value != "'null-const'")
+    @Throws("java.lang.NullPointerException", domain == "'null-const'" & name != "'null-const'")
+    @Throws("java.lang.NullPointerException", domain == "'null-const'" & name != "'null-const'" & value != "'null-const'")
+    @Throws("java.lang.NullPointerException", name == "'null-const'" & value != "'null-const'" & domain != "'null-const'")
+    @Throws("java.lang.NullPointerException", name == "'null-const'" & domain != "'null-const'")
+    @Throws("java.lang.NullPointerException", name == "'null-const'" & value != "'null-const'")
+    @Throws("java.lang.NullPointerException", value == "'null-const'" & domain != "'null-const'")
     fun build(): okhttp3.Cookie;
     
     fun domain(arg0: java.lang.String): okhttp3.Cookie$Builder;
@@ -4035,6 +4091,7 @@ automaton okhttp3.internal.cache.DiskLruCache (val arg0: okhttp3.internal.io.Fil
         assigns arg0.redundantOpCount;
     }
     
+    @Throws("java.lang.IllegalStateException", closed)
     fun checkNotClosed(): void;
     
     fun close(): void {
@@ -4683,6 +4740,7 @@ automaton okhttp3.internal.connection.Exchange (val arg0: okhttp3.internal.conne
     
     fun isDuplex$okhttp(): bool;
     
+    @Throws("java.lang.IllegalStateException", timeoutEarlyExit)
     fun newWebSocketStreams(): okhttp3.internal.ws.RealWebSocket$Streams;
     
     fun noNewExchangesOnConnection(): void;
@@ -4699,6 +4757,9 @@ automaton okhttp3.internal.connection.Exchange (val arg0: okhttp3.internal.conne
     
     fun trackFailure(arg0: java.io.IOException): void;
     
+    @Throws("java.lang.IllegalStateException", `state` <= 6)
+    @Throws("java.lang.IllegalStateException", errorCode == "'null-const'")
+    @Throws("java.lang.Throwable", errorCode != "'null-const'")
     fun trailers(): okhttp3.Headers;
     
     fun webSocketUpgradeFailed(): void;
@@ -4791,6 +4852,19 @@ automaton okhttp3.internal.http.ExchangeCodec : okhttp3.internal.http.ExchangeCo
         assigns Companion;
     }
     
+    @Throws("java.lang.IllegalStateException", errorCode == "'null-const'" & `state` >= 6)
+    @Throws("java.lang.IllegalStateException", `state` <= 6)
+    @Throws("java.lang.IllegalStateException", `state` >= 6)
+    @Throws("java.lang.IllegalStateException", `state` == 6)
+    @Throws("java.lang.IllegalStateException", errorCode == "'null-const'")
+    @Throws("java.lang.IllegalStateException", errorCode == "'null-const'" & `state` <= 6)
+    @Throws("java.lang.IllegalStateException", errorCode != "'null-const'")
+    @Throws("java.lang.IllegalStateException", errorCode != "'null-const'" & `state` <= 6)
+    @Throws("java.lang.IllegalStateException", errorCode != "'null-const'" & `state` >= 6)
+    @Throws("java.lang.Throwable", errorCode != "'null-const'" & `state` <= 6)
+    @Throws("java.lang.Throwable", errorCode != "'null-const'" & `state` >= 6)
+    @Throws("java.lang.Throwable", errorCode != "'null-const'" & `state` == 6)
+    @Throws("java.lang.Throwable", errorCode != "'null-const'")
     fun trailers(): okhttp3.Headers;
     
     fun writeRequestHeaders(arg0: okhttp3.Request): void;
@@ -4889,10 +4963,14 @@ automaton okhttp3.internal.cache.FaultHidingSink (val arg0: okio.Sink, val arg1:
 }
 automaton okhttp3.internal.cache2.FileOperator (val arg0: java.nio.channels.FileChannel) : okhttp3.internal.cache2.FileOperator {
     val fileChannel: java.nio.channels.FileChannel;
+    @Throws("java.lang.IndexOutOfBoundsException", arg2 <= -1)
     fun read(arg0: long, arg1: okio.Buffer, arg2: long): void;
     
     fun read(arg0: long, arg1: okio.Buffer, arg2: long): void;
     
+    @Throws("java.lang.IndexOutOfBoundsException", !arg2 == 0)
+    @Throws("java.lang.IndexOutOfBoundsException", !arg2 == 0 & arg2 <= 0)
+    @Throws("java.lang.IndexOutOfBoundsException", !arg2 == 0 & arg2 >= 0)
     fun write(arg0: long, arg1: okio.Buffer, arg2: long): void;
     
     fun write(arg0: long, arg1: okio.Buffer, arg2: long): void;
@@ -5560,6 +5638,9 @@ automaton okhttp3.internal.http1.Http1ExchangeCodec (val arg0: okhttp3.OkHttpCli
         assigns Companion;
     }
     
+    @Throws("java.lang.IllegalStateException", !`state` == 6)
+    @Throws("java.lang.IllegalStateException", !`state` == 6 & `state` >= 6)
+    @Throws("java.lang.IllegalStateException", !`state` == 6 & `state` <= 6)
     fun trailers(): okhttp3.Headers;
     
     fun writeRequest(arg0: okhttp3.Headers, arg1: java.lang.String): void {
@@ -5618,6 +5699,7 @@ automaton okhttp3.internal.http1.Http1ExchangeCodec$ChunkedSink (val arg0: okhtt
     
     fun timeout(): okio.Timeout;
     
+    @Throws("java.lang.IllegalStateException", closed)
     fun write(arg0: okio.Buffer, arg1: long): void {
         assigns arg0.head;
         assigns arg0.head.prev;
@@ -5687,6 +5769,7 @@ automaton okhttp3.internal.http1.Http1ExchangeCodec$KnownLengthSink (val arg0: o
     
     fun timeout(): okio.Timeout;
     
+    @Throws("java.lang.IllegalStateException", closed)
     fun write(arg0: okio.Buffer, arg1: long): void {
         assigns arg0.head;
         assigns arg0.head.prev;
@@ -5851,6 +5934,7 @@ automaton okhttp3.internal.http2.Http2Connection (val arg0: okhttp3.internal.htt
         assigns isShutdown;
     }
     
+    @Throws("java.io.IOException", closed)
     fun flush(): void;
     
     fun getClient$okhttp(): bool;
@@ -5990,6 +6074,8 @@ automaton okhttp3.internal.http2.Http2Connection (val arg0: okhttp3.internal.htt
         assigns isShutdown;
     }
     
+    @Throws("java.lang.IllegalArgumentException", !closed & httpCode == -1)
+    @Throws("java.io.IOException", closed)
     fun writeSynReset$okhttp(arg0: int, arg1: okhttp3.internal.http2.ErrorCode): void;
     
     fun writeSynResetLater$okhttp(arg0: int, arg1: okhttp3.internal.http2.ErrorCode): void;
@@ -6304,6 +6390,7 @@ automaton okhttp3.internal.http2.Http2ExchangeCodec (val arg0: okhttp3.OkHttpCli
     
     fun finishRequest(): void;
     
+    @Throws("java.io.IOException", closed)
     fun flushRequest(): void;
     
     fun getConnection(): okhttp3.internal.connection.RealConnection;
@@ -6322,6 +6409,8 @@ automaton okhttp3.internal.http2.Http2ExchangeCodec (val arg0: okhttp3.OkHttpCli
         assigns HTTP_2_SKIPPED_RESPONSE_HEADERS;
     }
     
+    @Throws("java.lang.IllegalStateException", errorCode == "'null-const'")
+    @Throws("java.lang.Throwable", errorCode != "'null-const'")
     fun trailers(): okhttp3.Headers;
     
     fun writeRequestHeaders(arg0: okhttp3.Request): void {
@@ -6353,6 +6442,9 @@ automaton okhttp3.internal.http2.Http2Reader (val arg0: okio.BufferedSource, val
     
     fun readData(arg0: okhttp3.internal.http2.Http2Reader$Handler, arg1: int, arg2: int, arg3: int): void;
     
+    @Throws("java.io.IOException", !arg3 == 0 & arg3 <= 0)
+    @Throws("java.io.IOException", !arg3 == 0 & arg3 >= 0)
+    @Throws("java.io.IOException", !arg3 == 0)
     fun readGoAway(arg0: okhttp3.internal.http2.Http2Reader$Handler, arg1: int, arg2: int, arg3: int): void;
     
     fun readHeaderBlock(arg0: int, arg1: int, arg2: int, arg3: int): java.util.List;
@@ -6361,6 +6453,7 @@ automaton okhttp3.internal.http2.Http2Reader (val arg0: okio.BufferedSource, val
     
     fun readPing(arg0: okhttp3.internal.http2.Http2Reader$Handler, arg1: int, arg2: int, arg3: int): void;
     
+    @Throws("java.io.IOException", arg3 == 0)
     fun readPriority(arg0: okhttp3.internal.http2.Http2Reader$Handler, arg1: int, arg2: int, arg3: int): void;
     
     fun readPriority(arg0: okhttp3.internal.http2.Http2Reader$Handler, arg1: int): void;
@@ -6502,6 +6595,11 @@ automaton okhttp3.internal.http2.Http2Stream (val arg0: int, val arg1: okhttp3.i
         assigns errorException;
     }
     
+    @Throws("java.lang.Throwable", !closed & !finished & errorCode != "'null-const'")
+    @Throws("java.io.IOException", closed)
+    @Throws("java.io.IOException", finished)
+    @Throws("java.io.IOException", closed & !finished)
+    @Throws("java.io.IOException", finished & !closed)
     fun checkOutNotClosed$okhttp(): void;
     
     fun close(arg0: okhttp3.internal.http2.ErrorCode, arg1: java.io.IOException): void {
@@ -6605,6 +6703,8 @@ automaton okhttp3.internal.http2.Http2Stream (val arg0: int, val arg1: okhttp3.i
     
     fun takeHeaders(): okhttp3.Headers;
     
+    @Throws("java.lang.IllegalStateException", errorCode == "'null-const'")
+    @Throws("java.lang.Throwable", errorCode != "'null-const'")
     fun trailers(): okhttp3.Headers;
     
     fun waitForIo$okhttp(): void;
@@ -6743,6 +6843,7 @@ automaton okhttp3.internal.http2.Http2Writer (val arg0: okio.BufferedSink, val a
     val Companion: okhttp3.internal.http2.Http2Writer$Companion;
     val hpackBuffer: okio.Buffer;
     val sink: okio.BufferedSink;
+    @Throws("java.io.IOException", closed)
     fun applyAndAckSettings(arg0: okhttp3.internal.http2.Settings): void {
         assigns maxFrameSize;
     }
@@ -6751,6 +6852,7 @@ automaton okhttp3.internal.http2.Http2Writer (val arg0: okio.BufferedSink, val a
         assigns closed;
     }
     
+    @Throws("java.io.IOException", closed)
     fun connectionPreface(): void;
     
     fun data(arg0: bool, arg1: int, arg2: okio.Buffer, arg3: int): void {
@@ -6773,6 +6875,7 @@ automaton okhttp3.internal.http2.Http2Writer (val arg0: okio.BufferedSink, val a
     
     fun dataFrame(arg0: int, arg1: int, arg2: okio.Buffer, arg3: int): void;
     
+    @Throws("java.io.IOException", closed)
     fun flush(): void;
     
     fun frameHeader(arg0: int, arg1: int, arg2: int, arg3: int): void {
@@ -6787,12 +6890,22 @@ automaton okhttp3.internal.http2.Http2Writer (val arg0: okio.BufferedSink, val a
     
     fun maxDataLength(): int;
     
+    @Throws("java.io.IOException", closed)
     fun ping(arg0: bool, arg1: int, arg2: int): void;
     
     fun pushPromise(arg0: int, arg1: int, arg2: java.util.List): void;
     
+    @Throws("java.lang.IllegalArgumentException", !closed & httpCode == -1)
+    @Throws("java.io.IOException", !httpCode == -1 & closed)
+    @Throws("java.io.IOException", closed & httpCode <= -1)
+    @Throws("java.io.IOException", !httpCode == -1 & closed & httpCode <= -1)
+    @Throws("java.io.IOException", closed)
+    @Throws("java.io.IOException", closed & httpCode == -1)
+    @Throws("java.io.IOException", closed & httpCode >= -1)
+    @Throws("java.io.IOException", !httpCode == -1 & closed & httpCode >= -1)
     fun rstStream(arg0: int, arg1: okhttp3.internal.http2.ErrorCode): void;
     
+    @Throws("java.io.IOException", closed)
     fun settings(arg0: okhttp3.internal.http2.Settings): void;
     
     fun `static-constructor`(): void {
@@ -6800,6 +6913,7 @@ automaton okhttp3.internal.http2.Http2Writer (val arg0: okio.BufferedSink, val a
         assigns logger;
     }
     
+    @Throws("java.io.IOException", closed)
     fun windowUpdate(arg0: int, arg1: long): void;
     
     fun writeContinuationFrames(arg0: int, arg1: long): void;
@@ -6904,6 +7018,7 @@ automaton okhttp3.HttpUrl (val arg0: java.lang.String, val arg1: java.lang.Strin
     val FRAGMENT_ENCODE_SET: java.lang.String;
     val FRAGMENT_ENCODE_SET_URI: java.lang.String;
     val Companion: okhttp3.HttpUrl$Companion;
+    @Throws("kotlin.TypeCastException", fragment != "'null-const'" & `url` == 0)
     fun `-deprecated_encodedFragment`(): java.lang.String;
     
     fun `-deprecated_encodedPassword`(): java.lang.String;
@@ -6946,6 +7061,7 @@ automaton okhttp3.HttpUrl (val arg0: java.lang.String, val arg1: java.lang.Strin
     
     fun defaultPort(arg0: java.lang.String): int;
     
+    @Throws("kotlin.TypeCastException", fragment != "'null-const'" & `url` == 0)
     fun encodedFragment(): java.lang.String;
     
     fun encodedPassword(): java.lang.String;
@@ -6992,10 +7108,12 @@ automaton okhttp3.HttpUrl (val arg0: java.lang.String, val arg1: java.lang.Strin
     
     fun queryParameter(arg0: java.lang.String): java.lang.String;
     
+    @Throws("java.lang.IndexOutOfBoundsException", queryNamesAndValues == "'null-const'")
     fun queryParameterName(arg0: int): java.lang.String;
     
     fun queryParameterNames(): java.util.Set;
     
+    @Throws("java.lang.IndexOutOfBoundsException", queryNamesAndValues == "'null-const'")
     fun queryParameterValue(arg0: int): java.lang.String;
     
     fun queryParameterValues(arg0: java.lang.String): java.util.List;
@@ -7015,6 +7133,7 @@ automaton okhttp3.HttpUrl (val arg0: java.lang.String, val arg1: java.lang.Strin
     
     fun toString(): java.lang.String;
     
+    @Throws("java.lang.IllegalStateException", publicSuffixListBytes == "'null-const'")
     fun topPrivateDomain(): java.lang.String;
     
     fun uri(): java.net.URI;
@@ -7048,6 +7167,10 @@ automaton okhttp3.HttpUrl$Builder : okhttp3.HttpUrl$Builder {
     
     fun addQueryParameter(arg0: java.lang.String, arg1: java.lang.String): okhttp3.HttpUrl$Builder;
     
+    @Throws("java.lang.IllegalStateException", scheme != "'null-const'" & host == "'null-const'")
+    @Throws("java.lang.IllegalStateException", host != "'null-const'" & scheme == "'null-const'")
+    @Throws("java.lang.IllegalStateException", host == "'null-const'")
+    @Throws("java.lang.IllegalStateException", scheme == "'null-const'")
     fun build(): okhttp3.HttpUrl;
     
     fun effectivePort(): int;
@@ -7086,6 +7209,8 @@ automaton okhttp3.HttpUrl$Builder : okhttp3.HttpUrl$Builder {
     
     fun isDotDot(arg0: java.lang.String): bool;
     
+    @Throws("java.lang.IllegalArgumentException", arg0 == "'null-const'" & arg1 != "'null-const'")
+    @Throws("kotlin.TypeCastException", arg1 != "'null-const'" & arg0 != "'null-const'")
     fun parse$okhttp(arg0: okhttp3.HttpUrl, arg1: java.lang.String): okhttp3.HttpUrl$Builder {
         assigns scheme;
         assigns encodedUsername;
@@ -7198,6 +7323,7 @@ automaton okhttp3.HttpUrl$Companion : okhttp3.HttpUrl$Companion {
     
     fun defaultPort(arg0: java.lang.String): int;
     
+    @Throws("java.lang.IllegalArgumentException", arg0 != "'null-const'")
     fun get(arg0: java.lang.String): okhttp3.HttpUrl;
     
     fun get(arg0: java.net.URL): okhttp3.HttpUrl;
@@ -7206,6 +7332,7 @@ automaton okhttp3.HttpUrl$Companion : okhttp3.HttpUrl$Companion {
     
     fun isPercentEncoded(arg0: java.lang.String, arg1: int, arg2: int): bool;
     
+    @Throws("java.lang.IllegalArgumentException", arg0 != "'null-const'")
     fun parse(arg0: java.lang.String): okhttp3.HttpUrl;
     
     fun percentDecode$okhttp(arg0: java.lang.String, arg1: int, arg2: int, arg3: bool): java.lang.String;
@@ -7218,6 +7345,7 @@ automaton okhttp3.HttpUrl$Companion : okhttp3.HttpUrl$Companion {
     
     fun toQueryString$okhttp(arg0: java.util.List, arg1: java.lang.StringBuilder): void;
     
+    @Throws("kotlin.TypeCastException", arg1 == "'null-const'")
     fun writeCanonicalized(arg0: okio.Buffer, arg1: java.lang.String, arg2: int, arg3: int, arg4: java.lang.String, arg5: bool, arg6: bool, arg7: bool, arg8: bool, arg9: java.nio.charset.Charset): void {
         assigns arg0.head;
         assigns arg0.size;
@@ -7294,10 +7422,13 @@ automaton okhttp3.Interceptor$Chain : okhttp3.Interceptor$Chain {
     
     fun request(): okhttp3.Request;
     
+    @Throws("java.lang.IllegalStateException", arg1 == "'null-const'")
     fun withConnectTimeout(arg0: int, arg1: java.util.concurrent.TimeUnit): okhttp3.Interceptor$Chain;
     
+    @Throws("java.lang.IllegalStateException", arg1 == "'null-const'")
     fun withReadTimeout(arg0: int, arg1: java.util.concurrent.TimeUnit): okhttp3.Interceptor$Chain;
     
+    @Throws("java.lang.IllegalStateException", arg1 == "'null-const'")
     fun withWriteTimeout(arg0: int, arg1: java.util.concurrent.TimeUnit): okhttp3.Interceptor$Chain;
     
     fun writeTimeoutMillis(): int;
@@ -7319,6 +7450,10 @@ automaton okhttp3.internal.Internal : okhttp3.internal.Internal {
     
     fun addHeaderLenient(arg0: okhttp3.Headers$Builder, arg1: java.lang.String, arg2: java.lang.String): okhttp3.Headers$Builder;
     
+    @Throws("kotlin.TypeCastException", cipherSuitesAsString != "'null-const'" & tlsVersionsAsString == "'null-const'")
+    @Throws("kotlin.TypeCastException", tlsVersionsAsString != "'null-const'")
+    @Throws("kotlin.TypeCastException", tlsVersionsAsString != "'null-const'" & cipherSuitesAsString == "'null-const'")
+    @Throws("kotlin.TypeCastException", cipherSuitesAsString != "'null-const'")
     fun applyConnectionSpec(arg0: okhttp3.ConnectionSpec, arg1: javax.net.ssl.SSLSocket, arg2: bool): void;
     
     fun cacheGet(arg0: okhttp3.Cache, arg1: okhttp3.Request): okhttp3.Response;
@@ -7663,6 +7798,7 @@ automaton okhttp3.MultipartReader (val arg0: okio.BufferedSource, val arg1: java
     
     fun currentPartBytesRemaining(arg0: long): long;
     
+    @Throws("java.lang.IllegalStateException", closed)
     fun nextPart(): okhttp3.MultipartReader$Part {
         assigns partCount;
         assigns noMoreParts;
@@ -7714,6 +7850,7 @@ automaton okhttp3.internal.proxy.NullProxySelector : okhttp3.internal.proxy.Null
     val INSTANCE: okhttp3.internal.proxy.NullProxySelector;
     fun connectFailed(arg0: java.net.URI, arg1: java.net.SocketAddress, arg2: java.io.IOException): void;
     
+    @Throws("java.lang.IllegalArgumentException", arg0 == "'null-const'")
     fun select(arg0: java.net.URI): java.util.List;
     
     fun `static-constructor`(): void {
@@ -7732,10 +7869,12 @@ automaton okhttp3.internal.tls.OkHostnameVerifier : okhttp3.internal.tls.OkHostn
         assigns INSTANCE;
     }
     
+    @Throws("kotlin.TypeCastException", arg0 == "'null-const'")
     fun verify(arg0: java.lang.String, arg1: javax.net.ssl.SSLSession): bool;
     
     fun verify(arg0: java.lang.String, arg1: java.security.cert.X509Certificate): bool;
     
+    @Throws("kotlin.TypeCastException", arg0 == "'null-const'")
     fun verifyHostname(arg0: java.lang.String, arg1: java.security.cert.X509Certificate): bool;
     
     fun verifyHostname(arg0: java.lang.String, arg1: java.lang.String): bool;
@@ -7831,6 +7970,7 @@ automaton okhttp3.OkHttpClient (val arg0: okhttp3.OkHttpClient$Builder) : okhttp
     
     fun `-deprecated_socketFactory`(): javax.net.SocketFactory;
     
+    @Throws("java.lang.IllegalStateException", sslSocketFactoryOrNull == "'null-const'")
     fun `-deprecated_sslSocketFactory`(): javax.net.ssl.SSLSocketFactory;
     
     fun `-deprecated_writeTimeoutMillis`(): int;
@@ -7903,6 +8043,7 @@ automaton okhttp3.OkHttpClient (val arg0: okhttp3.OkHttpClient$Builder) : okhttp
     
     fun socketFactory(): javax.net.SocketFactory;
     
+    @Throws("java.lang.IllegalStateException", sslSocketFactoryOrNull == 0)
     fun sslSocketFactory(): javax.net.ssl.SSLSocketFactory;
     
     fun `static-constructor`(): void {
@@ -7911,6 +8052,10 @@ automaton okhttp3.OkHttpClient (val arg0: okhttp3.OkHttpClient$Builder) : okhttp
         assigns DEFAULT_CONNECTION_SPECS;
     }
     
+    @Throws("kotlin.TypeCastException", networkInterceptors == "'null-const'" & interceptors != "'null-const'")
+    @Throws("kotlin.TypeCastException", interceptors == "'null-const'" & networkInterceptors != "'null-const'")
+    @Throws("kotlin.TypeCastException", networkInterceptors == "'null-const'")
+    @Throws("kotlin.TypeCastException", interceptors == "'null-const'")
     fun verifyClientState(): void;
     
     fun writeTimeoutMillis(): int;
@@ -7962,14 +8107,18 @@ automaton okhttp3.OkHttpClient$Builder : okhttp3.OkHttpClient$Builder {
     
     fun cache(arg0: okhttp3.Cache): okhttp3.OkHttpClient$Builder;
     
+    @Throws("java.lang.IllegalStateException", arg1 == "'null-const'")
     fun callTimeout(arg0: long, arg1: java.util.concurrent.TimeUnit): okhttp3.OkHttpClient$Builder;
     
+    @Throws("java.lang.IllegalStateException", MILLISECONDS == "'null-const'")
     fun callTimeout(arg0: java.time.Duration): okhttp3.OkHttpClient$Builder;
     
     fun certificatePinner(arg0: okhttp3.CertificatePinner): okhttp3.OkHttpClient$Builder;
     
+    @Throws("java.lang.IllegalStateException", arg1 == "'null-const'")
     fun connectTimeout(arg0: long, arg1: java.util.concurrent.TimeUnit): okhttp3.OkHttpClient$Builder;
     
+    @Throws("java.lang.IllegalStateException", MILLISECONDS == "'null-const'")
     fun connectTimeout(arg0: java.time.Duration): okhttp3.OkHttpClient$Builder;
     
     fun connectionPool(arg0: okhttp3.ConnectionPool): okhttp3.OkHttpClient$Builder;
@@ -8058,8 +8207,10 @@ automaton okhttp3.OkHttpClient$Builder : okhttp3.OkHttpClient$Builder {
     
     fun networkInterceptors(): java.util.List;
     
+    @Throws("java.lang.IllegalStateException", arg1 == "'null-const'")
     fun pingInterval(arg0: long, arg1: java.util.concurrent.TimeUnit): okhttp3.OkHttpClient$Builder;
     
+    @Throws("java.lang.IllegalStateException", MILLISECONDS == "'null-const'")
     fun pingInterval(arg0: java.time.Duration): okhttp3.OkHttpClient$Builder;
     
     fun protocols(arg0: java.util.List): okhttp3.OkHttpClient$Builder;
@@ -8070,8 +8221,10 @@ automaton okhttp3.OkHttpClient$Builder : okhttp3.OkHttpClient$Builder {
     
     fun proxySelector(arg0: java.net.ProxySelector): okhttp3.OkHttpClient$Builder;
     
+    @Throws("java.lang.IllegalStateException", arg1 == "'null-const'")
     fun readTimeout(arg0: long, arg1: java.util.concurrent.TimeUnit): okhttp3.OkHttpClient$Builder;
     
+    @Throws("java.lang.IllegalStateException", MILLISECONDS == "'null-const'")
     fun readTimeout(arg0: java.time.Duration): okhttp3.OkHttpClient$Builder;
     
     fun retryOnConnectionFailure(arg0: bool): okhttp3.OkHttpClient$Builder;
@@ -8194,8 +8347,10 @@ automaton okhttp3.OkHttpClient$Builder : okhttp3.OkHttpClient$Builder {
     
     fun sslSocketFactory(arg0: javax.net.ssl.SSLSocketFactory, arg1: javax.net.ssl.X509TrustManager): okhttp3.OkHttpClient$Builder;
     
+    @Throws("java.lang.IllegalStateException", arg1 == "'null-const'")
     fun writeTimeout(arg0: long, arg1: java.util.concurrent.TimeUnit): okhttp3.OkHttpClient$Builder;
     
+    @Throws("java.lang.IllegalStateException", MILLISECONDS == "'null-const'")
     fun writeTimeout(arg0: java.time.Duration): okhttp3.OkHttpClient$Builder;
 }
 automaton okhttp3.OkHttpClient$Builder$addInterceptor$$inlined$invoke$1 (val arg0: `<UNRESOLVED_TYPE>`) : okhttp3.OkHttpClient$Builder$addInterceptor$$inlined$invoke$1 {
@@ -8271,6 +8426,7 @@ automaton okhttp3.internal.platform.Platform : okhttp3.internal.platform.Platfor
     
     fun log(arg0: java.lang.String, arg1: int, arg2: java.lang.Throwable): void;
     
+    @Throws("java.lang.UnsupportedOperationException", arg5 != "'null-const'")
     fun log$default(arg0: okhttp3.internal.platform.Platform, arg1: java.lang.String, arg2: int, arg3: java.lang.Throwable, arg4: int, arg5: java.lang.Object): void;
     
     fun logCloseableLeak(arg0: java.lang.String, arg1: java.lang.Object): void;
@@ -8373,11 +8529,14 @@ automaton okhttp3.internal.publicsuffix.PublicSuffixDatabase : okhttp3.internal.
         assigns arg0.publicSuffixListBytes;
     }
     
+    @Throws("java.lang.IllegalStateException", arg0 != "'null-const'" & publicSuffixListBytes == "'null-const'")
+    @Throws("java.lang.IllegalStateException", publicSuffixListBytes == "'null-const'")
     fun findMatchingRule(arg0: java.util.List): java.util.List {
         assigns publicSuffixListBytes;
         assigns publicSuffixExceptionListBytes;
     }
     
+    @Throws("java.lang.IllegalStateException", publicSuffixListBytes == "'null-const'")
     fun getEffectiveTldPlusOne(arg0: java.lang.String): java.lang.String {
         assigns publicSuffixListBytes;
         assigns publicSuffixExceptionListBytes;
@@ -8478,6 +8637,7 @@ automaton okhttp3.internal.connection.RealCall (val arg0: okhttp3.OkHttpClient, 
     
     fun access$toLoggableString(arg0: okhttp3.internal.connection.RealCall): java.lang.String;
     
+    @Throws("java.lang.IllegalStateException", connection != "'null-const'")
     fun acquireConnectionNoEvents(arg0: okhttp3.internal.connection.RealConnection): void {
         assigns connection;
     }
@@ -8496,6 +8656,7 @@ automaton okhttp3.internal.connection.RealCall (val arg0: okhttp3.OkHttpClient, 
     
     fun clone(): okhttp3.Call;
     
+    @Throws("java.lang.IllegalStateException", isHttps & sslSocketFactoryOrNull == 0)
     fun createAddress(arg0: okhttp3.HttpUrl): okhttp3.Address;
     
     fun enqueue(arg0: okhttp3.Callback): void {
@@ -8503,6 +8664,84 @@ automaton okhttp3.internal.connection.RealCall (val arg0: okhttp3.OkHttpClient, 
         assigns callStackTrace;
     }
     
+    @Throws("java.lang.IllegalStateException", interceptorScopedExchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", arg1 & exchange != "'null-const'" & interceptorScopedExchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", exchange != "'null-const'" & interceptorScopedExchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", !arg1 & exchange != "'null-const'" & interceptorScopedExchange != "'null-const'" & sslSocketFactoryOrNull == "'null-const'")
+    @Throws("java.lang.IllegalStateException", exchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", arg1 & exchange != "'null-const'" & sslSocketFactoryOrNull == "'null-const'")
+    @Throws("java.lang.IllegalStateException", exchange != "'null-const'" & interceptorScopedExchange != "'null-const'" & sslSocketFactoryOrNull == "'null-const'")
+    @Throws("java.lang.IllegalStateException", exchange != "'null-const'" & sslSocketFactoryOrNull == "'null-const'")
+    @Throws("java.lang.IllegalStateException", arg1 & exchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", !arg1 & exchange != "'null-const'" & interceptorScopedExchange == "'null-const'")
+    @Throws("java.lang.IllegalStateException", exchange != "'null-const'" & interceptorScopedExchange == "'null-const'")
+    @Throws("java.lang.IllegalStateException", !sslSocketFactoryOrNull == "'null-const'" & arg1 & exchange != "'null-const'" & sslSocketFactoryOrNull == "'null-const'")
+    @Throws("java.lang.IllegalStateException", !sslSocketFactoryOrNull == "'null-const'" & exchange != "'null-const'" & interceptorScopedExchange == "'null-const'")
+    @Throws("java.lang.IllegalStateException", !sslSocketFactoryOrNull == "'null-const'" & arg1 & exchange != "'null-const'" & interceptorScopedExchange == "'null-const'")
+    @Throws("java.lang.IllegalStateException", !sslSocketFactoryOrNull == "'null-const'" & arg1 & exchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", !sslSocketFactoryOrNull == "'null-const'" & exchange != "'null-const'" & sslSocketFactoryOrNull == "'null-const'")
+    @Throws("java.lang.IllegalStateException", !sslSocketFactoryOrNull == "'null-const'" & exchange != "'null-const'" & interceptorScopedExchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", !arg1 & interceptorScopedExchange != "'null-const'" & exchange != "'null-const'" & sslSocketFactoryOrNull == "'null-const'")
+    @Throws("java.lang.IllegalStateException", !sslSocketFactoryOrNull == "'null-const'" & exchange != "'null-const'" & interceptorScopedExchange != "'null-const'" & sslSocketFactoryOrNull == "'null-const'")
+    @Throws("java.lang.IllegalStateException", !arg1 & exchange != "'null-const'" & interceptorScopedExchange == "'null-const'" & sslSocketFactoryOrNull == "'null-const'")
+    @Throws("java.lang.IllegalStateException", !sslSocketFactoryOrNull == "'null-const'" & exchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", exchange != "'null-const'" & interceptorScopedExchange == "'null-const'" & sslSocketFactoryOrNull == "'null-const'")
+    @Throws("java.lang.IllegalStateException", !sslSocketFactoryOrNull == "'null-const'" & arg1 & exchange != "'null-const'" & interceptorScopedExchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", arg1 & exchange != "'null-const'" & interceptorScopedExchange == "'null-const'" & sslSocketFactoryOrNull == "'null-const'")
+    @Throws("java.lang.IllegalStateException", !sslSocketFactoryOrNull == "'null-const'" & arg1 & exchange != "'null-const'" & interceptorScopedExchange == "'null-const'" & sslSocketFactoryOrNull == "'null-const'")
+    @Throws("java.lang.IllegalStateException", arg1 & interceptorScopedExchange != "'null-const'" & exchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", !arg1 & interceptorScopedExchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", arg1 & interceptorScopedExchange != "'null-const'" & sslSocketFactoryOrNull == "'null-const'")
+    @Throws("java.lang.IllegalStateException", !arg1 & interceptorScopedExchange != "'null-const'" & exchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", !arg1 & interceptorScopedExchange != "'null-const'" & sslSocketFactoryOrNull == "'null-const'")
+    @Throws("java.lang.IllegalStateException", arg1 & exchange != "'null-const'" & interceptorScopedExchange == "'null-const'")
+    @Throws("java.lang.IllegalStateException", !sslSocketFactoryOrNull == "'null-const'" & exchange != "'null-const'" & interceptorScopedExchange == "'null-const'" & sslSocketFactoryOrNull == "'null-const'")
+    @Throws("java.lang.IllegalStateException", arg1 & interceptorScopedExchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", interceptorScopedExchange != "'null-const'" & exchange != "'null-const'" & sslSocketFactoryOrNull == "'null-const'")
+    @Throws("java.lang.IllegalStateException", interceptorScopedExchange != "'null-const'" & exchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", interceptorScopedExchange != "'null-const'" & sslSocketFactoryOrNull == "'null-const'")
+    @Throws("java.lang.IllegalStateException", !sslSocketFactoryOrNull == "'null-const'" & arg1 & interceptorScopedExchange != "'null-const'" & sslSocketFactoryOrNull == "'null-const'")
+    @Throws("java.lang.IllegalStateException", !sslSocketFactoryOrNull == "'null-const'" & arg1 & interceptorScopedExchange != "'null-const'" & exchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", !sslSocketFactoryOrNull == "'null-const'" & arg1 & interceptorScopedExchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", !sslSocketFactoryOrNull == "'null-const'" & interceptorScopedExchange != "'null-const'" & exchange != "'null-const'" & sslSocketFactoryOrNull == "'null-const'")
+    @Throws("java.lang.IllegalStateException", !sslSocketFactoryOrNull == "'null-const'" & interceptorScopedExchange != "'null-const'" & exchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", !sslSocketFactoryOrNull == "'null-const'" & interceptorScopedExchange != "'null-const'" & sslSocketFactoryOrNull == "'null-const'")
+    @Throws("java.lang.IllegalStateException", !sslSocketFactoryOrNull == "'null-const'" & interceptorScopedExchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", !arg1 & interceptorScopedExchange != "'null-const'" & exchange == "'null-const'" & sslSocketFactoryOrNull == "'null-const'")
+    @Throws("java.lang.IllegalStateException", !arg1 & interceptorScopedExchange != "'null-const'" & exchange == "'null-const'")
+    @Throws("java.lang.IllegalStateException", arg1 & interceptorScopedExchange != "'null-const'" & exchange == "'null-const'" & sslSocketFactoryOrNull == "'null-const'")
+    @Throws("java.lang.IllegalStateException", arg1 & interceptorScopedExchange != "'null-const'" & exchange == "'null-const'")
+    @Throws("java.lang.IllegalStateException", interceptorScopedExchange != "'null-const'" & exchange == "'null-const'" & sslSocketFactoryOrNull == "'null-const'")
+    @Throws("java.lang.IllegalStateException", interceptorScopedExchange != "'null-const'" & exchange == "'null-const'")
+    @Throws("java.lang.IllegalStateException", !sslSocketFactoryOrNull == "'null-const'" & arg1 & interceptorScopedExchange != "'null-const'" & exchange == "'null-const'" & sslSocketFactoryOrNull == "'null-const'")
+    @Throws("java.lang.IllegalStateException", !sslSocketFactoryOrNull == "'null-const'" & arg1 & interceptorScopedExchange != "'null-const'" & exchange == "'null-const'")
+    @Throws("java.lang.IllegalStateException", !sslSocketFactoryOrNull == "'null-const'" & interceptorScopedExchange != "'null-const'" & exchange == "'null-const'" & sslSocketFactoryOrNull == "'null-const'")
+    @Throws("java.lang.IllegalStateException", !sslSocketFactoryOrNull == "'null-const'" & interceptorScopedExchange != "'null-const'" & exchange == "'null-const'")
+    @Throws("java.lang.IllegalStateException", !arg1 & sslSocketFactoryOrNull == 0 & exchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", !arg1 & exchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", !arg1 & exchange != "'null-const'" & interceptorScopedExchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", !arg1 & sslSocketFactoryOrNull == 0 & interceptorScopedExchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", arg1 & sslSocketFactoryOrNull == 0)
+    @Throws("java.lang.IllegalStateException", sslSocketFactoryOrNull == 0 & exchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", sslSocketFactoryOrNull == 0 & interceptorScopedExchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", !arg1 & sslSocketFactoryOrNull == 0 & exchange == "'null-const'" & interceptorScopedExchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", !arg1 & exchange == "'null-const'" & interceptorScopedExchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", arg1 & sslSocketFactoryOrNull == 0 & exchange == "'null-const'")
+    @Throws("java.lang.IllegalStateException", arg1 & exchange == "'null-const'" & interceptorScopedExchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", sslSocketFactoryOrNull == 0 & exchange == "'null-const'" & interceptorScopedExchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", exchange == "'null-const'" & interceptorScopedExchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", !sslSocketFactoryOrNull == "'null-const'" & arg1 & exchange == "'null-const'" & interceptorScopedExchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", !sslSocketFactoryOrNull == "'null-const'" & exchange == "'null-const'" & interceptorScopedExchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", !arg1 & sslSocketFactoryOrNull == 0 & interceptorScopedExchange == "'null-const'" & exchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", !arg1 & interceptorScopedExchange == "'null-const'" & exchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", arg1 & sslSocketFactoryOrNull == 0 & interceptorScopedExchange == "'null-const'")
+    @Throws("java.lang.IllegalStateException", arg1 & interceptorScopedExchange == "'null-const'" & exchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", sslSocketFactoryOrNull == 0 & interceptorScopedExchange == "'null-const'" & exchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", interceptorScopedExchange == "'null-const'" & exchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", !sslSocketFactoryOrNull == "'null-const'" & arg1 & interceptorScopedExchange == "'null-const'" & exchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", !sslSocketFactoryOrNull == "'null-const'" & interceptorScopedExchange == "'null-const'" & exchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", arg1 & sslSocketFactoryOrNull == 0 & interceptorScopedExchange == "'null-const'" & exchange == "'null-const'")
+    @Throws("java.lang.IllegalStateException", !arg1 & exchange != "'null-const'" & sslSocketFactoryOrNull == "'null-const'")
     fun enterNetworkInterceptorExchange(arg0: okhttp3.Request, arg1: bool): void {
         assigns exchangeFinder;
     }
@@ -8584,6 +8823,7 @@ automaton okhttp3.internal.connection.RealCall (val arg0: okhttp3.OkHttpClient, 
     
     fun timeout(): okio.Timeout;
     
+    @Throws("java.lang.IllegalStateException", timeoutEarlyExit)
     fun timeoutEarlyExit(): void {
         assigns timeoutEarlyExit;
     }
@@ -8811,6 +9051,8 @@ automaton okhttp3.internal.connection.RealConnection$connectTls$1 (val arg0: okh
     val $certificatePinner: okhttp3.CertificatePinner;
     val $unverifiedHandshake: okhttp3.Handshake;
     val $address: okhttp3.Address;
+    @Throws("kotlin.TypeCastException", $unverifiedHandshake != "'null-const'" & $unverifiedHandshake <= 6 & peerCertificates$delegate != "'null-const'" & certificateChainCleaner != "'null-const'" & certificateChainCleaner <= 10 & host <= 10 & $address != "'null-const'" & $address <= 8 & `url` != "'null-const'" & `url` <= 9 & $certificatePinner != "'null-const'" & $certificatePinner <= 4)
+    @Throws("kotlin.TypeCastException", peerCertificates$delegate != "'null-const'" & peerCertificates$delegate <= 7)
     fun invoke(): java.lang.Object;
     
     fun invoke(): java.util.List;
@@ -8908,10 +9150,13 @@ automaton okhttp3.internal.http.RealInterceptorChain (val arg0: okhttp3.internal
     
     fun request(): okhttp3.Request;
     
+    @Throws("java.lang.IllegalStateException", arg1 == "'null-const'")
     fun withConnectTimeout(arg0: int, arg1: java.util.concurrent.TimeUnit): okhttp3.Interceptor$Chain;
     
+    @Throws("java.lang.IllegalStateException", arg1 == "'null-const'")
     fun withReadTimeout(arg0: int, arg1: java.util.concurrent.TimeUnit): okhttp3.Interceptor$Chain;
     
+    @Throws("java.lang.IllegalStateException", arg1 == "'null-const'")
     fun withWriteTimeout(arg0: int, arg1: java.util.concurrent.TimeUnit): okhttp3.Interceptor$Chain;
     
     fun writeTimeoutMillis(): int;
@@ -9379,6 +9624,8 @@ automaton okhttp3.Request$Builder : okhttp3.Request$Builder {
     val tags: java.util.Map;
     fun addHeader(arg0: java.lang.String, arg1: java.lang.String): okhttp3.Request$Builder;
     
+    @Throws("java.lang.IllegalStateException", `url` == "'null-const'")
+    @Throws("kotlin.TypeCastException", `url` != "'null-const'")
     fun build(): okhttp3.Request;
     
     fun cacheControl(arg0: okhttp3.CacheControl): okhttp3.Request$Builder {
@@ -9389,6 +9636,8 @@ automaton okhttp3.Request$Builder : okhttp3.Request$Builder {
     
     fun delete(): okhttp3.Request$Builder;
     
+    @Throws("java.lang.UnsupportedOperationException", arg3 != "'null-const'")
+    @Throws("java.lang.IllegalArgumentException", arg3 == "'null-const'")
     fun delete$default(arg0: okhttp3.Request$Builder, arg1: okhttp3.RequestBody, arg2: int, arg3: java.lang.Object): okhttp3.Request$Builder;
     
     fun get(): okhttp3.Request$Builder;
@@ -9647,6 +9896,7 @@ automaton okhttp3.Response (val arg0: okhttp3.Request, val arg1: okhttp3.Protoco
     
     fun challenges(): java.util.List;
     
+    @Throws("java.lang.IllegalStateException", body == "'null-const'")
     fun close(): void;
     
     fun code(): int;
@@ -9689,6 +9939,51 @@ automaton okhttp3.Response (val arg0: okhttp3.Request, val arg1: okhttp3.Protoco
     
     fun toString(): java.lang.String;
     
+    @Throws("java.lang.IllegalStateException", exchange == "'null-const'")
+    @Throws("java.lang.IllegalStateException", `state` <= 6 & exchange == "'null-const'")
+    @Throws("java.lang.IllegalStateException", `state` <= 6)
+    @Throws("java.lang.IllegalStateException", `state` <= 6 & errorCode != "'null-const'" & exchange == "'null-const'")
+    @Throws("java.lang.IllegalStateException", `state` <= 6 & errorCode != "'null-const'")
+    @Throws("java.lang.IllegalStateException", errorCode != "'null-const'" & exchange == "'null-const'")
+    @Throws("java.lang.IllegalStateException", errorCode != "'null-const'")
+    @Throws("java.lang.IllegalStateException", `state` == 6 & exchange == "'null-const'")
+    @Throws("java.lang.IllegalStateException", `state` == 6 & errorCode != "'null-const'" & exchange == "'null-const'")
+    @Throws("java.lang.IllegalStateException", `state` >= 6 & exchange == "'null-const'")
+    @Throws("java.lang.IllegalStateException", `state` >= 6 & errorCode != "'null-const'" & exchange == "'null-const'")
+    @Throws("java.lang.IllegalStateException", `state` >= 6)
+    @Throws("java.lang.IllegalStateException", `state` >= 6 & errorCode != "'null-const'")
+    @Throws("java.lang.IllegalStateException", exchange != "'null-const'" & `state` <= 6)
+    @Throws("java.lang.IllegalStateException", exchange != "'null-const'" & `state` <= 6 & errorCode != "'null-const'")
+    @Throws("java.lang.IllegalStateException", exchange != "'null-const'")
+    @Throws("java.lang.IllegalStateException", exchange != "'null-const'" & errorCode != "'null-const'")
+    @Throws("java.lang.IllegalStateException", exchange != "'null-const'" & `state` >= 6)
+    @Throws("java.lang.IllegalStateException", exchange != "'null-const'" & `state` >= 6 & errorCode != "'null-const'")
+    @Throws("java.lang.IllegalStateException", exchange == "'null-const'" & `state` <= 6)
+    @Throws("java.lang.IllegalStateException", !`state` == 6 & exchange == "'null-const'" & `state` <= 6)
+    @Throws("java.lang.IllegalStateException", exchange == "'null-const'" & `state` <= 6 & errorCode != "'null-const'")
+    @Throws("java.lang.IllegalStateException", !`state` == 6 & exchange == "'null-const'" & `state` <= 6 & errorCode != "'null-const'")
+    @Throws("java.lang.IllegalStateException", !`state` == 6 & exchange == "'null-const'")
+    @Throws("java.lang.IllegalStateException", exchange == "'null-const'" & errorCode != "'null-const'")
+    @Throws("java.lang.IllegalStateException", !`state` == 6 & exchange == "'null-const'" & errorCode != "'null-const'")
+    @Throws("java.lang.IllegalStateException", exchange == "'null-const'" & `state` == 6)
+    @Throws("java.lang.IllegalStateException", exchange == "'null-const'" & `state` == 6 & errorCode != "'null-const'")
+    @Throws("java.lang.IllegalStateException", exchange == "'null-const'" & `state` >= 6)
+    @Throws("java.lang.IllegalStateException", !`state` == 6 & exchange == "'null-const'" & `state` >= 6)
+    @Throws("java.lang.IllegalStateException", exchange == "'null-const'" & `state` >= 6 & errorCode != "'null-const'")
+    @Throws("java.lang.IllegalStateException", !`state` == 6 & exchange == "'null-const'" & `state` >= 6 & errorCode != "'null-const'")
+    @Throws("java.lang.IllegalStateException", `state` == 6)
+    @Throws("java.lang.IllegalStateException", `state` == 6 & errorCode != "'null-const'")
+    @Throws("java.lang.IllegalStateException", errorCode == "'null-const'" & `state` <= 6 & exchange == "'null-const'")
+    @Throws("java.lang.IllegalStateException", !`state` == 6 & errorCode == "'null-const'" & `state` <= 6 & exchange == "'null-const'")
+    @Throws("java.lang.IllegalStateException", errorCode == "'null-const'" & exchange == "'null-const'")
+    @Throws("java.lang.IllegalStateException", !`state` == 6 & errorCode == "'null-const'" & exchange == "'null-const'")
+    @Throws("java.lang.IllegalStateException", errorCode == "'null-const'" & `state` == 6 & exchange == "'null-const'")
+    @Throws("java.lang.IllegalStateException", errorCode == "'null-const'" & `state` >= 6 & exchange == "'null-const'")
+    @Throws("java.lang.IllegalStateException", !`state` == 6 & errorCode == "'null-const'" & `state` >= 6 & exchange == "'null-const'")
+    @Throws("java.lang.Throwable", `state` <= 6 & errorCode != "'null-const'" & exchange != "'null-const'")
+    @Throws("java.lang.Throwable", `state` >= 6 & errorCode != "'null-const'" & exchange != "'null-const'")
+    @Throws("java.lang.Throwable", `state` == 6 & errorCode != "'null-const'" & exchange != "'null-const'")
+    @Throws("java.lang.Throwable", errorCode != "'null-const'" & exchange != "'null-const'")
     fun trailers(): okhttp3.Headers;
 }
 automaton okhttp3.Response$Builder : okhttp3.Response$Builder {
@@ -9709,10 +10004,24 @@ automaton okhttp3.Response$Builder : okhttp3.Response$Builder {
     
     fun body(arg0: okhttp3.ResponseBody): okhttp3.Response$Builder;
     
+    @Throws("java.lang.IllegalStateException", protocol == "'null-const'")
+    @Throws("java.lang.IllegalStateException", message != "'null-const'" & protocol == "'null-const'")
+    @Throws("java.lang.IllegalStateException", message != "'null-const'" & request == "'null-const'")
+    @Throws("java.lang.IllegalStateException", message == "'null-const'" & request != "'null-const'")
+    @Throws("java.lang.IllegalStateException", message == "'null-const'" & request != "'null-const'" & protocol != "'null-const'")
+    @Throws("java.lang.IllegalStateException", message != "'null-const'" & request == "'null-const'" & protocol != "'null-const'")
+    @Throws("java.lang.IllegalStateException", request == "'null-const'")
+    @Throws("java.lang.IllegalStateException", message != "'null-const'" & protocol == "'null-const'" & request != "'null-const'")
+    @Throws("java.lang.IllegalStateException", protocol == "'null-const'" & request != "'null-const'")
+    @Throws("java.lang.IllegalStateException", message == "'null-const'" & protocol != "'null-const'")
+    @Throws("java.lang.IllegalStateException", request == "'null-const'" & protocol != "'null-const'")
+    @Throws("java.lang.IllegalStateException", message == "'null-const'")
+    @Throws("kotlin.TypeCastException", message != "'null-const'" & request != "'null-const'" & protocol != "'null-const'")
     fun build(): okhttp3.Response;
     
     fun cacheResponse(arg0: okhttp3.Response): okhttp3.Response$Builder;
     
+    @Throws("java.lang.IllegalArgumentException", arg0 != "'null-const'" & body != "'null-const'")
     fun checkPriorResponse(arg0: okhttp3.Response): void;
     
     fun checkSupportResponse(arg0: java.lang.String, arg1: okhttp3.Response): void;
@@ -9759,6 +10068,7 @@ automaton okhttp3.Response$Builder : okhttp3.Response$Builder {
     
     fun networkResponse(arg0: okhttp3.Response): okhttp3.Response$Builder;
     
+    @Throws("java.lang.IllegalArgumentException", arg0 != "'null-const'" & body != "'null-const'")
     fun priorResponse(arg0: okhttp3.Response): okhttp3.Response$Builder;
     
     fun protocol(arg0: okhttp3.Protocol): okhttp3.Response$Builder;
@@ -9892,6 +10202,7 @@ automaton okhttp3.ResponseBody$BomAwareReader (val arg0: okio.BufferedSource, va
         assigns closed;
     }
     
+    @Throws("java.io.IOException", closed)
     fun read(arg0: array, arg1: int, arg2: int): int {
         assigns delegate;
         assigns source;
@@ -10063,6 +10374,7 @@ automaton okhttp3.internal.connection.RouteSelector$Selection (val arg0: java.ut
     
     fun hasNext(): bool;
     
+    @Throws("java.util.NoSuchElementException", nextRouteIndex >= 0)
     fun next(): okhttp3.Route {
         assigns nextRouteIndex;
     }
@@ -10194,6 +10506,7 @@ automaton okhttp3.internal.concurrent.Task (val arg0: java.lang.String, val arg1
     
     fun getQueue$okhttp(): okhttp3.internal.concurrent.TaskQueue;
     
+    @Throws("java.lang.IllegalStateException", arg0 >= 2)
     fun initQueue$okhttp(arg0: okhttp3.internal.concurrent.TaskQueue): void {
         assigns queue;
     }
@@ -10463,6 +10776,7 @@ automaton okhttp3.internal.Util : okhttp3.internal.Util {
     
     fun canReuseConnectionFor(arg0: okhttp3.HttpUrl, arg1: okhttp3.HttpUrl): bool;
     
+    @Throws("java.lang.IllegalStateException", arg2 == "'null-const'")
     fun checkDuration(arg0: java.lang.String, arg1: long, arg2: java.util.concurrent.TimeUnit): int;
     
     fun checkOffsetAndCount(arg0: long, arg1: long, arg2: long): void;

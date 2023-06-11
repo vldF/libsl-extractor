@@ -55,4 +55,14 @@ class Tests {
     fun staticMethodsAndFieldsTest() {
         TestPlatform.runForClassesDir("staticMethodsAndFields")
     }
+
+    @Test
+    fun virtualMethodsBasicTest() {
+        TestPlatform.runForClassesDir("virtualMethodsBasic")
+    }
+
+    @Test
+    fun snakeyamlTest() {
+        TestPlatform.runForJarDir("snakeyaml")
+    }
 }
